@@ -177,16 +177,7 @@ public:
 		}
 		
 	}
-	/*int getNumberOfVehicleInTMT()override {
-		if (!m_transmissionTable.empty()) {
-			for (auto &i : m_transmissionTable) {
-				sum += i.param2.size();
-			}
-		}
-		else {
-			return 0;
-		}
-	}*/
+	
 	int getNumberOfVehicleInV()override {
 		int sum = 0;
 		if (!m_transmissionTable.empty()) {
@@ -236,10 +227,7 @@ public:
 			}
 		}
 	}
-	/*std::pair<int, int> sizeOfTT()override {
-		return std::make_pair<int, int>(m_transmissionTable[0].param2.size(), m_transmissionTable[1].param2.size());
 	
-	}*/
 	size_t sizeOfTransmissiontable() override {
 		return m_transmissionTable.size();
 	}
