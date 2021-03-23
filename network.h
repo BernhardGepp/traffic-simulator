@@ -52,7 +52,7 @@ private:
 	enum m_numberOfLanes { oneLane = 1, twoLanes = 2 };
 	randomSpeed_neu rSn;
 	
-	//static std::unique_ptr<callBackLinks>& getInstance;
+	
 	
 public:
 	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
@@ -72,9 +72,7 @@ public:
 	static network* getInstance(const int& width, const int& height);
 	static void destroy();
 	
-	/*int network::getRandomNumber() {
-		return rSn.getRandomNumber();
-	}*/
+	
 	
 	int getRandomNumber() {
 		rSn.randomNumberRequest();
@@ -113,15 +111,13 @@ public:
 		m_cbl.m_f10PaintBox = m_f10PaintBox;
 		m_cbl.m_f11PaintWhiteLine = m_f11PaintWhiteLine;
 		iPosYRK = height - 110;
-		//m_cbl = std::move(callBackLinks::getInstance());
+		
 	}
 	void network::fieldRecalibarte(HDC hdc) {
 		m_hdc = hdc;
 		iPosXRK = width - 110;
 		iPosYRK = height - 110;
 		
-		
-		//m_cbl->m_hdc = hdc;
 	}
 
 	bool  network::establishLane(HDC hdc, const int& numberOfLanes) {
@@ -153,13 +149,10 @@ public:
 			startingPoint.second = iPosYLK;
 			endingPoint.first = 0;
 			endingPoint.second = 0;
-			//m_f6PrintLaneInNumbers(m_hdc, startingPoint.first, startingPoint.second, endingPoint.first, endingPoint.second, true);
-
-
+			
 		}
 		else {//true	  
 
-			  //m_f5PaintLane(m_hdc, xCordinadte_store_LB, yCordinadte_store_LB, iPosXLK, iPosYLK,true);
 			lButtonServiceBool = false;
 			//Links unten
 			if (((iPosXLK - xCordinadte_store_LB) >= 0) && ((iPosYLK - yCordinadte_store_LB) >= 0)) {
@@ -240,8 +233,7 @@ public:
 				if (laneNumbers == 2) {
 					laneCoordinate = std::make_tuple(startingPoint, endingPoint, horizontalOrVertival, twoLanes);//twoLanes
 				}
-				//m_f6PrintLaneInNumbers(m_hdc, std::get<0>(laneCoordinate).first, std::get<0>(laneCoordinate).second, std::get<1>(laneCoordinate).first, std::get<1>(laneCoordinate).second, std::get<2>(laneCoordinate));
-
+				
 				bool addCoordinate = true;
 				int secondLaneExtension = -10;
 				bool secondLaneExist = false;
@@ -396,7 +388,7 @@ public:
 								}
 							}
 							else {
-								//addCoordinate = true;
+								
 							}
 						}
 					}
@@ -422,39 +414,13 @@ public:
 				xCordinadte_store_LB = 0;
 				yCordinadte_store_LB = 0;
 			}
-			//m_f6PrintLaneInNumbers(m_hdc, iPosXLk, iPosYLk, iPosXRk, iPosYRk, HorV);
-			//m_f6PrintLaneInNumbers(m_hdc, startingPoint.first, startingPoint.second, endingPoint.first, endingPoint.second, true);
+			
 		}
 		m_f1PaintBoxLB(m_hdc);
 		m_f2PaintBoxRB(m_hdc);
-		//m_f6PrintLaneInNumbers(m_hdc, std::get<0>(laneCoordinate).first, std::get<0>(laneCoordinate).second, std::get<1>(laneCoordinate).first, std::get<1>(laneCoordinate).second, std::get<2>(laneCoordinate));
-		//showGraph();
-		//printLanesAndVehiclesOfAllEdges();
 		return(lButtonServiceBool);
 	}
-	/*void network::showGraph() {
-		
-		int nOL = 0;
-		std::vector<std::tuple<int, int, int>> PointsToBePrinted;
-		PointsToBePrinted.push_back(std::make_tuple(0, 0, 0));
-		for (auto &i : networkLaneVector) {
-			nOL = std::get<3>(i);
-			m_f5PaintLane(m_hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second, std::get<2>(i), nOL, PointsToBePrinted);
-			m_f6PrintLaneInNumbers(m_hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second, std::get<2>(i));
-			m_f6PrintLaneInNumbers(m_hdc,networkLaneVector.size(),0,0,0,true);
-		}
-		PointsToBePrinted.clear();
-	}*/
-	/*void network::showVertex() {
-		
-		m_f3PaintFrame(m_hdc);
-		
-		for (auto &i : appliedGraph) {
-			i->showVertex();
-		}
-	}*/
 	
-
 	void  network::establishVertexOfGraph() {
 		
 		std::vector<std::tuple<std::pair<int, int>, std::pair<int, int>, bool, m_numberOfLanes>>::iterator estVerITER = networkLaneVector.begin();
@@ -588,8 +554,8 @@ public:
 		edgeOfGraphPtrContainer.clear();
 		for (int columnIterator = 0; columnIterator <= width; columnIterator = columnIterator + 10) {
 			for (auto &i : networkLaneVector) {
-				//m_f6PrintLaneInNumbers(m_hdc, std::get<2>(i), std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second, true);
-				if ((std::get<0>(i).first == columnIterator) && (std::get<1>(i).first == columnIterator) && (std::get<2>(i) == false)) {//Spalte senkrecht prüfen!
+				
+				if ((std::get<0>(i).first == columnIterator) && (std::get<1>(i).first == columnIterator) && (std::get<2>(i) == false)) {//Spalte senkrecht prÃ¼fen!
 					int firstYcoordinate = std::get<0>(i).second;
 					int secondYcoordinate = std::get<1>(i).second;
 					if (firstYcoordinate < secondYcoordinate) {
@@ -678,11 +644,7 @@ public:
 						}
 					}
 					else {
-						//m_f6PrintLaneInNumbers(m_hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second, true);
-						//m_f6PrintLaneInNumbers(m_hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second, true);
-						//m_f6PrintLaneInNumbers(m_hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second, true);
-						//Catch Problem!
-						//FristYCoordinate==SecondYCoordinate
+						
 					}
 				}
 			}
@@ -792,8 +754,7 @@ public:
 			counter = 0;
 			do
 			{
-				//m_f6PrintLaneInNumbers(m_hdc, 999, counter, std::get<2>(*iv), std::get<2>(*iv) - counter, true);
-				//m_f6PrintLaneInNumbers(m_hdc, 888, vertexOfGraphPtrVectorConainer.size(), 0, vectorOfDubbleVertex.size(), true);
+				
 				vertexOfGraphPtrVectorConainer.erase(vertexOfGraphPtrVectorConainer.begin() + (std::get<2>(*iv) - counter));
 				counter++;
 				++iv;
@@ -807,7 +768,7 @@ public:
 			
 			while (iv != vectorOfDubbleVertex.end())
 			{
-				//m_f6PrintLaneInNumbers(m_hdc, std::get<0>(*iv), std::get<1>(*iv), std::get<2>(*iv), std::get<3>(*iv), true);
+				
 				counter = 0;
 				if (sortVector.empty()) {
 					sortVector.push_back(std::make_tuple(std::get<0>(*iv), std::get<1>(*iv), std::get<3>(*iv)));
@@ -829,7 +790,7 @@ public:
 			}
 			for (auto &i : sortVector) {
 				vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexFlex>(std::get<0>(i), std::get<1>(i), std::get<2>(i)));
-				//m_f6PrintLaneInNumbers(m_hdc, std::get<0>(i), std::get<1>(i), std::get<2>(i), 0, true);
+				
 			}
 			
 		}
@@ -904,9 +865,7 @@ public:
 						int a = 0;
 						for (auto &i : VectorOfVertex) {
 							if (iterator != 0) {
-								//m_f6PrintLaneInNumbers(m_hdc, 1, a, i.second, 0, false);
-								//std::shared_ptr<edge> e5 = std::make_shared<edge>(a, i.second, getPtrOfVertex(a), getPtrOfVertex(i.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-								//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(a, i.second,  m_hdc, m_callback_getRandomNumber, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers));
+					
 								edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(a, i.second, m_hdc, 
 									choosePrintPattern(vertexOfGraphPtrVectorConainer[a-1]->m_XcoordinateVertex,
 										vertexOfGraphPtrVectorConainer[a - 1]->m_YcoordinateVertex,
@@ -922,8 +881,7 @@ public:
 						}
 					}
 					else {
-						//std::shared_ptr<edge> e1 = std::make_shared<edge>(VertexIDofEdges.first, VertexIDofEdges.second, getPtrOfVertex(VertexIDofEdges.first), getPtrOfVertex(VertexIDofEdges.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-						//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second,  m_hdc, m_callback_getRandomNumber, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers)); //Vertikal positv ohne Vertexunterbrechung!
+						
 						edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second, m_hdc, 
 							std::move(choosePrintPattern(vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_XcoordinateVertex,
 								vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_YcoordinateVertex,
@@ -969,8 +927,7 @@ public:
 						for (auto &i : VectorOfVertex) {
 							if (iterator != 0) {
 
-								//std::shared_ptr<edge> e6 = std::make_shared<edge>(b, i.second, getPtrOfVertex(b), getPtrOfVertex(i.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-								//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(b, i.second,  m_hdc, m_callback_getRandomNumber,m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers));
+								
 								edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(b, i.second, m_hdc, 
 										choosePrintPattern(vertexOfGraphPtrVectorConainer[b - 1]->m_XcoordinateVertex,
 										vertexOfGraphPtrVectorConainer[b - 1]->m_YcoordinateVertex,
@@ -985,8 +942,7 @@ public:
 						}
 					}
 					else {
-						//std::shared_ptr<edge> e2 = std::make_shared<edge>(VertexIDofEdges.first, VertexIDofEdges.second, getPtrOfVertex(VertexIDofEdges.first), getPtrOfVertex(VertexIDofEdges.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-						//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second, m_hdc, m_callback_getRandomNumber, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers)); //Vertikal negativ ohne Vertexunterbrechung!
+						
 						edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second,  m_hdc,
 								choosePrintPattern(vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_XcoordinateVertex,
 								vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_YcoordinateVertex,
@@ -1032,8 +988,7 @@ public:
 						int c = 0;
 						for (auto &i : VectorOfVertex) {
 							if (iterator != 0) {
-								//std::shared_ptr<edge> e7 = std::make_shared<edge>(c, i.second, getPtrOfVertex(c), getPtrOfVertex(i.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-								//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(c, i.second, m_hdc, m_callback_getRandomNumber,m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers));
+								
 								edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(c, i.second, m_hdc, 
 										choosePrintPattern(vertexOfGraphPtrVectorConainer[c - 1]->m_XcoordinateVertex,
 										vertexOfGraphPtrVectorConainer[c - 1]->m_YcoordinateVertex,
@@ -1048,8 +1003,7 @@ public:
 						}
 					}
 					else {
-						//std::shared_ptr<edge> e3 = std::make_shared<edge>(VertexIDofEdges.first, VertexIDofEdges.second, getPtrOfVertex(VertexIDofEdges.first), getPtrOfVertex(VertexIDofEdges.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-						//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second, m_hdc, m_callback_getRandomNumber, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers));	//Horizintal  Positiv ohne Vertexunterbrechung!
+						
 						edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second, m_hdc, 
 								choosePrintPattern(vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_XcoordinateVertex,
 								vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_YcoordinateVertex,
@@ -1100,8 +1054,6 @@ public:
 						for (auto &i : VectorOfVertex) {
 							if (iterator != 0) {
 
-								//std::shared_ptr<edge> e8 = std::make_shared<edge>(d, i.second, getPtrOfVertex(d), getPtrOfVertex(i.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-								//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(d, i.second, m_hdc, m_callback_getRandomNumber, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers));
 								edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(d, i.second, m_hdc, 
 										choosePrintPattern(vertexOfGraphPtrVectorConainer[d - 1]->m_XcoordinateVertex,
 										vertexOfGraphPtrVectorConainer[d - 1]->m_YcoordinateVertex,
@@ -1116,10 +1068,7 @@ public:
 						}
 					}
 					else {
-						//std::shared_ptr<edge> e4 = std::make_shared<edge>(VertexIDofEdges.first, VertexIDofEdges.second, getPtrOfVertex(VertexIDofEdges.first), getPtrOfVertex(VertexIDofEdges.second), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-						//std::shared_ptr<edge> e4 = std::make_shared<edge>(VertexIDofEdges.second, VertexIDofEdges.first, getPtrOfVertex(VertexIDofEdges.second), getPtrOfVertex(VertexIDofEdges.first), m_hdc, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers);
-
-						//edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second, m_hdc, m_callback_getRandomNumber, m_f8PaintPoint, m_f5PaintLane, m_f6PrintLaneInNumbers));// Horizintal negativ ohne Vertexunterbrechung!
+						
 						edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(VertexIDofEdges.first, VertexIDofEdges.second, m_hdc, 
 							std::move(choosePrintPattern(vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_XcoordinateVertex,
 								vertexOfGraphPtrVectorConainer[VertexIDofEdges.first - 1]->m_YcoordinateVertex,
