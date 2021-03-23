@@ -22,16 +22,5 @@
 #include <chrono>
 #include <fstream>
 #include <boost/ptr_container/indirect_fun.hpp>
-//#include "PrintPatternLine2LaneHoriNeg.h"
-//#include "PrintPatternLine1LaneHoriNeg.h"
-//#include "PrintPatternLine2LaneVertiNeg.h"
-//#include "PrintPatternLine1LaneVertiNeg.h"
-//#include "PrintPatternLine2LaneVertiPos.h"
-//#include "PrintPatternLine1LaneVertiPos.h"
-//#include "PrintPatternLine2LaneHoriPos.h"
-//#include "PrintPatternLine1LaneHoriPos.h"
-//#include "PrintPattern.h"
-/*#include "selectionFlowSimulation.h"
-#include "sectionVisitor.h"
-#include "edge.h"*/
+
 
