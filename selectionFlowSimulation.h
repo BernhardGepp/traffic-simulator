@@ -7,10 +7,7 @@
 #include "flowSimulation2NegStraight.h"
 #include "callBackLinks.h"
 #include "observer.h"
-/*class callBackLinksConcrete : public callBackLinks {
-public:
 
-};*/
 
 class selectionFlowSimulation;
 class PrintPatternLine1LaneHoriNeg;
@@ -23,14 +20,7 @@ class PrintPatternLine2LaneVertiNeg;
 class PrintPatternLine2LaneVertiPos;
 class sectionVisitor {
 private:
-	/*PrintPatternLine1LaneHoriNeg p1;
-	PrintPatternLine1LaneHoriPos p2;
-	PrintPatternLine1LaneVertiNeg p3;
-	PrintPatternLine1LaneVertiPos p4;
-	PrintPatternLine2LaneHoriNeg p5;
-	PrintPatternLine2LaneHoriPos p6;
-	PrintPatternLine2LaneVertiNeg p7;
-	PrintPatternLine2LaneVertiPos p8;*/
+	
 public:
 	virtual void setStrategy(PrintPatternLine1LaneHoriNeg& ppt) = 0;
 	virtual void setStrategy(PrintPatternLine1LaneHoriPos& ppt) = 0;
@@ -52,9 +42,8 @@ private:
 	int m_maxVelocity_Density = 0;
 	
 public:
-	//PrintPattern* PPPtrA;
+	
 	HDC m_hdc;
-	//std::unique_ptr<PrintPattern>m_pp_ptr;
 	int(*m_callback_getRandomNumber)() = nullptr;
 	void(*m_f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV) = nullptr;
 	selectionFlowSimulation::selectionFlowSimulation() {
@@ -69,43 +58,40 @@ public:
 		m_p2y = p2y;
 		m_maxVelocity = maxVelocity;
 		m_maxVelocity_Density = maxVelocity_Density;
-		//m_pp_ptr = std::move(pp_ptr);
+		
 	}
-	/*void selectionFlowSimulation::setStrategyA(std::unique_ptr<PrintPattern>&& pp_ptr) {
-		m_pp_ptr = std::move(pp_ptr);
-		vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
-	}*/
+	
 	//********************************************
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt) override {
-		//ppt.doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation1NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriPos& ppt) override {
-		//ppt->doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneVertiNeg& ppt) override{
-		//ppt->doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation1NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneVertiPos& ppt) override{
-		//ppt->doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneHoriNeg& ppt) override {
-		//ppt->doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation2NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneHoriPos& ppt)override {
-		//ppt->doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation2PosStraightA>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiNeg& ppt) override {
-		//ppt->doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation2NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiPos& ppt) override {
-		//ppt->doSomething();
+		
 		vehicleSetPtr = std::make_unique<flowSimulation2PosStraightA>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	
@@ -130,9 +116,7 @@ public:
 		m_hdc=other.m_hdc;
 		m_f10PaintBox = other.m_f10PaintBox;
 		m_f11PaintWhiteLine = other.m_f11PaintWhiteLine;
-		//m_observer.reset(new observer(*other.m_observer));
-		//m_observer =std::move(other.m_observer);
-		//other.m_observer.~unique_ptr();
+		
 		m_cbl = other.m_cbl;
 	}
 	explicit PrintPattern::PrintPattern(PrintPattern&& other) = default;
@@ -145,9 +129,7 @@ public:
 		m_hdc = other.m_hdc;
 		m_f10PaintBox = other.m_f10PaintBox;
 		m_f11PaintWhiteLine = other.m_f11PaintWhiteLine;
-		//m_observer = std::move(other.m_observer);
-		//m_observer = std::make_unique<observer>(other.m_observer.get());
-		//other.m_observer.~unique_ptr();
+		
 		m_cbl = other.m_cbl;
 		return *this;
 	}
