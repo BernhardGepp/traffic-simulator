@@ -6,20 +6,6 @@
 #include "vehicle.h"
 #include "route.h"
 
-/*#include "flowSimulation1NegStraight.h"
-#include "flowSimulation1PosStraight.h"
-#include "flowSimulation2NegStraight.h"
-#include "flowSimulation2PosStraight.h"
-#include "PoolAllocator.h"
-#include "PrintInGDIplusWin1LN.h"
-#include "PrintInGDIplusWin1LP.h"
-#include "selectionFlowSimulation.h"
-#include "sectionVehicleSet.h"
-#include "velocityToLength.h"
-#include "vertexEnd.h"
-#include "vertexFlex.h"
-#include "vertexStart.h"*/
-
 //#pragma comment(lib, "gdiplus.lib")
 //#pragma comment(lib,"user32.lib")
 #define MY_BUTTON_ID 38
@@ -114,7 +100,7 @@ VOID PaintWhiteLine(HDC hdc, const int &param1, const int &param2, const int &pa
 	Graphics graphics3(hdc);
 	Pen pen7(Gdiplus::Color(245, 245, 245, 255), param5);
 	
-	graphics3.DrawLine(&pen7, param1, param2, param3, param4);//weiﬂe Linie!
+	graphics3.DrawLine(&pen7, param1, param2, param3, param4);//wei√üe Linie!
 }
 VOID PrintLaneIF(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk) {
 	Graphics graphics5(hdc);
@@ -149,8 +135,7 @@ VOID PrintLaneIF(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPo
 }
 
 VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &numberOFLanesa, const std::vector<std::tuple<int, int,int>> &PointsToBePrinted) {
-	//Graphics graphics5(hdc);
-	//Pen	pen5(Gdiplus::Color(255, 0, 0, 255), 2);
+	
 	
 	//***************************************************
 	Graphics graphics3(hdc);
@@ -160,7 +145,7 @@ VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosX
 	Pen	pen10(Gdiplus::Color(255, 0, 0, 255), 2.0F);//Blau
 	Pen	pen11(Gdiplus::Color(125, 0, 0, 255), 2.0F);//Licht Blau
 	Pen	pen12(Gdiplus::Color(245, 0, 0, 125), 2.0F);//Schwarz
-	Pen	pen13(Gdiplus::Color(245, 0, 125, 125), 2.0F);//Gr¸n
+	Pen	pen13(Gdiplus::Color(245, 0, 125, 125), 2.0F);//Gr√ºn
 	Pen	pen14(Gdiplus::Color(255, 255, 0, 255), 2.0F);//Rosa
 	Pen	pen15(Gdiplus::Color(255, 221, 102, 204), 2.0F);//Lila
 	Pen	pen16(Gdiplus::Color(255, 153, 68, 0), 2.0F);//Braun
@@ -180,7 +165,7 @@ VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosX
 	Pen	pen30(Gdiplus::Color(255, 47, 15, 239), 2.0F);
 	
 
-	if (!PointsToBePrinted.empty()) {//Hier werden die Punkte gezeichnet!
+	if (!PointsToBePrinted.empty()) {
 		for (auto &i : PointsToBePrinted) {
 			
 			if (std::get<2>(i) <= 2) {
@@ -199,7 +184,7 @@ VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosX
 				graphics3.DrawLine(&pen17, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
 			}
 			if (std::get<2>(i) == 7) {
-				//graphics3.DrawLine(&pen16, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
+				
 				graphics3.DrawLine(&pen15, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
 			}
 			if (std::get<2>(i) == 8) {
@@ -354,21 +339,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	windowClass.lpfnWndProc = WindowProc;
 	windowClass.hInstance = hInstance;
 	windowClass.hCursor = LoadCursor(NULL, IDC_CROSS);
-	//windowClass.hIcon = HICON()
-	//windowClass.hbrBackground = (HBRUSH)COLOR_WINDOW;
+	
 	windowClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	windowClass.lpszMenuName = NULL;
 	windowClass.lpszClassName = (LPCSTR)L"WindowClass";
 
 
-	RegisterClassEx(&windowClass);	//‹bergabes des Styles
+	RegisterClassEx(&windowClass);	
 
 	if (g_windowHandle == nullptr) {
 		DWORD errVal = GetLastError();
 	}
 	HWND g_windowHandle = CreateWindowEx(
 		NULL,
-		(LPCSTR)L"WindowClass",//muss gleich sein mit windowClass.lpszClassName = (LPCSTR)L"WindowClass";	
+		(LPCSTR)L"WindowClass",	
 		(LPCSTR)L"Simulationsfeld.h",
 		WS_VISIBLE | WS_OVERLAPPEDWINDOW | WS_SYSMENU,
 		10,
@@ -389,7 +373,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	subWindowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	subWindowClass.style = CS_OWNDC | CS_VREDRAW | CS_HREDRAW;
 	subWindowClass.lpfnWndProc = (WNDPROC)WindowProc2;
-	subWindowClass.hInstance = hInstance;			//Gleiche HInstance wie oben?
+	subWindowClass.hInstance = hInstance;			
 	subWindowClass.hIcon = NULL;
 	subWindowClass.hIconSm = NULL;
 	subWindowClass.lpszMenuName = NULL;
@@ -408,14 +392,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 		NULL);
 	
-	//std::vector<std::shared_ptr<edge>>::iterator edgeOfGraphPtrContainerIterator=n.edgeOfGraphPtrContainer.begin();
-	//std::vector<std::shared_ptr<graph>>::iterator appliedGraphIterator = n.appliedGraph.begin();
+	
 	bool serviceBool = true;
 	
 	while (endprogram == false) {
 		PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
 
-		//Hier die Aktionque verwickrlichen
+		
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 		if (actionQueueBool == true) {
@@ -425,7 +408,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						if ((n->iPosXLK < width) && (n->iPosYLK < height)) {
 							if (n->checkIfDubbleKlick(n->iPosXLK, n->iPosYLK)) {
 								n->m_cObSptr->benachrichtigen(n->iPosXLK, n->iPosYLK);
-								//n->m_f6PrintLaneInNumbers(n->m_hdc, n->iPosXLK, n->iPosYLK, 9, n->zaehler, true);
+								
 							}
 
 						}
@@ -458,12 +441,12 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 
 	switch (uMsg) {
 	case WM_CHAR:
-		if (wParam == 0x31) {// Code f¸r CHAR Ziffer 1
+		if (wParam == 0x31) {// Code f√ºr CHAR Ziffer 1
 			numberOFLanes::one;
 			numberOfLanesINT = 1;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 		}
-		if (wParam == 0x32) {// Code f¸r CHAR Ziffer 2
+		if (wParam == 0x32) {// Code f√ºr CHAR Ziffer 2
 			numberOFLanes::two;
 			numberOfLanesINT = 2;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
@@ -473,10 +456,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	{
 		n->iPosXLK = LOWORD(lParam);
 		n->iPosYLK = HIWORD(lParam);
-		//n->zaehler++;
-		//wchar_t waCoord[20];
-		//wsprintf(waCoord, _T("%i,%i"), iPosXLK, iPosYLK);
-		//::MessageBox(hWnd, waCoord, _T("LMB Click"), MB_OK);
+		
 
 		while (true) {
 			if ((n->iPosXLK % 10) == 0)
@@ -505,9 +485,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	{
 		n->iPosXRK = LOWORD(lParam);
 		n->iPosYRK = HIWORD(lParam);
-		//wchar_t waCoord[20];
-		//wsprintf(waCoord, _T("%i,%i"), iPosXRK, iPosYRK);
-		//::MessageBox(hWnd, waCoord, _T("RMB Click"), MB_OK);
+		
 		while (true) {
 			if ((n->iPosXRK % 10) == 0)
 				break;
@@ -544,18 +522,15 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		{
 			hdc = BeginPaint(g_windowHandle, &ps);
 			bool serviceBool = true;
-			//if (numberOFLanes::one==true) {
+			
 			if(numberOfLanesINT==1){
 				serviceBool = n->establishLane(hdc, 1);
 			}
-			//if (numberOFLanes::two==true) {
+			
 			if (numberOfLanesINT == 2) {
 				serviceBool = n->establishLane(hdc, 2);
 			}
-			
-			
-			//MessageBoxW(g_windowHandle, L"Fahrbahn mit ein oder zwei Fahrstreifen?", L"Auswahl", MB_OK);//hier neu eingef¸gt!
-			//ShowWindow(g_windowHandle2, SW_SHOWNORMAL);
+		
 			if (serviceBool == true) {
 				numberOFLanes::one;
 				numberOfLanesINT = 1;
@@ -568,7 +543,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			
 			n->iPosXLK = height;
 			n->iPosYLK = width;
-			//PrintLaneInNumbers(hdc, n.iPosXLK, n.iPosYLK, 0, 0, true);
+			
 		}
 			break;
 
@@ -581,7 +556,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 
 		case MY_BUTTON_ID:
 			hdc = BeginPaint(g_windowHandle, &ps);
-			//secondWindow(g_hInstance);
+			
 			if ((actionQueueBool == false)&&(reStartSimulation==false)&&(!n->networkLaneVector.empty())) {
 				n->establishVertexOfGraph();
 				n->iPosXLK = height;
@@ -589,11 +564,9 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				for (auto &i : n->appliedGraph) {
 					i->generationOfRoutesNeu();
 					i->calculationOfRouteIndex();
-					//i->generationOfRoutes();
+					
 				}
-				//n->appliedGraph[0]->m_f6PrintLaneInNumbers(n->appliedGraph[0]->m_hdc, n->appliedGraph[0]->m_vectorOfVertexPtr[0]->zaehler, 0, 0, 11, true);
 				
-				//n->appliedGraph[0]->m_f6PrintLaneInNumbers(n->appliedGraph[0]->m_hdc, n->appliedGraph[0]->m_vectorOfVertexPtr[0]->zaehler, 0, 0, 11, true);
 				actionQueueBool = true;
 			}
 			if (reStartSimulation == true) {
@@ -668,14 +641,10 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	}
 		break;
 	case WM_CLOSE:
-		//n.showEdge();
+		
 		for (auto &i : n->appliedGraph) {
 			i->destructSectionInGraph();
 		}
-		
-		//n->edgeOfGraphPtrContainer.clear();
-		//n->vertexOfGraphPtrVectorConainer.clear();
-		
 		n->appliedGraph.clear();
 		n->networkLaneVector.clear();
 		//n.~network();
