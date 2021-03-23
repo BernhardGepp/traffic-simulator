@@ -23,13 +23,9 @@ private:
 	void(*m_f5PaintLane)(HDC hdc, const int &iPosXLk, const  int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &numberOfLanesa, const std::vector<std::tuple<int, int,int>> &PointsToBePrinted) = nullptr;
 	void(*m_f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV)=nullptr;
 	int (*m_callback_getRandomNumber)()=nullptr;
-	//int(randomSpeed_neu::*getRandomNumber)();
-	//int m_sectionID = 0;
 	int m_maxVelocity = 140;
 	int m_maxVelocity_Density = 140;
 	bool m_risingOrDescention = true;
-	//ServiceVar
-	//PrintPatternLine1LaneHoriNeg pp1;
 	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer auf den Poolallocator
 	int m_numberOfVehicleinRange = 0;
 public:
@@ -40,12 +36,12 @@ public:
 	
 	std::shared_ptr<vertex> m_startVertexPtr;
 	std::shared_ptr<vertex> m_endVertexPtr;
-	//std::unique_ptr<sectionVehicleSet> vehicleSetPtr= std::make_unique<sectionVehicleSet>(m_callback_getRandomNumber);
+	
 	int m_numberOfLanes = 1;
 	
 	bool m_verticalOrHorizontal = true;
 	
-	//std::vector<std::tuple<int, int,int>> pointContainer;
+	
 	int p1x = 0;
 	int p1y = 0;
 	int p2x = 0;
@@ -53,7 +49,6 @@ public:
 	std::vector<std::pair<std::pair<int, float>, std::vector<int>>> m_routeTable_IDrValueIDvertex;
 	size_t m_routeTableIterator = 0;
 	bool m_routeServiceBool = false;
-	//std::vector<int>m_vectorOFmultilePathPerRoute;
 	int m_startVertex = 0;
 	int m_endVertex = 0;
 	float m_weight = 0.0f;
@@ -73,10 +68,6 @@ public:
 		)
 		: m_startVertex(startVertex), m_endVertex(endVertex), m_hdc(hdc), m_callback_getRandomNumber(callback_getRandomNumber), m_f8PaintPoint(f8PaintPoint), m_f5PaintLane(f5PaintLane), m_f6PrintLaneInNumbers(f6PrintLaneInNumbers),m_cOSptr(cOSptr) {
 
-		/*if ((m_startVertex != m_startVertexPtr->m_vertexID) || (m_endVertex != m_endVertexPtr->m_vertexID)) {
-			this->~edge();
-		}*/
-		//tialisation();
 		
 		vehicleEraseVector.reserve(30);
 		m_routeServiceBool = false;
@@ -86,9 +77,6 @@ public:
 		sFs.m_f6PrintLaneInNumbers = f6PrintLaneInNumbers;
 		m_observerPTR = m_ppPtr->createObserver();
 		m_cOSptr->registrieren(m_observerPTR);
-		//sFs.PPPtrA = PPPtr;
-			//m_vectorOFmultilePathPerRoute.clear();
-		
 		
 	}
 	explicit edge::edge(const int& startVertex, const int& endVertex, const HDC& hdc,PrintPattern* pp_ptr,
@@ -110,8 +98,6 @@ public:
 	}
 	edge::~edge() {
 		delete m_ppPtr;
-		//vehicleSetPtr.~unique_ptr();
-		//vehicleSetPtr->~sectionVehicleSet();
 	}
 	edge::edge(const edge& other) = delete;
 	edge::edge(edge&& other) noexcept {
@@ -280,8 +266,6 @@ public:
 		else {
 			m_averageTravelTime = static_cast<float>(m_maxVelocity) / (static_cast<float>(m_length)*0.001);
 		}
-		//m_weight = 1/(((static_cast<float>(vehicleSetPtr->trafficCharacteristics().first))/ (static_cast<float>(vehicleSetPtr->trafficCharacteristics().second))) / (static_cast<float>(m_length)));
-		///Hier nachdenken ob das Richtig ist!!
 		
 	}
 
@@ -309,24 +293,7 @@ public:
 			computeEdgesCharactaristics();
 		}
 		sFs.vehicleSetPtr->printContentOfSection(m_startVertexPtr->m_XcoordinateVertex, m_startVertexPtr->m_YcoordinateVertex, m_endVertexPtr->m_XcoordinateVertex, m_endVertexPtr->m_YcoordinateVertex);
-		/*if ((m_endVertexPtr->m_vertexID == 4)&&(m_endVertexPtr->sizeOfTT().first>30)) {
-			m_f6PrintLaneInNumbers(m_hdc, 4, m_endVertexPtr->sizeOfTT().first, m_endVertexPtr->sizeOfTT().second, 1, true);
-		}
-		if ((m_endVertexPtr->m_vertexID == 4) && (m_endVertexPtr->sizeOfTT().second > 30)) {
-			m_f6PrintLaneInNumbers(m_hdc, 4, m_endVertexPtr->sizeOfTT().first, m_endVertexPtr->sizeOfTT().second, 2, true);
-		}
-		if ((m_endVertexPtr->m_vertexID == 1) && (m_endVertexPtr->sizeOfTT().first > 30)) {
-			m_f6PrintLaneInNumbers(m_hdc, 1, m_endVertexPtr->sizeOfTT().first, m_endVertexPtr->sizeOfTT().second, 1, true);
-		}
-		if ((m_endVertexPtr->m_vertexID == 1) && (m_endVertexPtr->sizeOfTT().second > 30)) {
-			m_f6PrintLaneInNumbers(m_hdc, 1, m_endVertexPtr->sizeOfTT().first, m_endVertexPtr->sizeOfTT().second, 2, true);
-		}
-		if ((m_endVertexPtr->m_vertexID == 3) && (m_endVertexPtr->sizeOfTT().first > 30)) {
-			m_f6PrintLaneInNumbers(m_hdc, 3, m_endVertexPtr->sizeOfTT().first, m_endVertexPtr->sizeOfTT().second, 1, true);
-		}
-		if ((m_endVertexPtr->m_vertexID == 3) && (m_endVertexPtr->sizeOfTT().second > 30)) {
-			m_f6PrintLaneInNumbers(m_hdc,3, m_endVertexPtr->sizeOfTT().first, m_endVertexPtr->sizeOfTT().second, 2, true);
-		}*/
+		
 	}
 
 
@@ -334,7 +301,7 @@ public:
 
 		bool checkIfPositionIsEmpty = false;
 		//************************************************************
-		//Prüfung ob erste Position im Set belegt ist!
+		//PrÃ¼fung ob erste Position im Set belegt ist!
 		for (auto &i : sFs.vehicleSetPtr->m_vehicleSet) {
 			i->m_riseOrDecline = m_risingOrDescention;
 			if ((i->m_position == 0) && (m_risingOrDescention == true)) {
@@ -361,26 +328,11 @@ public:
 						
 
 						
-						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// Einfügen der FahrzeugObjekten ins Set! Neu!
+						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// EinfÃ¼gen der FahrzeugObjekten ins Set! Neu!
 					}
 					
 				}
-				/*else {
-					if (!sFs.vehicleSetPtr->m_vehicleSet.empty()) {
-						if (a < 250) {
-							if (m_numberOfVehicleinRange >= 2) {
-								singleSimulationStep(b);
-							}
-							else {
-								//dealocate All
-								deallocateVehicleAtEnd(false);
-							}
-						}
-						else {
-
-						}
-					}
-				}*/
+				
 			}
 			if ((p1Shape == 0) || (p1Shape == 11) || (p1Shape == 12) || (p1Shape == 21) || (p1Shape == 22)) {
 				
@@ -413,13 +365,11 @@ public:
 			}
 		} while (counter < vehicleSetSize);
 		deallocateVehicleAtEnd(true);
-		//vehicleSetPtr->setServiceBoolFalse();
-		//vehicleSetSize = vehicleSetPtr->getVehicleSetSize();
+		
 	}
 	
 	void edge::sort() {
 		
-		//flowSimulation1NegStraight dublicateSet;
 		std::vector <vehicle*> vehicleVector;
 		for (auto i : sFs.vehicleSetPtr->m_vehicleSet) {
 			vehicleVector.push_back(i);
@@ -437,12 +387,12 @@ public:
 		if (!m_routeTable_IDrValueIDvertex.empty()) {
 
 
-			//std::vector<int> multipleEndVertex;
+			
 			if ((m_routeTableIterator >= 0) && (m_routeTableIterator < m_routeTable_IDrValueIDvertex.size())) {
 
 			}
 			else {
-				m_routeTableIterator = 0;//Iterator rücksetzen!
+				m_routeTableIterator = 0;//Iterator rÃ¼cksetzen!
 			}
 			if (m_routeServiceBool == false) {
 				m_routeServiceBool = true;
@@ -451,7 +401,7 @@ public:
 			if (m_routeTableIterator < m_routeTable_IDrValueIDvertex.size()) {
 				VPAEptr->m_routeVertexID_vehicle.clear();
 				VPAEptr->m_routeID = m_routeTable_IDrValueIDvertex[m_routeTableIterator].first.first;
-				//VPAEptr->m_routeVertexID_vehicle = m_routeTable_IDrValueIDvertex[m_routeTableIterator].second;
+				
 
 				for (size_t i = 0; i < m_routeTable_IDrValueIDvertex[m_routeTableIterator].second.size(); i++) {
 					VPAEptr->m_routeVertexID_vehicle.push_back(m_routeTable_IDrValueIDvertex[m_routeTableIterator].second[i]);
@@ -480,7 +430,7 @@ public:
 			VPAEptr->m_inRange = true;
 			VPAEptr->m_lane = 1;
 			VPAEptr->serviceBool = false;
-			//VPAEptr->processedByIteration = false;
+			
 			if (m_risingOrDescention == true) {
 				VPAEptr->m_position = 0;
 			}
@@ -488,27 +438,27 @@ public:
 				VPAEptr->m_position = m_length;
 			}
 			return VPAEptr;
-			//m_vehicleList.push_back(VPAEptr);
+			
 
 		}
 		return nullptr;
 	}
 
 	
-	void edge::allocateVehicleAtPositionX(){//const int& xCoordinate, const int& yCoordinate) {
+	void edge::allocateVehicleAtPositionX(){
 		bool checkIfPositionIsEmpty = false;
 		
 		
-		//m_f6PrintLaneInNumbers(m_hdc, m_observerPTR->m_position.first, m_observerPTR->m_position.second, 22, m_cOSptr->m_observerPTRvector.size(),true);
+		
 		if (m_observerPTR->m_position.second>0) {
 			for (auto &i : sFs.vehicleSetPtr->m_vehicleSet) {
 				if (i->m_position == m_observerPTR->m_position.first) {
-					//std::cout << "Allocation failed!\n";
+					
 					checkIfPositionIsEmpty = true;
 					i->m_moblieORStationary = true;
 					m_observerPTR->m_position.first = 0;
 					m_observerPTR->m_position.second = 0;
-					//file << "\n****Löschen!!!!!\n";
+					
 					break;
 				}
 				else {
@@ -533,7 +483,7 @@ public:
 				VPAEptr->m_position = m_observerPTR->m_position.first;
 				VPAEptr->m_inRange = true;
 				VPAEptr->m_riseOrDecline = m_risingOrDescention;
-				//VPAEptr->processedByIteration = false;
+				
 				
 				if (VPAEptr != nullptr) {
 					sFs.vehicleSetPtr->insertSET(VPAEptr);
@@ -545,7 +495,7 @@ public:
 				
 			}
 		}
-		//return serviceBool;
+		
 	}
 
 
@@ -569,7 +519,7 @@ public:
 			}
 			if (!vehicleEraseVector.empty()) {
 				for (auto i : vehicleEraseVector) {					
-					sFs.vehicleSetPtr->m_vehicleSet.erase(i);//Hier wird aus vehicleSet gelöscht! Oben geht es nicht, weil noch Prüfung über VehicleSet statt findet!
+					sFs.vehicleSetPtr->m_vehicleSet.erase(i);
 					m_endVertexPtr->vehiclePTRmanipulationInV(i);
 					
 				}
