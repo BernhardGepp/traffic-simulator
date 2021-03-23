@@ -49,18 +49,14 @@ public:
 	int getNumberOfVehicleInV()override {
 		return 0;
 	}
-	/*int getNumberOfVehicleInTMT()override {
-		return 0;
-	}*/
+	
 	int checkIfVehicleIsInV(vehicle* vehiclePTR)override {
 		return 0;
 	}
 	void deleteVehicleInV(vehicle* vehiclePTR) override {
 
 	}
-	/*std::pair<int, int> sizeOfTT()override {
-		return std::make_pair<int, int>(0, 0);
-	}*/
+	
 	size_t sizeOfTransmissiontable() override {
 		return 0;
 	}
