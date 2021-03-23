@@ -1,5 +1,4 @@
 #pragma once
-//#include "selectionFlowSimulation.h"
 #include "sectionVehicleSet.h"
 #include "velocityToLength.h"
 #include "PrintInGDIplusWin1LN.h"
@@ -22,12 +21,7 @@ public:
 	int(*m_callback_getRandomNumber)() = nullptr;
 	void(*m_f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV) = nullptr;
 
-	//std::set<vehicle*, boost::indirect_fun<std::less<vehicle>>>m_vehicleSet;
-	/*flowSimulation1NegStraight::flowSimulation1NegStraight() {
-
-	}*/
 	
-	//flowSimulation1NegStraight::flowSimulation1NegStraight(int(*callback_getRandomNumber)(), void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV)) :sectionVehicleSet(callback_getRandomNumber, f6PrintLaneInNumbers),m_callback_getRandomNumber(callback_getRandomNumber),m_f6PrintLaneInNumbers(f6PrintLaneInNumbers) {
 	explicit flowSimulation1NegStraight::flowSimulation1NegStraight(int(*callback_getRandomNumber)(), 
 		void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV),
 		HDC hdc, 
@@ -75,7 +69,6 @@ public:
 			numberOfVehicleinRange = 0;
 			std::set<vehicle*>::iterator ii = m_vehicleSet.begin();
 			vehicle* i = *ii;
-			//i->m_position = i->m_position - 15;
 			if (m_vehicleSet.size() > 1) {
 				positionAheadVehicleAt1L = i->m_position;
 			}
@@ -167,7 +160,7 @@ public:
 								if (speedAheadVehicleAt1L == 0) {
 									ownSpeed = m_maxVelocity;
 								}
-								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {// zweiter Term:  eigendtlich größer gleich
+								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {// zweiter Term:  eigendtlich grÃ¶ÃŸer gleich
 									if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
 										if (i->m_moblieORStationary == true) {
 											ownSpeed += 21;
