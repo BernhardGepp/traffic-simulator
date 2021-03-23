@@ -1,5 +1,4 @@
 #pragma once
-//#include "selectionFlowSimulation.h"
 #include "sectionVehicleSet.h"
 #include "velocityToLength.h"
 #include "PrecompiledHeadersEdges.h"
@@ -22,12 +21,6 @@ public:
 	int(*m_callback_getRandomNumber)() = nullptr;
 	HDC m_hdc1;
 
-
-	/*flowSimulation1PosStraight::flowSimulation1PosStraight(int(*callback_getRandomNumber)(), 
-		void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV)) 
-		:sectionVehicleSet(callback_getRandomNumber,f6PrintLaneInNumbers), m_callback_getRandomNumber(callback_getRandomNumber), m_f6PrintLaneInNumbers(f6PrintLaneInNumbers) {
-
-	}*/
 	explicit flowSimulation1PosStraight::flowSimulation1PosStraight(int(*callback_getRandomNumber)(),
 		void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV),
 		HDC hdc,
@@ -74,11 +67,6 @@ public:
 			numberOfVehicleinRange = 0;
 			//********************************************
 			for (auto &i : m_vehicleSet) {
-				
-				//m_f6PrintLaneInNumbers(m_hdc1, 44, 44, i->m_routeVertexID_vehicle[0],i->m_routeVertexID_vehicle.back(), true);
-				/*for (auto &u : i->m_routeVertexID_vehicle) {
-					m_f6PrintLaneInNumbers(m_hdc1, 0, u, 0, 0, true);
-				}*/
 				
 				
 				if (i->m_pref_speed <= 0)
@@ -165,7 +153,7 @@ public:
 									ownSpeed = m_maxVelocity_Density;
 								}
 								ownPosition = VL.VLStepConversion(ownSpeed);
-								//m_f6PrintLaneInNumbers(m_hdc1, ownPosition, 44, 33, 33, true);
+								
 								//i->m_pref_speed = ownSpeed;
 								if (positionAheadVehicleAt1L <= 0) {
 									if (i->m_moblieORStationary == true) {
@@ -212,7 +200,7 @@ public:
 						}
 					}
 				}
-				//m_f6PrintLaneInNumbers(m_hdc, 123, 456, 789, 0, true);
+				
 				if ((i->m_position > length) || (i->m_position < 0)) {
 					i->m_inRange = false;
 				}
