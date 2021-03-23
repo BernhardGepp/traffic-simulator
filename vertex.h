@@ -121,11 +121,9 @@ public:
 	virtual void setTransmissionTable(int a) = 0;
 	virtual void vehiclePTRmanipulationInV(vehicle* vehiclePTR) = 0;
 	virtual int getNumberOfVehicleInV() = 0;
-	//virtual int getNumberOfVehicleInTMT() = 0;
 	virtual int checkIfVehicleIsInV(vehicle* vehiclePTR) = 0;
 	virtual void deleteVehicleInV(vehicle* vehiclePTR) = 0;
 	virtual size_t sizeOfTransmissiontable() = 0;
-	//virtual std::pair<int,int> sizeOfTT() = 0;
 	virtual std::vector<std::pair<int, int>> getAdjacentEdges() = 0;
 
 };
