@@ -46,14 +46,7 @@ public:
 		m_f6PrintLaneInNumbers(f6PrintLaneInNumbers),
 		m_f7PrintVertexNumber(f7PrintVertexNumber),
 		m_hdc(hdc) {
-		/*m_vectorOfVertexPtr.reserve(vectorOfVertex.size());
-		for (auto &i : vectorOfVertex) {
-			m_vectorOfVertexPtr.emplace_back(std::move(i));
-		}
-		m_vectorOfEdgesPtr.reserve(vectorOfEdges.size());
-		for (auto &i : vectorOfEdges) {
-			m_vectorOfEdgesPtr.emplace_back(std::move(i));
-		}*/
+		
 		
 		for (auto &i : m_vectorOfEdgesPtr) {
 			
@@ -69,7 +62,7 @@ public:
 
 			}
 			i->initialisation();
-			//i.lock()->edgeSimiInitialisation();
+			
 		}
 
 		int counter = 0;
@@ -198,10 +191,7 @@ public:
 						}
 					}
 
-					/*for (auto &i : m_vectorOfVertexPtr) {
-						i->deleteVehicleInV(j.first);
-						
-					}*/
+					
 				}
 			}
 
@@ -308,20 +298,13 @@ public:
 	}
 
 	void graph::generationOfRoutesNeu() {
-		//std::ofstream file;
-		//file.open("E:/vs_Community/simi_projekt/oberflaeche_versuch/19_Sommer1807/m_topologyOfGraph.txt");
+		
 		std::vector<std::shared_ptr<edge>> routeEdgeVector;
 		std::vector<std::pair<int,int>>routeVertexIDs;
 		std::vector<std::pair<int,int>>::reverse_iterator routeVertexID_RIter = routeVertexIDs.rbegin();
 		
 
-		//Print Graph:*************************************
-		/*for (int i = 0; i < m_topologyOfGraph.size(); i++) {
-		file << "\n" << i+1 ;
-		for (auto &j : m_topologyOfGraph[i]) {
-		file << "\n" << j.lock()->m_startVertex << "\t" << j.lock()->m_endVertex;
-		}
-		}*/
+		
 		//*************************************************
 		std::vector<std::tuple<bool, int, int>>topologyMarks;
 		topologyMarks.clear();
@@ -336,7 +319,7 @@ public:
 		}
 		//Print Graph:*************************************
 		
-		//*************************************************
+		
 		routeVertexIDs.clear();
 		int processedVertex = 0;
 		bool serviceBool1 = false;
@@ -358,14 +341,9 @@ public:
 				
 				testV = (*hj)->getAdjacentEdges();
 				processedVertex = testV[serviceInt1].second;
-				//processedVertex =(*hj).lock()->m_vectorOfAdjacentEdges[ serviceInt1].second;
-				//processedVertex = m_vectorOfEdgesPtr[m_topologyOfGraph[i.lock()->m_vertexID - 1][m_topologyOfGraph[i.lock()->m_vertexID - 1].size() - 1]].lock()->m_endVertex;
-
-				//Nimmt immer den höchsten Pfad ab 1!
-				//file << "\nErste Vertex: " << i.lock()->m_vertexID<<"\tErsteProcessedVertex: "<< processedVertex;
 				
 				routeVertexIDs.push_back((*hj)->m_vertexIDpair);
-				//routeVertexIDs.push_back(processedVertex);
+				
 				while (true) {
 					if (std::get<2>(topologyMarks[(*hj)->m_vertexIDpair.second ]) <= 0) {
 						
@@ -381,11 +359,7 @@ public:
 					if ((serviceBool1) ||
 						(std::get<0>(topologyMarks[serviceInt1 - 1]) == false)) {
 						if (serviceBool1) {
-							//file << "\n";
-							//for (auto &uuu : routeVertexIDs) {
-							//file << uuu << "\t";
-							//}
-							//file.close();
+							
 							processedVertex = routeVertexIDs.back().first;
 						}
 						for (auto &j : m_vectorOfVertexPtr) {
@@ -394,7 +368,7 @@ public:
 								break;
 							}
 						}
-						//Schlaufe oder Ende!
+						
 						if (std::get<0>(topologyMarks[serviceInt1 - 1]) == false) {
 							//Ende!
 							
@@ -440,11 +414,11 @@ public:
 						}
 						routeVertexID_RIter = routeVertexIDs.rbegin();
 						while (routeVertexID_RIter != routeVertexIDs.rend()) {
-							//file<<"\nAbweige bei RIter: "<< *routeVertexID_RIter<<" "<< std::get<2>(topologyMarks[(*routeVertexID_RIter) - 1])
+							
 							std::get<2>(topologyMarks[(*routeVertexID_RIter).second ])--;
 
 							if (std::get<2>(topologyMarks[(*routeVertexID_RIter).second ]) > 0) {
-								//file << "\nPV_Abschluss_nochVarV: " << processedVertex << " *routeVertexID_RIter:" << *routeVertexID_RIter;
+								
 								for (auto &j : m_vectorOfVertexPtr) {
 									if ((processedVertex) == j->m_vertexIDpair.first) {
 										serviceInt1 = j->m_vertexIDpair.second + 1;
@@ -454,9 +428,9 @@ public:
 								serviceInt1 = std::get<2>(topologyMarks[serviceInt1 - 1]) - 1;
 								testV = (*hj)->getAdjacentEdges();
 								processedVertex = testV[serviceInt1].second;
-								//processedVertex = (*hj).lock()->m_vectorOfAdjacentEdges[serviceInt1].second;
+								
 								hj= m_vectorOfVertexPtr.begin() + (zIter);
-								//processedVertex = m_vectorOfEdgesPtr[m_topologyOfGraph[processedVertex - 1][std::get<2>(topologyMarks[processedVertex - 1]) - 1]].lock()->m_endVertex;
+								
 								
 								if (isInsideRouteVertexIDs(routeVertexIDs, processedVertex)) {
 
@@ -467,14 +441,14 @@ public:
 								}
 							}
 							else {
-								//file << "\nrouteVertexID_RIter: " << *routeVertexID_RIter<<"\tEnde!";
+								
 								++routeVertexID_RIter;
 
 								if (routeVertexIDs.size() > 1) {
 									routeVertexIDs.erase(routeVertexID_RIter.base());
 								}
 
-								//processedVertex = *routeVertexID_RIter;
+								
 								routeVertexID_RIter = routeVertexIDs.rbegin();
 								processedVertex = routeVertexIDs.back().first;
 								for (auto &j : m_vectorOfVertexPtr) {
@@ -508,7 +482,7 @@ public:
 						if (serviceBool1 == true) {
 							if ((std::get<1>(topologyMarks[serviceInt1 - 1])) > (std::get<2>(topologyMarks[serviceInt1 - 1]))) {
 								std::get<2>(topologyMarks[serviceInt1 - 1]) = std::get<1>(topologyMarks[serviceInt1 - 1]);
-								//file << "\nErhöhung in 3-- PV: "<< processedVertex;
+								
 							}
 						}
 						serviceBool1 = false;
@@ -527,9 +501,9 @@ public:
 							testV = (*hj)->getAdjacentEdges();
 							processedVertex = testV[serviceInt1].second;
 							
-							//processedVertex = (*hj).lock()->m_vectorOfAdjacentEdges[serviceInt1].second;
+							
 							hj = m_vectorOfVertexPtr.begin() + (zIter);
-							//processedVertex = m_vectorOfEdgesPtr[m_topologyOfGraph[processedVertex - 1][std::get<2>(topologyMarks[processedVertex - 1]) - 1]].lock()->m_endVertex;
+							
 
 						}
 						else {
@@ -550,12 +524,12 @@ public:
 							testV = (*hj)->getAdjacentEdges();
 							processedVertex = testV[serviceInt1].second;
 							
-							//processedVertex = (*hj).lock()->m_vectorOfAdjacentEdges[serviceInt1].second;
+							
 							hj = m_vectorOfVertexPtr.begin() + (zIter);
-							//processedVertex = m_vectorOfEdgesPtr[m_topologyOfGraph[processedVertex - 1][std::get<2>(topologyMarks[processedVertex - 1]) - 1]].lock()->m_endVertex;
+							
 
 						}
-						//file << "\nProcessed3Vertex: " << processedVertex;
+						
 
 					}
 
@@ -564,10 +538,7 @@ public:
 			zIter++;
 			++hj;
 		}
-		/*file << "\nm_topologyOfGraph.size(): " << m_topologyOfGraph.size();
-		file<<"\nm_vectorOfVertexPtr.size(): "<<m_vectorOfVertexPtr.size() << "\n";*/
 		
-		//file.close();
 		
 	}
 
@@ -576,14 +547,8 @@ public:
 			i->m_ppPtr->paintWhiteLinePP();
 		}
 		for (auto &i : m_vectorOfEdgesPtr) {
-			//m_f5PaintLane(m_hdc, i->p1x, i->p1y, i->p2x, i->p2y, true, i->m_numberOfLanes == 1, i->pointContainer);	
+				
 			i->m_ppPtr->paintBoxPP();
-			/*if (i->m_numberOfLanes == 1) {
-				m_f5PaintLane(m_hdc, i->p1x, i->p1y, i->p2x, i->p2y, true, 1, i->pointContainer);
-			}
-			if (i->m_numberOfLanes == 2) {
-				m_f5PaintLane(m_hdc, i->p1x, i->p1y, i->p2x, i->p2y, true, 2, i->pointContainer);
-			}*/
 		}
 		for (auto &i : m_vectorOfVertexPtr) {
 			m_f7PrintVertexNumber(m_hdc, i->m_XcoordinateVertex, i->m_YcoordinateVertex, i->m_vertexID);
