@@ -1,5 +1,4 @@
 #pragma once
-//#include "selectionFlowSimulation.h"
 #include "sectionVehicleSet.h"
 #include "velocityToLength.h"
 #include "PrintInGDIplusWin2LN.h"
@@ -22,7 +21,7 @@ public:
 	HDC m_hdc1;
 	int(*m_callback_getRandomNumber)() = nullptr;
 	void(*m_f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV) = nullptr;
-	//flowSimulation2NegStraight::flowSimulation2NegStraight(int(*callback_getRandomNumber)(), void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV)) :sectionVehicleSet(callback_getRandomNumber, f6PrintLaneInNumbers), m_callback_getRandomNumber(callback_getRandomNumber), m_f6PrintLaneInNumbers(f6PrintLaneInNumbers) {
+	
 	explicit flowSimulation2NegStraight::flowSimulation2NegStraight(int(*callback_getRandomNumber)(), 
 		void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV),
 		HDC hdc,
@@ -68,7 +67,7 @@ public:
 		positionAheadVehicleAt2L = 0;
 		numberOfVehicleinRange = 0;
 		if (riseOrDecline == false) {
-			//for (auto &i : m_vehicleSet)
+			
 			positionAheadVehicleAt1L = length;
 			positionAheadVehicleAt2L = length;
 			numberOfVehicleinRange = 0;
@@ -85,9 +84,9 @@ public:
 				i = *ii;
 				if (i->m_moblieORStationary == true) {
 					if (i->m_pref_speed <= 0) {
-						//ownSpeed = rs.random();	
+						
 						ownSpeed = m_callback_getRandomNumber();
-						//ownSpeed = randomSpeed_neu::getRandomNumber();
+						
 					}
 					else {
 						//ownPosition = i->m_position;
@@ -163,15 +162,7 @@ public:
 										ownPosition = i->m_position;
 										i->m_pref_speed = ownSpeed;
 									}
-									/*if ((positionAheadVehicleAt1L == length) || (ownPosition > positionAheadVehicleAt1L)) {
-									i->m_position = ownPosition;
-									}
-									if ((positionAheadVehicleAt1L > length ) && (ownPosition <= positionAheadVehicleAt1L)) {
-									i->m_position = (ownPosition + 1);
-									}
-									if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() == 1)) {
-									i->m_position = ownPosition;
-									}*/
+									
 								}
 								if (i->m_lane == 2) {
 									if ((speedAheadVehicleAt2L == 0) && (m_vehicleSet.size() == 1)) {
@@ -201,7 +192,7 @@ public:
 							}
 							else {//m_postiion >0 && m_postion<length
 
-								  //std::cout << "randomOwnSpeed: " << ownSpeed << std::endl;
+								  
 								if ((speedAheadVehicleAt1L == 0) && (speedAheadVehicleAt2L == 0)) {
 									ownSpeed = m_maxVelocity;
 								}
@@ -228,7 +219,7 @@ public:
 											}
 										}
 										else if ((speedAheadVehicleAt1L - ownSpeed) >= 1) {
-											//std::cout << "\t\t\t\t\tis unterste!\n";
+											
 											if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - ownPosition) > 10)) || (positionAheadVehicleAt2L == length)) {
 												if (i->m_moblieORStationary == true) {
 													ownSpeed += 10;
