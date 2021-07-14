@@ -1,5 +1,4 @@
 #pragma once
-//#include "sectionVehicleSet.h"
 #include "PrecompiledHeadersEdges.h"
 #include "flowSimulation1PosStraight.h"
 #include "flowSimulation2PosStraight.h"
@@ -19,8 +18,7 @@ class PrintPatternLine2LaneHoriPos;
 class PrintPatternLine2LaneVertiNeg;
 class PrintPatternLine2LaneVertiPos;
 class sectionVisitor {
-private:
-	
+
 public:
 	virtual void setStrategy(PrintPatternLine1LaneHoriNeg& ppt) = 0;
 	virtual void setStrategy(PrintPatternLine1LaneHoriPos& ppt) = 0;
@@ -42,12 +40,11 @@ private:
 	int m_maxVelocity_Density = 0;
 	
 public:
-	
 	HDC m_hdc;
 	int(*m_callback_getRandomNumber)() = nullptr;
 	void(*m_f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV) = nullptr;
 	selectionFlowSimulation::selectionFlowSimulation() {
-		//vehicleSetPtr = nullptr;
+		
 	}
 	
 	std::unique_ptr<sectionVehicleSet> vehicleSetPtr;
@@ -63,35 +60,27 @@ public:
 	
 	//********************************************
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt) override {
-		
 		vehicleSetPtr = std::make_unique<flowSimulation1NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriPos& ppt) override {
-		
 		vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneVertiNeg& ppt) override{
-		
 		vehicleSetPtr = std::make_unique<flowSimulation1NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneVertiPos& ppt) override{
-		
 		vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneHoriNeg& ppt) override {
-		
 		vehicleSetPtr = std::make_unique<flowSimulation2NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneHoriPos& ppt)override {
-		
 		vehicleSetPtr = std::make_unique<flowSimulation2PosStraightA>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiNeg& ppt) override {
-		
 		vehicleSetPtr = std::make_unique<flowSimulation2NegStraight>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiPos& ppt) override {
-		
 		vehicleSetPtr = std::make_unique<flowSimulation2PosStraightA>(m_callback_getRandomNumber, m_f6PrintLaneInNumbers, m_hdc, m_maxVelocity, m_maxVelocity_Density);
 	}
 	
@@ -116,7 +105,6 @@ public:
 		m_hdc=other.m_hdc;
 		m_f10PaintBox = other.m_f10PaintBox;
 		m_f11PaintWhiteLine = other.m_f11PaintWhiteLine;
-		
 		m_cbl = other.m_cbl;
 	}
 	explicit PrintPattern::PrintPattern(PrintPattern&& other) = default;
@@ -129,7 +117,6 @@ public:
 		m_hdc = other.m_hdc;
 		m_f10PaintBox = other.m_f10PaintBox;
 		m_f11PaintWhiteLine = other.m_f11PaintWhiteLine;
-		
 		m_cbl = other.m_cbl;
 		return *this;
 	}
@@ -184,7 +171,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override{
-		//iPosXRk, iPosYRk, iPosXLk - iPosXRk + 10, 10
+		
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p2x, m_p12y, m_p1x - m_p2x + 10, 10);
 	}
 	void paintWhiteLinePP() override {
@@ -238,7 +225,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override {
-		//iPosXLk, iPosYLk, iPosXRk - iPosXLk + 10, 10
+		
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p1x, m_p12y, m_p2x - m_p1x + 10, 10);
 	}
 	void paintWhiteLinePP() override {
@@ -291,7 +278,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override {
-		//iPosXRk, iPosYRk, 10, iPosYLk - iPosYRk + 10		
+			
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p12x, m_p2y, 10, m_p1y - m_p2y + 10);
 	}
 	void paintWhiteLinePP() override {
@@ -344,7 +331,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override {
-		//iPosXLk, iPosYLk, 10, (iPosYRk + 10) - iPosYLk
+		
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p12x, m_p1y, 10, m_p2y + 10 - m_p1y);
 	}
 	void paintWhiteLinePP() override {
@@ -397,7 +384,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override {
-		//iPosXRk, iPosYRk, iPosXLk - iPosXRk + 10, 20
+		
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p2x, m_p12y, m_p1x - m_p2x + 10, 20);
 	}
 	void paintWhiteLinePP() override {
@@ -450,7 +437,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override {
-		//iPosXLk, iPosYLk, iPosXRk - iPosXLk + 10, 20
+		
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p1x, m_p12y, m_p2x - m_p1x + 10, 20);
 	}
 	void paintWhiteLinePP() override {
@@ -503,7 +490,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override {
-		//iPosXRk, iPosYRk, 20,iPosYLk - iPosYRk + 10
+		
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p12x, m_p2y, 20, m_p1y - m_p2y + 10);
 	}
 	void paintWhiteLinePP() override {
@@ -555,7 +542,7 @@ public:
 		v.setStrategy(*this);
 	}
 	void paintBoxPP() override {
-		//iPosXLk, iPosYLk, 20, iPosYRk - iPosYLk + 10
+		
 		m_cbl.m_f10PaintBox(m_cbl.m_hdc, m_p12x, m_p1y, 20, m_p2y - m_p1y + 10);
 	}
 	void paintWhiteLinePP() override {

@@ -1,10 +1,11 @@
 #pragma once
+
 #include "sectionVehicleSet.h"
 #include "velocityToLength.h"
 #include "PrintInGDIplusWin1LN.h"
 #include "PrecompiledHeadersEdges.h"
 
-class flowSimulation1NegStraight: public sectionVehicleSet {
+class flowSimulation1NegStraight : public sectionVehicleSet {
 private:
 	PrintInGDIplusWin1LN m_P1LN;
 public:
@@ -21,26 +22,29 @@ public:
 	int(*m_callback_getRandomNumber)() = nullptr;
 	void(*m_f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV) = nullptr;
 
-	
-	explicit flowSimulation1NegStraight::flowSimulation1NegStraight(int(*callback_getRandomNumber)(), 
+	explicit flowSimulation1NegStraight::flowSimulation1NegStraight(const int& maxVelocity, const int& maxVelocity_Density)
+		:sectionVehicleSet(), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
+	}
+
+	explicit flowSimulation1NegStraight::flowSimulation1NegStraight(int(*callback_getRandomNumber)(),
 		void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV),
-		HDC hdc, 
-		const int& maxVelocity, 
-		const int& maxVelocity_Density) 
-		:sectionVehicleSet(callback_getRandomNumber,hdc), 
-		m_callback_getRandomNumber(callback_getRandomNumber), 
+		HDC hdc,
+		const int& maxVelocity,
+		const int& maxVelocity_Density)
+		: sectionVehicleSet(callback_getRandomNumber, hdc),
+		m_callback_getRandomNumber(callback_getRandomNumber),
 		m_f6PrintLaneInNumbers(f6PrintLaneInNumbers),
 		m_hdc1(hdc),
 		m_maxVelocity(maxVelocity),
 		m_maxVelocity_Density(maxVelocity_Density)
-		{
-	
+	{
+
 
 	}
-	flowSimulation1NegStraight::flowSimulation1NegStraight(const flowSimulation1NegStraight &other) = delete; 
+	flowSimulation1NegStraight::flowSimulation1NegStraight(const flowSimulation1NegStraight &other) = delete;
 	flowSimulation1NegStraight& operator=(flowSimulation1NegStraight& other) = delete;
-	flowSimulation1NegStraight::flowSimulation1NegStraight(const flowSimulation1NegStraight &&other) = delete; 
-	flowSimulation1NegStraight& operator=(flowSimulation1NegStraight&& other) = delete; 
+	flowSimulation1NegStraight::flowSimulation1NegStraight(const flowSimulation1NegStraight &&other) = delete;
+	flowSimulation1NegStraight& operator=(flowSimulation1NegStraight&& other) = delete;
 	void flowSimulation1NegStraight::printContentOfSection(const int& p1xx, const int& p1yy,
 		const int& p2xx, const int& p2yy) override {
 		vehicle* i = nullptr;
@@ -69,6 +73,7 @@ public:
 			numberOfVehicleinRange = 0;
 			std::set<vehicle*>::iterator ii = m_vehicleSet.begin();
 			vehicle* i = *ii;
+
 			if (m_vehicleSet.size() > 1) {
 				positionAheadVehicleAt1L = i->m_position;
 			}
@@ -79,7 +84,13 @@ public:
 						ownSpeed = 0;
 					}
 					else {
-						ownSpeed = m_callback_getRandomNumber();
+						
+						if (*m_callback_getRandomNumber == nullptr){
+							ownSpeed = 100;
+						}
+						else {
+							ownSpeed = m_callback_getRandomNumber();
+						}
 					}
 				}
 				else {
@@ -105,7 +116,7 @@ public:
 							i->m_inRange = false;
 						}
 						else {
-							if (i->m_position >= length) {//Set-Beginn									
+							if (i->m_position == length) {//Set-Beginn									
 								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed)) {
 									ownSpeed = speedAheadVehicleAt1L;
 								}
@@ -116,14 +127,15 @@ public:
 									ownSpeed = m_maxVelocity_Density;
 								}
 								ownPosition = length - VL.VLStepConversion(ownSpeed);
+
 								if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() == 1)) {
 									i->m_pref_speed = ownSpeed;
 									if (i->m_position >= (i->m_position - VL.VLStepConversion(ownSpeed))) {
-										//i->m_position = ownPosition;
+										
 										i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
 									}
 								}
-								if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() > 1)) {//muss nicht sein!
+								if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() > 1)) {
 									i->m_pref_speed = ownSpeed;
 									if (i->m_position >= (i->m_position - VL.VLStepConversion(ownSpeed))) {
 										i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
@@ -143,7 +155,7 @@ public:
 								}
 								if (ownPosition > positionAheadVehicleAt1L) {
 									if (i->m_position >= (i->m_position - VL.VLStepConversion(ownSpeed))) {
-										//i->m_position = ownPosition;
+										
 										i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
 									}
 									i->m_pref_speed = ownSpeed;
@@ -160,7 +172,7 @@ public:
 								if (speedAheadVehicleAt1L == 0) {
 									ownSpeed = m_maxVelocity;
 								}
-								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {// zweiter Term:  eigendtlich grÃ¶ÃŸer gleich
+								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {// zweiter Term:  eigendtlich größer gleich
 									if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
 										if (i->m_moblieORStationary == true) {
 											ownSpeed += 21;
@@ -195,7 +207,7 @@ public:
 
 									if (i->m_moblieORStationary == true) {
 										if (i->m_position >= (i->m_position - ownPosition)) {
-											i->m_position = (i->m_position) - ownPosition;//length-ownPosition;
+											i->m_position = (i->m_position) - ownPosition;
 										}
 										i->m_pref_speed = ownSpeed;
 									}
@@ -266,8 +278,7 @@ public:
 										}
 									}
 								}
-							}
-							//i->m_sectionID = sectionID;								
+							}						
 						}
 					}
 				}

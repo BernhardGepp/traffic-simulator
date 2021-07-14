@@ -1,11 +1,7 @@
 #pragma once
-//#include "sectionVisitor.h"
-//#include "selectionFlowSimulation.h"
-
 #include "vertex.h"
 #include "PoolAllocator.h"
 #include "vehicle.h"
-//#include "sectionVisitor.h"
 #include "selectionFlowSimulation.h"
 #include "PrecompiledHeadersEdges.h"
 #include "observer_subjekt.h"
@@ -15,8 +11,8 @@ class edge {
 private:
 	int m_simulationIterator = 0;
 	
-	std::vector<vehicle*> vehicleEraseVector;
-	int p1Shape = 99;
+	
+	
 	int p2Shape = 99;
 	HDC m_hdc;
 	void(*m_f8PaintPoint)(HDC hdc, const std::vector<std::tuple<int, int,int>> &PointsToBePrinted) = nullptr;
@@ -25,23 +21,18 @@ private:
 	int (*m_callback_getRandomNumber)()=nullptr;
 	int m_maxVelocity = 140;
 	int m_maxVelocity_Density = 140;
-	bool m_risingOrDescention = true;
+	
 	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer auf den Poolallocator
 	int m_numberOfVehicleinRange = 0;
 public:
 	observer* m_observerPTR = nullptr;
 	concreteObserverSubjekt* m_cOSptr = nullptr;
 	selectionFlowSimulation sFs;
-	PrintPattern* m_ppPtr = nullptr;
-	
+	PrintPattern* m_ppPtr = nullptr;	
 	std::shared_ptr<vertex> m_startVertexPtr;
 	std::shared_ptr<vertex> m_endVertexPtr;
-	
 	int m_numberOfLanes = 1;
-	
 	bool m_verticalOrHorizontal = true;
-	
-	
 	int p1x = 0;
 	int p1y = 0;
 	int p2x = 0;
@@ -56,6 +47,9 @@ public:
 	float m_averageSpeed = 0.0f;
 	float m_averageTravelTime = 0.0f;
 	int m_length = 0;
+	bool m_risingOrDescention = true;
+	int p1Shape = 99;
+	std::vector<vehicle*> vehicleEraseVector;
 	edge::edge() {
 
 	}
@@ -68,7 +62,6 @@ public:
 		)
 		: m_startVertex(startVertex), m_endVertex(endVertex), m_hdc(hdc), m_callback_getRandomNumber(callback_getRandomNumber), m_f8PaintPoint(f8PaintPoint), m_f5PaintLane(f5PaintLane), m_f6PrintLaneInNumbers(f6PrintLaneInNumbers),m_cOSptr(cOSptr) {
 
-		
 		vehicleEraseVector.reserve(30);
 		m_routeServiceBool = false;
 		sFs.m_hdc = m_hdc;
@@ -77,7 +70,7 @@ public:
 		sFs.m_f6PrintLaneInNumbers = f6PrintLaneInNumbers;
 		m_observerPTR = m_ppPtr->createObserver();
 		m_cOSptr->registrieren(m_observerPTR);
-		
+				
 	}
 	explicit edge::edge(const int& startVertex, const int& endVertex, const HDC& hdc,PrintPattern* pp_ptr,
 		int(*callback_getRandomNumber)(),
@@ -98,13 +91,15 @@ public:
 	}
 	edge::~edge() {
 		delete m_ppPtr;
+		//vehicleSetPtr.~unique_ptr();
+		//vehicleSetPtr->~sectionVehicleSet();
 	}
 	edge::edge(const edge& other) = delete;
 	edge::edge(edge&& other) noexcept {
 		delete m_ppPtr;
 		m_ppPtr = std::move(other.m_ppPtr);
 		other.m_ppPtr = nullptr;
-		m_simulationIterator = std::move(other.m_averageSpeed);
+		m_averageSpeed = std::move(other.m_averageSpeed);
 		vehicleEraseVector = std::move(other.vehicleEraseVector);
 		p1Shape = std::move(other.p1Shape);
 		p2Shape = std::move(other.p2Shape);
@@ -142,7 +137,7 @@ public:
 		delete m_ppPtr;
 		m_ppPtr = std::move(other.m_ppPtr);
 		other.m_ppPtr = nullptr;
-		m_simulationIterator=std::move(other.m_averageSpeed);
+		m_averageSpeed=std::move(other.m_averageSpeed);
 		vehicleEraseVector=std::move(other.vehicleEraseVector);
 		p1Shape = std::move(other.p1Shape);
 		p2Shape = std::move(other.p2Shape);
@@ -256,17 +251,16 @@ public:
 		m_averageSpeed = 0.0f;
 		if (m_length > 0) {
 			if (sFs.vehicleSetPtr->trafficCharacteristics().second > 0) {//vehicleSetPtr->trafficCharacteristics().second  =>> Anzahl der Fahrzeuge in Edge
-				m_density = (static_cast<float>(sFs.vehicleSetPtr->trafficCharacteristics().second)) / ((static_cast<float>(m_length)*0.001));
+				m_density = static_cast<float>(static_cast<float>(sFs.vehicleSetPtr->trafficCharacteristics().second) / (static_cast<float>(m_length)*0.001));
 				m_averageSpeed = (static_cast<float>(sFs.vehicleSetPtr->trafficCharacteristics().first)) / (static_cast<float>(sFs.vehicleSetPtr->trafficCharacteristics().second));
 			}
 		}
 		if (m_averageSpeed > 0) {
-			m_averageTravelTime = m_averageSpeed / (static_cast<float>(m_length)*0.001);
+			m_averageTravelTime = static_cast<float>(m_averageSpeed / (static_cast<float>(m_length)*0.001));
 		}
 		else {
-			m_averageTravelTime = static_cast<float>(m_maxVelocity) / (static_cast<float>(m_length)*0.001);
+			m_averageTravelTime = static_cast<float>(static_cast<float>(m_maxVelocity) / (static_cast<float>(m_length)*0.001));
 		}
-		
 	}
 
 
@@ -301,7 +295,7 @@ public:
 
 		bool checkIfPositionIsEmpty = false;
 		//************************************************************
-		//PrÃ¼fung ob erste Position im Set belegt ist!
+		//Prüfung ob erste Position im Set belegt ist!
 		for (auto &i : sFs.vehicleSetPtr->m_vehicleSet) {
 			i->m_riseOrDecline = m_risingOrDescention;
 			if ((i->m_position == 0) && (m_risingOrDescention == true)) {
@@ -324,22 +318,14 @@ public:
 					VPAEptr = m_startVertexPtr->getVehiclePtrOutOfVertex(0, 0);
 					if (VPAEptr != nullptr) {
 						
-						VPAEptr = routeAssignment(VPAEptr);
-						
-
-						
-						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// EinfÃ¼gen der FahrzeugObjekten ins Set! Neu!
-					}
-					
+						VPAEptr = routeAssignment(VPAEptr);						
+						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// Einfügen der FahrzeugObjekten ins Set! Neu!
+					}					
 				}
-				
 			}
-			if ((p1Shape == 0) || (p1Shape == 11) || (p1Shape == 12) || (p1Shape == 21) || (p1Shape == 22)) {
-				
-				
+			if ((p1Shape == 0) || (p1Shape == 11) || (p1Shape == 12) || (p1Shape == 21) || (p1Shape == 22)) {				
 				sFs.vehicleSetPtr->insertSET(insertion(m_startVertexPtr->getVehiclePtrOutOfVertex(m_endVertex, 0)));
-				sort();
-				
+				sort();				
 			}
 		}
 	}
@@ -370,6 +356,7 @@ public:
 	
 	void edge::sort() {
 		
+		
 		std::vector <vehicle*> vehicleVector;
 		for (auto i : sFs.vehicleSetPtr->m_vehicleSet) {
 			vehicleVector.push_back(i);
@@ -392,7 +379,7 @@ public:
 
 			}
 			else {
-				m_routeTableIterator = 0;//Iterator rÃ¼cksetzen!
+				m_routeTableIterator = 0;//Iterator rücksetzen!
 			}
 			if (m_routeServiceBool == false) {
 				m_routeServiceBool = true;
@@ -430,7 +417,7 @@ public:
 			VPAEptr->m_inRange = true;
 			VPAEptr->m_lane = 1;
 			VPAEptr->serviceBool = false;
-			
+			//VPAEptr->processedByIteration = false;
 			if (m_risingOrDescention == true) {
 				VPAEptr->m_position = 0;
 			}
@@ -438,14 +425,13 @@ public:
 				VPAEptr->m_position = m_length;
 			}
 			return VPAEptr;
-			
 
 		}
 		return nullptr;
 	}
 
 	
-	void edge::allocateVehicleAtPositionX(){
+	void edge::allocateVehicleAtPositionX(){//const int& xCoordinate, const int& yCoordinate) {
 		bool checkIfPositionIsEmpty = false;
 		
 		
@@ -453,7 +439,6 @@ public:
 		if (m_observerPTR->m_position.second>0) {
 			for (auto &i : sFs.vehicleSetPtr->m_vehicleSet) {
 				if (i->m_position == m_observerPTR->m_position.first) {
-					
 					checkIfPositionIsEmpty = true;
 					i->m_moblieORStationary = true;
 					m_observerPTR->m_position.first = 0;
@@ -520,10 +505,8 @@ public:
 			if (!vehicleEraseVector.empty()) {
 				for (auto i : vehicleEraseVector) {					
 					sFs.vehicleSetPtr->m_vehicleSet.erase(i);
-					m_endVertexPtr->vehiclePTRmanipulationInV(i);
-					
-				}
-				
+					m_endVertexPtr->vehiclePTRmanipulationInV(i);					
+				}				
 			}
 		}
 		else {

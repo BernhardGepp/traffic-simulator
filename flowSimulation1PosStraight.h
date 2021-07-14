@@ -1,4 +1,5 @@
 #pragma once
+
 #include "sectionVehicleSet.h"
 #include "velocityToLength.h"
 #include "PrecompiledHeadersEdges.h"
@@ -21,6 +22,10 @@ public:
 	int(*m_callback_getRandomNumber)() = nullptr;
 	HDC m_hdc1;
 
+	explicit flowSimulation1PosStraight::flowSimulation1PosStraight(const int& maxVelocity, const int& maxVelocity_Density)
+		:sectionVehicleSet(), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
+	}
+	
 	explicit flowSimulation1PosStraight::flowSimulation1PosStraight(int(*callback_getRandomNumber)(),
 		void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV),
 		HDC hdc,
@@ -65,7 +70,7 @@ public:
 		numberOfVehicleinRange = 0;
 		if (riseOrDecline == true) {
 			numberOfVehicleinRange = 0;
-			//********************************************
+			
 			for (auto &i : m_vehicleSet) {
 				
 				
@@ -77,7 +82,12 @@ public:
 					}
 					else {
 
-						ownSpeed = m_callback_getRandomNumber();
+						if (*m_callback_getRandomNumber == nullptr) {
+							ownSpeed = 100;
+						}
+						else {
+							ownSpeed = m_callback_getRandomNumber();
+						}
 					}
 				}
 				else {
@@ -89,8 +99,13 @@ public:
 							ownSpeed = i->m_pref_speed;
 						}
 					}
+					else {
+						i->m_pref_speed = 0;
+						ownSpeed = 0;
+					}
 				}
-				if ((flag == false) && (length > 0) && ((i->m_inRange) == true) && ((i->processedByIteration) == true)) {
+				if ((flag == false) && (length > 0) && (i->m_inRange == true)) {
+				
 					if (i->serviceBool == false) {
 						flag = true;
 						i->serviceBool = true;
@@ -98,7 +113,7 @@ public:
 							i->m_inRange = false;
 						}
 						else {
-							if (i->m_position == 0) {
+							if (i->m_position == 0) {//Set-Beginn	
 								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed)) {
 									ownSpeed = speedAheadVehicleAt1L;
 								}
@@ -109,26 +124,53 @@ public:
 									ownSpeed = m_maxVelocity_Density;
 								}
 								ownPosition = VL.VLStepConversion(ownSpeed);
-								//ownPosition = VLStepConversion(ownSpeed);
-								i->m_pref_speed = ownSpeed;
-								if ((positionAheadVehicleAt1L == 0) || (ownPosition < positionAheadVehicleAt1L)) {
-									if (ownPosition >= i->m_position) {
+								
+								
+								if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() == 1)) {
+									i->m_pref_speed = ownSpeed;
+									if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
+
+										i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
+									}
+								}
+								if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() > 1)) {
+									i->m_pref_speed = ownSpeed;
+									if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
+										i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
+									}
+								}
+								if ((positionAheadVehicleAt1L == length) && (m_vehicleSet.size() == 1)) {
+									if (i->m_position <= ownPosition) {
 										i->m_position = ownPosition;
 									}
-									else {
-
-									}
+									i->m_pref_speed = ownSpeed;
 								}
-								if ((positionAheadVehicleAt1L > 0) && (ownPosition >= positionAheadVehicleAt1L)) {
-									if ((ownPosition - 1) >= i->m_position) {
-										i->m_position = (ownPosition - 1);
+								if ((positionAheadVehicleAt1L == length) && (m_vehicleSet.size() > 1)) {
+									if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
+										i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
 									}
-									else {
-
-									}
+									i->m_pref_speed = ownSpeed;
 								}
+								if (ownPosition < positionAheadVehicleAt1L) {
+									if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
+
+										i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
+									}
+									i->m_pref_speed = ownSpeed;
+								}
+								if ((positionAheadVehicleAt1L < 0) && (ownPosition >= positionAheadVehicleAt1L) && (0 < positionAheadVehicleAt1L)) {
+									if (i->m_position <= (positionAheadVehicleAt1L -1)) {
+										i->m_position = (positionAheadVehicleAt1L - 1);
+									}
+									ownPosition = i->m_position;
+									i->m_pref_speed = ownSpeed;
+								}
+								
 							}
-							else {//m_postiion >0 && m_postion<length									  
+							else {//m_postiion >0 && m_postion<length	
+								if (speedAheadVehicleAt1L == 0) {
+									ownSpeed = m_maxVelocity;
+								}
 								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed)) {
 									if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
 										if (i->m_moblieORStationary == true) {
@@ -152,61 +194,117 @@ public:
 								if (ownSpeed > m_maxVelocity_Density) {
 									ownSpeed = m_maxVelocity_Density;
 								}
+								
+								if (i->m_moblieORStationary == false) {
+									ownSpeed = 0;
+									i->m_pref_speed = 0;
+									speedAheadVehicleAt1L = 0;
+								}
+								
 								ownPosition = VL.VLStepConversion(ownSpeed);
 								
-								//i->m_pref_speed = ownSpeed;
+								i->m_pref_speed = ownSpeed;
+								
+								
 								if (positionAheadVehicleAt1L <= 0) {
 									if (i->m_moblieORStationary == true) {
-										i->m_position = (i->m_position) + ownPosition;
+										
+										if (i->m_position <= (i->m_position + ownPosition)) {
+											i->m_position = (i->m_position) + ownPosition;
+										}
 										i->m_pref_speed = ownSpeed;
 									}
 								}
 								else {
-									if (positionAheadVehicleAt1L > ((i->m_position) + ownPosition)) {
+									
+									if (positionAheadVehicleAt1L == i->m_position) {
 										if (i->m_moblieORStationary == true) {
-											i->m_position = (i->m_position) + ownPosition;
+											if (i->m_position <= (i->m_position + ownPosition)) {
+												i->m_position = (i->m_position) + ownPosition;
+											}
 											i->m_pref_speed = ownSpeed;
 										}
 									}
-									if (positionAheadVehicleAt1L == ((i->m_position) + ownPosition)) {
+									else if (positionAheadVehicleAt1L > ((i->m_position) + ownPosition)) {
 										if (i->m_moblieORStationary == true) {
-											ownSpeed = speedAheadVehicleAt1L - 5;
-											if (ownSpeed <= 0) {
-												ownSpeed = 0;
+											if (i->m_position <= (i->m_position + ownPosition)) {
+												i->m_position = (i->m_position) + ownPosition;
 											}
-											i->m_position = ((i->m_position) + VL.VLStepConversion(ownSpeed));
 											i->m_pref_speed = ownSpeed;
-										}
-									}
-									if (positionAheadVehicleAt1L < ((i->m_position) + ownPosition)) {
-										if (i->m_moblieORStationary == true) {
-											if ((positionAheadVehicleAt1L - 3) >= i->m_position) {
-												i->m_position = positionAheadVehicleAt1L - 3;
-											}
-											else {
 
-											}
-											ownSpeed = speedAheadVehicleAt1L - 5;
-											if (ownSpeed <= 0) {
-												ownSpeed = 0;
-											}
-											i->m_pref_speed = ownSpeed;
 										}
 									}
+									else if (positionAheadVehicleAt1L > i->m_position) {
+										if (i->m_moblieORStationary == true) {
+
+											if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
+												i->m_position = positionAheadVehicleAt1L - 1;
+											}
+										}
+									}
+									else if (positionAheadVehicleAt1L == ((i->m_position) + ownPosition)) {
+										if (i->m_moblieORStationary == true) {
+											ownSpeed = speedAheadVehicleAt1L - 5;
+											if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
+												i->m_position = ((i->m_position) + VL.VLStepConversion(ownSpeed));
+											}
+											i->m_pref_speed = ownSpeed;
+											if (ownSpeed < 0) {
+												if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
+													i->m_position = positionAheadVehicleAt1L - 1;
+												}
+												ownPosition = positionAheadVehicleAt1L - 1;
+												i->m_pref_speed = 0;
+												ownSpeed = 0;
+											}
+										}
+									}
+									else if (positionAheadVehicleAt1L < ((i->m_position) + ownPosition)) {
+										if (i->m_moblieORStationary == true) {
+											if (positionAheadVehicleAt1L > i->m_position) {
+												if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
+													i->m_position = positionAheadVehicleAt1L - 1;
+												}
+											}
+											if (i->m_position <= (positionAheadVehicleAt1L - 3)) {
+
+												i->m_position = positionAheadVehicleAt1L - 2;
+											}
+											ownSpeed = speedAheadVehicleAt1L;
+										}
+									}
+
+									else if (positionAheadVehicleAt1L < i->m_position) {
+										if (i->m_moblieORStationary == true) {
+											if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
+												i->m_position = positionAheadVehicleAt1L - 1;
+											}
+										}
+									}
+								
 								}
 							}
-							//i->m_sectionID = sectionID;
-							//i->m_lane = lane;
+							
 						}
 					}
 				}
 				
-				if ((i->m_position > length) || (i->m_position < 0)) {
+				if ((i->m_position >= length) || (i->m_position < 0)) {
 					i->m_inRange = false;
 				}
 				else {
-					speedAheadVehicleAt1L = i->m_pref_speed;
+					
+					if (i->m_moblieORStationary == true) {
+						speedAheadVehicleAt1L = i->m_pref_speed;
+					}
+					else {
+						speedAheadVehicleAt1L = 0;
+					}
+					
 					positionAheadVehicleAt1L = i->m_position;
+					
+					numberOfVehicleinRange++;
+					
 				}
 			}
 		}
