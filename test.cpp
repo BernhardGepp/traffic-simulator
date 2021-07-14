@@ -385,6 +385,6 @@ TEST(TestCaseName4, TestName4) {
 
 	
 	delete[] vehicleArray;
-	file.close();
+	
 
 }
