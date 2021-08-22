@@ -19,10 +19,10 @@ C++ features:
 - GDI libraries in C++
 - WinAPI (windows.h)
 - Precompiled headers
-- <url=https://github.com/boostorg>Boost container</url>
+- [Boost container](https://github.com/boostorg)
 - Pool allocator
 - Multithreading (Futures)
-- <url=https://github.com/google/googletest>Google Test</url>
+- [Google Test](https://github.com/google/googletest)
 
 ## Quick start:
 
