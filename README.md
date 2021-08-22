@@ -14,13 +14,12 @@ The external appearance may seem outdated and reminiscent of simulation applicat
 
 ## Technology used:
 
-- C++
-C++ features:
+- [C++](https://isocpp.org/)
 - GDI libraries in C++
 - WinAPI (windows.h)
-- Precompiled headers
+- [Precompiled headers](https://en.wikipedia.org/wiki/Precompiled_header)
 - [Boost container](https://github.com/boostorg)
-- Pool allocator
+- [Pool allocator](https://www.youtube.com/watch?v=rXgzrE0F5F4)
 - Multithreading (Futures)
 - [Google Test](https://github.com/google/googletest)
 
