@@ -1,4 +1,4 @@
-# TrafficSimulator
+# Traffic Simulator
 
 ## Brief introduction to the application:
 
