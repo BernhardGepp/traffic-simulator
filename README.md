@@ -16,12 +16,13 @@ The external appearance may seem outdated and reminiscent of simulation applicat
 
 - C++
 C++ features:
-o GDI libraries in C++
-o WinAPI (windows.h)
-o Precompiled headers
-o Boost container
-o Pool allocator
-o Multithreading (Futures)
+- GDI libraries in C++
+- WinAPI (windows.h)
+- Precompiled headers
+- <url=https://github.com/boostorg>Boost container</url>
+- Pool allocator
+- Multithreading (Futures)
+- <url=https://github.com/google/googletest>Google Test</url>
 
 ## Quick start:
 
