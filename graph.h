@@ -189,9 +189,7 @@ public:
 								} while (serviceInt == 0);
 							}
 						}
-					}
-
-					
+					}	
 				}
 			}
 
@@ -288,13 +286,11 @@ public:
 							}
 						}
 					}
-
 					i->m_routeTable_IDrValueIDvertex.push_back(p1);
 				}
 				serviceInt++;
 			}
-		}
-		
+		}		
 	}
 
 	void graph::generationOfRoutesNeu() {
@@ -528,18 +524,13 @@ public:
 							hj = m_vectorOfVertexPtr.begin() + (zIter);
 							
 
-						}
-						
-
+						}			
 					}
-
 				}
 			}
 			zIter++;
 			++hj;
-		}
-		
-		
+		}		
 	}
 
 	void graph::printLanesAndVehiclesOfAllEdges() {
