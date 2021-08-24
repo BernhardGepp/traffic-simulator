@@ -65,15 +65,26 @@ public:
 	PrintInGDIplusWinEmpty m_PWE;
 	std::vector<std::tuple<std::pair<int, int>, std::pair<int, int>, bool, m_numberOfLanes>> networkLaneVector;//vertical=true, horizontal=false;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
-	static network* getInstance(const int& width, const int& height);
-	static void destroy();
-
 	
-	int getRandomNumber() {
+	
+	static network* network::getInstance(const int& width, const int& height) {
+		if (instance == 0) {
+			instance = new network(width, height);
+			return instance;
+		}	
+		else {
+			return instance;
+		}
+	}
+	static void network::destroy() {
+		delete instance;
+		instance = nullptr;
+	}	
+	
+	int network::getRandomNumber() {
 		rSn.randomNumberRequest();
 		return  rSn.a;
 	}
-	
 	
 	
 
@@ -284,7 +295,7 @@ public:
 										
 									}
 									else {
-										
+										addCoordinate = false;
 									}
 								}
 							}
@@ -542,7 +553,7 @@ public:
 		edgeOfGraphPtrContainer.clear();
 		for (int columnIterator = 0; columnIterator <= width; columnIterator = columnIterator + 10) {
 			for (auto &i : networkLaneVector) {
-				if ((std::get<0>(i).first == columnIterator) && (std::get<1>(i).first == columnIterator) && (std::get<2>(i) == false)) {//Spalte senkrecht prüfen!
+				if ((std::get<0>(i).first == columnIterator) && (std::get<1>(i).first == columnIterator) && (std::get<2>(i) == false)) {//Spalte senkrecht prÃ¼fen!
 					int firstYcoordinate = std::get<0>(i).second;
 					int secondYcoordinate = std::get<1>(i).second;
 					if (firstYcoordinate < secondYcoordinate) {
@@ -664,7 +675,7 @@ public:
 					}
 
 				}
-				//Erzeung von Start- bzw. Endknoten für nur eine einzelne Richtungsfahrbahn in einem Netzwerk mit mehreren Kanten:
+				//Erzeung von Start- bzw. Endknoten fÃ¼r nur eine einzelne Richtungsfahrbahn in einem Netzwerk mit mehreren Kanten:
 				if (serviceBoolFirstVertex == true) {
 					vertexOfGraphPtrVectorConainer.push_back(std::move(v7));
 				}
@@ -674,7 +685,7 @@ public:
 			}
 		}
 		else {
-			//Erzeugung von Vertex-Objekten für "Netzwerke" welche nur aus einem einzelnen Fahrstreifen bestehen:
+			//Erzeugung von Vertex-Objekten fÃ¼r "Netzwerke" welche nur aus einem einzelnen Fahrstreifen bestehen:
 			for (auto &iCa : networkLaneVector) {
 				vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexStart>(std::get<0>(iCa).first, std::get<0>(iCa).second, 1, std::get<3>(iCa)));//StartVertex
 				vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexEnd>(std::get<1>(iCa).first, std::get<1>(iCa).second, 2, std::get<3>(iCa)));//EndVertex
