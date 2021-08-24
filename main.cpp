@@ -18,20 +18,6 @@
 
 network* n = nullptr;
 network* network::instance = 0;
-network* network::getInstance(const int& width, const int& height) {
-	if (instance == 0) {
-		instance = new network(width, height);
-		return instance;
-	}	
-	else {
-		return instance;
-	}
-}
-
-void network::destroy() {
-	delete instance;
-	instance = nullptr;
-}
 enum numberOFLanes { one = 1, two = 2 };
 int g_nCmdShow;
 int simulationIteration =1000;
