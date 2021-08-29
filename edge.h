@@ -9,10 +9,7 @@
 
 class edge {
 private:
-	int m_simulationIterator = 0;
-	
-	
-	
+	int m_simulationIterator = 0;	
 	int p2Shape = 99;
 	HDC m_hdc;
 	void(*m_f8PaintPoint)(HDC hdc, const std::vector<std::tuple<int, int,int>> &PointsToBePrinted) = nullptr;
@@ -20,8 +17,7 @@ private:
 	void(*m_f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV)=nullptr;
 	int (*m_callback_getRandomNumber)()=nullptr;
 	int m_maxVelocity = 140;
-	int m_maxVelocity_Density = 140;
-	
+	int m_maxVelocity_Density = 140;	
 	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer auf den Poolallocator
 	int m_numberOfVehicleinRange = 0;
 public:
@@ -91,86 +87,11 @@ public:
 	}
 	edge::~edge() {
 		delete m_ppPtr;
-		//vehicleSetPtr.~unique_ptr();
-		//vehicleSetPtr->~sectionVehicleSet();
 	}
 	edge::edge(const edge& other) = delete;
-	edge::edge(edge&& other) noexcept {
-		delete m_ppPtr;
-		m_ppPtr = std::move(other.m_ppPtr);
-		other.m_ppPtr = nullptr;
-		m_averageSpeed = std::move(other.m_averageSpeed);
-		vehicleEraseVector = std::move(other.vehicleEraseVector);
-		p1Shape = std::move(other.p1Shape);
-		p2Shape = std::move(other.p2Shape);
-		m_hdc = std::move(other.m_hdc);
-		m_maxVelocity = std::move(other.m_maxVelocity);
-		m_maxVelocity_Density = std::move(other.m_maxVelocity_Density);
-		m_risingOrDescention = std::move(other.m_risingOrDescention);
-		m_numberOfVehicleinRange = std::move(other.m_numberOfVehicleinRange);
-		m_observerPTR = std::move(other.m_observerPTR);
-		other.m_observerPTR = nullptr;
-		m_cOSptr = std::move(other.m_cOSptr);
-		other.m_cOSptr = nullptr;
-		sFs = std::move(other.sFs);
-		m_startVertexPtr = std::move(other.m_startVertexPtr);
-		m_endVertexPtr = std::move(other.m_endVertexPtr);
-		m_numberOfLanes = std::move(other.m_numberOfLanes);
-		m_verticalOrHorizontal = std::move(other.m_verticalOrHorizontal);
-		p1x = std::move(other.p1x);
-		p1y = std::move(other.p1y);
-		p2x = std::move(other.p2x);
-		p2y = std::move(other.p2y);
-		m_routeTable_IDrValueIDvertex = std::move(other.m_routeTable_IDrValueIDvertex);
-		m_routeTableIterator = std::move(other.m_routeTableIterator);
-		m_routeServiceBool = std::move(other.m_routeServiceBool);
-		m_startVertex = std::move(other.m_startVertex);
-		m_endVertex = std::move(other.m_endVertex);
-		m_weight = std::move(other.m_weight);
-		m_density = std::move(other.m_density);
-		m_averageSpeed = std::move(other.m_averageSpeed);
-		m_averageTravelTime = std::move(other.m_averageTravelTime);
-		m_length = std::move(other.m_length);
-	}
+	edge::edge(edge&& other) = default;
 	edge& operator=(const edge& other) = delete;
-	edge& operator=(edge&& other) {
-		delete m_ppPtr;
-		m_ppPtr = std::move(other.m_ppPtr);
-		other.m_ppPtr = nullptr;
-		m_averageSpeed=std::move(other.m_averageSpeed);
-		vehicleEraseVector=std::move(other.vehicleEraseVector);
-		p1Shape = std::move(other.p1Shape);
-		p2Shape = std::move(other.p2Shape);
-		m_hdc = std::move(other.m_hdc);
-		m_maxVelocity = std::move(other.m_maxVelocity);
-		m_maxVelocity_Density = std::move(other.m_maxVelocity_Density);		
-		m_risingOrDescention = std::move(other.m_risingOrDescention);
-		m_numberOfVehicleinRange = std::move(other.m_numberOfVehicleinRange);
-		m_observerPTR = std::move(other.m_observerPTR);
-		other.m_observerPTR = nullptr;
-		m_cOSptr = std::move(other.m_cOSptr);
-		other.m_cOSptr = nullptr;
-		sFs=std::move(other.sFs);		
-		m_startVertexPtr=std::move(other.m_startVertexPtr);
-		m_endVertexPtr = std::move(other.m_endVertexPtr);		
-		m_numberOfLanes = std::move(other.m_numberOfLanes);
-		m_verticalOrHorizontal = std::move(other.m_verticalOrHorizontal);
-		p1x = std::move(other.p1x);
-		p1y = std::move(other.p1y);
-		p2x = std::move(other.p2x);
-		p2y = std::move(other.p2y);
-		m_routeTable_IDrValueIDvertex = std::move(other.m_routeTable_IDrValueIDvertex);		
-		m_routeTableIterator = std::move(other.m_routeTableIterator);
-		m_routeServiceBool = std::move(other.m_routeServiceBool);		
-		m_startVertex = std::move(other.m_startVertex);
-		m_endVertex = std::move(other.m_endVertex);
-		m_weight = std::move(other.m_weight);
-		m_density = std::move(other.m_density);
-		m_averageSpeed = std::move(other.m_averageSpeed);
-		m_averageTravelTime = std::move(other.m_averageTravelTime);
-		m_length = std::move(other.m_length);
-		return *this;
-	}
+	edge& operator=(edge&& other) = default;
 
 	int edge::getStartVertex() {
 		return m_startVertex;
@@ -295,7 +216,7 @@ public:
 
 		bool checkIfPositionIsEmpty = false;
 		//************************************************************
-		//Prüfung ob erste Position im Set belegt ist!
+		//PrÃ¼fung ob erste Position im Set belegt ist!
 		for (auto &i : sFs.vehicleSetPtr->m_vehicleSet) {
 			i->m_riseOrDecline = m_risingOrDescention;
 			if ((i->m_position == 0) && (m_risingOrDescention == true)) {
@@ -319,7 +240,7 @@ public:
 					if (VPAEptr != nullptr) {
 						
 						VPAEptr = routeAssignment(VPAEptr);						
-						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// Einfügen der FahrzeugObjekten ins Set! Neu!
+						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// EinfÃ¼gen der FahrzeugObjekten ins Set! Neu!
 					}					
 				}
 			}
@@ -379,7 +300,7 @@ public:
 
 			}
 			else {
-				m_routeTableIterator = 0;//Iterator rücksetzen!
+				m_routeTableIterator = 0;//Iterator rÃ¼cksetzen!
 			}
 			if (m_routeServiceBool == false) {
 				m_routeServiceBool = true;
