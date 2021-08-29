@@ -14,7 +14,6 @@ private:
 	bbe::PoolAllocator<vehicle> m_poolAllocator;
 	bool serviceBool = false;
 	void(*m_f5PaintLane)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &m_numberOfLanes, const std::vector<std::tuple<int, int, int>> &PointsToBePrinted) = nullptr;
-	
 	void(*m_f7PrintVertexNumber)(HDC hdc, const int &iPosX, const int &iPosY, const int &iVertexID) = nullptr;
 	
 public:
@@ -23,12 +22,9 @@ public:
 	std::set<int>m_setOfVertexes;
 	std::vector<std::shared_ptr<vertex>> m_vectorOfVertexPtr;
 	std::vector<std::shared_ptr<edge>> m_vectorOfEdgesPtr;
-	
 	std::vector<std::unique_ptr<route>>m_vectorOfRoutesPtr;
 	size_t numberOfVehiclePtrInSimulation = 0;
 	std::vector<std::vector<int>>m_topologyOfGraph;
-
-
 
 
 	explicit graph::graph(const std::set<int>& setOfVertexes, 
@@ -45,8 +41,7 @@ public:
 		m_f5PaintLane(f5PaintLane),
 		m_f6PrintLaneInNumbers(f6PrintLaneInNumbers),
 		m_f7PrintVertexNumber(f7PrintVertexNumber),
-		m_hdc(hdc) {
-		
+		m_hdc(hdc) {		
 		
 		for (auto &i : m_vectorOfEdgesPtr) {
 			
@@ -59,10 +54,8 @@ public:
 				if (j->m_vertexID == i->m_endVertex) {
 					i->m_endVertexPtr = j;
 				}
-
 			}
-			i->initialisation();
-			
+			i->initialisation();			
 		}
 
 		int counter = 0;
@@ -76,22 +69,20 @@ public:
 		
 	}
 	graph::graph() {
-
 	}
 
-	graph::~graph() {
-		
+	graph::~graph() {		
 	}
-
-
+	graph::graph(const graph& other)=delete;
+	graph* operator=(const graph& other)=delete;
+	graph::graph(graph&& other)=delete;
+	graph* operator=(graph&& other)=delete;
+	
+	
 	void graph::Simulation(const int& simulationIterator) {
 		numberOfVehiclePtrInSimulation = 0;
-
-
 		for (auto &i : m_vectorOfVertexPtr) {
 			numberOfVehiclePtrInSimulation = numberOfVehiclePtrInSimulation + i->getNumberOfVehicleInV();
-
-
 		}
 
 		if (simulationIterator % 10 == 0) {
@@ -100,14 +91,11 @@ public:
 		for (auto &i : m_vectorOfEdgesPtr) {
 			i->simiRun(simulationIterator);
 			numberOfVehiclePtrInSimulation = numberOfVehiclePtrInSimulation + i->getSizeOfVehicleSet();
-
 		}
 
 		//Clean Prozeturen
-		if ((m_poolAllocator.getNumberOfAllocations() < numberOfVehiclePtrInSimulation) || (simulationIterator % 50 == 0) ) {
-			
+		if ((m_poolAllocator.getNumberOfAllocations() < numberOfVehiclePtrInSimulation) || (simulationIterator % 50 == 0) ) {			
 			clean(m_poolAllocator.getNumberOfAllocations() - numberOfVehiclePtrInSimulation);
-
 		}
 		serviceBool = false;
 		for (auto &iOverVertex : m_vectorOfVertexPtr) {
@@ -148,12 +136,8 @@ public:
 			}
 			for (auto &i : m_vectorOfVertexPtr) {
 				for (auto &j : vectorOfVehicleToErase) {
-					j.second = i->checkIfVehicleIsInV(j.first) + j.second;
-						
-					
-				}
-				
-				
+					j.second = i->checkIfVehicleIsInV(j.first) + j.second;				
+				}	
 			}
 
 			for (auto &j : vectorOfVehicleToErase) {
@@ -297,8 +281,7 @@ public:
 		
 		std::vector<std::shared_ptr<edge>> routeEdgeVector;
 		std::vector<std::pair<int,int>>routeVertexIDs;
-		std::vector<std::pair<int,int>>::reverse_iterator routeVertexID_RIter = routeVertexIDs.rbegin();
-		
+		std::vector<std::pair<int,int>>::reverse_iterator routeVertexID_RIter = routeVertexIDs.rbegin();	
 
 		
 		//*************************************************
@@ -332,12 +315,9 @@ public:
 				}
 				
 				
-				serviceInt1 = (*hj)->sizeOfTransmissiontable() - 1;
-				
-				
+				serviceInt1 = (*hj)->sizeOfTransmissiontable() - 1;				
 				testV = (*hj)->getAdjacentEdges();
-				processedVertex = testV[serviceInt1].second;
-				
+				processedVertex = testV[serviceInt1].second;				
 				routeVertexIDs.push_back((*hj)->m_vertexIDpair);
 				
 				while (true) {
