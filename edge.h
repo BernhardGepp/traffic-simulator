@@ -24,7 +24,7 @@ public:
 	observer* m_observerPTR = nullptr;
 	concreteObserverSubjekt* m_cOSptr = nullptr;
 	selectionFlowSimulation sFs;
-	PrintPattern* m_ppPtr = nullptr;	
+	std::unique_ptr<PrintPattern> m_ppPtr;	
 	std::shared_ptr<vertex> m_startVertexPtr;
 	std::shared_ptr<vertex> m_endVertexPtr;
 	int m_numberOfLanes = 1;
@@ -68,7 +68,7 @@ public:
 		m_cOSptr->registrieren(m_observerPTR);
 				
 	}
-	explicit edge::edge(const int& startVertex, const int& endVertex, const HDC& hdc,PrintPattern* pp_ptr,
+	explicit edge::edge(const int& startVertex, const int& endVertex, const HDC& hdc,std::unique_ptr<PrintPattern> pp_ptr,
 		int(*callback_getRandomNumber)(),
 		void(*f8PaintPoint)(HDC hdc, const std::vector<std::tuple<int, int, int>>& PointsToBePrinted),
 		void(*f5PaintLane)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &numberOfLanesa, const std::vector<std::tuple<int, int, int>> &PointsToBePrinted),
@@ -86,7 +86,6 @@ public:
 		m_cOSptr->registrieren(m_observerPTR);
 	}
 	edge::~edge() {
-		delete m_ppPtr;
 	}
 	edge::edge(const edge& other) = delete;
 	edge::edge(edge&& other) = default;
