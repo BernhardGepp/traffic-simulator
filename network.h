@@ -1236,56 +1236,42 @@ public:
 		m_PWE.fullemptyPrintContainer(m_hdc,m_f5PaintLane);
 	}
 	
-	PrintPattern* network::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
+	std::unique_ptr<PrintPattern> network::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
 		if ((0 <= lanesH) && (lanesH <= 2) && (0 <= lanesV) && (lanesV <= 2)) {
-			PrintPattern* pp_ptr=nullptr;
+			
 			if ((p1x < p2x) && (p1y == p2y)) {
 				if (lanesH == 1) {
-					pp_ptr = new PrintPatternLine1LaneHoriPos(p1x, p1y, p2x, p2y);
-				}
-				else if (lanesH == 2) {
-					pp_ptr = new PrintPatternLine2LaneHoriPos(p1x, p1y, p2x, p2y);
+					return std::make_unique<PrintPatternLine1LaneHoriPos(p1x, p1y, p2x, p2y)>;
 				}
 				else {
-
+					return std::make_unique<PrintPatternLine2LaneHoriPos(p1x, p1y, p2x, p2y)>;
 				}
 			}
 			if ((p1x > p2x) && (p1y == p2y)) {
 				if (lanesH == 1) {
-					pp_ptr = new PrintPatternLine1LaneHoriNeg(p1x, p1y, p2x, p2y);
-				}
-				else if (lanesH == 2) {
-					pp_ptr = new PrintPatternLine2LaneHoriNeg(p1x, p1y, p2x, p2y);
+					return std::make_unique<PrintPatternLine1LaneHoriNeg(p1x, p1y, p2x, p2y)>;
 				}
 				else {
-
+					return std::make_unique<PrintPatternLine2LaneHoriNeg(p1x, p1y, p2x, p2y)>;
 				}
 			}
 			if ((p1x == p2x) && (p1y < p2y)) {
 				if (lanesV == 1) {
-					pp_ptr = new PrintPatternLine1LaneVertiPos(p1x, p1y, p2x, p2y);
-				}
-				else if (lanesV == 2) {
-					pp_ptr = new PrintPatternLine2LaneVertiPos(p1x, p1y, p2x, p2y);
+					return std::make_unique<PrintPatternLine1LaneVertiPos(p1x, p1y, p2x, p2y)>;
 				}
 				else {
-
+					return std::make_unique<PrintPatternLine2LaneVertiPos(p1x, p1y, p2x, p2y)>;
 				}
 			}
 			if ((p1x == p2x) && (p1y > p2y)) {
 				if (lanesV == 1) {
-					pp_ptr = new PrintPatternLine1LaneVertiNeg(p1x, p1y, p2x, p2y);
-				}
-				else if (lanesV == 2) {
-					pp_ptr = new PrintPatternLine2LaneVertiNeg(p1x, p1y, p2x, p2y);
+					return std::make_unique<PrintPatternLine1LaneVertiNeg(p1x, p1y, p2x, p2y)>;
 				}
 				else {
-
+					return std::make_unique<PrintPatternLine2LaneVertiNeg(p1x, p1y, p2x, p2y)>;
 				}
 			}
-			return pp_ptr;
 		}
-
 	}
 	bool checkIfDubbleKlick(const int& a, const int& b) {
 		if ((a == serviceInt1) && (b == serviceInt2)) {
