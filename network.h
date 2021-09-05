@@ -1237,39 +1237,37 @@ public:
 	}
 	
 	std::unique_ptr<PrintPattern> network::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
-		if ((0 <= lanesH) && (lanesH <= 2) && (0 <= lanesV) && (lanesV <= 2)) {
-			
-			if ((p1x < p2x) && (p1y == p2y)) {
-				if (lanesH == 1) {
-					return std::make_unique<PrintPatternLine1LaneHoriPos(p1x, p1y, p2x, p2y)>;
-				}
-				else {
-					return std::make_unique<PrintPatternLine2LaneHoriPos(p1x, p1y, p2x, p2y)>;
-				}
+		//Selection of the appropriate print pattern
+		if ((p1x < p2x) && (p1y == p2y)) {
+			if (lanesH == 1) {
+				return std::make_unique<PrintPatternLine1LaneHoriPos>(p1x, p1y, p2x, p2y);
 			}
-			if ((p1x > p2x) && (p1y == p2y)) {
-				if (lanesH == 1) {
-					return std::make_unique<PrintPatternLine1LaneHoriNeg(p1x, p1y, p2x, p2y)>;
-				}
-				else {
-					return std::make_unique<PrintPatternLine2LaneHoriNeg(p1x, p1y, p2x, p2y)>;
-				}
+			else if (lanesH == 2) {
+				return std::make_unique<PrintPatternLine2LaneHoriPos>(p1x, p1y, p2x, p2y);
 			}
-			if ((p1x == p2x) && (p1y < p2y)) {
-				if (lanesV == 1) {
-					return std::make_unique<PrintPatternLine1LaneVertiPos(p1x, p1y, p2x, p2y)>;
-				}
-				else {
-					return std::make_unique<PrintPatternLine2LaneVertiPos(p1x, p1y, p2x, p2y)>;
-				}
+		}
+		if ((p1x > p2x) && (p1y == p2y)) {
+			if (lanesH == 1) {
+				return std::make_unique<PrintPatternLine1LaneHoriNeg>(p1x, p1y, p2x, p2y);
 			}
-			if ((p1x == p2x) && (p1y > p2y)) {
-				if (lanesV == 1) {
-					return std::make_unique<PrintPatternLine1LaneVertiNeg(p1x, p1y, p2x, p2y)>;
-				}
-				else {
-					return std::make_unique<PrintPatternLine2LaneVertiNeg(p1x, p1y, p2x, p2y)>;
-				}
+			else if (lanesH == 2) {
+				return std::make_unique<PrintPatternLine2LaneHoriNeg>(p1x, p1y, p2x, p2y);
+			}
+		}
+		if ((p1x == p2x) && (p1y < p2y)) {
+			if (lanesV == 1) {
+				return std::make_unique<PrintPatternLine1LaneVertiPos>(p1x, p1y, p2x, p2y);
+			}
+			else if (lanesV == 2) {
+				return std::make_unique<PrintPatternLine2LaneVertiPos>(p1x, p1y, p2x, p2y);
+			}
+		}
+		if ((p1x == p2x) && (p1y > p2y)) {
+			if (lanesV == 1) {
+				return std::make_unique<PrintPatternLine1LaneVertiNeg>(p1x, p1y, p2x, p2y);
+			}
+			else if (lanesV == 2) {
+				return std::make_unique<PrintPatternLine2LaneVertiNeg>(p1x, p1y, p2x, p2y);
 			}
 		}
 	}
