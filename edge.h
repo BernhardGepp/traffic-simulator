@@ -47,26 +47,6 @@ public:
 	int p1Shape = 99;
 	std::vector<vehicle*> vehicleEraseVector;
 	edge::edge() {
-
-	}
-	explicit edge::edge(const int& startVertex, const int& endVertex, const HDC& hdc,
-		int(*callback_getRandomNumber)(),
-		void(*f8PaintPoint)(HDC hdc, const std::vector<std::tuple<int, int,int>>& PointsToBePrinted),
-		void(*f5PaintLane)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &numberOfLanesa, const std::vector<std::tuple<int, int,int>> &PointsToBePrinted),
-		void(*f6PrintLaneInNumbers)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV),
-		concreteObserverSubjekt* cOSptr
-		)
-		: m_startVertex(startVertex), m_endVertex(endVertex), m_hdc(hdc), m_callback_getRandomNumber(callback_getRandomNumber), m_f8PaintPoint(f8PaintPoint), m_f5PaintLane(f5PaintLane), m_f6PrintLaneInNumbers(f6PrintLaneInNumbers),m_cOSptr(cOSptr) {
-
-		vehicleEraseVector.reserve(30);
-		m_routeServiceBool = false;
-		sFs.m_hdc = m_hdc;
-		m_ppPtr->m_cbl.m_hdc = m_hdc;
-		sFs.m_callback_getRandomNumber = callback_getRandomNumber;
-		sFs.m_f6PrintLaneInNumbers = f6PrintLaneInNumbers;
-		m_observerPTR = m_ppPtr->createObserver();
-		m_cOSptr->registrieren(m_observerPTR);
-				
 	}
 	explicit edge::edge(const int& startVertex, const int& endVertex, const HDC& hdc,std::unique_ptr<PrintPattern>& pp_ptr,
 		int(*callback_getRandomNumber)(),
