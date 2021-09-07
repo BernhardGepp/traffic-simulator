@@ -48,8 +48,7 @@ public:
 };
 class vertexFlex :public vertex {
 private:
-	size_t a = 0;
-	bool serviceBool = false;
+	
 public:
 	//transmissionTable tm;
 	std::vector<transmissionTable> m_transmissionTable;
@@ -86,7 +85,7 @@ public:
 
 	}
 	vehicle* getVehiclePtrOutOfVertex(const int& endVertexNumber,const int& param) override {
-		serviceBool = false;
+		bool serviceBool = false;
 		if (!m_transmissionTable.empty()) {
 			for (auto &i : m_transmissionTable) {
 				if (i.param1 == endVertexNumber)   {
@@ -156,8 +155,8 @@ public:
 			m_VPAptr->deallocate(vehiclePTR);//Stoppautos!!!
 		}
 		else {
-			a = 0;
-			serviceBool = false;
+			size_t a = 0;
+			bool serviceBool = false;
 			while (a < vehiclePTR->m_routeVertexID_vehicle.size() - 1) {
 				if (vehiclePTR->m_routeVertexID_vehicle[a] == m_vertexID) {
 					if (!m_transmissionTable.empty()) {
@@ -202,7 +201,7 @@ public:
 		return retVal;
 	}
 	void deleteVehicleInV(vehicle* vehiclePTR) override {
-		serviceBool = false;
+		bool serviceBool = false;
 
 		std::vector<vehicle*> param3;
 		if (!m_transmissionTable.empty()) {
