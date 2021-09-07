@@ -12,7 +12,6 @@
 class graph {
 private:
 	bbe::PoolAllocator<vehicle> m_poolAllocator;
-	bool serviceBool = false;
 	void(*m_f5PaintLane)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &m_numberOfLanes, const std::vector<std::tuple<int, int, int>> &PointsToBePrinted) = nullptr;
 	void(*m_f7PrintVertexNumber)(HDC hdc, const int &iPosX, const int &iPosY, const int &iVertexID) = nullptr;
 	
@@ -23,8 +22,9 @@ public:
 	std::vector<std::shared_ptr<vertex>> m_vectorOfVertexPtr;
 	std::vector<std::shared_ptr<edge>> m_vectorOfEdgesPtr;
 	std::vector<std::unique_ptr<route>>m_vectorOfRoutesPtr;
-	size_t numberOfVehiclePtrInSimulation = 0;
 	std::vector<std::vector<int>>m_topologyOfGraph;
+
+
 
 
 	explicit graph::graph(const std::set<int>& setOfVertexes, 
@@ -41,12 +41,17 @@ public:
 		m_f5PaintLane(f5PaintLane),
 		m_f6PrintLaneInNumbers(f6PrintLaneInNumbers),
 		m_f7PrintVertexNumber(f7PrintVertexNumber),
-		m_hdc(hdc) {		
-		
-		for (auto &i : m_vectorOfEdgesPtr) {
-			
-			i->setPoolAllocatorPtr(m_poolAllocator);
-			for (auto &j : m_vectorOfVertexPtr) {
+		m_hdc(hdc) {
+		int counter = 0;
+		for (auto &i : m_vectorOfVertexPtr) {
+			i->setPoolAllocatorPtr(m_poolAllocator);	//Assigning the corresponding PoolAllocator to the vertices of the graph
+			i->m_vertexIDpair.first = i->m_vertexID;
+			i->m_vertexIDpair.second = counter;
+			counter++;
+		}				
+		for (auto &i : m_vectorOfEdgesPtr) {			
+			i->setPoolAllocatorPtr(m_poolAllocator);	//Assigning the corresponding PoolAllocator to the edges of the graph
+			for (auto &j : m_vectorOfVertexPtr) {		//Initialization of the vertices in the graph
 				if (j->m_vertexID == i->m_startVertex) {
 					i->m_startVertexPtr = j;
 					j->setTransmissionTable(i->m_endVertex);
@@ -55,63 +60,38 @@ public:
 					i->m_endVertexPtr = j;
 				}
 			}
-			i->initialisation();			
-		}
-
-		int counter = 0;
-		for (auto &i : m_vectorOfVertexPtr) {
-			i->setPoolAllocatorPtr(m_poolAllocator);
-			i->m_vertexIDpair.first = i->m_vertexID;
-			i->m_vertexIDpair.second = counter;
-			counter++;
-		}
-		
+			i->initialisation();						//Assigning the corresponding vertices to the edges of the graph
+		}	
 		
 	}
-	graph::graph() {
-	}
+	/*graph::graph() {		//Removal of the constructor due to "the rule of zero"
 
-	graph::~graph() {		
-	}
-	graph::graph(const graph& other)=delete;
-	graph* operator=(const graph& other)=delete;
-	graph::graph(graph&& other)=delete;
-	graph* operator=(graph&& other)=delete;
-	
-	
+	}*/	
+	/*graph::~graph() {		//Removal of the destructor due to "the rule of zero"
+	}*/
+	graph::graph(const graph& other) = delete;
+	graph* operator=(const graph& other) = delete;
+	graph::graph(graph&& other) = delete;
+	graph* operator=(graph&& other) = delete;
+
 	void graph::Simulation(const int& simulationIterator) {
-		numberOfVehiclePtrInSimulation = 0;
-		for (auto &i : m_vectorOfVertexPtr) {
-			numberOfVehiclePtrInSimulation = numberOfVehiclePtrInSimulation + i->getNumberOfVehicleInV();
-		}
-
+		//method for carrying out the simulation
+		
 		if (simulationIterator % 10 == 0) {
 			calculationOfRouteIndex();
 		}
 		for (auto &i : m_vectorOfEdgesPtr) {
-			i->simiRun(simulationIterator);
-			numberOfVehiclePtrInSimulation = numberOfVehiclePtrInSimulation + i->getSizeOfVehicleSet();
+			i->simiRun(simulationIterator);		//Command to execute a simulation iteration			
 		}
 
-		//Clean Prozeturen
-		if ((m_poolAllocator.getNumberOfAllocations() < numberOfVehiclePtrInSimulation) || (simulationIterator % 50 == 0) ) {			
-			clean(m_poolAllocator.getNumberOfAllocations() - numberOfVehiclePtrInSimulation);
-		}
-		serviceBool = false;
-		for (auto &iOverVertex : m_vectorOfVertexPtr) {
-			if (iOverVertex->getNumberOfVehicleInV() > 34) {
-				serviceBool = true;
-			}
-		}
-		if (serviceBool == true) {
-			clean(m_poolAllocator.getNumberOfAllocations() - numberOfVehiclePtrInSimulation);
+		
+		if (simulationIterator % 20 == 0 ) {	//Calling a methode for cleaning up multiple captured vehicles
+			clean();
 		}
 	}
-	void graph::deletePoolAllocator() {
-		m_poolAllocator.~PoolAllocator();
-	}
-	void graph::clean(const int& difference) {
-
+	
+	void graph::clean(){
+		//methode for cleaning up multiple captured vehicles within the simulation
 		std::vector<std::pair<vehicle*, int>>vectorOfVehicleToErase;
 		vectorOfVehicleToErase.clear();
 		if (!m_poolAllocator.m_vectorOfAllocatedObjekts.empty()) {
@@ -123,7 +103,7 @@ public:
 			}
 		}
 		if (!vectorOfVehicleToErase.empty()) {
-			size_t serviceInt = 0;
+			size_t serviceIntClean = 0;
 
 			for (auto &i : m_vectorOfEdgesPtr) {
 				for (auto &ii : i->sFs.vehicleSetPtr->m_vehicleSet) {
@@ -151,7 +131,6 @@ public:
 					j.first->m_riseOrDecline = true;
 					j.first->m_routeID = 0;
 					j.first->m_routeVertexID_vehicle.clear();
-					//i->m_sectionID = 0;
 					j.first->serviceBool = false;
 					j.first->processedByIteration = false;
 				}
@@ -159,21 +138,21 @@ public:
 			for (auto &j : vectorOfVehicleToErase) {
 				if ((j.second == 0) || (j.second >= 2)) {
 					for (auto &i : m_vectorOfEdgesPtr) {
-						serviceInt = 0;
+						serviceIntClean = 0;
 						if (!i->sFs.vehicleSetPtr->m_vehicleSet.empty()) {
 							for (auto &ii : i->sFs.vehicleSetPtr->m_vehicleSet) {
 								if (j.first == ii) {
-									serviceInt++;
+									serviceIntClean++;
 								}
 							}
-							if (serviceInt >= 1) {
+							if (serviceIntClean >= 1) {
 								do {
 									i->sFs.vehicleSetPtr->m_vehicleSet.erase(j.first);
-									serviceInt--;
-								} while (serviceInt == 0);
+									serviceIntClean--;
+								} while (serviceIntClean == 0);
 							}
 						}
-					}	
+					}
 				}
 			}
 
@@ -188,7 +167,6 @@ public:
 					j.first->m_riseOrDecline = true;
 					j.first->m_routeID = 0;
 					j.first->m_routeVertexID_vehicle.clear();
-					//i->m_sectionID = 0;
 					j.first->serviceBool = false;
 					j.first->processedByIteration = false;
 
@@ -197,23 +175,9 @@ public:
 			}
 		}
 	}
-	void graph::destructSectionInGraph() {
-		m_vectorOfRoutesPtr.clear();
-		for (auto &i : m_vectorOfEdgesPtr) {
-			i->sectionDestruct();
-		}
-	}
+	
 
-
-	bool graph::isInsideRouteVertexIDs(const std::vector<std::pair<int,int>> &routeVertexIDs, const int& checkValue) {
-		bool checkBool = false;
-		for (auto &i : routeVertexIDs) {
-			if (i.first == checkValue) {
-				checkBool = true;
-			}
-		}
-		return checkBool;
-	}
+	
 	bool graph::recheckroute(const std::vector<int> &routeVertexIDs) {
 		int checkint = 0;
 		for (auto &ii : m_vectorOfEdgesPtr) {
@@ -221,7 +185,6 @@ public:
 				if ((ii->m_startVertex == routeVertexIDs[i - 1]) && (ii->m_endVertex == routeVertexIDs[i])) {
 					checkint++;
 				}
-
 			}
 		}
 		return checkint == (routeVertexIDs.size() - 1) ? true : false;
@@ -274,17 +237,20 @@ public:
 				}
 				serviceInt++;
 			}
-		}		
+		}
+		
 	}
 
 	void graph::generationOfRoutesNeu() {
-		
+		//Method for exploring all routes in the graph
 		std::vector<std::shared_ptr<edge>> routeEdgeVector;
 		std::vector<std::pair<int,int>>routeVertexIDs;
-		std::vector<std::pair<int,int>>::reverse_iterator routeVertexID_RIter = routeVertexIDs.rbegin();	
+		std::vector<std::pair<int,int>>::reverse_iterator routeVertexID_RIter = routeVertexIDs.rbegin();
+		
 
 		
 		//*************************************************
+		//Vertex preparation
 		std::vector<std::tuple<bool, int, int>>topologyMarks;
 		topologyMarks.clear();
 		topologyMarks.reserve(m_vectorOfVertexPtr.size());
@@ -296,9 +262,9 @@ public:
 				topologyMarks.emplace_back(std::make_tuple(true, ic->sizeOfTransmissiontable(), ic->sizeOfTransmissiontable()));
 			}
 		}
-		//Print Graph:*************************************
 		
-		
+		//*************************************************
+		//Start of the exploration of all links in the graph
 		routeVertexIDs.clear();
 		int processedVertex = 0;
 		bool serviceBool1 = false;
@@ -312,14 +278,11 @@ public:
 
 				for (size_t topoIter = 0; topoIter <topologyMarks.size(); topoIter++) {
 					std::get<2>(topologyMarks[topoIter]) = std::get<1>(topologyMarks[topoIter]);
-				}
-				
-				
+				}			
 				serviceInt1 = (*hj)->sizeOfTransmissiontable() - 1;				
 				testV = (*hj)->getAdjacentEdges();
-				processedVertex = testV[serviceInt1].second;				
+				processedVertex = testV[serviceInt1].second;
 				routeVertexIDs.push_back((*hj)->m_vertexIDpair);
-				
 				while (true) {
 					if (std::get<2>(topologyMarks[(*hj)->m_vertexIDpair.second ]) <= 0) {
 						
@@ -334,8 +297,7 @@ public:
 					}
 					if ((serviceBool1) ||
 						(std::get<0>(topologyMarks[serviceInt1 - 1]) == false)) {
-						if (serviceBool1) {
-							
+						if (serviceBool1) {							
 							processedVertex = routeVertexIDs.back().first;
 						}
 						for (auto &j : m_vectorOfVertexPtr) {
@@ -346,7 +308,7 @@ public:
 						}
 						
 						if (std::get<0>(topologyMarks[serviceInt1 - 1]) == false) {
-							//Ende!
+							
 							
 							for (auto &j : m_vectorOfVertexPtr) {
 								if ((serviceInt1 - 1) == j->m_vertexIDpair.second) {
@@ -394,7 +356,6 @@ public:
 							std::get<2>(topologyMarks[(*routeVertexID_RIter).second ])--;
 
 							if (std::get<2>(topologyMarks[(*routeVertexID_RIter).second ]) > 0) {
-								
 								for (auto &j : m_vectorOfVertexPtr) {
 									if ((processedVertex) == j->m_vertexIDpair.first) {
 										serviceInt1 = j->m_vertexIDpair.second + 1;
@@ -404,9 +365,7 @@ public:
 								serviceInt1 = std::get<2>(topologyMarks[serviceInt1 - 1]) - 1;
 								testV = (*hj)->getAdjacentEdges();
 								processedVertex = testV[serviceInt1].second;
-								
 								hj= m_vectorOfVertexPtr.begin() + (zIter);
-								
 								
 								if (isInsideRouteVertexIDs(routeVertexIDs, processedVertex)) {
 
@@ -458,7 +417,6 @@ public:
 						if (serviceBool1 == true) {
 							if ((std::get<1>(topologyMarks[serviceInt1 - 1])) > (std::get<2>(topologyMarks[serviceInt1 - 1]))) {
 								std::get<2>(topologyMarks[serviceInt1 - 1]) = std::get<1>(topologyMarks[serviceInt1 - 1]);
-								
 							}
 						}
 						serviceBool1 = false;
@@ -476,7 +434,6 @@ public:
 							serviceInt1 = std::get<2>(topologyMarks[serviceInt1 - 1]) - 1;
 							testV = (*hj)->getAdjacentEdges();
 							processedVertex = testV[serviceInt1].second;
-							
 							
 							hj = m_vectorOfVertexPtr.begin() + (zIter);
 							
@@ -499,12 +456,9 @@ public:
 							serviceInt1 = std::get<2>(topologyMarks[serviceInt1 - 1]) - 1;
 							testV = (*hj)->getAdjacentEdges();
 							processedVertex = testV[serviceInt1].second;
-							
-							
 							hj = m_vectorOfVertexPtr.begin() + (zIter);
 							
-
-						}			
+						}
 					}
 				}
 			}
@@ -512,27 +466,37 @@ public:
 			++hj;
 		}		
 	}
-
+	bool graph::isInsideRouteVertexIDs(const std::vector<std::pair<int, int>> &routeVertexIDs, const int &checkValue) {
+		//this method complements the "generationOfRoutesNeu()"-method
+		bool checkBool = false;
+		for (auto &i : routeVertexIDs) {
+			if (i.first == checkValue) {
+				checkBool = true;
+			}
+		}
+		return checkBool;
+	}
 	void graph::printLanesAndVehiclesOfAllEdges() {
+		//method for displaying a vertexes, edges and vehicles on the surface
 		for (auto &i : m_vectorOfEdgesPtr) {
 			i->m_ppPtr->paintWhiteLinePP();
 		}
-		for (auto &i : m_vectorOfEdgesPtr) {
-				
+		for (auto &i : m_vectorOfEdgesPtr) {	
 			i->m_ppPtr->paintBoxPP();
 		}
 		for (auto &i : m_vectorOfVertexPtr) {
 			m_f7PrintVertexNumber(m_hdc, i->m_XcoordinateVertex, i->m_YcoordinateVertex, i->m_vertexID);
 		}
 	}
-	void graph::showVertex() {
-		
-		
-		for (auto &i : m_vectorOfVertexPtr) {
-
-			
-			m_f7PrintVertexNumber(m_hdc, i->m_XcoordinateVertex, i->m_YcoordinateVertex, i->m_vertexID);
+	
+	void graph::destructSectionInGraph() {
+		m_vectorOfRoutesPtr.clear();
+		for (auto &i : m_vectorOfEdgesPtr) {
+			i->sectionDestruct();
 		}
+	}
+	void graph::deletePoolAllocator() {
+		m_poolAllocator.~PoolAllocator();
 	}
 
 };
