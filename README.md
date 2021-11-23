@@ -9,7 +9,7 @@ During the execution of the traffic simulation, the user is allowed to intervene
 
 ## Motivation and purpose behind the development of this application:
 
-This "Traffic Simulator" was created out of the motivation to gain programming experience. The author of this application has a degree in "Intelligent Transport Systems". Therefore, it was obvious for the author to develop a tool that has a relation to the field of traffic planning. This application contains state-of-the-art algorithms that are also used in professional traffic simulation programs. 
+The author of this application has a degree in "Intelligent Transport Systems". Therefore, it was obvious for the author to develop a tool that has a relation to the field of traffic planning. This application contains state-of-the-art algorithms that are also used in professional traffic simulation programs. 
 The external appearance may seem outdated and reminiscent of simulation applications from the nineties, but the core of this application is quite transferable to contemporary applications.
 
 ## Technology used:
