@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DA8F6EAE-7F7F-3632-8B52-49C21DD2E9EC}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ExampleTests</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ExampleTests.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ExampleTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleTests.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ExampleTests.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ExampleTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ExampleTests.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ExampleTests</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\Release\</OutDir>
+    <IntDir>ExampleTests.dir\Release</IntDir>
+    <TargetName>ExampleTests</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\Debug\</OutDir>
+    <IntDir>ExampleTests.dir\Debug</IntDir>
+    <TargetName>ExampleTests</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Debug\gtest_main.lib;WIN32.lib;..\Debug\Projekt1.lib;..\lib\Debug\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/Debug/ExampleTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/Debug/ExampleTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Release\gtest_main.lib;WIN32.lib;..\Release\Projekt1.lib;..\lib\Release\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/Release/ExampleTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/Release/ExampleTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\MinSizeRel\gtest_main.lib;WIN32.lib;..\MinSizeRel\Projekt1.lib;..\lib\MinSizeRel\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/MinSizeRel/ExampleTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/MinSizeRel/ExampleTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\RelWithDebInfo\gtest_main.lib;WIN32.lib;..\RelWithDebInfo\Projekt1.lib;..\lib\RelWithDebInfo\gtest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/RelWithDebInfo/ExampleTests.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/RelWithDebInfo/ExampleTests.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>
+      </LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\unitTest\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/unitTest/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\GSL\build-x86\Microsoft.GSLConfig.cmake;C:\GSL\build-x86\Microsoft.GSLConfigVersion.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/unitTest/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\GSL\build-x86\Microsoft.GSLConfig.cmake;C:\GSL\build-x86\Microsoft.GSLConfigVersion.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/unitTest/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\GSL\build-x86\Microsoft.GSLConfig.cmake;C:\GSL\build-x86\Microsoft.GSLConfigVersion.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/unitTest/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\GSL\build-x86\Microsoft.GSLConfig.cmake;C:\GSL\build-x86\Microsoft.GSLConfigVersion.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\unitTest\test.cpp" />
+    <Natvis Include="C:\GSL\GSL.natvis">
+    </Natvis>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\ZERO_CHECK.vcxproj">
+      <Project>{5F8B369A-DF78-306E-BF62-1D8DFF72DC4F}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\Projekt1.vcxproj">
+      <Project>{D92DFA93-CD34-3884-9446-16FC62C02FE0}</Project>
+      <Name>Projekt1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googletest\gtest.vcxproj">
+      <Project>{1FAD5A6B-CEA8-3FB3-A30D-87BDC4EDE3B4}</Project>
+      <Name>gtest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googletest\gtest_main.vcxproj">
+      <Project>{EDF7B202-C7B3-3EC6-AE61-FFD8372742DF}</Project>
+      <Name>gtest_main</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
