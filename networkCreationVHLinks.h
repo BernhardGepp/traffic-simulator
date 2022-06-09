@@ -207,7 +207,7 @@ public:
 										if (std::get<1>(i).second <= std::get<0>(laneCoordinate).second) {
 											//addCoordinate = true;
 										}
-										else if (std::get<1>(laneCoordinate).second < std::get<0>(i).second) {
+										else if (std::get<1>(laneCoordinate).second <= std::get<0>(i).second) {
 											//addCoordinate = true;
 										}
 										else {
@@ -282,7 +282,7 @@ public:
 										if (std::get<1>(i).second >= std::get<0>(laneCoordinate).second) {
 											
 										}
-										else if (std::get<1>(laneCoordinate).second > std::get<0>(i).second) {
+										else if (std::get<1>(laneCoordinate).second >= std::get<0>(i).second) {
 											
 										}
 										else {
