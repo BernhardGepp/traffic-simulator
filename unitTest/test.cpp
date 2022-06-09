@@ -11,8 +11,7 @@
 #include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.cpp" 
 #include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.h" 
 #include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\velocityToLength.h" 
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\callBackLinks.h"
-#include  <fstream> 
+#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\callBackLinks.h" 
 #include <memory>
 #include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\networkCreationVHLinks.h"
 #include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\networkCreationOfVHLinks.h"
@@ -136,7 +135,7 @@ TEST(NetworkBuildingTest, NCT4) {
 
 TEST(NetworkBuildingTest, EdgeCases1) {
 	networkCreationVHLinks testingClass;
-	//TestCase: Overlay of 2 horizontal connections with one and two lanes, which should not work at the field boundary!
+	//TestCase: Overlay of 2 horizontal connections with one and two lanes(both in positive direction), which should not work at the field boundary!
 	testingClass.networkLaneVector.clear(); 
 	testingClass.establishLane(1, 0, 580, true);
 	testingClass.establishLane(1, 1090, 580, false);
@@ -144,20 +143,20 @@ TEST(NetworkBuildingTest, EdgeCases1) {
 	testingClass.establishLane(2, 1090, 590, false);
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 1);
 	testingClass.networkLaneVector.clear();
-	//TestCase: Overlay of 2 horizontal connections with one and two lanes, which should not work at the field boundary! Made outside valid range.
+	//TestCase: Overlay of 2 horizontal connections with one and two lanes(both in positive direction), which should not work at the field boundary! Made outside valid range.
 	testingClass.establishLane(1, 0, 600, true);
 	testingClass.establishLane(1, 1090, 600, false);
 	testingClass.establishLane(2, 0, 600, true);
 	testingClass.establishLane(2, 1090, 600, false);
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 1);
-	//TestCase: Overlay of 2 vertical connections with one and two lanes, which should not work at the field boundary!
+	//TestCase: Overlay of 2 vertical connections with one and two lanes(both in positive direction), which should not work at the field boundary!
 	testingClass.networkLaneVector.clear();
 	testingClass.establishLane(1, 1080, 0, true);
 	testingClass.establishLane(1, 1080, 590, false);
 	testingClass.establishLane(2, 1090, 0, true);
 	testingClass.establishLane(2, 1090, 590, false);
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 1);
-	//TestCase: Overlay of 2 vertical connections with one and two lanes, which should not work at the field boundary! Made outside valid range.
+	//TestCase: Overlay of 2 vertical connections with one and two lanes(both in positive direction), which should not work at the field boundary! Made outside valid range.
 	testingClass.networkLaneVector.clear();
 	testingClass.establishLane(1, 1200, 0, true);
 	testingClass.establishLane(1, 1200, 590, false);
@@ -170,7 +169,7 @@ TEST(NetworkBuildingTest, EdgeCases2) {
 	testingClass.networkLaneVector.clear();
 	//Links with ONE lane
 	//links generated immediately one after the other
-	//vertical Top->Down
+	//vertical Top->Down(1)
 	//1st
 	testingClass.establishLane(1, 900, 10, true);
 	testingClass.establishLane(1, 900, 100, false);
@@ -180,14 +179,34 @@ TEST(NetworkBuildingTest, EdgeCases2) {
 
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
 	testingClass.networkLaneVector.clear();
+	//vertical Top->Down(2)
+	//1st
+	testingClass.establishLane(1, 900, 100, true);
+	testingClass.establishLane(1, 900, 200, false);
+	//2nd
+	testingClass.establishLane(1, 900, 10, true);
+	testingClass.establishLane(1, 900, 100, false);
+
+	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
+	testingClass.networkLaneVector.clear();
 	//links generated immediately one after the other
-	//vertical Bottom->up
+	//vertical Bottom->up(1)
 	//1st
 	testingClass.establishLane(1, 900, 200, true);
 	testingClass.establishLane(1, 900, 100, false);
 	//2nd
 	testingClass.establishLane(1, 900, 100, true);
 	testingClass.establishLane(1, 900, 10, false);
+
+	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
+	testingClass.networkLaneVector.clear();
+	//vertical Bottom->up(2)
+	//1st
+	testingClass.establishLane(1, 900, 100, true);
+	testingClass.establishLane(1, 900, 10, false);
+	//2nd
+	testingClass.establishLane(1, 900, 200, true);
+	testingClass.establishLane(1, 900, 100, false);
 
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
 	testingClass.networkLaneVector.clear();
@@ -239,7 +258,7 @@ TEST(NetworkBuildingTest, EdgeCases3) {
 	testingClass.networkLaneVector.clear();
 	//Links with ONE lane
 	//links generated immediately one after the other
-	//horizontal Left->Right
+	//horizontal Left->Right(1)
 	//1st
 	testingClass.establishLane(1, 10, 500, true);
 	testingClass.establishLane(1, 100, 500, false);
@@ -249,14 +268,34 @@ TEST(NetworkBuildingTest, EdgeCases3) {
 
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
 	testingClass.networkLaneVector.clear();
+	//horizontal Left->Right(2)
+	//1st
+	testingClass.establishLane(1, 100, 500, true);
+	testingClass.establishLane(1, 200, 500, false);
+	//2nd
+	testingClass.establishLane(1, 10, 500, true);
+	testingClass.establishLane(1, 100, 500, false);
+
+	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
+	testingClass.networkLaneVector.clear();
 	//links generated immediately one after the other
-	//horizontal Left->Right
+	//horizontal Right->Left(1)
 	//1st
 	testingClass.establishLane(1, 200, 500, true);
 	testingClass.establishLane(1, 100, 500, false);
 	//2nd
 	testingClass.establishLane(1, 100, 500, true);
 	testingClass.establishLane(1, 10, 500, false);
+
+	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
+	testingClass.networkLaneVector.clear();
+	//horizontal Right->Left(2)
+	//1st
+	testingClass.establishLane(1, 100, 500, true);
+	testingClass.establishLane(1, 10, 500, false);
+	//2nd
+	testingClass.establishLane(1, 200, 500, true);
+	testingClass.establishLane(1, 100, 500, false);
 
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 2);
 	testingClass.networkLaneVector.clear();
