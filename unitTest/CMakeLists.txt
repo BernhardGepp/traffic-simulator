@@ -26,7 +26,7 @@ message(STATUS ${Microsoft.GSL_INCLUDE_DIRS})
 target_include_directories(${This} PUBLIC Microsoft.GSL::GSL)
 target_link_libraries(${This} PUBLIC
 	gtest_main
-	WIN32 Projekt1
+	WIN32 TrafficSimulatorApp
 	Microsoft.GSL::GSL
 	${Boost_LIBARIES}
 )
