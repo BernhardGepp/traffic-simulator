@@ -249,12 +249,11 @@ public:
 									}
 									else {
 										
-										if ((std::get<0>(i).first >= std::get<0>(laneCoordinate).first) && (std::get<1>(laneCoordinate).first > std::get<1>(i).first)) {
-											//addCoordinate = true;
+										if (std::get<0>(i).first <= std::get<1>(laneCoordinate).first) {
+											
 										}
-										else if ((std::get<0>(i).first <= std::get<0>(laneCoordinate).first) && (std::get<0>(i).first < std::get<1>(laneCoordinate).first)) {
-										}
-										else if ((std::get<1>(i).first >= std::get<0>(laneCoordinate).first) && (std::get<1>(i).first > std::get<1>(laneCoordinate).first)) {
+										else if (std::get<0>(laneCoordinate).first <= std::get<1>(i).first) {
+											
 										}
 										else {
 											addCoordinate = false;
