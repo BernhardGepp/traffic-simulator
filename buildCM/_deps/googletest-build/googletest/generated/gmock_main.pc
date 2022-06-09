@@ -1,5 +1,5 @@
-libdir=C:/Program Files (x86)/Projekt1/lib
-includedir=C:/Program Files (x86)/Projekt1/include
+libdir=C:/Program Files (x86)/TrafficSimulator/lib
+includedir=C:/Program Files (x86)/TrafficSimulator/include
 
 Name: gmock_main
 Description: GoogleMock (with main() function)

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16.2 FATAL_ERROR)
 
 
-project(Projekt1 LANGUAGES CXX VERSION 1.0)
+project(TrafficSimulator LANGUAGES CXX VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -16,7 +16,7 @@ add_subdirectory(googletest)
 
 
 
-add_library(Projekt1 STATIC ${Sources}) 
+add_library(TrafficSimulatorApp STATIC ${Sources}) 
 
 
 

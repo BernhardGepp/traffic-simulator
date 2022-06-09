@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C6936E32-5C96-3602-A52B-15C3BB9DFBF1}</ProjectGuid>
+    <ProjectGuid>{CC514E33-2DF2-3FE2-AB1D-4AB33E3E96F9}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -105,24 +105,24 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-mkdir.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-mkdir.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating directories for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -131,25 +131,25 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating directories for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -158,25 +158,25 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Creating directories for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -185,25 +185,25 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Creating directories for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -212,25 +212,25 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-download.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-download.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing download step (download, verify and extract) for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -238,22 +238,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing download step (download, verify and extract) for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -261,22 +261,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Performing download step (download, verify and extract) for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -284,22 +284,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Performing download step (download, verify and extract) for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -307,18 +307,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\googletest-populate-urlinfo.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-update.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-update.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No update step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -326,14 +326,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No update step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -341,14 +341,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No update step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -356,14 +356,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No update step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-update
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -371,18 +371,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-patch.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-patch.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No patch step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -390,14 +390,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No patch step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -405,14 +405,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No patch step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -420,14 +420,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No patch step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -435,22 +435,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-configure.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-configure.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No configure step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -458,18 +458,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No configure step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -477,18 +477,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No configure step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -496,18 +496,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No configure step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -515,22 +515,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-build.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-build.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No build step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -538,18 +538,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No build step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -557,18 +557,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No build step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -576,18 +576,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No build step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -595,22 +595,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-install.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-install.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No install step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -618,18 +618,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No install step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -637,18 +637,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No install step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -656,18 +656,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No install step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -675,22 +675,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\41a33528b8398a92736924bda09ee0a1\googletest-populate-test.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\062178c36b68a709a400ca5d7006fe91\googletest-populate-test.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No test step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -698,18 +698,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No test step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -717,18 +717,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No test step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -736,18 +736,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No test step for 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build
+cd C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -755,20 +755,20 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\c037bec5c138a209edc284ec9d1fe1d8\googletest-populate-complete.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\07febd3f49e0842e2ae253bdb091843e\googletest-populate-complete.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Completed 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -776,16 +776,16 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Completed 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -793,16 +793,16 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Completed 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -810,16 +810,16 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Completed 'googletest-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/$(Configuration)/googletest-populate-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/$(Configuration)/googletest-populate-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -827,13 +827,13 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-install;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-mkdir;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-download;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-update;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-patch;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-configure;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-build;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\src\googletest-populate-stamp\$(Configuration)\googletest-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\cbc3a482223e61211c2ff77928428239\googletest-populate.rule">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\a1beda77386c882fc57f3ebac8ec3ded\googletest-populate.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 :cmEnd
@@ -842,8 +842,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
@@ -854,8 +854,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
@@ -866,8 +866,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
@@ -878,18 +878,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\$(Configuration)\googletest-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\googletest-populate</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -897,12 +897,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -910,12 +910,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -923,12 +923,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-subbuild/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild -BC:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -936,18 +936,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-download.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\googletest-populate-prefix\tmp\googletest-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\CMakeFiles\googletest-populate">
+    <None Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\CMakeFiles\googletest-populate">
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-subbuild\ZERO_CHECK.vcxproj">
-      <Project>{D9E975A3-F215-3CA3-8165-21AAB1730EDA}</Project>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-subbuild\ZERO_CHECK.vcxproj">
+      <Project>{F4782147-A3EA-32B4-916E-F45EBCD7F269}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

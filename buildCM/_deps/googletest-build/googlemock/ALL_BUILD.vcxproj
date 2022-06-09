@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4BFBAB7A-D370-3925-88DA-1166152A241F}</ProjectGuid>
+    <ProjectGuid>{B5626A92-3905-303B-84E8-839DE80991C9}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -76,7 +76,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -86,7 +86,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -96,7 +96,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -105,11 +105,11 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/buildCM --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -117,12 +117,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/buildCM --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -130,12 +130,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/buildCM --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -143,12 +143,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googlemock/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/CmakeBuild --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bernh/Documents/25_Sommer2022 -BC:/Users/bernh/Documents/25_Sommer2022/buildCM --check-stamp-file C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-build/googlemock/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -156,34 +156,34 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindThreads.cmake;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock.pc.in;C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-src\googlemock\cmake\gmock_main.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googlemock\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\ZERO_CHECK.vcxproj">
-      <Project>{5F8B369A-DF78-306E-BF62-1D8DFF72DC4F}</Project>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\ZERO_CHECK.vcxproj">
+      <Project>{002E3F98-3718-3813-8A3E-D06C4B52815F}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googlemock\gmock.vcxproj">
-      <Project>{3DC20BB1-CBD6-3A04-8F7A-80C27DD32DFE}</Project>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googlemock\gmock.vcxproj">
+      <Project>{6FCC8AC3-C7A0-3529-B2ED-4C85361E4158}</Project>
       <Name>gmock</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googlemock\gmock_main.vcxproj">
-      <Project>{EB2777E7-FA91-30FE-BF91-9BEC29A3FEBF}</Project>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googlemock\gmock_main.vcxproj">
+      <Project>{054CEF43-34B2-3BEB-B5CF-77D85D622B6A}</Project>
       <Name>gmock_main</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googletest\gtest.vcxproj">
-      <Project>{1FAD5A6B-CEA8-3FB3-A30D-87BDC4EDE3B4}</Project>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googletest\gtest.vcxproj">
+      <Project>{7E4FAE9B-42D1-35A3-900A-D6F2BDFD2C2B}</Project>
       <Name>gtest</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\_deps\googletest-build\googletest\gtest_main.vcxproj">
-      <Project>{EDF7B202-C7B3-3EC6-AE61-FFD8372742DF}</Project>
+    <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\buildCM\_deps\googletest-build\googletest\gtest_main.vcxproj">
+      <Project>{8136715E-7458-387A-B76F-22F16B1504CA}</Project>
       <Name>gtest_main</Name>
     </ProjectReference>
   </ItemGroup>

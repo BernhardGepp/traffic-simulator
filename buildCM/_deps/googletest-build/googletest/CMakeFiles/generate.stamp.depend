@@ -12,8 +12,8 @@ C:/Program Files/CMake/share/cmake-3.22/Modules/FindPython/Support.cmake
 C:/Program Files/CMake/share/cmake-3.22/Modules/FindThreads.cmake
 C:/Program Files/CMake/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake
 C:/Program Files/CMake/share/cmake-3.22/Modules/WriteBasicConfigVersionFile.cmake
-C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googletest/CMakeLists.txt
-C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googletest/cmake/Config.cmake.in
-C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googletest/cmake/gtest.pc.in
-C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googletest/cmake/gtest_main.pc.in
-C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/_deps/googletest-src/googletest/cmake/internal_utils.cmake
+C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googletest/CMakeLists.txt
+C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googletest/cmake/Config.cmake.in
+C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googletest/cmake/gtest.pc.in
+C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googletest/cmake/gtest_main.pc.in
+C:/Users/bernh/Documents/25_Sommer2022/buildCM/_deps/googletest-src/googletest/cmake/internal_utils.cmake

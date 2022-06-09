@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Projekt1")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/TrafficSimulator")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,12 +34,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/googletest/cmake_install.cmake")
+  include("C:/Users/bernh/Documents/25_Sommer2022/buildCM/googletest/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/unitTest/cmake_install.cmake")
+  include("C:/Users/bernh/Documents/25_Sommer2022/buildCM/unitTest/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/bernh/Documents/25_Sommer2022/CmakeBuild/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/bernh/Documents/25_Sommer2022/buildCM/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

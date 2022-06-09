@@ -2,13 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\x64\Debug\ZERO_CHECK</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\Debug\Projekt1.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>C:\Users\bernh\Documents\25_Sommer2022\CmakeBuild\unitTest\Debug\ExampleTests.exe</FullPath>
+      <FullPath>C:\Users\bernh\Documents\25_Sommer2022\buildCM\unitTest\Debug\ExampleTests.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
