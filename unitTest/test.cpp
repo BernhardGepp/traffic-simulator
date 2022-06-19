@@ -16,6 +16,7 @@
 #include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\networkCreationVHLinks.h"
 #include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\networkCreationOfVHLinks.h"
 
+
 int main(int argc, char** argv) {
 	int a = 0;
 	//InitGoogleTest();
