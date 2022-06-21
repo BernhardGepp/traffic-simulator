@@ -1,10 +1,6 @@
+#pragma once
 #include "PrecompiledHeadersEdges.h"
 #include "network.h"
-#include "vertex.h"
-#include "edge.h"
-#include "graph.h"
-#include "vehicle.h"
-#include "route.h"
 #include "callBackLinks.h"
 
 #define MY_BUTTON_ID 38
@@ -132,7 +128,6 @@ VOID PrintLaneIF(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPo
 		}
 	}
 }
-
 VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &numberOFLanesa, const std::vector<std::tuple<int, int,int>> &PointsToBePrinted) {
 	
 	//***************************************************
@@ -232,8 +227,6 @@ VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosX
 		}
 	}
 }
-int hoehe_Print = 0;
-
 VOID PrintVertexNumber(HDC hdc, const int &iPosX, const int &iPosY, const int &iVertexID) {
 	wchar_t buffer1[256];
 	wsprintfW(buffer1, L"%d", iVertexID);
@@ -246,7 +239,6 @@ VOID PrintVertexNumber(HDC hdc, const int &iPosX, const int &iPosY, const int &i
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
 	graphics3.DrawLine(&pen3, n->iPosXRK, n->iPosYRK + 5, n->iPosXRK + 10, n->iPosYRK + 5);
 }
-
 VOID PaintWhiteClearLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV) {
 	Graphics graphics3(hdc);
 	Pen pen7(Gdiplus::Color(245, 245, 245, 255), 4);

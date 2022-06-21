@@ -9,15 +9,17 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 #set(CMAKE_CONFIGURATION_TYPES "Release" CACHE STRING "" FORCE)
 enable_testing()
 
-set(Sources main.cpp callBackLinks.cpp PrecompiledHeadersEdges.cpp 
+set(Sources 
+	main.cpp 
+	edge.cpp
+	callBackLinks.cpp 
+	PrecompiledHeadersEdges.cpp 
 	random_speed_neu.cpp 
-	vehicle.cpp)
+	vehicle.cpp
+	)
+
 add_subdirectory(googletest)
 
-
-
 add_library(TrafficSimulatorApp STATIC ${Sources}) 
-
-
 
 add_subdirectory(unitTest)

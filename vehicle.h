@@ -18,15 +18,15 @@ public:
 
 
 	vehicle();
-	explicit vehicle( const int& lane, const int& position);
+	explicit vehicle( const int& , const int& );
 	vehicle(const vehicle& other) = delete;
 	vehicle(const vehicle&& other) = delete;
 	vehicle& operator=(const vehicle& other) = delete;
 	vehicle& operator=(const vehicle&& other) = delete;
 	~vehicle()noexcept ;
 	
-	void setPtr(vehicle* vehiclePtr);
-	bool operator<(const vehicle& l) const;
+	void setPtr(vehicle* );
+	bool operator<(const vehicle& ) const;
 	int position() const;
 
 };

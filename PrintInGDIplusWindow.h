@@ -17,10 +17,10 @@ public:
 	static std::vector<std::tuple<int, int, int>> m_pointContainer;
 	static bool m_helper;
 	
-	static bool fillPrintContainer(const int& a,const int& b,const int& c);
-	static bool emptyPrintContainer(HDC hdc,void(*f5PaintLane)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &numberOfLanes, const std::vector<std::tuple<int, int, int>> &PointsToBePrinted));
+	static bool fillPrintContainer(const int& ,const int& ,const int& );
+	static bool emptyPrintContainer(HDC hdc ,void(*f5PaintLane)(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV, const int &numberOfLanes, const std::vector<std::tuple<int, int, int>> &PointsToBePrinted));
 };
-
+/*
 std::vector<std::tuple<int,int,int>> PrintInGDIplusWindow::m_pointContainer;
 
 bool PrintInGDIplusWindow::fillPrintContainer(const int& a, const int& b, const int& c) {
@@ -34,4 +34,5 @@ bool PrintInGDIplusWindow::emptyPrintContainer(HDC hdc,void(*f5PaintLane)(HDC hd
 	return true;
 }
 bool PrintInGDIplusWindow::m_helper = fillPrintContainer;
+*/
 

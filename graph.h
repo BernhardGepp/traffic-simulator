@@ -1,6 +1,5 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-#include "edge.h"
 #include "PoolAllocator.h"
 #include "vehicle.h"
 #include "vertex.h"
