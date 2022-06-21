@@ -46,7 +46,7 @@ public:
 	std::vector<vehicle*> vehicleEraseVector;
 
 	edge();
-	/*explicit*/ edge(const int& , const int& , const int& , std::unique_ptr<PrintPattern>&,concreteObserverSubjekt* );
+	explicit edge(const int& , const int& , const int& , std::unique_ptr<PrintPattern>&,concreteObserverSubjekt* );
 	edge(const edge& other)=delete;
 	edge(edge&& );
 	edge& operator=(const edge& other) = delete;

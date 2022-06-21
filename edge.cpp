@@ -12,10 +12,7 @@ edge::edge(const int& startVertex, const int& endVertex, const int& numberOfLane
 	m_observerPTR = m_ppPtr->createObserver();
 	m_cOSptr->registrieren(m_observerPTR);
 }
-//edge::edge(const edge & other) = delete;
 edge::edge(edge && other) = default;
-//edge& operator=(const edge & other) = delete;
-//edge& operator=(edge && other) = default;
 edge::~edge() noexcept {	}
 int edge::getStartVertex() {
 	return m_startVertex;

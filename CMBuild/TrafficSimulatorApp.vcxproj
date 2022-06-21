@@ -301,7 +301,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\PrintInGDIplusWin1LN.cpp" />
+    <ClCompile Include="..\PrintInGDIplusWin1LP.cpp" />
+    <ClCompile Include="..\PrintInGDIplusWin2LN.cpp" />
+    <ClCompile Include="..\PrintInGDIplusWin2LP.cpp" />
     <ClCompile Include="..\PrintInGDIplusWindow.cpp" />
+    <ClCompile Include="..\PrintInGDIplusWinEmpty.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />
