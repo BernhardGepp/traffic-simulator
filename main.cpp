@@ -251,8 +251,9 @@ static HDC hdc;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	
-	
-	n = network::getInstance(width, height,callBackLinks(hdc,PaintBoxLB,PaintBoxRB,PaintFrame, PaintLane,  PrintVertexNumber, PaintBox, PaintWhiteLine, 
+	/*n = n->getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
+		PaintBoxStart, PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22));*/
+	n = network::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
 		PaintBoxStart, PaintBoxEnd,PaintBoxFex11,PaintBoxFex12,PaintBoxFex21,PaintBoxFex22));
 	MSG msg;
 	bool endprogram = false;

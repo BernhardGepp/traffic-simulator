@@ -305,6 +305,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\flowSimulation1PosStraight.cpp" />
     <ClCompile Include="..\flowSimulation2NegStraight.cpp" />
     <ClCompile Include="..\flowSimulation2PosStraightA.cpp" />
+    <ClCompile Include="..\graph.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LN.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LP.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin2LN.cpp" />
