@@ -1,5 +1,7 @@
 #include "PrintInGDIplusWindow.h"
 #include "PrecompiledHeadersEdges.H"
+PrintInGDIplusWindow::PrintInGDIplusWindow(){}
+PrintInGDIplusWindow::~PrintInGDIplusWindow() noexcept{}
 std::vector<std::tuple<int,int,int>> PrintInGDIplusWindow::m_pointContainer;
 
 bool PrintInGDIplusWindow::fillPrintContainer(const int& a, const int& b, const int& c) {
