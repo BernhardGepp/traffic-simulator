@@ -2,7 +2,7 @@
 #include "flowSimulation2NegStraight.h"
 
 flowSimulation2NegStraight::flowSimulation2NegStraight(callBackLinks* CBLptr, const int& maxVelocity, const int& maxVelocity_Density)
-	:sectionVehicleSet(CBLptr),m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density){
+	:sectionVehicleSet(CBLptr), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
 	m_CBLptr = CBLptr;
 }
 
@@ -17,10 +17,10 @@ void flowSimulation2NegStraight::printContentOfSection(const int& p1xx, const in
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P2LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
-	}	
+	}
 }
 
-int flowSimulation2NegStraight::flow(const int &numberOfLanes, const int &length, const bool &riseOrDecline){
+int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	flag = false;
 	ownSpeed = 0;
 	ownPosition = 0;

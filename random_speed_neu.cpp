@@ -26,7 +26,7 @@ void randomSpeed_neu::randomNumberRequest() {
 		a = 100;
 	}
 	else {
-		a=q1.front();
+		a = q1.front();
 		q1.pop();
 	}
 }
@@ -61,5 +61,5 @@ void randomSpeed_neu::randomNumberGenerator() {
 
 void randomSpeed_neu::random() {
 	f1 = std::async(std::launch::async, randomNumberGenerator);
-	
+
 }

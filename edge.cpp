@@ -74,7 +74,7 @@ void edge::initialisation() {
 
 }
 
-void edge::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
+void edge::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>&poolAllocatorRef) {
 	m_VPAptr = &poolAllocatorRef;
 }
 
@@ -194,7 +194,7 @@ void edge::sort() {
 	}
 }
 
-vehicle* edge::routeAssignment(vehicle* VPAEptr) {
+vehicle* edge::routeAssignment(vehicle * VPAEptr) {
 	VPAEptr->m_routeVertexID_vehicle.clear();
 
 	if (!m_routeTable_IDrValueIDvertex.empty()) {
@@ -231,7 +231,7 @@ vehicle* edge::routeAssignment(vehicle* VPAEptr) {
 	return VPAEptr;
 }
 
-vehicle* edge::insertion(vehicle* VPAEptr) {
+vehicle* edge::insertion(vehicle * VPAEptr) {
 	if (VPAEptr != nullptr) {
 		VPAEptr->setPtr(VPAEptr);
 		VPAEptr->m_moblieORStationary = true;

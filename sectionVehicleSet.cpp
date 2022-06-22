@@ -9,34 +9,34 @@ sectionVehicleSet::sectionVehicleSet(callBackLinks* CBLptr )
 sectionVehicleSet::~sectionVehicleSet() noexcept {	}
 
 void sectionVehicleSet::insertSET(vehicle* a)
-	{
-		if (a != nullptr) {
-			m_vehicleSet.insert(a);
-			
-		}
-		else {
-			//std::cout << "Allocation in VehicleSet failed!\n";
-		}
-	}
-	
-	size_t sectionVehicleSet::getVehicleSetSize() const {
-		return m_vehicleSet.size();
-	}
-	
-	int sectionVehicleSet::sumOfVehicleSpeedInEdge() {
-		int sumOfVehicleSpeed = 0;
-		for (auto &i : m_vehicleSet) {
-			sumOfVehicleSpeed = i->m_pref_speed + sumOfVehicleSpeed;
-		}
-		return sumOfVehicleSpeed;
-	}
+{
+	if (a != nullptr) {
+		m_vehicleSet.insert(a);
 
-	std::pair<int, int> sectionVehicleSet::trafficCharacteristics() {
-		int sumOfVehicleSpeed = 0;
-		int sumOfVehicles = 0;
-		for (auto &i : m_vehicleSet) {
-			sumOfVehicleSpeed = i->m_pref_speed + sumOfVehicleSpeed;
-			sumOfVehicles++;
-		}
-		return std::pair<int, int>(sumOfVehicleSpeed, sumOfVehicles);
 	}
+	else {
+		//std::cout << "Allocation in VehicleSet failed!\n";
+	}
+}
+
+size_t sectionVehicleSet::getVehicleSetSize() const {
+	return m_vehicleSet.size();
+}
+
+int sectionVehicleSet::sumOfVehicleSpeedInEdge() {
+	int sumOfVehicleSpeed = 0;
+	for (auto& i : m_vehicleSet) {
+		sumOfVehicleSpeed = i->m_pref_speed + sumOfVehicleSpeed;
+	}
+	return sumOfVehicleSpeed;
+}
+
+std::pair<int, int> sectionVehicleSet::trafficCharacteristics() {
+	int sumOfVehicleSpeed = 0;
+	int sumOfVehicles = 0;
+	for (auto& i : m_vehicleSet) {
+		sumOfVehicleSpeed = i->m_pref_speed + sumOfVehicleSpeed;
+		sumOfVehicles++;
+	}
+	return std::pair<int, int>(sumOfVehicleSpeed, sumOfVehicles);
+}

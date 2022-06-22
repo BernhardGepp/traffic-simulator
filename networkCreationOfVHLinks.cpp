@@ -11,17 +11,13 @@ bool sortTopDown(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 	return a.first < b.first;
 }
 
-networkCreationOfVHLinks::networkCreationOfVHLinks() {
-		
-	}
-networkCreationOfVHLinks::~networkCreationOfVHLinks() {
+networkCreationOfVHLinks::networkCreationOfVHLinks() {}
+networkCreationOfVHLinks::~networkCreationOfVHLinks() {}
 
-}
 void networkCreationOfVHLinks::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }
-
 
 void networkCreationOfVHLinks::fillNetworkLaneVector(std::pair<int, int> startingPoint, std::pair<int, int> endingPoint, bool horizontalOrVertival, int NoL) {
 	if (NoL == 1)
@@ -29,9 +25,11 @@ void networkCreationOfVHLinks::fillNetworkLaneVector(std::pair<int, int> startin
 	if (NoL == 2)
 		networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, horizontalOrVertival, twoLanes));
 }
+
 bool networkCreationOfVHLinks::checkIfInNetworkLaneVector() {
 	return true;
 }
+
 void networkCreationOfVHLinks::vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex) {
 	//Vertex generation for a graph with vertical and horizontal links
 	bool serviceBool = false;
@@ -67,6 +65,7 @@ void networkCreationOfVHLinks::vertexCreationVH_Network(const std::pair<int, int
 		}
 	}
 }
+
 void  networkCreationOfVHLinks::establishVertexOfGraphA() {
 	std::pair<int, int> startingPoint;
 	std::pair<int, int> endingPoint;

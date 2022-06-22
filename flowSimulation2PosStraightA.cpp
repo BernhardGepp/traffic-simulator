@@ -2,13 +2,13 @@
 #include "flowSimulation2PosStraight.h"
 
 flowSimulation2PosStraightA::flowSimulation2PosStraightA(callBackLinks* CBLptr, const int& maxVelocity, const int& maxVelocity_Density)
-	:sectionVehicleSet(CBLptr),m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density){
+	:sectionVehicleSet(CBLptr), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
 	m_CBLptr = CBLptr;
 }
-flowSimulation2PosStraightA::~flowSimulation2PosStraightA()noexcept{}
+flowSimulation2PosStraightA::~flowSimulation2PosStraightA()noexcept {}
 
-void flowSimulation2PosStraightA::printContentOfSection(const int& p1xx, const int& p1yy, const int& p2xx, const int& p2yy)  {
-	for (auto &i : m_vehicleSet) {
+void flowSimulation2PosStraightA::printContentOfSection(const int& p1xx, const int& p1yy, const int& p2xx, const int& p2yy) {
+	for (auto& i : m_vehicleSet) {
 		i->serviceBool = false;
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P2LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
@@ -16,7 +16,7 @@ void flowSimulation2PosStraightA::printContentOfSection(const int& p1xx, const i
 	}
 }
 
-int flowSimulation2PosStraightA::flow(const int &numberOfLanes, const int &length, const bool &riseOrDecline)  {
+int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	flag = false;
 	ownSpeed = 0;
 	ownPosition = 0;
@@ -27,7 +27,7 @@ int flowSimulation2PosStraightA::flow(const int &numberOfLanes, const int &lengt
 	numberOfVehicleinRange = 0;
 	if (riseOrDecline == true) {
 		numberOfVehicleinRange = 0;
-		for (auto &i : m_vehicleSet)
+		for (auto& i : m_vehicleSet)
 		{
 			if (i->m_moblieORStationary == true) {
 				if (i->m_pref_speed <= 0) {
@@ -35,7 +35,7 @@ int flowSimulation2PosStraightA::flow(const int &numberOfLanes, const int &lengt
 						ownSpeed = 0;
 					}
 					else {
-						ownSpeed = m_CBLptr->m_callback_getRandomNumber();						
+						ownSpeed = m_CBLptr->m_callback_getRandomNumber();
 					}
 				}
 				else {

@@ -2,17 +2,17 @@
 #include "flowSimulation1PosStraight.h"
 
 //Constructor
-flowSimulation1PosStraight::flowSimulation1PosStraight(callBackLinks* CBLptr,const int& maxVelocity,const int& maxVelocity_Density)
-	:sectionVehicleSet(CBLptr), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density){
+flowSimulation1PosStraight::flowSimulation1PosStraight(callBackLinks* CBLptr, const int& maxVelocity, const int& maxVelocity_Density)
+	:sectionVehicleSet(CBLptr), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
 	m_CBLptr = CBLptr;
 }
 
 //Constructor used for unittest
 flowSimulation1PosStraight::flowSimulation1PosStraight(const int& maxVelocity, const int& maxVelocity_Density)
-	:sectionVehicleSet(), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
+	: sectionVehicleSet(), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
 }
 
-flowSimulation1PosStraight::~flowSimulation1PosStraight() noexcept{}
+flowSimulation1PosStraight::~flowSimulation1PosStraight() noexcept {}
 
 void flowSimulation1PosStraight::printContentOfSection(const int& p1xx, const int& p1yy, const int& p2xx, const int& p2yy) {
 	for (auto& i : m_vehicleSet) {
@@ -22,8 +22,8 @@ void flowSimulation1PosStraight::printContentOfSection(const int& p1xx, const in
 		}
 	}
 }
-		
-int flowSimulation1PosStraight::flow(const int &numberOfLanes, const int &length, const bool &riseOrDecline) {
+
+int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	flag = false;
 	ownSpeed = 0;
 	ownPosition = 0;
@@ -261,4 +261,3 @@ int flowSimulation1PosStraight::flow(const int &numberOfLanes, const int &length
 	}
 	return numberOfVehicleinRange;
 }
-		
