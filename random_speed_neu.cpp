@@ -2,6 +2,15 @@
 #include "PrecompiledHeadersEdges.h"
 #include "random_speed_neu.h"
 
+randomSpeed_neu::randomSpeed_neu() {
+	q1.push(70);
+	q1.push(80);
+	q1.push(90);
+	random();
+}
+
+randomSpeed_neu::~randomSpeed_neu() noexcept {}
+
 void randomSpeed_neu::randomNumberRequest() {
 	if (q1.empty()) {
 		if (serviceBool == false) {

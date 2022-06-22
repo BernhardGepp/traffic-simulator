@@ -108,7 +108,7 @@ namespace bbe {
 			return retVal;
 		}
 
-		void deallocate(T* data) {
+		void PoolAllocator::deallocate(T* data) {
 			PoolChunk<T>* poolChunk = reinterpret_cast<PoolChunk<T>*>(data);
 			if (poolChunk != m_head) {
 				m_openallocations--;
@@ -121,11 +121,11 @@ namespace bbe {
 			}
 		}
 
-		PoolChunk<T>* xxxx(T* data) {
+		PoolChunk<T>* PoolAllocator::xxxx(T* data) {
 			return reinterpret_cast<PoolChunk<T>*>(data);
 		}
 
-		void deallocateClean(T* data) {
+		void PoolAllocator::deallocateClean(T* data) {
 			if (data != nullptr) {
 				m_openallocations--;
 				data->~T();
@@ -134,10 +134,6 @@ namespace bbe {
 				m_quarantine.push_back(poolChunk);
 			}
 		}
-		
-		/*size_t PoolAllocator::getNumberOfAllocations() {
-			return m_openallocations;
-		}*/
 		
 		void PoolAllocator::buildVectorOfObjektPtr() {
 			vehicle* vc = nullptr;

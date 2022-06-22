@@ -4,17 +4,12 @@
 class randomSpeed_neu {
 public:
 	int a=100;
-	randomSpeed_neu::randomSpeed_neu() {
-		q1.push(70);
-		q1.push(80);
-		q1.push(90);
-		random();
-	}
+	randomSpeed_neu();
 	randomSpeed_neu::randomSpeed_neu(const randomSpeed_neu& other) = delete;
 	randomSpeed_neu& operator= (const randomSpeed_neu& other) = delete;
 	randomSpeed_neu::randomSpeed_neu(const randomSpeed_neu&& other) = delete;
 	randomSpeed_neu&& operator= (const randomSpeed_neu&& other) = delete;
-	randomSpeed_neu::~randomSpeed_neu() noexcept {}
+	~randomSpeed_neu() noexcept;
 	
 	void randomNumberRequest();
 	
