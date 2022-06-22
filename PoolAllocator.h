@@ -107,7 +107,14 @@ namespace bbe {
 			}
 			return retVal;
 		}
+		/*void deallocate(T* data);
 
+		PoolChunk<T>* xxxx(T* data);
+
+		void deallocateClean(T* data);
+
+		void buildVectorOfObjektPtr();*/
+		
 		void PoolAllocator::deallocate(T* data) {
 			PoolChunk<T>* poolChunk = reinterpret_cast<PoolChunk<T>*>(data);
 			if (poolChunk != m_head) {

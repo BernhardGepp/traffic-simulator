@@ -313,6 +313,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\PrintInGDIplusWindow.cpp" />
     <ClCompile Include="..\PrintInGDIplusWinEmpty.cpp" />
     <ClCompile Include="..\route.cpp" />
+    <ClCompile Include="..\sectionVehicleSet.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />
