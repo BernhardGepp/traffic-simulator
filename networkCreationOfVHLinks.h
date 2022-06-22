@@ -1,13 +1,17 @@
 #pragma once
-#include "callBackLinks.h"
 #include "PrecompiledHeadersEdges.h"
+#include "callBackLinks.h"
+#include "edge.h"
+#include "graph.h"
+#include "vertex.h"
 
+/*
 bool sortBottomUp(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 	return a.first > b.first;
 }
 bool sortTopDown(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 	return a.first < b.first;
-}
+}*/
 
 class networkCreationOfVHLinks {
 public:
@@ -18,13 +22,16 @@ public:
 	callBackLinks* m_CBLptr=nullptr;
 	concreteObserverSubjekt* m_cObSptr=nullptr;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
-	networkCreationOfVHLinks::networkCreationOfVHLinks() {
-		
-	}
-	networkCreationOfVHLinks::~networkCreationOfVHLinks() {
-		
-	}
-	void networkCreationOfVHLinks::iniziallizationOfPointer(callBackLinks* CBL,concreteObserverSubjekt* cOS) {
+	networkCreationOfVHLinks();
+	~networkCreationOfVHLinks();
+	
+	void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS);
+	void fillNetworkLaneVector(std::pair<int, int> startingPoint, std::pair<int, int> endingPoint, bool horizontalOrVertival, int NoL);
+	bool checkIfInNetworkLaneVector();
+	void vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex);
+	void establishVertexOfGraphA();
+	std::unique_ptr<PrintPattern> choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV);
+	/*void networkCreationOfVHLinks::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
 		m_CBLptr = CBL;
 		m_cObSptr = cOS;
 	}
@@ -656,5 +663,5 @@ public:
 				return std::make_unique<PrintPatternLine2LaneVertiNeg>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
 			}
 		}
-	}
+	}*/
 };

@@ -24,3 +24,4 @@
 #include <boost/ptr_container/indirect_fun.hpp>
 #include <gsl/gsl>
 #include "PrintInGDIplusWindow.h"
+#include "vertex.h"

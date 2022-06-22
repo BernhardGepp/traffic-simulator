@@ -1,5 +1,5 @@
 #pragma once
-#include "vertex.h"
+//#include "vertex.h"
 #include "PrecompiledHeadersEdges.h"
 #include "vehicle.h"
 class vertexStart :public vertex {

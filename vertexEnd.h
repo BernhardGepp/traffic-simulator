@@ -1,6 +1,6 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-#include "vertex.h"
+//#include "vertex.h"
 #include "vehicle.h"
 
 class vertexEnd :public vertex {
