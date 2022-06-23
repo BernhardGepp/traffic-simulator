@@ -14,15 +14,7 @@ public:
 
 class concreteObserverSubjekt :public observerSubjekt {
 public:
-	void registrieren(observer* obserPTR) override {
-		m_observerPTRvector.push_back(obserPTR);
-	}
-	void entfernen() override{
-		m_observerPTRvector.clear();
-	}
-	void benachrichtigen(const int& param1, const int& param2) override{
-		for (auto& i : m_observerPTRvector) {
-			i->notify(param1, param2);
-		}
-	}
+	void registrieren(observer* obserPTR) override;
+	void entfernen() override;
+	void benachrichtigen(const int& param1, const int& param2) override;
 };

@@ -308,6 +308,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\graph.cpp" />
     <ClCompile Include="..\networkCreationOfVHLinks.cpp" />
     <ClCompile Include="..\networkCreationVHLinks.cpp" />
+    <ClCompile Include="..\observer_subjekt.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LN.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LP.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin2LN.cpp" />
@@ -316,6 +317,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\PrintInGDIplusWinEmpty.cpp" />
     <ClCompile Include="..\route.cpp" />
     <ClCompile Include="..\sectionVehicleSet.cpp" />
+    <ClCompile Include="..\selectionFlowSimulation.cpp" />
     <ClCompile Include="..\velocityToLength.cpp" />
     <ClCompile Include="..\vertex.cpp" />
     <ClCompile Include="..\vertexEnd.cpp" />
