@@ -54,3 +54,10 @@ void vertexEnd::setPrintShape(size_t param) {
 size_t vertexEnd::getPrintShape() {
 	return 0;
 }
+
+std::vector<std::pair<int, int>> vertexEnd::getAdjacentEdges() {
+	std::vector<std::pair<int, int>> returnValue;
+	returnValue.clear();
+
+	return returnValue;
+}

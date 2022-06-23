@@ -319,6 +319,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\velocityToLength.cpp" />
     <ClCompile Include="..\vertex.cpp" />
     <ClCompile Include="..\vertexEnd.cpp" />
+    <ClCompile Include="..\vertexFlex.cpp" />
     <ClCompile Include="..\vertexStart.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />

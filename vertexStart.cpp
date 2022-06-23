@@ -42,3 +42,13 @@ size_t vertexStart::getPrintShape(){
 	return 0;
 }
 
+std::vector<std::pair<int, int>> vertexStart::getAdjacentEdges() {
+	std::vector<std::pair<int, int>> param1;
+	param1.clear();
+	if (!m_transmissionTableInt.empty()) {
+		for (auto& i : m_transmissionTableInt) {
+			param1.push_back(std::make_pair(m_vertexID, i));
+		}
+	}
+	return param1;
+}

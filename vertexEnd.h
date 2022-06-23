@@ -21,13 +21,7 @@ public:
 	int checkIfVehicleIsInV(vehicle* vehiclePTR)override;
 	void deleteVehicleInV(vehicle* vehiclePTR) override;
 	size_t sizeOfTransmissiontable() override;
-	//virtual std::vector<std::pair<int, int>> getAdjacentEdges()override;
-	virtual std::vector<std::pair<int, int>> getAdjacentEdges()override {
-		std::vector<std::pair<int, int>> returnValue;
-		returnValue.clear();
-		
-		return returnValue;
-	}
+	std::vector<std::pair<int, int>> getAdjacentEdges();
 	size_t sizeOfSingleTransmissiontable(int iter) override;
 	void setPrintShape(size_t param) override;
 	size_t getPrintShape() override;
