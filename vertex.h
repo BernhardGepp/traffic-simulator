@@ -21,23 +21,10 @@ public:
 	int m_numberOfVehicle = 0;
 
 	explicit vertex::vertex() = default;
+	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes);
+	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd, const int& numberOfLane);
+	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd);
 
-	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)
-		: m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_numberOfLanes(numberOfLanes)
-	{
-		
-	}
-	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd, const int& numberOfLane)
-		:m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_shapeOfThatVertex(BeginnOrEnd), m_numberOfLanesVertical(numberOfLane)
-	{
-		m_numberOfLanesHorizontal = m_numberOfLanesVertical;
-		m_numberOfLanes.first = 0;
-		m_numberOfLanes.second = 0;
-	}
-	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)
-		:m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_shapeOfThatVertex(BeginnOrEnd)
-	{
-	}
 	vertex::vertex(const vertex& other) {
 		m_vertexID = other.m_vertexID;
 		m_vertexIDpair = other.m_vertexIDpair;
@@ -90,18 +77,12 @@ public:
 			return *this;
 		}
 	}
-	vertex::~vertex() noexcept {}
+	~vertex() noexcept;
+	void setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef);
 
-	void vertex::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
-		m_VPAptr = &poolAllocatorRef;
-	}
-
-	void vertex::changeVertexPurpose() {
-		m_shapeOfThatVertex = 0;
-	}
-	void vertex::numberingOfVertexes(const int& number) {
-		m_vertexID = number;
-	}
+	void changeVertexPurpose();
+	void numberingOfVertexes(const int& number);
+	
 	virtual vehicle* getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param) = 0;
 	virtual void setTransmissionTable(int a) = 0;
 	virtual void vehiclePTRmanipulationInV(vehicle* vehiclePTR) = 0;

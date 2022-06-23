@@ -307,6 +307,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\flowSimulation2PosStraightA.cpp" />
     <ClCompile Include="..\graph.cpp" />
     <ClCompile Include="..\networkCreationOfVHLinks.cpp" />
+    <ClCompile Include="..\networkCreationVHLinks.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LN.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LP.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin2LN.cpp" />
@@ -316,6 +317,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\route.cpp" />
     <ClCompile Include="..\sectionVehicleSet.cpp" />
     <ClCompile Include="..\velocityToLength.cpp" />
+    <ClCompile Include="..\vertex.cpp" />
+    <ClCompile Include="..\vertexEnd.cpp" />
+    <ClCompile Include="..\vertexStart.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />

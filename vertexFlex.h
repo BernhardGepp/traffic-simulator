@@ -1,7 +1,6 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-//#include "vehicle.h"
-#include "vertex.h"
+
 class transmissionTable {
 public:
 
