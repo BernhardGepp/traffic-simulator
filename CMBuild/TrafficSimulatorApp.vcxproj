@@ -71,9 +71,11 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <PlatformToolset>v142</PlatformToolset>
@@ -107,6 +109,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Debug\</OutDir>
     <IntDir>TrafficSimulatorApp.dir\Debug</IntDir>
+    <TargetName>TrafficSimulatorApp</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Release\</OutDir>
+    <IntDir>TrafficSimulatorApp.dir\Release\</IntDir>
     <TargetName>TrafficSimulatorApp</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -243,6 +250,17 @@
       <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>PrecompiledHeadersEdges.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
@@ -308,6 +326,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\graph.cpp" />
     <ClCompile Include="..\networkCreationOfVHLinks.cpp" />
     <ClCompile Include="..\networkCreationVHLinks.cpp" />
+    <ClCompile Include="..\observer.cpp" />
     <ClCompile Include="..\observer_subjekt.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LN.cpp" />
     <ClCompile Include="..\PrintInGDIplusWin1LP.cpp" />
@@ -328,6 +347,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\random_speed_neu.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vehicle.cpp" />

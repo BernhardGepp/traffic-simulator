@@ -16,6 +16,31 @@ set(Sources
 	PrecompiledHeadersEdges.cpp 
 	random_speed_neu.cpp 
 	vehicle.cpp
+	flowSimulation1NegStraight.cpp
+	flowSimulation1PosStraight.cpp
+	flowSimulation2NegStraight.cpp
+	flowSimulation2PosStraight.cpp
+	graph.cpp
+	networkCreationOfVHLinks.cpp
+	networkCreationVHLinks.cpp
+	observer.cpp
+	observer_subjekt.cpp
+	PrintInGDIplusWin1LN.cpp
+	PrintInGDIplusWin1LP.cpp
+	PrintInGDIplusWin2LN.cpp
+	PrintInGDIplusWin2LP.cpp
+	PrintInGDIplusWin1LN.cpp
+	PrintInGDIplusWindow.cpp
+	PrintInGDIplusWin1LN.cpp
+	PrintInGDIplusWinEmpty.cpp
+	route.cpp
+	sectionVehicleSet.cpp
+	selectionFlowSimulation.cpp
+	velocityToLength.cpp
+	vertex.cpp
+	vertexEnd.cpp
+	vertexFlex.cpp
+	vertexStart.cpp
 	)
 
 add_subdirectory(googletest)
