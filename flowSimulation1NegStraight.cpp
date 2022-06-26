@@ -22,11 +22,12 @@ void flowSimulation1NegStraight::printContentOfSection(const int& p1xx, const in
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P1LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
-
 	}
 }
 
 int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
+	//********************************************************************
+	//Traffic flow simulation algorithm for connections with one lane in descending direction
 	flag = false;
 	ownSpeed = 0;
 	ownPosition = 0;

@@ -1,6 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "flowSimulation2NegStraight.h"
 
+//Constructor and destructor of the class:
 flowSimulation2NegStraight::flowSimulation2NegStraight(callBackLinks* CBLptr, const int& maxVelocity, const int& maxVelocity_Density)
 	:sectionVehicleSet(CBLptr), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
 	m_CBLptr = CBLptr;
@@ -21,6 +22,8 @@ void flowSimulation2NegStraight::printContentOfSection(const int& p1xx, const in
 }
 
 int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
+	//********************************************************************
+	//Traffic flow simulation algorithm for connections with two lanes in descending direction
 	flag = false;
 	ownSpeed = 0;
 	ownPosition = 0;

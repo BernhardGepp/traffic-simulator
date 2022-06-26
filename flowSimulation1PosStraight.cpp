@@ -24,6 +24,8 @@ void flowSimulation1PosStraight::printContentOfSection(const int& p1xx, const in
 }
 
 int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
+	//********************************************************************
+	//Traffic flow simulation algorithm for connections with one lane in ascending direction
 	flag = false;
 	ownSpeed = 0;
 	ownPosition = 0;

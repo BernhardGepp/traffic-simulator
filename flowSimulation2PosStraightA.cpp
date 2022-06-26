@@ -1,6 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "flowSimulation2PosStraight.h"
 
+//Constructor and destructor of the class:
 flowSimulation2PosStraightA::flowSimulation2PosStraightA(callBackLinks* CBLptr, const int& maxVelocity, const int& maxVelocity_Density)
 	:sectionVehicleSet(CBLptr), m_maxVelocity(maxVelocity), m_maxVelocity_Density(maxVelocity_Density) {
 	m_CBLptr = CBLptr;
@@ -17,6 +18,8 @@ void flowSimulation2PosStraightA::printContentOfSection(const int& p1xx, const i
 }
 
 int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
+	//********************************************************************
+	//Traffic flow simulation algorithm for connections with two lanes in ascending direction
 	flag = false;
 	ownSpeed = 0;
 	ownPosition = 0;

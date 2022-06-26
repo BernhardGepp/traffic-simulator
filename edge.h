@@ -11,7 +11,6 @@
 class edge {
 private:
 	int m_simulationIterator = 0;
-	int p2Shape = 99;
 	int m_maxVelocity = 140;
 	int m_maxVelocity_Density = 140;
 	int m_numberOfVehicleinRange = 0;
@@ -27,10 +26,6 @@ public:
 	std::shared_ptr<vertex> m_endVertexPtr;
 	int m_numberOfLanes = 1;
 	bool m_verticalOrHorizontal = true;
-	int p1x = 0;
-	int p1y = 0;
-	int p2x = 0;
-	int p2y = 0;
 	std::vector<std::pair<std::pair<int, float>, std::vector<int>>> m_routeTable_IDrValueIDvertex;
 	size_t m_routeTableIterator = 0;
 	bool m_routeServiceBool = false;
@@ -42,7 +37,6 @@ public:
 	float m_averageTravelTime = 0.0f;
 	int m_length = 0;
 	bool m_risingOrDescention = true;
-	int p1Shape = 99;
 	std::vector<vehicle*> vehicleEraseVector;
 
 	edge();
