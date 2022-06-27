@@ -82,7 +82,7 @@ void edge::initialisation() {
 		}
 		if (m_startVertexPtr->m_XcoordinateVertex > m_endVertexPtr->m_XcoordinateVertex) {
 			m_risingOrDescention = false;
-			m_length = m_startVertexPtr->m_XcoordinateVertex - m_endVertexPtr->m_YcoordinateVertex;
+			m_length = m_startVertexPtr->m_XcoordinateVertex - m_endVertexPtr->m_XcoordinateVertex;
 		}
 	}
 }
