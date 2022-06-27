@@ -1,6 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vertexFlex.h"
 
+//Constructor and destructor of the class:
 transmissionTable::~transmissionTable() noexcept {}
 
 vehicle* transmissionTable::getPTR() {
@@ -21,6 +22,9 @@ vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int
 }
 vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) : vertex(xCoordinate, yCoordinate, numberOfLanes) {}
 vertexFlex::~vertexFlex() noexcept {}
+
+//********************************************************************
+//Implementations of the methods of the virtual functions of the parent class:
 
 vehicle* vertexFlex::getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param) {
 	serviceBool = false;

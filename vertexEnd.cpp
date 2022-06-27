@@ -1,8 +1,12 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vertexEnd.h"
 
+//Constructor and destructor of the class:
 vertexEnd::vertexEnd(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
 vertexEnd::~vertexEnd(){}
+
+//********************************************************************
+//Implementations of the methods of the virtual functions of the parent class:
 
 vehicle* vertexEnd::getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param){
 	return nullptr;
@@ -58,6 +62,5 @@ size_t vertexEnd::getPrintShape() {
 std::vector<std::pair<int, int>> vertexEnd::getAdjacentEdges() {
 	std::vector<std::pair<int, int>> returnValue;
 	returnValue.clear();
-
 	return returnValue;
 }

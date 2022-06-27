@@ -1,7 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vehicle.h"
-//#pragma once
 
+//Constructor and destructor of the class:
 vehicle::vehicle() {
 	m_routeVertexID_vehicle.reserve(10);
 	m_routeVertexID_vehicle.clear();
@@ -21,7 +21,8 @@ vehicle::~vehicle() noexcept{
 	m_routeVertexID_vehicle.clear();
 }
 
-
+//********************************************************************
+//Methods of the class:
 
 int vehicle::position()const {
 	return m_position;

@@ -1,8 +1,12 @@
 #include "PrecompiledHeadersEdges.h"
 #include "route.h"
 
+//Constructor and destructor of the class:
 route::route(std::vector<int> vertexOfRouteID, std::vector<std::shared_ptr<edge>>edgesOfRoute,int index) :m_vertexOfRouteID(vertexOfRouteID), m_edgesOfRoute(edgesOfRoute),m_index(index) {}
 route::~route() noexcept{}
+
+//********************************************************************
+//Methods of the class:
 
 bool route::checkIfSectionWasIncluded(const int& firstVertexID,const int& startV, const int& endV) {
 	bool returnbool = false;

@@ -1,11 +1,16 @@
 #include "PrecompiledHeadersEdges.h"
 #include "velocityToLength.h"
 
+//Constructor and destructor of the class:
 velocityToLength::velocityToLength() {};
 
 velocityToLength::~velocityToLength() noexcept {};
 
+//********************************************************************
+//Method of the class:
 int velocityToLength::VLStepConversion(const int& m_velocity) {
+	//********************************************************************
+	//This method represents a conversion matirx between speed and travel distance.
 	if (m_velocity > 129)
 		return 36;
 	if ((m_velocity < 130) && (m_velocity > 119))

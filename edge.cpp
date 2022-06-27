@@ -26,7 +26,7 @@ int edge::getEndVertex() {
 
 void edge::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
 	//****************************************************************
-	//This method sets the pointer that points to the "PoolAllocator" associated with the graph whose part this lane is.
+	//This method sets the pointer that points to the "PoolAllocator" associated with the graph whose part this link is.
 	m_VPAptr = &poolAllocatorRef;
 }
 
@@ -219,7 +219,7 @@ vehicle* edge::routeAssignment(vehicle* VPAEptr) {
 
 		}
 		else {
-			m_routeTableIterator = 0;//Iterator rücksetzen!
+			m_routeTableIterator = 0;//Reset Iterator!
 		}
 		if (m_routeServiceBool == false) {
 			m_routeServiceBool = true;
@@ -270,7 +270,7 @@ vehicle* edge::insertion(vehicle* VPAEptr) {
 
 void edge::allocateVehicleAtPositionX() {
 	//********************************************************************
-	//The method "allocateVehicleAtPositionX()" can be used to block the lane (edge). 
+	//The method "allocateVehicleAtPositionX()" can be used to block the link (edge). 
 	//The method is executed when a lane should to be blocked at a certain position												
 	bool checkIfPositionIsEmpty = false;
 	if (m_observerPTR->m_position.second > 0) {

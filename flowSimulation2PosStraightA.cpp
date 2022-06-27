@@ -9,6 +9,9 @@ flowSimulation2PosStraightA::flowSimulation2PosStraightA(callBackLinks* CBLptr, 
 flowSimulation2PosStraightA::~flowSimulation2PosStraightA()noexcept {}
 
 void flowSimulation2PosStraightA::printContentOfSection(const int& p1xx, const int& p1yy, const int& p2xx, const int& p2yy) {
+	//********************************************************************
+	//This method and the method "addPrintContent" of the inheriting classes of "PrintInGDIPlusWindow" form a unit, 
+	//whose goal is to fill the positions of the vehicle objects in a visually suitable form in a data container(m_pointContainer in class "PrintInGDIplusWindow").
 	for (auto& i : m_vehicleSet) {
 		i->serviceBool = false;
 		if (!i->m_routeVertexID_vehicle.empty()) {

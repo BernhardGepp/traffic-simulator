@@ -2,6 +2,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "random_speed_neu.h"
 
+//Constructor and destructor of the class:
 randomSpeed_neu::randomSpeed_neu() {
 	q1.push(70);
 	q1.push(80);
@@ -61,5 +62,4 @@ void randomSpeed_neu::randomNumberGenerator() {
 
 void randomSpeed_neu::random() {
 	f1 = std::async(std::launch::async, randomNumberGenerator);
-
 }

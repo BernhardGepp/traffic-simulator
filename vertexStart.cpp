@@ -1,9 +1,13 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vertexStart.h"
 
+//Constructor and destructor of the class:
 vertexStart::vertexStart(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
 
 vertexStart::~vertexStart() noexcept {}
+
+//********************************************************************
+//Implementations of the methods of the virtual functions of the parent class:
 
 vehicle* vertexStart::getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param){
 	return m_VPAptr->allocate(1, param);

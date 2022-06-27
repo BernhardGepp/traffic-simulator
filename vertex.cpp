@@ -1,6 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vertex.h"
 
+//Constructor and destructor of the class:
 vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)
 		: m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_numberOfLanes(numberOfLanes){}
 	
@@ -15,6 +16,9 @@ vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& Beginn
 	:m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_shapeOfThatVertex(BeginnOrEnd){}
 
 vertex::~vertex() noexcept {}
+
+//********************************************************************
+//Methods of the class:
 
 void vertex::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
 	m_VPAptr = &poolAllocatorRef;

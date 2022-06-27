@@ -11,8 +11,12 @@ bool sortTopDown(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 	return a.first < b.first;
 }
 
+//Constructor and destructor of the class:
 networkCreationOfVHLinks::networkCreationOfVHLinks() {}
 networkCreationOfVHLinks::~networkCreationOfVHLinks() {}
+
+//********************************************************************
+//Methods of the class:
 
 void networkCreationOfVHLinks::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
 	m_CBLptr = CBL;
@@ -30,43 +34,11 @@ bool networkCreationOfVHLinks::checkIfInNetworkLaneVector() {
 	return true;
 }
 
-void networkCreationOfVHLinks::vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex) {
-	//Vertex generation for a graph with vertical and horizontal links
-	bool serviceBool = false;
-	int shapeOfThatVertex_var = shapeOfThatVertex;
-	if (vertexOfGraphPtrVectorConainer.size() == 0) {
-		serviceBool = true;
-	}
-	else {
-		serviceBool = true;
-		for (auto i = vertexOfGraphPtrVectorConainer.begin(); i != vertexOfGraphPtrVectorConainer.end(); i++) {
-			if ((XandYpostion.first == (*i)->m_XcoordinateVertex) && (XandYpostion.second == (*i)->m_YcoordinateVertex)) {
-				if ((*i)->m_shapeOfThatVertex == shapeOfThatVertex_var) {
-					serviceBool = false;
-				}
-				if ((*i)->m_shapeOfThatVertex != shapeOfThatVertex_var) {
-					serviceBool = true;
-					shapeOfThatVertex_var = 11;
-					vertexOfGraphPtrVectorConainer.erase(i--);
-					break;
-				}
-			}
-		}
-	}
-	if (serviceBool) {
-		if (shapeOfThatVertex_var == 1) {
-			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexStart>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
-		}
-		if (shapeOfThatVertex_var == 2) {
-			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexEnd>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
-		}
-		if (shapeOfThatVertex_var == 11) {
-			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexFlex>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
-		}
-	}
-}
-
 void  networkCreationOfVHLinks::establishVertexOfGraphA() {
+	//********************************************************************
+	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
+	//A traffic graph (object "graph")consists of edges and vertices, which are created in this method in the form of objects.
+	//********************************************************************
 	std::pair<int, int> startingPoint;
 	std::pair<int, int> endingPoint;
 	std::vector<std::tuple<std::pair<int, int>, std::pair<int, int>, bool, m_numberOfLanes>>::iterator estVerITER = networkLaneVector.begin();
@@ -613,9 +585,49 @@ void  networkCreationOfVHLinks::establishVertexOfGraphA() {
 	edgeOfGraphPtrContainer.clear();
 }
 
+void networkCreationOfVHLinks::vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex) {
+	//********************************************************************
+	//Vertex generation for a graph with vertical and horizontal links
+	//This method is called by the method "establishVertexOfGraphA". This method is part of the traffic graph generation. 
+	bool serviceBool = false;
+	int shapeOfThatVertex_var = shapeOfThatVertex;
+	if (vertexOfGraphPtrVectorConainer.size() == 0) {
+		serviceBool = true;
+	}
+	else {
+		serviceBool = true;
+		for (auto i = vertexOfGraphPtrVectorConainer.begin(); i != vertexOfGraphPtrVectorConainer.end(); i++) {
+			if ((XandYpostion.first == (*i)->m_XcoordinateVertex) && (XandYpostion.second == (*i)->m_YcoordinateVertex)) {
+				if ((*i)->m_shapeOfThatVertex == shapeOfThatVertex_var) {
+					serviceBool = false;
+				}
+				if ((*i)->m_shapeOfThatVertex != shapeOfThatVertex_var) {
+					serviceBool = true;
+					shapeOfThatVertex_var = 11;
+					vertexOfGraphPtrVectorConainer.erase(i--);
+					break;
+				}
+			}
+		}
+	}
+	if (serviceBool) {
+		if (shapeOfThatVertex_var == 1) {
+			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexStart>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
+		}
+		if (shapeOfThatVertex_var == 2) {
+			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexEnd>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
+		}
+		if (shapeOfThatVertex_var == 11) {
+			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexFlex>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
+		}
+	}
+}
+
 
 std::unique_ptr<PrintPattern> networkCreationOfVHLinks::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
+	//********************************************************************
 	//Selection of the appropriate print pattern
+	//This method is called by the method "establishVertexOfGraphA". This method is part of the traffic graph generation. 
 	if ((p1x < p2x) && (p1y == p2y)) {
 		if (lanesH == 1) {
 			return std::make_unique<PrintPatternLine1LaneHoriPos>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));

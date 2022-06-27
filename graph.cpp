@@ -1,6 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "graph.h"
 
+//Constructor and destructor of the class:
 graph::graph(const std::set<int>& setOfVertexes,
 	std::vector<std::shared_ptr<vertex>>& vectorOfVertex,
 	std::vector<std::shared_ptr<edge>>& vectorOfEdges,
@@ -13,14 +14,14 @@ graph::graph(const std::set<int>& setOfVertexes,
 {
 	int counter = 0;
 	for (auto& i : m_vectorOfVertexPtr) {
-		i->setPoolAllocatorPtr(m_poolAllocator);			//Assigning the corresponding PoolAllocator to the vertices of the graph
+		i->setPoolAllocatorPtr(m_poolAllocator);		//Assigning the corresponding PoolAllocator to the vertices of the graph
 		i->m_vertexIDpair.first = i->m_vertexID;
 		i->m_vertexIDpair.second = counter;
 		counter++;
 	}
-	for (auto& i : m_vectorOfEdgesPtr) {					//Assigning the corresponding PoolAllocator to the edges of the graph
+	for (auto& i : m_vectorOfEdgesPtr) {				//Assigning the corresponding PoolAllocator to the edges of the graph
 		i->setPoolAllocatorPtr(m_poolAllocator);
-		for (auto& j : m_vectorOfVertexPtr) {				//Initialization of the vertices in the graph
+		for (auto& j : m_vectorOfVertexPtr) {			//Initialization of the vertices in the graph
 			if (j->m_vertexID == i->m_startVertex) {
 				i->m_startVertexPtr = j;
 				j->setTransmissionTable(i->m_endVertex);
@@ -37,26 +38,27 @@ graph::graph(const std::set<int>& setOfVertexes,
 
 graph::~graph() noexcept {}
 
+//********************************************************************
+//Methods of the class:
+
 void graph::simulation(const int& simulationIterator) {
+	//*************************************************
 	//method for carrying out the simulation
 	if (simulationIterator % 10 == 0) {
 		calculationOfRouteIndex();
 	}
 	if (m_vectorOfEdgesPtr.size() != 0) {
 		for (auto& i : m_vectorOfEdgesPtr) {
-			i->simiRun(simulationIterator);						//Command to execute a simulation iteration
+			i->simiRun(simulationIterator);		//Command to execute a simulation iteration
 		}
 	}
-	if (simulationIterator % 20 == 0) {						//Calling a methode for cleaning up multiple captured vehicles
+	if (simulationIterator % 20 == 0) {			//Calling a methode for cleaning up multiple captured vehicles
 		clean();
 	}
 }
 
-void graph::deletePoolAllocator() {
-	m_poolAllocator.~PoolAllocator();
-}
-
 void graph::clean() {
+	//*************************************************
 	//methode for cleaning up multiple captured vehicles within the simulation
 	std::vector<std::pair<vehicle*, int>>vectorOfVehicleToErase;
 	vectorOfVehicleToErase.clear();
@@ -215,6 +217,7 @@ void graph::calculationOfRouteIndex() {
 }
 
 void graph::generationOfRoutesNeu() {
+	//*************************************************
 	//Method for exploring all routes in the graph
 	std::vector<std::shared_ptr<edge>> routeEdgeVector;
 	std::vector<std::pair<int, int>>routeVertexIDs;
@@ -438,10 +441,12 @@ void graph::generationOfRoutesNeu() {
 }
 
 void graph::printLanesAndVehiclesOfAllEdges() {
+	//********************************************************************
+	//method for displaying all vertexes, edges and vehicles on the surface
 	int counter = 0;
 	bool doubleVerticalVertex = false;
 	bool doubleHorizontalVertex = false;
-	//method for displaying a vertexes, edges and vehicles on the surface
+	
 	for (auto& i : m_vectorOfEdgesPtr) {
 		i->m_ppPtr->paintWhiteLinePP();
 	}
@@ -518,15 +523,24 @@ void graph::printLanesAndVehiclesOfAllEdges() {
 }
 
 void graph::showVertex() {
-
+	//********************************************************************
+	//method for displaying the numbers of the vertices on the surface
 	for (auto& i : m_vectorOfVertexPtr) {
 		m_CBLptr->topLevelFunctionPTR_f7PrintVertexNumber(i->m_XcoordinateVertex, i->m_YcoordinateVertex, i->m_vertexID);
 	}
 }
 
 void graph::destructSectionInGraph() {
+	//********************************************************************
+	//This method removes all pointers to vehicle objects in links of this traffic graph. 
+	//This method is used for safe termination of the program and ensures that no pointers are left behind that point to nothing.
+	//********************************************************************
 	m_vectorOfRoutesPtr.clear();
 	for (auto& i : m_vectorOfEdgesPtr) {
 		i->sectionDestruct();
 	}
+}
+
+void graph::deletePoolAllocator() {
+	m_poolAllocator.~PoolAllocator();
 }

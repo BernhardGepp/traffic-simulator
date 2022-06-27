@@ -1,12 +1,16 @@
 #include "PrecompiledHeadersEdges.h"
 #include "sectionVehicleSet.h"
 
+//Constructor and destructor of the class:
 sectionVehicleSet::sectionVehicleSet() {}
 	
 sectionVehicleSet::sectionVehicleSet(callBackLinks* CBLptr )
 	:m_CBLptr(CBLptr){}
 
-sectionVehicleSet::~sectionVehicleSet() noexcept {	}
+sectionVehicleSet::~sectionVehicleSet() noexcept {}
+
+//********************************************************************
+//Methods of the class:
 
 void sectionVehicleSet::insertSET(vehicle* a)
 {
