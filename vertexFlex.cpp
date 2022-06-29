@@ -27,7 +27,6 @@ vertexFlex::~vertexFlex() noexcept {}
 //Implementations of the methods of the virtual functions of the parent class:
 
 vehicle* vertexFlex::getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param) {
-	serviceBool = false;
 	if (!m_vectorOfTransmissionTable.empty()) {
 		for (auto& i : m_vectorOfTransmissionTable) {
 			if (i.param1 == endVertexNumber) {
@@ -36,28 +35,18 @@ vehicle* vertexFlex::getVehiclePtrOutOfVertex(const int& endVertexNumber, const 
 				}
 				else {
 					return i.getPTR();
-					serviceBool = false;
 				}
 			}
-			else {
-				if (m_VPAptr != nullptr) {
-					m_VPAptr->deallocateClean(i.getPTR());
-				}
-				serviceBool = true;
-			}
-
 		}
 	}
 	else {
 		return m_VPAptr->allocate(1, param);
 	}
-
 }
 
 void vertexFlex::setTransmissionTable(int param) {
 
 	transmissionTable tmT;
-
 	tmT.param1 = param;
 	m_vectorOfTransmissionTable.push_back(tmT);
 }
@@ -83,15 +72,15 @@ void vertexFlex::vehiclePTRmanipulationInV(vehicle* vehiclePTR) {
 		m_numberOfVehicle++;
 		a = 0;
 		serviceBool = false;
-		while (a < vehiclePTR->m_routeVertexID_vehicle.size() - 1) {
+		while (a < vehiclePTR->m_routeVertexID_vehicle.size()) {
 			if (vehiclePTR->m_routeVertexID_vehicle[a] == m_vertexID) {
 				if (!m_vectorOfTransmissionTable.empty()) {
 					for (auto& i : m_vectorOfTransmissionTable) {
-						if (vehiclePTR->m_routeVertexID_vehicle[a + 1] == i.param1) {
-
-							i.param2.push_back(vehiclePTR);
-							serviceBool = true;
-
+						if (a < vehiclePTR->m_routeVertexID_vehicle.size()) {
+							if (vehiclePTR->m_routeVertexID_vehicle[a + 1] == i.param1) {
+								i.param2.push_back(vehiclePTR);
+								serviceBool = true;
+							}
 						}
 					}
 				}
@@ -111,7 +100,6 @@ int vertexFlex::checkIfVehicleIsInV(vehicle* vehiclePTR) {
 			for (auto& j : i.param2) {
 				if (j == vehiclePTR) {
 					retVal++;
-
 				}
 			}
 		}

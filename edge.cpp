@@ -212,19 +212,17 @@ void edge::sort() {
 }
 
 vehicle* edge::routeAssignment(vehicle* VPAEptr) {
+	//********************************************************************
+	//This method is called when a route is assigned in a vehicle object.
 	VPAEptr->m_routeVertexID_vehicle.clear();
 
 	if (!m_routeTable_IDrValueIDvertex.empty()) {
-		if ((m_routeTableIterator >= 0) && (m_routeTableIterator < m_routeTable_IDrValueIDvertex.size())) {
-
-		}
-		else {
+		if (m_routeTableIterator >= m_routeTable_IDrValueIDvertex.size()) {
 			m_routeTableIterator = 0;//Reset Iterator!
 		}
 		if (m_routeServiceBool == false) {
 			m_routeServiceBool = true;
 		}
-
 		if (m_routeTableIterator < m_routeTable_IDrValueIDvertex.size()) {
 			VPAEptr->m_routeVertexID_vehicle.clear();
 			VPAEptr->m_routeID = m_routeTable_IDrValueIDvertex[m_routeTableIterator].first.first;
@@ -233,9 +231,6 @@ vehicle* edge::routeAssignment(vehicle* VPAEptr) {
 				VPAEptr->m_routeVertexID_vehicle.push_back(m_routeTable_IDrValueIDvertex[m_routeTableIterator].second[i]);
 			}
 			m_routeTableIterator++;
-			if (m_routeTableIterator > m_routeTable_IDrValueIDvertex.size()) {
-				m_routeTableIterator = 0;
-			}
 		}
 		else {
 			VPAEptr->m_routeID = -1;

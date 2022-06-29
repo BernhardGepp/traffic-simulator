@@ -3949,9 +3949,7 @@ TEST(TestCaseName, TestName) {
 }
 
 
-/*TEST(TestCaseName2, TestName2) {
-	std::ofstream file;
-	file.open("D:/vs_Community/simi_projekt/oberflaeche_versuch/23_Sommer2021/unitTest1.txt");
+TEST(TestCaseName2, TestName2) {
 	
 	edge e1;
 	edge e2;
@@ -4003,21 +4001,13 @@ TEST(TestCaseName, TestName) {
 	v3->m_vertexID = 13;
 	v4->m_vertexID = 14;
 	v5->m_vertexID = 15;
-	file << "\nv2 Size of Transmissiontable: " << v2->sizeOfTransmissiontable() << "\n";
 	v2->setTransmissionTable(13);
 	v2->setTransmissionTable(14);
 	v2->setTransmissionTable(15);
-	file << "\nv1 Size of Transmissiontable: " << v1->sizeOfTransmissiontable() << "\n";
-	file << "\nv2 Size of Transmissiontable: " << v2->sizeOfTransmissiontable() << "\n";
-	file << "\nv3 Size of Transmissiontable: " << v3->sizeOfTransmissiontable() << "\n";
-	file << "\nv4 Size of Transmissiontable: " << v4->sizeOfTransmissiontable() << "\n";
-	file << "\nv5 Size of Transmissiontable: " << v5->sizeOfTransmissiontable() << "\n";
 	std::vector<vehicle*> vehicle_vector;
 	vehicle* vehicleArray = new vehicle[91];
 	int counter = 0;
 	for (int i = 0; i < 90; i++) {
-
-		//file << "Hilfe "<<v3->m_numberOfVehicle<<"\n";
 		vehicleArray[i].m_lane = 1;
 		vehicleArray[i].m_position = 0;
 		vehicleArray[i].m_pref_speed = 100;
@@ -4044,93 +4034,34 @@ TEST(TestCaseName, TestName) {
 			counter = 0;
 		}
 	}
-	file << "\nvehicleArray[i].m_routeVertexID_vehicle.size: " << vehicleArray[4].m_routeVertexID_vehicle.size() << "\n";
-	for (int j = 0; j < 90; j++) {
-		for (int i = 0; i < vehicleArray[j].m_routeVertexID_vehicle.size(); i++) {
-			file << vehicleArray[j].m_routeVertexID_vehicle[i] << "\t";
-		}
-		file << "\n";
-	}
-	file << "\n";
 	counter = 0;
 	for (int i = 0; i < 500; i++) {
-		file << "counter:" << counter << " i: " << i << "in der Schleife\n";
 		if (counter < 90) {
 			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[i]);
-			//e1.sFs.vehicleSetPtr->flow(1, e1.m_length, e1.m_risingOrDescention);
 		}
-		file << "e1 size von SET: " << e1.sFs.vehicleSetPtr->getVehicleSetSize() << " RoD: " << e1.m_risingOrDescention << " length:" << e1.m_length << "\ne1: ";
 		counter++;
-		for (auto &j : e1.sFs.vehicleSetPtr->m_vehicleSet) {
-			file << j->m_position << "\t";
-		}
-		file << "\nVehicleEraseVector.size: " << e1.vehicleEraseVector.size() << "\n";
 
 		e1.singleSimulationStep(220);
-		//file << "e1 Counter: " << e1.counter << "\n";
-		file << " e1 zwischen singleSimulationStep und deallocation\n";
 		e1.deallocateVehicleAtEnd(true);
-		file << "v2->m_numberOfVehicle: " << v2->m_numberOfVehicle << "\n";
-		file << "e1 " << i << "e2\n";
 		e2.flow1L(1, 220);
-		file << "e2 size von SET: " << e2.sFs.vehicleSetPtr->getVehicleSetSize() << " RoD: " << e2.m_risingOrDescention << " length:" << e2.m_length << "\ne2: ";
-		for (auto &j : e2.sFs.vehicleSetPtr->m_vehicleSet) {
-			file << j->m_position << "\t";
-		}
 		e2.singleSimulationStep(220);
 		e2.deallocateVehicleAtEnd(true);
-		file << "\nv3->m_numberOfVehicle: " << v3->m_numberOfVehicle << "\n";
-		file << "e2 " << i << "e3\n";
 		e3.flow1L(1, 220);
-		file << "e3 size von SET: " << e3.sFs.vehicleSetPtr->getVehicleSetSize() << " RoD: " << e3.m_risingOrDescention << " length:" << e3.m_length << "\ne3: ";
-
-		for (auto &j : e3.sFs.vehicleSetPtr->m_vehicleSet) {
-			file << j->m_position << "\t";
-		}
 		e3.singleSimulationStep(220);
 		e3.deallocateVehicleAtEnd(true);
-		file << "\nv4->m_numberOfVehicle: " << v4->m_numberOfVehicle << "\n";
-		file << "e3 " << i << "e4\n";
 		e4.flow1L(1, 220);
-		file << "e4 size von SET: " << e4.sFs.vehicleSetPtr->getVehicleSetSize() << " RoD: " << e4.m_risingOrDescention << " length:" << e4.m_length << "\ne4: ";
-		for (auto &j : e4.sFs.vehicleSetPtr->m_vehicleSet) {
-			file << j->m_position << "\t";
-		}
 		e4.singleSimulationStep(220);
 		e4.deallocateVehicleAtEnd(true);
-		file << "\nv5->m_numberOfVehicle: " << v5->m_numberOfVehicle << "\n";
-		file << "*****************************************\n";
-		file << "v2->v3: " << v2->sizeOfSingleTransmissiontable(0) << "\n";
-		file << "v2->v4: " << v2->sizeOfSingleTransmissiontable(1) << "\n";
-		file << "v2->v5: " << v2->sizeOfSingleTransmissiontable(2) << "\n";
-		file << "*****************************************\n";
 	}
-	file << "v3->m_numberOfVehicle: " << v3->m_numberOfVehicle << "\n";
-	file << "v4->m_numberOfVehicle: " << v4->m_numberOfVehicle << "\n";
-	file << "v5->m_numberOfVehicle: " << v5->m_numberOfVehicle << "\n";
-
 	EXPECT_EQ(v3->m_numberOfVehicle, 30);
-	//EXPECT_TRUE(true);
-
-	EXPECT_EQ(v4->m_numberOfVehicle, 28);
-	//EXPECT_TRUE(true);
-	EXPECT_EQ(v5->m_numberOfVehicle, 28);
-	//EXPECT_TRUE(true);
-
-	//std::this_thread::sleep_for(std::chrono::milliseconds(250000));
-	
+	EXPECT_EQ(v4->m_numberOfVehicle, 30);
+	EXPECT_EQ(v5->m_numberOfVehicle, 30);
 	delete[] vehicleArray;
-	file.close();
-
-}*/
-
+}
 
 TEST(TestCaseName3, TestName3) {
-	
-
 	edge e1;
 	edge e2;
-	
 	e1.m_startVertex = 10;
 	e1.m_endVertex = 12;
 	e2.m_startVertex = 12;
@@ -4146,33 +4077,22 @@ TEST(TestCaseName3, TestName3) {
 	e2.m_startVertexPtr = v2;
 	e2.m_endVertexPtr = v3;
 	e2.m_endVertex = 13;
-	
 	e1.m_length = 200;
 	e2.m_length = 200;
-	
 	e1.m_risingOrDescention = true;
 	e2.m_risingOrDescention = false;
-	
 	e1.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
 	e2.sFs.vehicleSetPtr = std::make_unique<flowSimulation1NegStraight>(120, 200);
-	
 	e2.p1Shape = 0;
-	
-	
-
 	v1->m_vertexID = 10;
 	v2->m_vertexID = 12;
 	v3->m_vertexID = 13;
-	
 	v2->setTransmissionTable(13);
-	
-	
+
 	std::vector<vehicle*> vehicle_vector;
 	vehicle* vehicleArray = new vehicle[91];
 	
 	for (int i = 0; i < 90; i++) {
-
-		//file << "Hilfe "<<v3->m_numberOfVehicle<<"\n";
 		vehicleArray[i].m_lane = 1;
 		vehicleArray[i].m_position = 0;
 		vehicleArray[i].m_pref_speed = 100;
@@ -4181,77 +4101,42 @@ TEST(TestCaseName3, TestName3) {
 		vehicleArray[i].processedByIteration = true;
 		vehicleArray[i].m_riseOrDecline = true;
 		vehicleArray[i].m_moblieORStationary = true;
-
-		
 		vehicleArray[i].m_routeID = 1;
 		vehicleArray[i].m_routeVertexID_vehicle = { 10,12,13 };
 		
 	}
-	
-	
 	for (int i = 0; i < 500; i++) {
 		
 		if (i < 90) {
 			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[i]);
-			//e1.sFs.vehicleSetPtr->flow(1, e1.m_length, e1.m_risingOrDescention);
 		}
-		
-		
-		
-
 		e1.singleSimulationStep(220);
-		
 		e1.deallocateVehicleAtEnd(true);
-		
 		e2.flow1L(1, 220);
-		
 		e2.singleSimulationStep(220);
 		e2.deallocateVehicleAtEnd(true);
-		
-		
-		
-		
 	}
-	std::ofstream file;
-	file.open("D:/vs_Community/simi_projekt/oberflaeche_versuch/23_Sommer2021/unitTest2.txt");
-	file << v3->m_numberOfVehicle;
-	file.close();
-
 	EXPECT_EQ(v3->m_numberOfVehicle, 90);
-	//EXPECT_TRUE(true);
-
-	
-
-	//std::this_thread::sleep_for(std::chrono::milliseconds(250000));
-	
 	delete[] vehicleArray;
-	
-
 }
-/*TEST(TestCaseName4, TestName4) {
-	std::ofstream file;
-	file.open("D:/vs_Community/simi_projekt/oberflaeche_versuch/23_Sommer2021/unitTest3.txt");
-
-	edge e1;
+TEST(TestCaseName4, TestName4) {
 	
+	edge e1;
 	edge e3;
 	edge e4;
 	e1.m_startVertex = 10;
 	e1.m_endVertex = 12;
-	
 	e3.m_startVertex = 12;
 	e3.m_endVertex = 14;
 	e4.m_startVertex = 12;
 	e4.m_endVertex = 15;
 	std::shared_ptr<vertex>v1 = std::make_shared<vertexStart>(200, 0, 1);
 	std::shared_ptr<vertex>v2 = std::make_shared<vertexFlex>(200, 200, 0);
-	
 	std::shared_ptr<vertex>v4 = std::make_shared<vertexEnd>(200, 400, 2);
 	std::shared_ptr<vertex>v5 = std::make_shared<vertexEnd>(400, 200, 2);
 	e1.m_startVertexPtr = v1;
 	e1.m_endVertexPtr = v2;
 	e1.m_endVertex = 12;
-	
 	e3.m_startVertexPtr = v2;
 	e3.m_endVertexPtr = v4;
 	e3.m_endVertex = 14;
@@ -4259,41 +4144,29 @@ TEST(TestCaseName3, TestName3) {
 	e4.m_endVertexPtr = v5;
 	e4.m_endVertex = 15;
 	e1.m_length = 200;
-	
 	e3.m_length = 200;
 	e4.m_length = 200;
 	e1.m_risingOrDescention = true;
-	
 	e3.m_risingOrDescention = true;
 	e4.m_risingOrDescention = true;
 	e1.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
-	
 	e3.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
 	e4.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
-	
 	e3.p1Shape = 0;
 	e4.p1Shape = 0;
 
 	v1->m_vertexID = 10;
 	v2->m_vertexID = 12;
-	
 	v4->m_vertexID = 14;
 	v5->m_vertexID = 15;
-	file << "\nv2 Size of Transmissiontable: " << v2->sizeOfTransmissiontable() << "\n";
-	
 	v2->setTransmissionTable(14);
 	v2->setTransmissionTable(15);
-	file << "\nv1 Size of Transmissiontable: " << v1->sizeOfTransmissiontable() << "\n";
-	file << "\nv2 Size of Transmissiontable: " << v2->sizeOfTransmissiontable() << "\n";
 	
-	file << "\nv4 Size of Transmissiontable: " << v4->sizeOfTransmissiontable() << "\n";
-	file << "\nv5 Size of Transmissiontable: " << v5->sizeOfTransmissiontable() << "\n";
 	std::vector<vehicle*> vehicle_vector;
 	vehicle* vehicleArray = new vehicle[101];
 	int counter = 0;
 	for (int i = 0; i < 100; i++) {
 
-		//file << "Hilfe "<<v3->m_numberOfVehicle<<"\n";
 		vehicleArray[i].m_lane = 1;
 		vehicleArray[i].m_position = 0;
 		vehicleArray[i].m_pref_speed = 100;
@@ -4317,81 +4190,30 @@ TEST(TestCaseName3, TestName3) {
 			counter = 0;
 		}
 	}
-	file << "\nvehicleArray[i].m_routeVertexID_vehicle.size: " << vehicleArray[4].m_routeVertexID_vehicle.size() << "\n";
-	for (int j = 0; j < 100; j++) {
-		for (int i = 0; i < vehicleArray[j].m_routeVertexID_vehicle.size(); i++) {
-			file << vehicleArray[j].m_routeVertexID_vehicle[i] << "\t";
-		}
-		file << "\n";
-	}
-	file << "\n";
+	
 	counter = 0;
 	for (int i = 0; i < 500; i++) {
-		file << "counter:" << counter << " i: " << i << "in der Schleife\n";
 		if (counter < 100) {
 			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[i]);
-			//e1.sFs.vehicleSetPtr->flow(1, e1.m_length, e1.m_risingOrDescention);
 		}
-		file << "e1 size von SET: " << e1.sFs.vehicleSetPtr->getVehicleSetSize() << " RoD: " << e1.m_risingOrDescention << " length:" << e1.m_length << "\ne1: ";
 		counter++;
-		for (auto &j : e1.sFs.vehicleSetPtr->m_vehicleSet) {
-			file << j->m_position << "\t";
-		}
-		file << "\nVehicleEraseVector.size: " << e1.vehicleEraseVector.size() << "\n";
-
 		e1.singleSimulationStep(220);
-		//file << "e1 Counter: " << e1.counter << "\n";
-		file << " e1 zwischen singleSimulationStep und deallocation\n";
 		e1.deallocateVehicleAtEnd(true);
-		file << "v2->m_numberOfVehicle: " << v2->m_numberOfVehicle << "\n";
-		file << "e1 " << i << "e2\n";
-		
-		
-		
-		
-		file << "e2 " << i << "e3\n";
 		e3.flow1L(1, 220);
-		file << "e3 size von SET: " << e3.sFs.vehicleSetPtr->getVehicleSetSize() << " RoD: " << e3.m_risingOrDescention << " length:" << e3.m_length << "\ne3: ";
-
-		for (auto &j : e3.sFs.vehicleSetPtr->m_vehicleSet) {
-			file << j->m_position << "\t";
-		}
 		e3.singleSimulationStep(220);
 		e3.deallocateVehicleAtEnd(true);
-		file << "\nv4->m_numberOfVehicle: " << v4->m_numberOfVehicle << "\n";
-		file << "e3 " << i << "e4\n";
 		e4.flow1L(1, 220);
-		file << "e4 size von SET: " << e4.sFs.vehicleSetPtr->getVehicleSetSize() << " RoD: " << e4.m_risingOrDescention << " length:" << e4.m_length << "\ne4: ";
-		for (auto &j : e4.sFs.vehicleSetPtr->m_vehicleSet) {
-			file << j->m_position << "\t";
-		}
 		e4.singleSimulationStep(220);
 		e4.deallocateVehicleAtEnd(true);
-		file << "\nv5->m_numberOfVehicle: " << v5->m_numberOfVehicle << "\n";
-		file << "*****************************************\n";
-		file << "v2->v3: " << v2->sizeOfSingleTransmissiontable(0) << "\n";
-		file << "v2->v4: " << v2->sizeOfSingleTransmissiontable(1) << "\n";
-		
-		file << "*****************************************\n";
 	}
-	
-	file << "v4->m_numberOfVehicle: " << v4->m_numberOfVehicle << "\n";
-	file << "v5->m_numberOfVehicle: " << v5->m_numberOfVehicle << "\n";
-
 	EXPECT_EQ(v2->m_numberOfVehicle, 100);
 	EXPECT_TRUE(true);
-
-	EXPECT_EQ(v4->m_numberOfVehicle, 48);
+	EXPECT_EQ(v4->m_numberOfVehicle, 50);//48
 	EXPECT_TRUE(true);
-	EXPECT_EQ(v5->m_numberOfVehicle, 47);
+	EXPECT_EQ(v5->m_numberOfVehicle, 50);//47
 	EXPECT_TRUE(true);
-
-	//std::this_thread::sleep_for(std::chrono::milliseconds(250000));
-
 	delete[] vehicleArray;
-	file.close();
-
-}*/
+}
 
 
 
