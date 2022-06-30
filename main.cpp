@@ -89,15 +89,16 @@ VOID PaintFrame(HDC hdc) {
 	graphicsFR.DrawLine(&penFR, 0, height - 100, width - 100, height - 100);
 	graphicsFR.DrawLine(&penFR, width - 100, 0, width - 100, height - 100);
 }
-VOID PaintBox(HDC hdc, const int &param1, const int &param2, const int &param3, const int &param4) {
+VOID PaintBox(HDC hdc, const int &param1, const int &param2, const int &param3, const int &param4, const bool &param5) {
 	Graphics graphics5(hdc);
-	Pen	pen5(Gdiplus::Color(255, 0, 0, 255), 2);
-
+	Pen	pen1(Gdiplus::Color(255, 0, 0, 255), 2);
+	Pen	pen2(Gdiplus::Color(255, 255, 0, 0), 2);
 	//***************************************************
-	
-	Rect rectH(param1, param2, param3, param4);	//Rechteck Defintion
-	graphics5.DrawRectangle(&pen5, rectH);		//Rechteck zeichnen
-	
+	Rect rectH(param1, param2, param3, param4);	//Rectangle definition
+	if(param5)
+		graphics5.DrawRectangle(&pen1, rectH);		//Draw rectangle / color option 1
+	else
+		graphics5.DrawRectangle(&pen2, rectH);		//Draw rectangle / color option 2
 }
 VOID PaintWhiteLine(HDC hdc, const int &param1, const int &param2, const int &param3, const int &param4, const int &param5) {
 	Graphics graphics3(hdc);

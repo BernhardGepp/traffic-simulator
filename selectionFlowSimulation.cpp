@@ -55,16 +55,16 @@ void PrintPatternLine1LaneHoriNeg::accept(selectionFlowSimulation& v){
 
 void PrintPatternLine1LaneHoriNeg::paintBoxPP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 20, m_p12y, m_p1x - m_p2x - 20, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 20, m_p12y, m_p1x - m_p2x - 20, 10,false);
 	}
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 10,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 10,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 10,false);
 	}
 }
 
@@ -110,13 +110,13 @@ void PrintPatternLine1LaneHoriPos::accept(selectionFlowSimulation& v){
 }
 void PrintPatternLine1LaneHoriPos::paintBoxPP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == false))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 10,true);
 	if ((m_startVertexShort == false) && (m_endVertexShort == true))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 10,true);
 	if ((m_startVertexShort == true) && (m_endVertexShort == false))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 10,true);
 	if ((m_startVertexShort == true) && (m_endVertexShort == true))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 10,true);
 }
 void PrintPatternLine1LaneHoriPos::paintWhiteLinePP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
@@ -163,16 +163,16 @@ void PrintPatternLine1LaneVertiNeg::accept(selectionFlowSimulation& v){
 }
 void PrintPatternLine1LaneVertiNeg::paintBoxPP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 10, m_p1y - m_p2y - 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 10, m_p1y - m_p2y - 10,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 10, m_p1y - m_p2y - 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 10, m_p1y - m_p2y - 10,false);
 	}
 	if ((m_startVertexShort == false) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 20, 10, m_p1y - m_p2y - 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 20, 10, m_p1y - m_p2y - 20,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 10, m_p1y - m_p2y - 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 10, m_p1y - m_p2y - 10,false);
 	}
 }
 void PrintPatternLine1LaneVertiNeg::paintWhiteLinePP(){
@@ -212,16 +212,16 @@ void PrintPatternLine1LaneVertiPos::accept(selectionFlowSimulation& v){
 }
 void PrintPatternLine1LaneVertiPos::paintBoxPP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 10, m_p2y - 10 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 10, m_p2y - 10 - m_p1y,true);
 	}
 	if ((m_startVertexShort == false) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 10, m_p2y - 10 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 10, m_p2y - 10 - m_p1y,true);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 10, m_p2y - 20 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 10, m_p2y - 20 - m_p1y,true);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 10, m_p2y - 20 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 10, m_p2y - 20 - m_p1y,true);
 	}
 }
 void PrintPatternLine1LaneVertiPos::paintWhiteLinePP(){
@@ -269,16 +269,16 @@ void PrintPatternLine2LaneHoriNeg::accept(selectionFlowSimulation& v){
 }
 void PrintPatternLine2LaneHoriNeg::paintBoxPP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 20, m_p12y, m_p1x - m_p2x - 20, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 20, m_p12y, m_p1x - m_p2x - 20, 20,false);
 	}
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 20,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 20,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 20,false);
 	}
 }
 void PrintPatternLine2LaneHoriNeg::paintWhiteLinePP(){
@@ -325,13 +325,13 @@ void PrintPatternLine2LaneHoriPos::accept(selectionFlowSimulation& v){
 void PrintPatternLine2LaneHoriPos::paintBoxPP(){
 	//m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 20);
 	if ((m_startVertexShort == false) && (m_endVertexShort == false))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 20,true);
 	if ((m_startVertexShort == false) && (m_endVertexShort == true))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 10, m_p12y, m_p2x - m_p1x - 10, 20,true);
 	if ((m_startVertexShort == true) && (m_endVertexShort == false))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 20,true);
 	if ((m_startVertexShort == true) && (m_endVertexShort == true))
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p1x + 20, m_p12y, m_p2x - m_p1x - 20, 20,true);
 }
 void PrintPatternLine2LaneHoriPos::paintWhiteLinePP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
@@ -383,16 +383,16 @@ void PrintPatternLine2LaneVertiNeg::accept(selectionFlowSimulation& v){
 }
 void PrintPatternLine2LaneVertiNeg::paintBoxPP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 20, m_p1y - m_p2y - 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 20, m_p1y - m_p2y - 10,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 20, m_p1y - m_p2y - 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 20, m_p1y - m_p2y - 10,false);
 	}
 	if ((m_startVertexShort == false) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 20, 20, m_p1y - m_p2y - 20);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 20, 20, m_p1y - m_p2y - 20,false);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 20, m_p1y - m_p2y - 10);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p2y + 10, 20, m_p1y - m_p2y - 10,false);
 	}
 
 }
@@ -439,16 +439,16 @@ void PrintPatternLine2LaneVertiPos::paintBoxPP(){
 
 
 	if ((m_startVertexShort == false) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 20, m_p2y - 10 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 20, m_p2y - 10 - m_p1y,true);
 	}
 	if ((m_startVertexShort == false) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 20, m_p2y - 10 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 10, 20, m_p2y - 10 - m_p1y,true);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == false)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 20, m_p2y - 20 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 20, m_p2y - 20 - m_p1y,true);
 	}
 	if ((m_startVertexShort == true) && (m_endVertexShort == true)) {
-		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 20, m_p2y - 20 - m_p1y);
+		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p12x, m_p1y + 20, 20, m_p2y - 20 - m_p1y,true);
 	}
 }
 void PrintPatternLine2LaneVertiPos::paintWhiteLinePP(){

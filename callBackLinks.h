@@ -9,7 +9,7 @@ public:
 	void(*m_f3PaintFrame)(HDC hdc)=nullptr;
 	void(*m_f5PaintLane)(HDC hdc, const int& iPosXLk, const int& iPosYLk, const int& iPosXRk, const int& iPosYRk, const bool& HorV, const int& numberOfLanesa, const std::vector<std::tuple<int, int, int>>& PointsToBePrinted)=nullptr;
 	void(*m_f7PrintVertexNumber)(HDC hdc, const int& iPosX, const int& iPosY, const int& iVertexID)=nullptr;
-	void(*m_f10PaintBox)(HDC hdc, const int &param1, const int &param2, const int &param3, const int &param4)=nullptr;
+	void(*m_f10PaintBox)(HDC hdc, const int &param1, const int &param2, const int &param3, const int &param4, const bool &param5)=nullptr;
 	void(*m_f11PaintWhiteLine)(HDC hdc, const int &param1, const int &param2, const int &param3, const int &param4, const int &param5)=nullptr;
 	void(*m_f12PaintBoxStart)(HDC hdc, const int& x, const int& y)=nullptr;
 	void(*m_f13PaintBoxEnd)(HDC hdc, const int& x, const int& y)=nullptr; 
@@ -27,7 +27,7 @@ public:
 		void(*f3PaintFrame)(HDC hdc),
 		void(*f5PaintLane)(HDC hdc, const int& iPosXLk, const int& iPosYLk, const int& iPosXRk, const int& iPosYRk, const bool& HorV, const int& numberOfLanes, const std::vector<std::tuple<int, int, int>>& PointsToBePrinted),
 		void(*f7PrintVertexNumber)(HDC hdc, const int& iPosX, const int& iPosY, const int& iVertexID),
-		void(*f10PaintBox)(HDC hdc, const int& param1, const int& param2, const int& param3, const int& param4),
+		void(*f10PaintBox)(HDC hdc, const int& param1, const int& param2, const int& param3, const int& param4, const bool& param5),
 		void(*f11PaintWhiteLine)(HDC hdc, const int& param1, const int& param2, const int& param3, const int& param4, const int& param5),
 		void(*f12PaintBoxStart)(HDC hdc, const int& x, const int& y),
 		void(*f13PaintBoxEnd)(HDC hdc, const int& x, const int& y),
@@ -130,8 +130,8 @@ public:
 	auto topLevelFunctionPTR_f7PrintVertexNumber(const int& iPosX, const int& iPosY, const int& iVertexID) {
 		return m_f7PrintVertexNumber(m_hdc, iPosX, iPosY, iVertexID);
 	}
-	auto topLevelFunctionPTR_f10PaintBox(int param1, int param2, int param3, int param4) {
-		return m_f10PaintBox(m_hdc, param1, param2, param3, param4);
+	auto topLevelFunctionPTR_f10PaintBox(int param1, int param2, int param3, int param4, bool param5) {
+		return m_f10PaintBox(m_hdc, param1, param2, param3, param4, param5);
 	}
 	auto topLevelFunctionPTR_f11PaintWhiteLine(const int& param1, const int& param2, const int& param3, const int& param4, const int& param5) {
 		return m_f11PaintWhiteLine(m_hdc, param1, param2, param3, param4, param5);
