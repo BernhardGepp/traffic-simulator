@@ -21,6 +21,9 @@ set(Sources
 	flowSimulation2NegStraight.cpp
 	flowSimulation2PosStraight.cpp
 	graph.cpp
+	graphTrafficGenerationOnAllRoutes.cpp
+	graphTrafficGenerationOnFastRoutes.cpp
+	graphTrafficGenerationTrafficOnRoutesSelectedByDijkstraAlg.cpp
 	networkCreationOfVHLinks.cpp
 	networkCreationVHLinks.cpp
 	observer.cpp
