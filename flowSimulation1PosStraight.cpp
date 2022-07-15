@@ -27,6 +27,9 @@ void flowSimulation1PosStraight::printContentOfSection(const int& p1xx, const in
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P1LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
+		else {
+			m_P1LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, 0);
+		}
 	}
 }
 

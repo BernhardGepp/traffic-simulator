@@ -29,6 +29,9 @@ void flowSimulation1NegStraight::printContentOfSection(const int& p1xx, const in
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P1LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
+		else {
+			m_P1LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, 0);
+		}
 	}
 }
 
@@ -181,6 +184,9 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 							//i->m_pref_speed = ownSpeed;
 							if (i->m_moblieORStationary == true) {
 								i->m_pref_speed = ownSpeed + 1;
+								if (i->m_pref_speed >= 135) {
+									i->m_pref_speed = 80;
+								}
 								if (positionAheadVehicleAt1L >= length) {
 									i->m_position = (i->m_position) - VL.VLStepConversion(ownSpeed);
 									file5 << "\n1-i->m_position: \t" << i->m_position;

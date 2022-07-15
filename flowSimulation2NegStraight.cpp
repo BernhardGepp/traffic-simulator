@@ -21,6 +21,9 @@ void flowSimulation2NegStraight::printContentOfSection(const int& p1xx, const in
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P2LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
+		else {
+			m_P2LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, 0);
+		}
 	}
 }
 
@@ -162,43 +165,32 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 
 							if ((i->m_lane == 1) && (i->serviceBool == false)) {
 								i->serviceBool = true;
-								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
-									if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
-										if (i->m_moblieORStationary == true) {
+								if (i->m_moblieORStationary == true) {
+									if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
+										if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
 											ownSpeed += 21;
 										}
-									}
-									else if ((speedAheadVehicleAt1L - ownSpeed) > 10) {
-										if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - ownPosition) > 36)) || (positionAheadVehicleAt2L == length)) {
-											if (i->m_moblieORStationary == true) {
+										else if ((speedAheadVehicleAt1L - ownSpeed) > 10) {
+											if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - ownPosition) > 36)) || (positionAheadVehicleAt2L == length)) {
 												ownSpeed += 21;
 												i->m_lane = 2;
 											}
-										}
-										else {
-											if (i->m_moblieORStationary == true) {
+											else {
 												ownSpeed += 11;
 											}
 										}
-									}
-									else if ((speedAheadVehicleAt1L - ownSpeed) >= 1) {
-
-										if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - ownPosition) > 10)) || (positionAheadVehicleAt2L == length)) {
-											if (i->m_moblieORStationary == true) {
+										else if ((speedAheadVehicleAt1L - ownSpeed) >= 1) {
+											if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - ownPosition) > 10)) || (positionAheadVehicleAt2L == length)) {
 												ownSpeed += 10;
 												i->m_lane = 2;
 											}
-										}
-										else {
-											if (i->m_moblieORStationary == true) {
-												if (i->m_moblieORStationary == true) {
-													ownSpeed += 2;
-												}
+											else {
+												ownSpeed += 2;
 											}
 										}
 									}
 								}
-								if (i->m_moblieORStationary == false) {
+								else {
 									i->m_lane = 1;
 									i->m_pref_speed = 0;
 									ownSpeed = 0;
@@ -206,42 +198,44 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 							}
 							if ((i->m_lane == 2) && (i->serviceBool == false)) {
 								i->serviceBool = true;
-								if ((positionAheadVehicleAt1L == 0) || ((positionAheadVehicleAt1L - (i->m_position)) >= 36)) {
-									i->m_lane = 1;
-									if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
-										if (i->m_moblieORStationary == true) {
-											ownSpeed += 21;
+								if (i->m_moblieORStationary == true) {
+									if ((positionAheadVehicleAt1L == 0) || ((positionAheadVehicleAt1L - (i->m_position)) >= 36)) {
+										i->m_lane = 1;
+										if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
+											if (i->m_moblieORStationary == true) {
+												ownSpeed += 21;
+											}
+										}
+										else if ((speedAheadVehicleAt1L - ownSpeed) > 10) {
+											if (i->m_moblieORStationary == true) {
+												ownSpeed += 11;
+											}
+										}
+										else if ((speedAheadVehicleAt1L - ownSpeed) >= 1) {
+											if (i->m_moblieORStationary == true) {
+												ownSpeed += 2;
+											}
 										}
 									}
-									else if ((speedAheadVehicleAt1L - ownSpeed) > 10) {
-										if (i->m_moblieORStationary == true) {
-											ownSpeed += 11;
+									else if ((speedAheadVehicleAt2L > 0) && (speedAheadVehicleAt2L >= ownSpeed)) {
+										if ((speedAheadVehicleAt2L - ownSpeed) > 20) {
+											if (i->m_moblieORStationary == true) {
+												ownSpeed += 21;
+											}
 										}
-									}
-									else if ((speedAheadVehicleAt1L - ownSpeed) >= 1) {
-										if (i->m_moblieORStationary == true) {
-											ownSpeed += 2;
+										else if ((speedAheadVehicleAt2L - ownSpeed) > 10) {
+											if (i->m_moblieORStationary == true) {
+												ownSpeed += 11;
+											}
+										}
+										else if ((speedAheadVehicleAt2L - ownSpeed) >= 1) {
+											if (i->m_moblieORStationary == true) {
+												ownSpeed += 2;
+											}
 										}
 									}
 								}
-								else if ((speedAheadVehicleAt2L > 0) && (speedAheadVehicleAt2L >= ownSpeed)) {
-									if ((speedAheadVehicleAt2L - ownSpeed) > 20) {
-										if (i->m_moblieORStationary == true) {
-											ownSpeed += 21;
-										}
-									}
-									else if ((speedAheadVehicleAt2L - ownSpeed) > 10) {
-										if (i->m_moblieORStationary == true) {
-											ownSpeed += 11;
-										}
-									}
-									else if ((speedAheadVehicleAt2L - ownSpeed) >= 1) {
-										if (i->m_moblieORStationary == true) {
-											ownSpeed += 2;
-										}
-									}
-								}
-								if (i->m_moblieORStationary == false) {
+								else {
 									i->m_lane = 2;
 									i->m_pref_speed = 0;
 									ownSpeed = 0;
@@ -255,38 +249,25 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 								ownSpeed = m_maxVelocity_Density;
 							}
 							ownPosition = VL.VLStepConversion(ownSpeed);
-
-							if (i->m_lane == 1) {
-
-								if (positionAheadVehicleAt1L >= length) {
-									if (i->m_moblieORStationary == true) {
+							if (i->m_moblieORStationary == true) {
+								if (i->m_lane == 1) {
+									if (positionAheadVehicleAt1L >= length) {
 										i->m_position = (i->m_position) - ownPosition;
 										i->m_pref_speed = ownSpeed;
 									}
-								}
-								else {
-									if (positionAheadVehicleAt1L == i->m_position) {
-										if (i->m_moblieORStationary == true) {
+									else {
+										if (positionAheadVehicleAt1L == i->m_position) {
 											i->m_position = (i->m_position) - ownPosition;
 											i->m_pref_speed = ownSpeed;
 										}
-									}
-									else if (positionAheadVehicleAt1L < ((i->m_position) - ownPosition)) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt1L < ((i->m_position) - ownPosition)) {
 											i->m_position = (i->m_position) - ownPosition;
 											i->m_pref_speed = ownSpeed;
-
 										}
-									}
-									else if (positionAheadVehicleAt1L < i->m_position) {
-										if (i->m_moblieORStationary == true) {
-
-
+										else if (positionAheadVehicleAt1L < i->m_position) {
 											i->m_position = positionAheadVehicleAt1L + 1;
 										}
-									}
-									else if (positionAheadVehicleAt1L == ((i->m_position) - ownPosition)) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt1L == ((i->m_position) - ownPosition)) {
 											ownSpeed = speedAheadVehicleAt1L - 5;
 											if (ownSpeed <= 0) {
 												ownSpeed = 0;
@@ -300,52 +281,37 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 												ownSpeed = 0;
 											}
 										}
-									}
-									else if (positionAheadVehicleAt1L > ((i->m_position) - ownPosition)) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt1L > ((i->m_position) - ownPosition)) {
 											if (positionAheadVehicleAt1L < i->m_position) {
 												i->m_position = positionAheadVehicleAt1L + 1;
 											}
 											if (i->m_position > (positionAheadVehicleAt1L + 3))
 												i->m_position = positionAheadVehicleAt1L + 2;
 											ownSpeed = speedAheadVehicleAt1L;
-
 										}
-									}
-									else if (positionAheadVehicleAt1L > i->m_position) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt1L > i->m_position) {
 											i->m_position = positionAheadVehicleAt1L + 1;
 										}
 									}
 								}
-							}
-							if (i->m_lane == 2) {
-								if (positionAheadVehicleAt2L >= length) {
-									if (i->m_moblieORStationary == true) {
+								if (i->m_lane == 2) {
+									if (positionAheadVehicleAt2L >= length) {
 										i->m_position = (i->m_position) - ownPosition;
 										i->m_pref_speed = ownSpeed;
 									}
-								}
-								else {
-									if (positionAheadVehicleAt2L == i->m_position) {
-										if (i->m_moblieORStationary == true) {
+									else {
+										if (positionAheadVehicleAt2L == i->m_position) {
 											i->m_position = (i->m_position) - ownPosition;
 											i->m_pref_speed = ownSpeed;
 										}
-									}
-									else if (positionAheadVehicleAt2L < ((i->m_position) - ownPosition)) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt2L < ((i->m_position) - ownPosition)) {
 											i->m_position = (i->m_position) - ownPosition;
 											i->m_pref_speed = ownSpeed;
 										}
-									}
-									else if (positionAheadVehicleAt2L < i->m_position) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt2L < i->m_position) {
 											i->m_position = positionAheadVehicleAt2L + 1;
 										}
-									}
-									else if (positionAheadVehicleAt2L == ((i->m_position) - ownPosition)) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt2L == ((i->m_position) - ownPosition)) {
 											ownSpeed = speedAheadVehicleAt2L - 5;
 											if (ownSpeed <= 0) {
 												ownSpeed = 0;
@@ -359,9 +325,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 												ownSpeed = 0;
 											}
 										}
-									}
-									else if (positionAheadVehicleAt2L > ((i->m_position) - ownPosition)) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt2L > ((i->m_position) - ownPosition)) {
 											if (positionAheadVehicleAt2L < i->m_position) {
 												i->m_position = positionAheadVehicleAt2L + 1;
 											}
@@ -369,9 +333,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 												i->m_position = positionAheadVehicleAt2L + 2;
 											ownSpeed = speedAheadVehicleAt2L;
 										}
-									}
-									else if (positionAheadVehicleAt2L > i->m_position) {
-										if (i->m_moblieORStationary == true) {
+										else if (positionAheadVehicleAt2L > i->m_position) {
 											i->m_position = positionAheadVehicleAt2L + 1;
 										}
 									}

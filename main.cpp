@@ -161,8 +161,13 @@ VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosX
 
 	if (!PointsToBePrinted.empty()) {//Hier werden die Punkte gezeichnet!
 		for (auto &i : PointsToBePrinted) {
-			
-			if (std::get<2>(i) <= 2) {
+			if (std::get<2>(i) == 0) {
+				graphics3.DrawLine(&pen23, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
+			}
+			if (std::get<2>(i) == 1) {
+				graphics3.DrawLine(&pen11, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
+			}
+			if (std::get<2>(i) == 2) {
 				graphics3.DrawLine(&pen11, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
 			}
 			if (std::get<2>(i) == 3) {
