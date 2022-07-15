@@ -17,9 +17,9 @@ public:
 	float m_currentTravelTime = 0.0f;
 	
 	explicit route(std::vector<int> vertexOfRouteID, std::vector<std::shared_ptr<edge>>edgesOfRoute, int index);
-	route::route(const route& other) = delete;
+	//route::route(const route& other) = delete;
 	route::route(const route&& other) = delete;
-	route& operator=(const route&& other) = delete;
+	//route& operator=(const route&& other) = delete;
 	route& operator=(const route& other) = delete;
 	~route() noexcept;
 

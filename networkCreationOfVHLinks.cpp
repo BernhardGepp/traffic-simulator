@@ -3,6 +3,8 @@
 #include "vertexEnd.h"
 #include "vertexFlex.h"
 #include "vertexStart.h"
+#include "graphTrafficGenerationOnAllRoutes.h"
+#include "graphTrafficGenerationOnFastRoutes.h"
 
 bool sortBottomUp(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 	return a.first > b.first;
@@ -549,7 +551,7 @@ void  networkCreationOfVHLinks::establishVertexOfGraphA() {
 				}
 			}
 
-			appliedGraph.push_back(std::make_unique<graph>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
+			appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnFastRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
 			setOfVertexes.clear();
 			vectorOfVertexPTR.clear();
 			vectorOfEdgePTR.clear();

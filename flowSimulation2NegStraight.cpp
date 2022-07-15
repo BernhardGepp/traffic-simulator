@@ -48,8 +48,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 		if ((m_vehicleSet.size() > 1) && (i->m_lane == 2)) {
 			positionAheadVehicleAt2L = i->m_position;
 		}
-		for (ii = m_vehicleSet.begin(); ii != m_vehicleSet.end(); ++ii)
-		{
+		for (ii = m_vehicleSet.begin(); ii != m_vehicleSet.end(); ++ii){
 			i = *ii;
 			if (i->m_moblieORStationary == true) {
 				if (i->m_pref_speed <= 0) {
@@ -391,6 +390,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 				positionAheadVehicleAt2L = i->m_position;
 			}
 			numberOfVehicleinRange++;
+			i->m_speed = ownSpeed;
 		}
 	}
 	return numberOfVehicleinRange;

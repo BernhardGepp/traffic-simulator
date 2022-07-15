@@ -15,7 +15,7 @@ public:
 	std::vector<std::shared_ptr<edge>> m_vectorOfEdgesPtr;
 	std::vector<std::unique_ptr<route>>m_vectorOfRoutesPtr;
 	callBackLinks* m_CBLptr = nullptr;
-	graph::graph() = default;
+	//graph::graph() = default;
 	explicit graph(const std::set<int>& setOfVertexes,std::vector<std::shared_ptr<vertex>>& vectorOfVertex,
 		std::vector<std::shared_ptr<edge>>& vectorOfEdges, callBackLinks* CBLptr);
 	
@@ -41,7 +41,7 @@ public:
 	void clean();
 	bool isInsideRouteVertexIDs(const std::vector<std::pair<int, int>>& , const int&);
 	bool recheckroute(const std::vector<int>& );
-	void calculationOfRouteIndex();
+	virtual void calculationOfRouteIndex()=0;
 	void generationOfRoutesNeu();
 	void printLanesAndVehiclesOfAllEdges();
 	void showVertex();

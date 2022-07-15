@@ -19,7 +19,7 @@ set(Sources
 	flowSimulation1NegStraight.cpp
 	flowSimulation1PosStraight.cpp
 	flowSimulation2NegStraight.cpp
-	flowSimulation2PosStraight.cpp
+	flowSimulation2PosStraightA.cpp
 	graph.cpp
 	graphTrafficGenerationOnAllRoutes.cpp
 	graphTrafficGenerationOnFastRoutes.cpp

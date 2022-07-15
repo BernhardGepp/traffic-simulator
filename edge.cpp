@@ -1,5 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "edge.h"
+#include  <fstream> 
+
 //Constructor and destructor of the class:
 edge::edge() = default;
 edge::edge(const int& startVertex, const int& endVertex, const int& numberOfLanes, std::unique_ptr<PrintPattern>&pp_ptr,
@@ -11,9 +13,13 @@ edge::edge(const int& startVertex, const int& endVertex, const int& numberOfLane
 	sFs.m_CBLptr = m_ppPtr->m_CBLptr;
 	m_observerPTR = m_ppPtr->createObserver();
 	m_cOSptr->registrieren(m_observerPTR);
+	file5.open(textaa);
+	hilfezahlera++;
 }
 edge::edge(edge && other) = default;
-edge::~edge() noexcept {}
+edge::~edge() noexcept {
+	file5.close();
+}
 //********************************************************************
 //Methods of the class:
 int edge::getStartVertex() {
@@ -103,11 +109,15 @@ void edge::computeEdgesCharactaristics() {
 		}
 	}
 	if (m_averageSpeed > 0) {
-		m_averageTravelTime = static_cast<float>(m_averageSpeed / (static_cast<float>(m_length) * 0.001));
+		m_averageTravelTime = 1.0f/(static_cast<float>(m_averageSpeed / (static_cast<float>(m_length))));
+		file5 << "\n m_averageTravelTime1: " << m_averageTravelTime<<"\t"<< m_averageSpeed <<" "<< (static_cast<float>(m_length))<<" " << sFs.vehicleSetPtr->trafficCharacteristics().first << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().second;
 	}
 	else {
-		m_averageTravelTime = static_cast<float>(static_cast<float>(m_maxVelocity) / (static_cast<float>(m_length) * 0.001));
+		m_averageTravelTime = 1.0f/(static_cast<float>(static_cast<float>(m_maxVelocity) / (static_cast<float>(m_length))));
+		file5 << "\n m_averageTravelTime2: " << m_averageTravelTime << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().first << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().second;
 	}
+
+		
 }
 
 void edge::simiRun(const int& simulationIterator) {

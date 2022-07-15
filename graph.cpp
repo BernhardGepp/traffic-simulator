@@ -33,7 +33,7 @@ graph::graph(const std::set<int>& setOfVertexes,
 		i->initialisation();
 	}
 	generationOfRoutesNeu();
-	calculationOfRouteIndex();
+	//calculationOfRouteIndex();
 }
 
 graph::~graph() noexcept {}
@@ -44,7 +44,7 @@ graph::~graph() noexcept {}
 void graph::simulation(const int& simulationIterator) {
 	//*************************************************
 	//method for carrying out the simulation
-	if (simulationIterator % 10 == 0) {
+	if (simulationIterator % 5 == 0) {
 		calculationOfRouteIndex();
 	}
 	if (m_vectorOfEdgesPtr.size() != 0) {
@@ -167,7 +167,7 @@ bool graph::recheckroute(const std::vector<int>& routeVertexIDs) {
 }
 
 void graph::calculationOfRouteIndex() {
-	int serviceInt = 0;
+	/*int serviceInt = 0;
 	float serviceFloat = 0.0f;
 	int beginn = 0;
 	int ende = 0;
@@ -213,7 +213,7 @@ void graph::calculationOfRouteIndex() {
 			}
 			serviceInt++;
 		}
-	}
+	}*/
 }
 
 void graph::generationOfRoutesNeu() {

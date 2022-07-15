@@ -33,8 +33,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 	numberOfVehicleinRange = 0;
 	if (riseOrDecline == true) {
 		numberOfVehicleinRange = 0;
-		for (auto& i : m_vehicleSet)
-		{
+		for (auto& i : m_vehicleSet){
 			if (i->m_moblieORStationary == true) {
 				if (i->m_pref_speed <= 0) {
 					if (i->m_moblieORStationary == false) {
@@ -290,6 +289,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 				positionAheadVehicleAt2L = i->m_position;
 			}
 			numberOfVehicleinRange++;
+			i->m_speed = ownSpeed;
 		}
 	}
 	return numberOfVehicleinRange;

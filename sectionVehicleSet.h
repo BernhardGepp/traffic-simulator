@@ -8,7 +8,7 @@ class sectionVehicleSet
 {
 private:
 public:
-	
+	unsigned int m_sumOfVehicleSpeed = 0;
 	callBackLinks* m_CBLptr = nullptr;
 	std::set<vehicle*, boost::indirect_fun<std::less<vehicle>>>m_vehicleSet;
 	
