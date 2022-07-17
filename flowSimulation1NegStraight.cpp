@@ -46,13 +46,13 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 		positionAheadVehicleAt1L = length;
 		speedAheadVehicleAt1L = 0;
 		numberOfVehicleinRange = 0;
-		std::set<vehicle*>::iterator ii = m_vehicleSet.begin();
+		std::set<vehicle*>::reverse_iterator ii = m_vehicleSet.rbegin();
 		vehicle* i = *ii;
 		file5 << "\n\nneuer Zyklus: " << length;
 		/*if (m_vehicleSet.size() > 1) {
 			positionAheadVehicleAt1L = i->m_position;
 		}*/
-		for (ii = m_vehicleSet.begin(); ii != m_vehicleSet.end(); ++ii) {//Geschwingskeitsteil!
+		for (ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii) {//Geschwingskeitsteil!
 			i = *ii;
 			zahler++;
 			file5 << "\nzähler: " << zahler << " " << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed << "\ti->m_moblieORStationary: " << i->m_moblieORStationary;

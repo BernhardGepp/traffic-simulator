@@ -16,7 +16,6 @@ void sectionVehicleSet::insertSET(vehicle* a)
 {
 	if (a != nullptr) {
 		m_vehicleSet.insert(a);
-
 	}
 	else {
 		//std::cout << "Allocation in VehicleSet failed!\n";

@@ -47,7 +47,11 @@ int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length
 	if (riseOrDecline == true) {
 		numberOfVehicleinRange = 0;
 		file5 << "\n\nneuer Zyklus: "<< length;
-		for (auto& i : m_vehicleSet) {
+		//for (auto& i : m_vehicleSet) {
+		std::set<vehicle*>::reverse_iterator ii = m_vehicleSet.rbegin();
+		vehicle* i = nullptr;
+		for(ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii){
+			i = *ii;
 			zahler++;
 			file5 << "\nzähler: " <<zahler << " " << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed<<"\ti->m_moblieORStationary: "<< i->m_moblieORStationary;
 			if (i->m_pref_speed <= 0){

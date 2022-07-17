@@ -43,7 +43,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 		positionAheadVehicleAt1L = length;
 		positionAheadVehicleAt2L = length;
 		numberOfVehicleinRange = 0;
-		std::set<vehicle*>::iterator ii = m_vehicleSet.begin();
+		std::set<vehicle*>::reverse_iterator ii = m_vehicleSet.rbegin();
 		vehicle* i = *ii;
 		if ((m_vehicleSet.size() > 1) && (i->m_lane == 1)) {
 			positionAheadVehicleAt1L = i->m_position;
@@ -51,7 +51,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 		if ((m_vehicleSet.size() > 1) && (i->m_lane == 2)) {
 			positionAheadVehicleAt2L = i->m_position;
 		}
-		for (ii = m_vehicleSet.begin(); ii != m_vehicleSet.end(); ++ii){
+		for (ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii){
 			i = *ii;
 			if (i->m_moblieORStationary == true) {
 				if (i->m_pref_speed <= 0) {
