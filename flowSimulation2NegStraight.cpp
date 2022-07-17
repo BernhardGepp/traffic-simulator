@@ -17,7 +17,7 @@ void flowSimulation2NegStraight::printContentOfSection(const int& p1xx, const in
 	for (std::set<vehicle*, boost::indirect_fun<std::less<vehicle>>>::reverse_iterator a = m_vehicleSet.rbegin();
 		a != m_vehicleSet.rend(); ++a) {
 		i = *a;
-		i->serviceBool = false;
+		i->m_processedByIteration = false;
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P2LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
@@ -77,16 +77,16 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 				i->m_pref_speed = 0;
 				ownSpeed = 0;
 			}
-			if ((flag == false) && (length > 0) && (i->m_inRange) == true && (i->processedByIteration) == true) {
-				if (i->serviceBool == false) {
+			if ((flag == false) && (i->m_ID_ptr!=nullptr) && (i->m_inRange == true )) {
+				if (i->m_processedByIteration == false) {
 					flag = true;
-					i->serviceBool = true;
+					
 					if ((i->m_position > length) || (i->m_position <= 0)) {
 						i->m_inRange = false;
 					}
 					else {
 						if (i->m_position == length) {
-
+							i->m_processedByIteration = true;
 							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed) && (i->m_lane == 1)) {
 								ownSpeed = speedAheadVehicleAt1L;
 							}
@@ -158,13 +158,13 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 						}
 						else {//m_postiion >0 && m_postion<length
 
-
+							i->m_processedByIteration = true;
 							if ((speedAheadVehicleAt1L == 0) && (speedAheadVehicleAt2L == 0)) {
 								ownSpeed = m_maxVelocity;
 							}
 
-							if ((i->m_lane == 1) && (i->serviceBool == false)) {
-								i->serviceBool = true;
+							if (i->m_lane == 1) {
+								
 								if (i->m_moblieORStationary == true) {
 									if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
 										if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
@@ -196,8 +196,8 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 									ownSpeed = 0;
 								}
 							}
-							if ((i->m_lane == 2) && (i->serviceBool == false)) {
-								i->serviceBool = true;
+							if (i->m_lane == 2) {
+								
 								if (i->m_moblieORStationary == true) {
 									if ((positionAheadVehicleAt1L == 0) || ((positionAheadVehicleAt1L - (i->m_position)) >= 36)) {
 										i->m_lane = 1;
@@ -241,7 +241,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 									ownSpeed = 0;
 								}
 							}
-							i->serviceBool = true;
+							
 							if (ownSpeed > m_maxVelocity) {
 								ownSpeed = m_maxVelocity;
 							}
@@ -343,16 +343,18 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 					}
 				}
 			}
-			if (i->m_lane == 1) {
-				speedAheadVehicleAt1L = i->m_pref_speed;
-				positionAheadVehicleAt1L = i->m_position;
+			if (i->m_ID_ptr != nullptr) {
+				if (i->m_lane == 1) {
+					speedAheadVehicleAt1L = i->m_pref_speed;
+					positionAheadVehicleAt1L = i->m_position;
+				}
+				if (i->m_lane == 2) {
+					speedAheadVehicleAt2L = i->m_pref_speed;
+					positionAheadVehicleAt2L = i->m_position;
+				}
+				numberOfVehicleinRange++;
+				i->m_speed = ownSpeed;
 			}
-			if (i->m_lane == 2) {
-				speedAheadVehicleAt2L = i->m_pref_speed;
-				positionAheadVehicleAt2L = i->m_position;
-			}
-			numberOfVehicleinRange++;
-			i->m_speed = ownSpeed;
 		}
 	}
 	return numberOfVehicleinRange;

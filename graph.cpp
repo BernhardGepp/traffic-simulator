@@ -98,8 +98,7 @@ void graph::clean() {
 				j.first->m_riseOrDecline = true;
 				j.first->m_routeID = 0;
 				j.first->m_routeVertexID_vehicle.clear();
-				j.first->serviceBool = false;
-				j.first->processedByIteration = false;
+				j.first->m_processedByIteration = false;
 			}
 		}
 		for (auto& j : vectorOfVehicleToErase) {
@@ -134,8 +133,7 @@ void graph::clean() {
 				j.first->m_riseOrDecline = true;
 				j.first->m_routeID = 0;
 				j.first->m_routeVertexID_vehicle.clear();
-				j.first->serviceBool = false;
-				j.first->processedByIteration = false;
+				j.first->m_processedByIteration = false;
 
 				m_poolAllocator.deallocateClean(j.first);
 			}

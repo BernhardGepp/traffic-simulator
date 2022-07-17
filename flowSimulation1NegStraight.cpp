@@ -25,7 +25,7 @@ void flowSimulation1NegStraight::printContentOfSection(const int& p1xx, const in
 	for (std::set<vehicle*, boost::indirect_fun<std::less<vehicle>>>::reverse_iterator a = m_vehicleSet.rbegin();
 		a != m_vehicleSet.rend(); ++a) {
 		i = *a;
-		i->serviceBool = false;
+		i->m_processedByIteration = false;
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P1LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
@@ -85,16 +85,17 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 				}
 			}//****************Ende Geschwindigkeitsteil!!**********************************
 			file5 << "\n" << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " ownPosition:\t" << ownPosition;
-			if ((flag == false) && (length > 0) && (i->m_inRange == true)) {
-				if (i->serviceBool == false) {
+			if ((flag == false) && (i->m_ID_ptr!=nullptr) && (i->m_inRange == true)) {
+				if (i->m_processedByIteration == false) {
 					flag = true;
-					i->serviceBool = true;
+					
 					if ((i->m_position > length) || (i->m_position < 0)) {
 						i->m_inRange = false;
 						i->m_position = 0;
 						i->m_pref_speed = 0;
 					}
 					else {
+						i->m_processedByIteration = true;
 						if (i->m_position >= length) {//Set-Beginn									
 							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed)) {
 								ownSpeed = speedAheadVehicleAt1L;
@@ -255,24 +256,25 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 					}
 				}
 			}
-			if ((i->m_position > length) || (i->m_position <= 0)) {
-				i->m_inRange = false;
-				file5 << "\nAbschlussAusserhalb: " << i->m_speed << "\t" << i->m_ID_ptr << "\tspeedAheadVehicleAt1L/i->m_pref_speed: " << speedAheadVehicleAt1L << " i->m_position:\t" << i->m_position << " PaVAt1:  " << positionAheadVehicleAt1L;
-			}
-			else {
-				if (i->m_moblieORStationary == true) {
-					speedAheadVehicleAt1L = i->m_pref_speed;
-					i->m_speed = ownSpeed;
+			if (i->m_ID_ptr != nullptr) {
+				if ((i->m_position > length) || (i->m_position <= 0)) {
+					i->m_inRange = false;
+					file5 << "\nAbschlussAusserhalb: " << i->m_speed << "\t" << i->m_ID_ptr << "\tspeedAheadVehicleAt1L/i->m_pref_speed: " << speedAheadVehicleAt1L << " i->m_position:\t" << i->m_position << " PaVAt1:  " << positionAheadVehicleAt1L;
 				}
 				else {
-					speedAheadVehicleAt1L = 0;
-					i->m_speed = 0;
+					if (i->m_moblieORStationary == true) {
+						speedAheadVehicleAt1L = i->m_pref_speed;
+						i->m_speed = ownSpeed;
+					}
+					else {
+						speedAheadVehicleAt1L = 0;
+						i->m_speed = 0;
+					}
+					positionAheadVehicleAt1L = i->m_position;
+					file5 << "\nAbschluss in Rnage: " << i->m_speed << "\t" << i->m_ID_ptr << "\tspeedAheadVehicleAt1L/i->m_pref_speed: " << speedAheadVehicleAt1L << " positionAheadVehicleAt1L/i->m_position:\t" << positionAheadVehicleAt1L;
+					numberOfVehicleinRange++;
 				}
-				positionAheadVehicleAt1L = i->m_position;
-				file5 << "\nAbschluss in Rnage: " << i->m_speed << "\t" << i->m_ID_ptr << "\tspeedAheadVehicleAt1L/i->m_pref_speed: " << speedAheadVehicleAt1L << " positionAheadVehicleAt1L/i->m_position:\t" << positionAheadVehicleAt1L;
-				numberOfVehicleinRange++;
 			}
-			
 		}
 	}
 	return numberOfVehicleinRange;

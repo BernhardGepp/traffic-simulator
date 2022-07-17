@@ -18,7 +18,7 @@ void flowSimulation2PosStraightA::printContentOfSection(const int& p1xx, const i
 	//This method and the method "addPrintContent" of the inheriting classes of "PrintInGDIPlusWindow" form a unit, 
 	//whose goal is to fill the positions of the vehicle objects in a visually suitable form in a data container(m_pointContainer in class "PrintInGDIplusWindow").
 	for (auto& i : m_vehicleSet) {
-		i->serviceBool = false;
+		i->m_processedByIteration = false;
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P2LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
 		}
@@ -39,13 +39,11 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 	positionAheadVehicleAt1L = 0;
 	speedAheadVehicleAt2L = 0;
 	positionAheadVehicleAt2L = 0;
-	numberOfVehicleinRange = 0;
-	if (riseOrDecline == true) {
+	std::set<vehicle*>::reverse_iterator ii = m_vehicleSet.rbegin();
+	vehicle* i = nullptr;
+	if (riseOrDecline && (length>0)) {
 		numberOfVehicleinRange = 0;
 		file5 << "\n\nneuer Zyklus: " << length;
-		//for (auto& i : m_vehicleSet){
-		std::set<vehicle*>::reverse_iterator ii = m_vehicleSet.rbegin();
-		vehicle* i = nullptr;
 		for (ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii) {
 			i = *ii;
 			zahler++;
@@ -81,17 +79,17 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 				ownPosition = i->m_position;
 			}
 			file5 << "\n" << i->m_ID_ptr <<"\ti->position: "<<i->m_position<< "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " speedAheadVehicleAt2L\t" << speedAheadVehicleAt2L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " positionAheadVehicleAt2L\t " << positionAheadVehicleAt2L << " ownPosition:\t" << ownPosition<<"/ti->m_lane: "<<i->m_lane;
-			if ((flag == false) && (length > 0) && (i->m_inRange) == true && (i->processedByIteration) == true) {
-				if (i->serviceBool == false) {
+			if ((flag == false) && (i->m_ID_ptr!=nullptr) && (i->m_inRange == true)) {
+				if (i->m_processedByIteration == false) {
 					flag = true;
 					if ((i->m_position > length) || (i->m_position < 0)) {
 						i->m_inRange = false;
-						i->serviceBool = true;
+						//i->serviceBool = true;
 					}
 					else {
 						if (i->m_position == 0) {
 							if (i->m_moblieORStationary == true) {
-								i->serviceBool = true;
+								i->m_processedByIteration = true;
 								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
 									ownSpeed = speedAheadVehicleAt1L;
 								}
@@ -128,8 +126,8 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 							}
 						}
 						else {//m_postiion >0 && m_postion<length
-							if ((i->m_lane == 1) && (i->serviceBool == false)) {
-								i->serviceBool = true;
+							i->m_processedByIteration = true;
+							if (i->m_lane == 1) {
 								if (i->m_moblieORStationary == true) {
 									if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
 										if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
@@ -168,8 +166,8 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 									ownSpeed = 0;
 								}
 							}
-							if ((i->m_lane == 2) && (i->serviceBool == false)) {
-								i->serviceBool = true;
+							if (i->m_lane == 2) {
+								
 								if (i->m_moblieORStationary == true) {
 									if ((positionAheadVehicleAt1L == 0) || ((positionAheadVehicleAt1L - (i->m_position)) >= 36)) {
 										i->m_lane = 1;
@@ -207,7 +205,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 									ownSpeed = 0;
 								}
 							}
-							i->serviceBool = true;
+							
 							if (ownSpeed > m_maxVelocity) {
 								ownSpeed = m_maxVelocity;
 							}
@@ -279,34 +277,35 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 					}
 				}
 			}
-
-			if (i->m_lane == 1) {
-				speedAheadVehicleAt1L = i->m_pref_speed;
-				positionAheadVehicleAt1L = i->m_position;
-				if ((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - i->m_position) >= 20)) {
-					positionAheadVehicleAt2L=0;
-					speedAheadVehicleAt2L=0;
+			if (i->m_ID_ptr != nullptr) {
+				if (i->m_lane == 1) {
+					speedAheadVehicleAt1L = i->m_pref_speed;
+					positionAheadVehicleAt1L = i->m_position;
+					if ((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - i->m_position) >= 20)) {
+						positionAheadVehicleAt2L = 0;
+						speedAheadVehicleAt2L = 0;
+					}
+					if ((positionAheadVehicleAt2L > 0) && ((i->m_position - positionAheadVehicleAt2L) >= 20)) {
+						positionAheadVehicleAt2L = 0;
+						speedAheadVehicleAt2L = 0;
+					}
 				}
-				if ((positionAheadVehicleAt2L > 0) && (( i->m_position-positionAheadVehicleAt2L) >= 20)) {
-					positionAheadVehicleAt2L = 0;
-					speedAheadVehicleAt2L = 0;
+				if (i->m_lane == 2) {
+					speedAheadVehicleAt2L = i->m_pref_speed;
+					positionAheadVehicleAt2L = i->m_position;
+					if ((positionAheadVehicleAt1L > 0) && ((positionAheadVehicleAt1L - i->m_position) >= 20)) {
+						positionAheadVehicleAt1L = 0;
+						speedAheadVehicleAt1L = 0;
+					}
+					if ((positionAheadVehicleAt1L > 0) && ((i->m_position - positionAheadVehicleAt1L) >= 20)) {
+						positionAheadVehicleAt1L = 0;
+						speedAheadVehicleAt1L = 0;
+					}
 				}
+				numberOfVehicleinRange++;
+				i->m_speed = i->m_pref_speed;
+				file5 << "\ni->m_pref_speed: " << i->m_pref_speed;
 			}
-			if (i->m_lane == 2) {
-				speedAheadVehicleAt2L = i->m_pref_speed;
-				positionAheadVehicleAt2L = i->m_position;
-				if ((positionAheadVehicleAt1L > 0) && ((positionAheadVehicleAt1L - i->m_position) >= 20)) {
-					positionAheadVehicleAt1L = 0;
-					speedAheadVehicleAt1L = 0;
-				}
-				if ((positionAheadVehicleAt1L > 0) && ((i->m_position - positionAheadVehicleAt1L) >= 20)) {
-					positionAheadVehicleAt1L = 0;
-					speedAheadVehicleAt1L = 0;
-				}
-			}
-			numberOfVehicleinRange++;
-			i->m_speed = i->m_pref_speed;
-			file5 << "\ni->m_pref_speed: " << i->m_pref_speed;
 		}
 	}
 	return numberOfVehicleinRange;

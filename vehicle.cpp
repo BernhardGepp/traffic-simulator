@@ -30,7 +30,7 @@ int vehicle::position()const {
 
 bool vehicle::operator<(const vehicle& l) const
 {
-	if (m_riseOrDecline == true) {
+	if (m_riseOrDecline) {
 		return (position() < l.position());
 	}
 	else {

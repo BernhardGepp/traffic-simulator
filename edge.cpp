@@ -213,7 +213,8 @@ void edge::singleSimulationStep(const int& param) {
 void edge::sort() {
 	std::vector <vehicle*> vehicleVector;
 	for (auto i : sFs.vehicleSetPtr->m_vehicleSet) {
-		vehicleVector.push_back(i);
+		if(i!=nullptr)
+			vehicleVector.push_back(i);
 	}
 	sFs.vehicleSetPtr->m_vehicleSet.clear();
 	for (auto& i : vehicleVector) {
@@ -260,7 +261,7 @@ vehicle* edge::insertion(vehicle* VPAEptr) {
 		VPAEptr->m_riseOrDecline = m_risingOrDescention;
 		VPAEptr->m_inRange = true;
 		VPAEptr->m_lane = 1;
-		VPAEptr->serviceBool = false;
+		VPAEptr->m_processedByIteration = false;
 		if (m_risingOrDescention == true) {
 			VPAEptr->m_position = 0;
 		}
@@ -328,7 +329,7 @@ void edge::deallocateVehicleAtEnd(bool totalRelease) {
 	vehicleEraseVector.clear();
 	if (!sFs.vehicleSetPtr->m_vehicleSet.empty()) {
 		for (auto& ii : sFs.vehicleSetPtr->m_vehicleSet) {
-			ii->serviceBool = false;
+			ii->m_processedByIteration = false;
 			ii->m_riseOrDecline = m_risingOrDescention;
 			if (totalRelease == true) {
 				if (ii->m_inRange == false) {
