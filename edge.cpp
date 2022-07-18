@@ -213,8 +213,10 @@ void edge::singleSimulationStep(const int& param) {
 void edge::sort() {
 	std::vector <vehicle*> vehicleVector;
 	for (auto i : sFs.vehicleSetPtr->m_vehicleSet) {
-		if(i!=nullptr)
-			vehicleVector.push_back(i);
+		if (i != nullptr) {
+			if((i->m_lane>0)&&(i->m_ID_ptr!=nullptr))
+				vehicleVector.push_back(i);
+		}
 	}
 	sFs.vehicleSetPtr->m_vehicleSet.clear();
 	for (auto& i : vehicleVector) {

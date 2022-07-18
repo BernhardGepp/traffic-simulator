@@ -85,7 +85,7 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 				}
 			}//****************Ende Geschwindigkeitsteil!!**********************************
 			file5 << "\n" << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " ownPosition:\t" << ownPosition;
-			if ((flag == false) && (i->m_ID_ptr!=nullptr) && (i->m_inRange == true)) {
+			if ((flag == false) && (i->m_ID_ptr!=nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
 				if (i->m_processedByIteration == false) {
 					flag = true;
 					
@@ -256,7 +256,7 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 					}
 				}
 			}
-			if (i->m_ID_ptr != nullptr) {
+			if ((i->m_ID_ptr != nullptr) && (m_vehicleSet.size() >= 1)) {
 				if ((i->m_position > length) || (i->m_position <= 0)) {
 					i->m_inRange = false;
 					file5 << "\nAbschlussAusserhalb: " << i->m_speed << "\t" << i->m_ID_ptr << "\tspeedAheadVehicleAt1L/i->m_pref_speed: " << speedAheadVehicleAt1L << " i->m_position:\t" << i->m_position << " PaVAt1:  " << positionAheadVehicleAt1L;
