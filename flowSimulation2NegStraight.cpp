@@ -115,21 +115,33 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 					serviceInt++;
 			}
 			if (serviceInt > 1) {
-				i->m_processedByIteration = false;
 				ownSpeed = 10000;
-				i->m_lane = 234;
-				i->m_position = -1;
-				i->m_pref_speed = 0;
-				i->m_moblieORStationary = false;
 				i->m_routeVertexID_vehicle.clear();
 				file5 << "\nLöschen size von Set: " << m_vehicleSet.size()<<" "<<i->m_ID_ptr;
-				m_vehicleSet.erase(std::next(ii).base());
-				i = *ii;
-
-				//file5 << "\tnochmal Size: " << m_vehicleSet.size() << " " << i->m_ID_ptr;
+				vehicle* additionalVPointer = nullptr;
+				do {
+					if (ii != m_vehicleSet.rend()) {
+						additionalVPointer = i;
+						m_vehicleSet.erase(std::next(ii).base());
+						i = *ii;
+					}
+					if (i != additionalVPointer)
+						break;
+					if (ii == m_vehicleSet.rend())
+						break;
+				} while (true);
+				if (i != nullptr)
+					file5 << "\tnochmal Size: " << m_vehicleSet.size() << " " << i->m_ID_ptr;
+				else
+					file5 << "\nNULLPOINTER!!!!!";
 			}
-			//file5 << "\n" << i->m_ID_ptr << "\ti->position: " << i->m_position << "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " speedAheadVehicleAt2L\t" << speedAheadVehicleAt2L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " positionAheadVehicleAt2L\t " << positionAheadVehicleAt2L <<  "\ti->m_lane: " << i->m_lane;
+			if (i != nullptr)
+				file5 << "\n" << i->m_ID_ptr << "\ti->position: " << i->m_position << "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " speedAheadVehicleAt2L\t" << speedAheadVehicleAt2L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " positionAheadVehicleAt2L\t " << positionAheadVehicleAt2L <<  "\ti->m_lane: " << i->m_lane;
 			if (i != nullptr) {
+				if (i->m_lane == 0) {
+					i->m_inRange = false;
+					i->m_routeVertexID_vehicle.clear();
+				}
 				if ((i != nullptr) && (flag == false) && (i->m_ID_ptr != nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
 					if (i->m_processedByIteration == false) {
 						flag = true;
@@ -393,6 +405,10 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 					i->m_speed = ownSpeed;
 					file5 << "\ni->m_pref_speed: " << i->m_pref_speed;
 				}
+				if (i->m_processedByIteration)
+					file5 << "\tTRUE\ti->m_processedByIteration";
+				else
+					file5 << "\tFALSE\ti->m_processedByIteration";
 			}
 		}
 	}
