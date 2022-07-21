@@ -176,7 +176,8 @@ void edge::flow1L(const int& a, const int& b) {
 					VPAEptr->m_routeVertexID_vehicle.clear();
 					VPAEptr->m_routeID = -1;
 					VPAEptr = routeAssignment(VPAEptr);
-					sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// Inserting the vehicle objects into the set(lane)! New!
+					if(VPAEptr != nullptr)
+						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// Inserting the vehicle objects into the set(lane)! New!
 				}
 			}
 		}
