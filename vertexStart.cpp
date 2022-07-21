@@ -56,3 +56,7 @@ std::vector<std::pair<int, int>> vertexStart::getAdjacentEdges() {
 	}
 	return param1;
 }
+
+float vertexStart::getVertexDelay(const int& destinationVertex) {
+	return 0.0f;
+}

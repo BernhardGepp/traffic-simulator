@@ -93,5 +93,6 @@ public:
 	virtual size_t sizeOfSingleTransmissiontable(int iter) = 0;
 	virtual void setPrintShape(size_t param) = 0;
 	virtual size_t getPrintShape() = 0;
+	virtual float getVertexDelay(const int& destinationVertex) = 0;
 };
 

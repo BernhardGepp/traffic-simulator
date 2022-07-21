@@ -63,3 +63,7 @@ std::vector<std::pair<int, int>> vertexEnd::getAdjacentEdges() {
 	returnValue.clear();
 	return returnValue;
 }
+
+float vertexEnd::getVertexDelay(const int& destinationVertex) {
+	return 0.0f;
+}

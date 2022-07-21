@@ -109,14 +109,14 @@ void edge::computeEdgesCharactaristics() {
 		}
 	}
 	if (m_averageSpeed > 0) {
-		m_averageTravelTime = 1.0f/(static_cast<float>(m_averageSpeed / (static_cast<float>(m_length))));
+		m_averageTravelTime = 1.0f / (static_cast<float>(m_averageSpeed / (static_cast<float>(m_length))));// +m_startVertexPtr->getVertexDelay(m_endVertex);
 		file5 << "\n m_averageTravelTime1: " << m_averageTravelTime<<"\t"<< m_averageSpeed <<" "<< (static_cast<float>(m_length))<<" " << sFs.vehicleSetPtr->trafficCharacteristics().first << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().second;
 	}
 	else {
 		m_averageTravelTime = 1.0f/(static_cast<float>(static_cast<float>(m_maxVelocity) / (static_cast<float>(m_length))));
 		file5 << "\n m_averageTravelTime2: " << m_averageTravelTime << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().first << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().second;
 	}
-
+	m_startVertexPtr->
 		
 }
 

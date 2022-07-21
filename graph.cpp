@@ -165,53 +165,6 @@ bool graph::recheckroute(const std::vector<int>& routeVertexIDs) {
 }
 
 void graph::calculationOfRouteIndex() {
-	/*int serviceInt = 0;
-	float serviceFloat = 0.0f;
-	int beginn = 0;
-	int ende = 0;
-	std::vector<std::tuple<int, int, float>>vectorOfMultibleRoute;
-	for (std::vector<std::unique_ptr<route>>::reverse_iterator i = m_vectorOfRoutesPtr.rbegin(); i != m_vectorOfRoutesPtr.rend(); ++i) {
-		(*i)->routeimpactIndexCalculation();
-		if (((*i)->m_index > 0) && (beginn == 0) && (ende == 0)) {
-			beginn = (*i)->m_vertexOfRouteID[0];
-			ende = (*i)->m_vertexOfRouteID.back();
-		}
-		if ((beginn == (*i)->m_vertexOfRouteID[0]) && (ende == (*i)->m_vertexOfRouteID.back())) {
-			serviceInt++;
-			serviceFloat = serviceFloat + (*i)->m_currentTravelTime;
-			if (((*i)->m_index == 0)) {
-				serviceFloat = serviceFloat / (float)serviceInt;
-				vectorOfMultibleRoute.push_back(std::make_tuple(beginn, ende, serviceFloat));
-				beginn = 0;
-				ende = 0;
-				serviceFloat = 0.0f;
-				serviceInt = 0;
-			}
-		}
-	}
-	serviceInt = 0;
-	for (auto& i : m_vectorOfEdgesPtr) {
-		i->m_routeTable_IDrValueIDvertex.clear();
-
-		serviceInt = 0;
-		for (auto& ii : m_vectorOfRoutesPtr) {
-			if ((i->m_startVertex == ii->m_vertexOfRouteID[0]) && (i->m_endVertex == ii->m_vertexOfRouteID[1])) {
-				std::pair<int, float> p = std::make_pair(serviceInt, ii->m_currentTravelTime);
-				std::pair<std::pair<int, float>, std::vector<int>> p1 = std::make_pair(p, ii->m_vertexOfRouteID);
-				if (!vectorOfMultibleRoute.empty()) {
-					for (auto& j : vectorOfMultibleRoute) {
-						if ((ii->m_vertexOfRouteID[0] == std::get<0>(j)) && (ii->m_vertexOfRouteID.back() == std::get<1>(j))) {
-							if (ii->m_currentTravelTime < std::get<2>(j)) {
-								i->m_routeTable_IDrValueIDvertex.push_back(p1);
-							}
-						}
-					}
-				}
-				i->m_routeTable_IDrValueIDvertex.push_back(p1);
-			}
-			serviceInt++;
-		}
-	}*/
 }
 
 void graph::generationOfRoutesNeu() {

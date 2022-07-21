@@ -177,3 +177,16 @@ std::vector<std::pair<int, int>> vertexFlex::getAdjacentEdges() {
 	}
 	return returnValue;
 }
+
+float vertexFlex::getVertexDelay(const int& destinationVertex) {
+	if (!m_vectorOfTransmissionTable.empty()) {
+		for (auto& i : m_vectorOfTransmissionTable) {
+			if (i.param1 == destinationVertex) {
+				if (i.param2.size() > 10)
+					return static_cast<float>(i.param2.size());
+			}
+			
+		}
+	}
+	return 0.0f;
+}

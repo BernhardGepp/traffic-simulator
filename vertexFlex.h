@@ -86,4 +86,5 @@ public:
 	size_t sizeOfSingleTransmissiontable(int iter) override;
 	void setPrintShape(size_t param) override;
 	size_t getPrintShape() override;
+	float getVertexDelay(const int& destinationVertex) override;
 };
