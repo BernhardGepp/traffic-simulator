@@ -16,7 +16,7 @@ namespace bbe {
 	template <typename T, typename Allocator = std::allocator<PoolChunk<T>>>
 	class PoolAllocator {
 	private:
-		static const size_t DEFAULTSIZE =  8192;//1024; 4096;
+		static const size_t DEFAULTSIZE = 16384;//8192;//1024; 4096;
 		size_t m_openallocations = 0;
 		size_t m_size = 0;
 		PoolChunk<T>* m_data = nullptr;

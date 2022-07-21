@@ -1,12 +1,14 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-
+static int staticVariableInTT;
 class transmissionTable {
 public:
-
+	
 	int param1 = 0;
 	std::vector<vehicle*> param2;
-	transmissionTable::transmissionTable() = default;
+	transmissionTable::transmissionTable() {
+		
+	}
 	transmissionTable::transmissionTable(const transmissionTable& other) {
 		param1 = other.param1;
 		param2 = other.param2;
@@ -32,22 +34,16 @@ public:
 		return *this;
 	}
 	transmissionTable::~transmissionTable() noexcept;
-
-	vehicle* /*transmissionTable::*/ getPTR();/* {
-		vehicle* PTR = nullptr;
-		if (param2.size()>0) {
-			PTR= param2.back();
-			param2.pop_back();
-		}
-		
-		return PTR;
-	}*/
+	
+	vehicle*  getPTR();
 };
 class vertexFlex :public vertex {
 private:
 	size_t a = 0;
 	bool serviceBool = false;
 public:
+	std::string textaa = "C:/Users/bernh/Desktop/vertexFlex" + std::to_string(staticVariableInTT) + ".txt";
+	std::ofstream file5;
 	size_t m_printShape = 11;
 	std::vector<transmissionTable> m_vectorOfTransmissionTable;
 	explicit vertexFlex::vertexFlex();

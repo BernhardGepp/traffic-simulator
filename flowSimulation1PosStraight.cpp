@@ -52,6 +52,11 @@ int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length
 		vehicle* i = nullptr;
 		for(ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii){
 			i = *ii;
+			if (i->m_position > length) {
+				i->m_inRange = false;
+				i->m_processedByIteration = true;
+				file5 << "\nBeginn am Ende: " << i->m_ID_ptr << " i->m_position: " << i->m_position;
+			}
 			zahler++;
 			file5 << "\nzähler: " <<zahler << " " << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed<<"\ti->m_moblieORStationary: "<< i->m_moblieORStationary;
 			if (i->m_pref_speed <= 0){

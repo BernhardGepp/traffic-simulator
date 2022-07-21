@@ -121,6 +121,7 @@ void edge::computeEdgesCharactaristics() {
 }
 
 void edge::simiRun(const int& simulationIterator) {
+	sort();
 	//********************************************************************
 	//This method orchestrates together with the subordinated methods "flow1L" and "singleSimulationStep" the simulation in the lane.
 	m_simulationIterator = simulationIterator;
