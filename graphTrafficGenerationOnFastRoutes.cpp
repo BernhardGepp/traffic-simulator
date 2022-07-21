@@ -93,10 +93,12 @@ void graphTrafficGenerationOnFastRoutes::calculationOfRouteIndex() {
 				
 				) {
 				file5 << "\nletzte Zeile";
-				std::pair<int, float> p = std::make_pair(serviceInt, ii->m_currentTravelTime);
-				std::pair<std::pair<int, float>, std::vector<int>> p1 = std::make_pair(p, ii->m_vertexOfRouteID);
-				
-				i->m_routeTable_IDrValueIDvertex.push_back(p1);
+				if (ii->m_currentTravelTime < (ii->m_initalTravelTime * 5.0f)) {
+					std::pair<int, float> p = std::make_pair(serviceInt, ii->m_currentTravelTime);
+					std::pair<std::pair<int, float>, std::vector<int>> p1 = std::make_pair(p, ii->m_vertexOfRouteID);
+
+					i->m_routeTable_IDrValueIDvertex.push_back(p1);
+				}
 			}
 			serviceInt++;
 		}

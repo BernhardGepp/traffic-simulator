@@ -109,15 +109,13 @@ void edge::computeEdgesCharactaristics() {
 		}
 	}
 	if (m_averageSpeed > 0) {
-		m_averageTravelTime = 1.0f / (static_cast<float>(m_averageSpeed / (static_cast<float>(m_length))));// +m_startVertexPtr->getVertexDelay(m_endVertex);
+		m_averageTravelTime = (1.0f / (static_cast<float>(m_averageSpeed / (static_cast<float>(m_length)))))+m_startVertexPtr->getVertexDelay(m_endVertex);
 		file5 << "\n m_averageTravelTime1: " << m_averageTravelTime<<"\t"<< m_averageSpeed <<" "<< (static_cast<float>(m_length))<<" " << sFs.vehicleSetPtr->trafficCharacteristics().first << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().second;
 	}
 	else {
 		m_averageTravelTime = 1.0f/(static_cast<float>(static_cast<float>(m_maxVelocity) / (static_cast<float>(m_length))));
 		file5 << "\n m_averageTravelTime2: " << m_averageTravelTime << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().first << "\t" << sFs.vehicleSetPtr->trafficCharacteristics().second;
-	}
-	m_startVertexPtr->
-		
+	}	
 }
 
 void edge::simiRun(const int& simulationIterator) {
@@ -169,7 +167,6 @@ void edge::flow1L(const int& a, const int& b) {
 	if (checkIfPositionIsEmpty == false) {
 		if (m_startVertexPtr->m_shapeOfThatVertex == 1) {
 			if (a < 150) {
-
 				vehicle* VPAEptr = nullptr;
 				VPAEptr = m_startVertexPtr->getVehiclePtrOutOfVertex(0, 0);
 				if (VPAEptr != nullptr) {
@@ -248,9 +245,11 @@ vehicle* edge::routeAssignment(vehicle* VPAEptr) {
 			m_routeTableIterator++;
 		}
 		else {
-			VPAEptr->m_routeID = -1;
-			VPAEptr->m_routeVertexID_vehicle.clear();
-			m_routeTableIterator = 0;
+			//VPAEptr->m_routeID = -1;
+			//VPAEptr->m_routeVertexID_vehicle.clear();
+			//m_routeTableIterator = 0;
+			m_VPAptr->deallocate(VPAEptr);
+			return nullptr;
 		}
 	}
 	return VPAEptr;

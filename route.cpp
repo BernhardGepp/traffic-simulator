@@ -35,6 +35,8 @@ void route::routeimpactIndexCalculation() {
 			m_maxDensity = i->m_density;
 		}
 	}
+	if (m_initalTravelTime == 0.0f)
+		m_initalTravelTime = m_currentTravelTime;
 }
 
 std::vector<int> route::vectorOfRouteID() {

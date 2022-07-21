@@ -15,6 +15,7 @@ public:
 	float m_impactIndexRoute = 0.0f;
 	float m_maxDensity = 0.0f;
 	float m_currentTravelTime = 0.0f;
+	float m_initalTravelTime = 0.0f;
 	
 	explicit route(std::vector<int> vertexOfRouteID, std::vector<std::shared_ptr<edge>>edgesOfRoute, int index);
 	//route::route(const route& other) = delete;
