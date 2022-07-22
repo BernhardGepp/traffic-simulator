@@ -180,6 +180,10 @@ void edge::flow1L(const int& a, const int& b) {
 		}
 		if ((m_startVertexPtr->m_shapeOfThatVertex == 0) || (m_startVertexPtr->m_shapeOfThatVertex == 11)) {
 			sFs.vehicleSetPtr->insertSET(insertion(m_startVertexPtr->getVehiclePtrOutOfVertex(m_endVertex, 0)));
+			if ((m_startVertexPtr->getVertexDelay(m_endVertex) > 11.0f) && (m_numberOfLanes == 2)) {
+				m_numberOfVehicleinRange++;
+				sFs.vehicleSetPtr->insertSET(insertion(m_startVertexPtr->getVehiclePtrOutOfVertex(m_endVertex, 0)));
+			}
 			sort();
 		}
 	}
@@ -260,7 +264,6 @@ vehicle* edge::insertion(vehicle* VPAEptr) {
 		VPAEptr->m_moblieORStationary = true;
 		VPAEptr->m_riseOrDecline = m_risingOrDescention;
 		VPAEptr->m_inRange = true;
-		VPAEptr->m_lane = 1;
 		VPAEptr->m_processedByIteration = false;
 		if (m_risingOrDescention == true) {
 			VPAEptr->m_position = 0;
@@ -268,8 +271,18 @@ vehicle* edge::insertion(vehicle* VPAEptr) {
 		if (m_risingOrDescention == false) {
 			VPAEptr->m_position = m_length;
 		}
+		if (m_numberOfLanes == 2) {
+			if ((m_numberOfVehicleinRange % 2) == 0)
+				VPAEptr->m_lane = 1;
+			else {
+				VPAEptr->m_lane = 2;
+				VPAEptr->m_position -= 1;
+			}
+		}
+		else
+			VPAEptr->m_lane = 1;
 		return VPAEptr;
-
+		
 	}
 	return nullptr;
 }

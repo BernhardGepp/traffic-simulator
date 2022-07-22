@@ -67,7 +67,7 @@ namespace bbe {
 			m_quarantine.clear();
 			m_vectorOfAllocatedObjekts.clear();
 			if (m_openallocations != 0) {
-				__debugbreak();
+				//__debugbreak();
 			}
 			
 			if (m_needsToDeleteParentAllocator) {

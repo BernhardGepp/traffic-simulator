@@ -86,7 +86,6 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 			else {
 				ownSpeed = 0;
 				i->m_pref_speed = 0;
-				//ownPosition = i->m_position;
 			}
 			serviceInt = 0;
 			if (((laneAheadVehicle == 1) && (i->m_lane == 2)) || ((laneAheadVehicle == 2) && (i->m_lane == 1))) {
@@ -125,10 +124,6 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 					if (ii == m_vehicleSet.rend())
 						break;
 				} while (true);
-				if (i != nullptr)
-					file5 << "\tnochmal Size: " << m_vehicleSet.size() << " " << i->m_ID_ptr;
-				else
-					file5 << "\nNULLPOINTER!!!!!";
 			}
 			if (i != nullptr)
 				file5 << "\n" << i->m_ID_ptr <<"\ti->position: "<<i->m_position<< "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " speedAheadVehicleAt2L\t" << speedAheadVehicleAt2L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " positionAheadVehicleAt2L\t " << positionAheadVehicleAt2L << "\ti->m_lane: "<<i->m_lane;
@@ -140,12 +135,12 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 				if ((flag == false) && (i->m_ID_ptr != nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
 					if (i->m_processedByIteration == false) {
 						flag = true;
-						if ((i->m_position > length) || (i->m_position < 0)) {
+						if ((i->m_position >= length) || (i->m_position < 0)) {
 							i->m_inRange = false;
-							//i->serviceBool = true;
+							file5 << "\nEnde: " << i->m_ID_ptr << " i->m_position: " << i->m_position;
 						}
 						else {
-							if (i->m_position == 0) {
+							if ((i->m_position == 0)||(i->m_position == -1)) {
 								if (serviceInt == 1)
 									i->m_processedByIteration = true;
 								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
@@ -160,7 +155,6 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 								if (ownSpeed > m_maxVelocity_Density) {
 									ownSpeed = m_maxVelocity_Density;
 								}
-								//ownPosition = VL.VLStepConversion(ownSpeed);
 								file5 << "\n" << VL.VLStepConversion(ownSpeed) << " VL.VLStepConversion( " << ownSpeed << " In Beginn i->m_position:" << i->m_position;
 								i->m_pref_speed = ownSpeed;
 								if (i->m_lane == 1) {
@@ -269,9 +263,8 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 								if (ownSpeed > m_maxVelocity_Density) {
 									ownSpeed = m_maxVelocity_Density;
 								}
-								//ownPosition = VL.VLStepConversion(ownSpeed);
+								
 								file5 << "\n" << VL.VLStepConversion(ownSpeed) << " VL.VLStepConversion( " << ownSpeed;
-								//i->m_pref_speed = ownSpeed;
 								if (i->m_moblieORStationary == true) {
 									if (i->m_lane == 1) {
 										if (positionAheadVehicleAt1L <= 0) {
@@ -283,7 +276,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 												i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
 												i->m_pref_speed = ownSpeed;
 											}
-											if (positionAheadVehicleAt1L == (i->m_position + VL.VLStepConversion(ownSpeed))) {
+											else if (positionAheadVehicleAt1L == (i->m_position + VL.VLStepConversion(ownSpeed))) {
 												ownSpeed = speedAheadVehicleAt1L - 5;
 												if (ownSpeed <= 0) {
 													ownSpeed = 0;
@@ -291,7 +284,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 												i->m_position = (i->m_position + VL.VLStepConversion(ownSpeed));
 												i->m_pref_speed = ownSpeed;
 											}
-											if (positionAheadVehicleAt1L < (i->m_position + VL.VLStepConversion(ownSpeed))) {
+											else if (positionAheadVehicleAt1L < (i->m_position + VL.VLStepConversion(ownSpeed))) {
 												i->m_position = positionAheadVehicleAt1L - 3;
 												ownSpeed = speedAheadVehicleAt1L - 5;
 												if (ownSpeed <= 0) {
@@ -311,7 +304,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 												i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
 												i->m_pref_speed = ownSpeed;
 											}
-											if (positionAheadVehicleAt2L == (i->m_position + VL.VLStepConversion(ownSpeed))) {
+											else if (positionAheadVehicleAt2L == (i->m_position + VL.VLStepConversion(ownSpeed))) {
 												ownSpeed = speedAheadVehicleAt2L - 5;
 												if (ownSpeed <= 0) {
 													ownSpeed = 0;
@@ -319,7 +312,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 												i->m_position = ((i->m_position) + VL.VLStepConversion(ownSpeed));
 												i->m_pref_speed = ownSpeed;
 											}
-											if (positionAheadVehicleAt2L < (i->m_position + VL.VLStepConversion(ownSpeed))) {
+											else if (positionAheadVehicleAt2L < (i->m_position + VL.VLStepConversion(ownSpeed))) {
 												i->m_position = positionAheadVehicleAt2L - 3;
 												ownSpeed = speedAheadVehicleAt2L - 5;
 												if (ownSpeed <= 0) {

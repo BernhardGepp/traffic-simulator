@@ -93,13 +93,12 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 			else {
 				ownSpeed = 0;
 				i->m_pref_speed = 0;
-				//ownPosition = i->m_position;
 			}
 			serviceInt = 0;
 			if (((laneAheadVehicle == 1) && (i->m_lane == 2)) || ((laneAheadVehicle == 2) && (i->m_lane == 1))) {
 				for (auto& j : m_vehicleSet) {
 
-					if ((laneAheadVehicle == 1)&&(j->m_lane==1) && (i->m_lane == 2)&&(j->m_position<i->m_position)&&(i->m_position< serviceInt)) {
+					if ((laneAheadVehicle == 1) && (j->m_lane == 1) && (i->m_lane == 2) && (j->m_position < i->m_position) && (i->m_position < serviceInt)) {
 						serviceInt = j->m_position;
 					}
 					if ((laneAheadVehicle == 2) && (j->m_lane == 1) && (i->m_lane == 1) && (j->m_position < i->m_position) && (i->m_position < serviceInt)) {
@@ -132,10 +131,6 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 					if (ii == m_vehicleSet.rend())
 						break;
 				} while (true);
-				if (i != nullptr)
-					file5 << "\tnochmal Size: " << m_vehicleSet.size() << " " << i->m_ID_ptr;
-				else
-					file5 << "\nNULLPOINTER!!!!!";
 			}
 			if (i != nullptr)
 				file5 << "\n" << i->m_ID_ptr << "\ti->position: " << i->m_position << "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " speedAheadVehicleAt2L\t" << speedAheadVehicleAt2L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " positionAheadVehicleAt2L\t " << positionAheadVehicleAt2L <<  "\ti->m_lane: " << i->m_lane;
@@ -144,29 +139,20 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 					i->m_inRange = false;
 					i->m_routeVertexID_vehicle.clear();
 				}
-				if ((i != nullptr) && (flag == false) && (i->m_ID_ptr != nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
+				if ((flag == false) && (i->m_ID_ptr != nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
 					if (i->m_processedByIteration == false) {
 						flag = true;
-
 						if ((i->m_position > length) || (i->m_position <= 0)) {
 							i->m_inRange = false;
 							file5 << "\nEnde: " << i->m_ID_ptr << " i->m_position: " << i->m_position;
 						}
 						else {
-							if (i->m_position == length) {
-
+							if (i->m_position >= (length-1)) {
 								if (serviceInt == 1)
 									i->m_processedByIteration = true;
-
-								//********************************
-								//if (i->m_pref_speed == 0)
-									//i->m_pref_speed = 50;
-
-								//if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed) && (i->m_lane == 1)) {
 								if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
 									ownSpeed = speedAheadVehicleAt1L;
 								}
-								//if ((speedAheadVehicleAt2L > 0) && (speedAheadVehicleAt2L <= ownSpeed) && (i->m_lane == 2)) {
 								if ((speedAheadVehicleAt2L > 0) && (speedAheadVehicleAt2L >= ownSpeed)) {
 									ownSpeed = speedAheadVehicleAt2L;
 								}
@@ -176,12 +162,9 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 								if (ownSpeed > m_maxVelocity_Density) {
 									ownSpeed = m_maxVelocity_Density;
 								}
-								//ownPosition = length - VL.VLStepConversion(ownSpeed);
 								file5 << "\n" << length - VL.VLStepConversion(ownSpeed) << " VL.VLStepConversion( " << ownSpeed << " In Beginn i->m_position:" << i->m_position;
-								file5 <<"\nzahler: "<< zahler << " m_vehicleSet.size() " << m_vehicleSet.size();
 								i->m_pref_speed = ownSpeed;
 								if (i->m_lane == 1) {
-
 									if (positionAheadVehicleAt1L == length) {
 										i->m_position = length - VL.VLStepConversion(ownSpeed)-1;
 										file5 << "\nBeginnAusgang011"<<i->m_ID_ptr;
@@ -191,20 +174,14 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 										file5 << "\nBeginnAusgang012 " << i->m_ID_ptr<<" "<<length<<"  "<< VL.VLStepConversion(ownSpeed)<<" positionAheadVehicleAt1L "<< positionAheadVehicleAt1L <<" ownspeed " << ownSpeed << " ->m_position " << i->m_position;
 										
 									}
-
 									if ((positionAheadVehicleAt1L > 0) && ((length - VL.VLStepConversion(ownSpeed)) <= positionAheadVehicleAt1L) && (length > positionAheadVehicleAt1L)) {
-										//i->m_position = (positionAheadVehicleAt1L + 1);
 										i->m_position = length - VL.VLStepConversion(ownSpeed) - 1;
-										//ownPosition = i->m_position;
 										file5 << "\nBeginnAusgang02";
 									}
-									/*for (int bull = 1; bull <= 1500; ++bull) {
-										file5 <<"\t"<< bull;
-									}*/
 								}
 								if (i->m_lane == 2) {
 									if ((positionAheadVehicleAt2L == length) || ((length - VL.VLStepConversion(ownSpeed)) > positionAheadVehicleAt2L)) {
-										i->m_position = length - VL.VLStepConversion(ownSpeed);
+										i->m_position = length - VL.VLStepConversion(ownSpeed) - 2;
 										file5 << "\nBeginnAusgang03";
 									}
 									if ((positionAheadVehicleAt2L > 0) && ((length - VL.VLStepConversion(ownSpeed)) <= positionAheadVehicleAt2L) && (length > positionAheadVehicleAt2L)) {
@@ -226,7 +203,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 												file5 << "\nAusgang1";
 											}
 											else if ((speedAheadVehicleAt1L - ownSpeed) > 10) {
-												if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - i->m_position) > 36)) || (positionAheadVehicleAt2L == length)) {
+												if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - i->m_position) > -36)) || (positionAheadVehicleAt2L == length)) {
 													ownSpeed += 11;
 													i->m_lane = 2;
 													file5 << "\nLane switch!1->2";
@@ -237,7 +214,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 												file5 << "\nAusgang2";
 											}
 											else if ((speedAheadVehicleAt1L - ownSpeed) >= 1) {
-												if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - i->m_position) > 10)) || (positionAheadVehicleAt2L == length)) {
+												if (((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - i->m_position) > -10)) || (positionAheadVehicleAt2L == length)) {
 													ownSpeed += 10;
 													i->m_lane = 2;
 													file5 << "\nLane switch!1->2";
@@ -263,7 +240,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 								}
 								else if (i->m_lane == 2) {
 									if (i->m_moblieORStationary == true) {
-										if ((positionAheadVehicleAt1L == 0) || ((positionAheadVehicleAt1L - i->m_position) >= 36)) {
+										if ((positionAheadVehicleAt1L == 0) || ((positionAheadVehicleAt1L - i->m_position) >= -36)) {
 											i->m_lane = 1;
 											file5 << "\nAusgang6 Lane switch2->1!";
 											if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
@@ -301,7 +278,6 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 										file5 << "\nAusgang9";
 									}
 								}
-								else {}
 
 								if (ownSpeed > m_maxVelocity) {
 									ownSpeed = m_maxVelocity;
@@ -309,7 +285,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 								if (ownSpeed > m_maxVelocity_Density) {
 									ownSpeed = m_maxVelocity_Density;
 								}
-								//ownPosition = VL.VLStepConversion(ownSpeed);
+								
 								file5 << "\n" << VL.VLStepConversion(ownSpeed) << " VL.VLStepConversion( " << ownSpeed;
 								if (i->m_moblieORStationary == true) {
 									if (i->m_lane == 1) {
@@ -390,13 +366,11 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 						}
 					}
 				}
-				if ((i != nullptr) && (i->m_ID_ptr != nullptr) && (m_vehicleSet.size() >= 1)) {
+				if ((i != nullptr) && (i->m_ID_ptr != nullptr) && (m_vehicleSet.size() >= 1)&&(i->m_position>0)) {
 					if (i->m_lane == 1) {
 						speedAheadVehicleAt1L = i->m_pref_speed;
 						positionAheadVehicleAt1L = i->m_position;
 						laneAheadVehicle = i->m_lane;
-						
-
 						if ((positionAheadVehicleAt2L > 0) && ((positionAheadVehicleAt2L - i->m_position) >= 20)) {
 							positionAheadVehicleAt2L = length;
 							speedAheadVehicleAt2L = 0;
@@ -422,7 +396,7 @@ int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length
 						
 					}
 					numberOfVehicleinRange++;
-					i->m_speed = ownSpeed;
+					i->m_speed = i->m_pref_speed;
 					file5 << "\ni->m_pref_speed: " << i->m_pref_speed;
 				}
 				if (i->m_processedByIteration)
