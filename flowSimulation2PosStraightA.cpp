@@ -57,6 +57,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 			}
 			zahler++;
 			file5 << "\nzähler: " << zahler << " " << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed << "\ti->m_moblieORStationary: " << i->m_moblieORStationary<<"\ti->m_lane: " << i->m_lane;
+			//Determination of the velocity of the vehicle objects as a reference variable, which is used to determine the changes in the relevant variables.
 			if (i->m_moblieORStationary == true) {
 				//ownPosition = i->m_position;
 				if (i->m_pref_speed <= 0) {
@@ -87,6 +88,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 				ownSpeed = 0;
 				i->m_pref_speed = 0;
 			}
+			//Determination of the position of the vehicles ahead
 			serviceInt = 0;
 			if (((laneAheadVehicle == 1) && (i->m_lane == 2)) || ((laneAheadVehicle == 2) && (i->m_lane == 1))) {
 				for (auto& j : m_vehicleSet) {
@@ -108,6 +110,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 				if (j->m_ID_ptr == i->m_ID_ptr)
 					serviceInt++;
 			}
+			//Removal of vehicle objects from the section in case of multiple entry
 			if (serviceInt > 1) {
 				ownSpeed = 10000;
 				i->m_routeVertexID_vehicle.clear();
@@ -127,6 +130,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 			}
 			if (i != nullptr)
 				file5 << "\n" << i->m_ID_ptr <<"\ti->position: "<<i->m_position<< "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " speedAheadVehicleAt2L\t" << speedAheadVehicleAt2L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " positionAheadVehicleAt2L\t " << positionAheadVehicleAt2L << "\ti->m_lane: "<<i->m_lane;
+			//In the following section, changes in the positions and velocities of the vehicle objects are determined. This section forms the core of the simulation.
 			if (i != nullptr) {
 				if (i->m_lane == 0) {
 					i->m_inRange = false;
@@ -135,11 +139,13 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 				if ((flag == false) && (i->m_ID_ptr != nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
 					if (i->m_processedByIteration == false) {
 						flag = true;
+						//Vehicles outside the range are not observed
 						if ((i->m_position >= length) || (i->m_position < 0)) {
 							i->m_inRange = false;
 							file5 << "\nEnde: " << i->m_ID_ptr << " i->m_position: " << i->m_position;
 						}
 						else {
+							//For vehicles within the range, a distinction is made between vehicles that are newly inserted into the lane and those that are already present.
 							if ((i->m_position == 0)||(i->m_position == -1)) {
 								if (serviceInt == 1)
 									i->m_processedByIteration = true;
@@ -327,6 +333,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 						}
 					}
 				}
+				//After completion of the simulation iteration, the position as well as the velocity of the treated vehicle object are written into variables to be available as a comparison value for the next iteration.
 				if ((i->m_ID_ptr != nullptr) && (m_vehicleSet.size() >= 1)) {
 					if (i->m_lane == 1) {
 						speedAheadVehicleAt1L = i->m_pref_speed;

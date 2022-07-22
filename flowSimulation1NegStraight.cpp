@@ -49,10 +49,7 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 		std::set<vehicle*>::reverse_iterator ii = m_vehicleSet.rbegin();
 		vehicle* i = *ii;
 		file5 << "\n\nneuer Zyklus: " << length;
-		/*if (m_vehicleSet.size() > 1) {
-			positionAheadVehicleAt1L = i->m_position;
-		}*/
-		for (ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii) {//Geschwingskeitsteil!
+		for (ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii) {
 			i = *ii;
 			if (i->m_position < 0) {
 				i->m_inRange = false;
@@ -61,6 +58,7 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 			}
 			zahler++;
 			file5 << "\nzähler: " << zahler << " " << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed << "\ti->m_moblieORStationary: " << i->m_moblieORStationary;
+			//Determination of the velocity of the vehicle objects as a reference variable, which is used to determine the changes in the relevant variables.
 			if (i->m_pref_speed <= 0) {
 				if (i->m_moblieORStationary) {
 					if (m_CBLptr->m_callback_getRandomNumber == nullptr) {
@@ -88,20 +86,22 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 					i->m_pref_speed = 0;
 					ownSpeed = 0;
 				}
-			}//****************Ende Geschwindigkeitsteil!!**********************************
+			}//**************************************************
+			//In the following section, changes in the positions and velocities of the vehicle objects are determined. This section forms the core of the simulation.
 			file5 << "\n" << i->m_ID_ptr << "\tv prev: " << i->m_pref_speed << " ownSpeed: " << ownSpeed << " speedAheadVehicleAt1L\t" << speedAheadVehicleAt1L << " positionAheadVehicleAt1L\t " << positionAheadVehicleAt1L << " ownPosition:\t" << ownPosition;
 			if ((flag == false) && (i->m_ID_ptr!=nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
 				if (i->m_processedByIteration == false) {
 					flag = true;
-					
+					//Vehicles outside the range are not observed
 					if ((i->m_position > length) || (i->m_position < 0)) {
 						i->m_inRange = false;
 						i->m_position = 0;
 						i->m_pref_speed = 0;
 					}
 					else {
+						//For vehicles within the range, a distinction is made between vehicles that are newly inserted into the lane and those that are already present.
 						i->m_processedByIteration = true;
-						if (i->m_position >= length) {//Set-Beginn									
+						if (i->m_position >= length) {									
 							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed)) {
 								ownSpeed = speedAheadVehicleAt1L;
 							}
@@ -119,30 +119,16 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 									i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
 								}
 							}
-							/*if ((positionAheadVehicleAt1L == length) && (m_vehicleSet.size() == 1)) {
-								if (i->m_position >= ownPosition) {
-									i->m_position = ownPosition;
-								}
-								i->m_pref_speed = ownSpeed;
-							}*/
-							/*if ((positionAheadVehicleAt1L == length) && (m_vehicleSet.size() > 1)) {
-								if (i->m_position >= (i->m_position - VL.VLStepConversion(ownSpeed))) {
-									i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
-								}
-								i->m_pref_speed = ownSpeed;
-							}*/
 							if ((length - VL.VLStepConversion(ownSpeed)) > positionAheadVehicleAt1L) {
 								if (i->m_position >= (i->m_position - VL.VLStepConversion(ownSpeed))) {
 
 									i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
 								}
-								//i->m_pref_speed = ownSpeed;
 							}
 							if ((positionAheadVehicleAt1L > 0) && ((length - VL.VLStepConversion(ownSpeed)) <= positionAheadVehicleAt1L) && (length > positionAheadVehicleAt1L)) {
 								if (i->m_position >= (positionAheadVehicleAt1L + 1)) {
 									i->m_position = (positionAheadVehicleAt1L + 1);
 								}
-								//ownPosition = i->m_position;
 								if (ownSpeed == 0) {
 									i->m_pref_speed = 0;
 								}
@@ -151,10 +137,7 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 							file5 << "\ti->m_pref_speed: " << i->m_pref_speed << "\t" << i->m_ID_ptr << " Am Beginn";
 						}
 						else {//m_postiion >0 && m_postion<length
-							/*if (speedAheadVehicleAt1L == 0) {
-								ownSpeed = m_maxVelocity;
-							}*/
-							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {// zweiter Term:  eigendtlich größer gleich
+							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
 								if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
 									if (i->m_moblieORStationary == true) {
 										ownSpeed += 21;
@@ -187,7 +170,6 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 							}
 							ownPosition = VL.VLStepConversion(ownSpeed);
 							file5 << "\n" << ownPosition << " VL.VLStepConversion( " << ownSpeed;
-							//i->m_pref_speed = ownSpeed;
 							if (i->m_moblieORStationary == true) {
 								i->m_pref_speed = ownSpeed + 1;
 								if (i->m_pref_speed >= 135) {
@@ -202,12 +184,10 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 										if (i->m_position >= (i->m_position - VL.VLStepConversion(ownSpeed))) {
 											i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
 										}
-										//i->m_pref_speed = ownSpeed;
 										file5 << "\nnull7-i->m_position: \t" << i->m_position;
 									}
 									else if (positionAheadVehicleAt1L < (i->m_position - VL.VLStepConversion(ownSpeed))) {
 										i->m_position = i->m_position - VL.VLStepConversion(ownSpeed);
-										//i->m_pref_speed = ownSpeed;
 										file5 << "\n2-i->m_position: \t" << i->m_position;
 									}
 									else if (positionAheadVehicleAt1L < i->m_position) {
@@ -226,7 +206,6 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 											if (i->m_position >= (positionAheadVehicleAt1L + 1)) {
 												i->m_position = positionAheadVehicleAt1L + 1;
 											}
-											//ownPosition = positionAheadVehicleAt1L + 1;
 											i->m_pref_speed = 0;
 											ownSpeed = 0;
 										}
@@ -261,6 +240,7 @@ int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length
 					}
 				}
 			}
+			//After completion of the simulation iteration, the position as well as the velocity of the treated vehicle object are written into variables to be available as a comparison value for the next iteration.
 			if ((i->m_ID_ptr != nullptr) && (m_vehicleSet.size() >= 1)) {
 				if ((i->m_position > length) || (i->m_position <= 0)) {
 					i->m_inRange = false;
