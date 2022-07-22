@@ -18,21 +18,10 @@ vehicle* transmissionTable::getPTR() {
 	return PTR;
 }
 
-vertexFlex::vertexFlex() :vertex() {
-	file5.open(textaa);
-	staticVariableInTT++;
-}
-vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {
-	file5.open(textaa);
-	staticVariableInTT++;
-}
-vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) : vertex(xCoordinate, yCoordinate, numberOfLanes) {
-	file5.open(textaa);
-	staticVariableInTT++;
-}
-vertexFlex::~vertexFlex() noexcept {
-	file5.close();
-}
+vertexFlex::vertexFlex() :vertex() {}
+vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
+vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) : vertex(xCoordinate, yCoordinate, numberOfLanes) {}
+vertexFlex::~vertexFlex() noexcept {}
 
 //********************************************************************
 //Implementations of the methods of the virtual functions of the parent class:
@@ -46,12 +35,8 @@ vehicle* vertexFlex::getVehiclePtrOutOfVertex(const int& endVertexNumber, const 
 					return nullptr;
 				}
 				else {
-					file5 << "\n\nparam1: " << i.param1<<"\n";
 					for (auto& i : i.param2) {
-						file5 << i << "  ";
 						serviceInt++;
-						if ((serviceInt % 5) == 0)
-							file5 << "\n";
 					}
 					return i.getPTR();
 				}

@@ -1,6 +1,6 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-static int staticVariableInTT;
+
 class transmissionTable {
 public:
 	
@@ -42,8 +42,6 @@ private:
 	size_t a = 0;
 	bool serviceBool = false;
 public:
-	std::string textaa = "C:/Users/bernh/Desktop/vertexFlex" + std::to_string(staticVariableInTT) + ".txt";
-	std::ofstream file5;
 	size_t m_printShape = 11;
 	std::vector<transmissionTable> m_vectorOfTransmissionTable;
 	explicit vertexFlex::vertexFlex();
@@ -74,7 +72,6 @@ public:
 		return *this;
 	}
 	~vertexFlex() noexcept;
-
 
 	vehicle* getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param) override;
 	void setTransmissionTable(int param)override;

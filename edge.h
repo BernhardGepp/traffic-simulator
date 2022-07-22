@@ -6,7 +6,6 @@
 #include "PrecompiledHeadersEdges.h"
 #include "observer_subjekt.h"
 #include "observer.h"
-static int hilfezahlera;
 
 class edge {
 private:
@@ -17,8 +16,6 @@ private:
 	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer auf den Poolallocator
 	
 public:
-	std::string textaa = "C:/Users/bernh/Desktop/edge" + std::to_string(hilfezahlera) + ".txt";
-	std::ofstream file5;
 	observer* m_observerPTR = nullptr;
 	concreteObserverSubjekt* m_cOSptr = nullptr;
 	selectionFlowSimulation sFs;

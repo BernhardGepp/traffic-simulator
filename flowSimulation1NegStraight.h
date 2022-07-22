@@ -3,17 +3,14 @@
 #include "velocityToLength.h"
 #include "PrintInGDIplusWin1LN.h"
 #include "PrecompiledHeadersEdges.h"
-static int hilfezahlerqwert;
+
 class flowSimulation1NegStraight : public sectionVehicleSet {
 private:
 	PrintInGDIplusWin1LN m_P1LN;
 public:
-	std::string textaa = "C:/Users/bernh/Desktop/flow1N" + std::to_string(hilfezahlerqwert) + ".txt";
-	std::ofstream file5;
 	velocityToLength VL;
 	bool flag = false;
 	int ownSpeed = 0;
-	int ownPosition = 0;
 	int speedAheadVehicleAt1L = 0;
 	int positionAheadVehicleAt1L = 0;
 	int numberOfVehicleinRange = 0;

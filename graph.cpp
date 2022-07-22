@@ -33,7 +33,6 @@ graph::graph(const std::set<int>& setOfVertexes,
 		i->initialisation();
 	}
 	generationOfRoutesNeu();
-	//calculationOfRouteIndex();
 }
 
 graph::~graph() noexcept {}
