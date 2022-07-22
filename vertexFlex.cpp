@@ -6,12 +6,14 @@ transmissionTable::~transmissionTable() noexcept {}
 
 vehicle* transmissionTable::getPTR() {
 	vehicle* PTR = nullptr;
-	auto i = param2.begin();
-	if (param2.size() > 0) {
-		//PTR = param2.back();
-		//param2.pop_back();
+	if (param2.size() < 20) {
+		auto i = param2.begin();
 		PTR=param2.front();
 		param2.erase(i);
+	}
+	else {
+		PTR = param2.back();
+		param2.pop_back();
 	}
 	return PTR;
 }

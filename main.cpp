@@ -27,6 +27,7 @@ bool reStartSimulation = false;
 using namespace Gdiplus;
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, LPARAM lParam);
 LPCWSTR Fragetext1 = L"Wie viele Fahrstreifen                           ";
 LPCWSTR Fragetext2 = L"soll diese Fahrbahn haben?                       ";
 LPCWSTR Fragetext3 = L"1 oder 2?                                        ";
@@ -607,6 +608,52 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 			break;
 		}
 	
+	default:
+		numberOFLanes::one;
+		break;
+	}
+	return DefWindowProcW(g_windowHandle2, message, wParam, lParam);
+}
+
+LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, LPARAM lParam) {
+	switch (message) {
+	case WM_CLOSE:
+		PostQuitMessage(0);
+		break;
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps_s;
+		HDC hdc_s = BeginPaint(g_windowHandle2, &ps_s);
+		TextOut(hdc_s, 10, 10, (LPCSTR)Fragetext1, wcslen(Fragetext1));
+		TextOut(hdc_s, 10, 30, (LPCSTR)Fragetext2, wcslen(Fragetext2));
+		TextOut(hdc_s, 10, 50, (LPCSTR)Fragetext3, wcslen(Fragetext3));
+		numberOFLanes::one;
+		EndPaint(g_windowHandle2, &ps_s);
+	}
+	break;
+	case WM_COMMAND:
+		switch (LOWORD(wParam))
+		{
+		case MY_BUTTON_1:
+			numberOFLanes::one;
+			numberOfLanesINT = 1;
+			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
+			for (auto& i : n->m_nCptr->networkLaneVector) {
+				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
+			}
+			break;
+		case MY_BUTTON_2:
+			numberOFLanes::two;
+			numberOfLanesINT = 2;
+			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
+			for (auto& i : n->m_nCptr->networkLaneVector) {
+				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
+			}
+			break;
+		default:
+			break;
+		}
+
 	default:
 		numberOFLanes::one;
 		break;

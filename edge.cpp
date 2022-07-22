@@ -245,9 +245,6 @@ vehicle* edge::routeAssignment(vehicle* VPAEptr) {
 			m_routeTableIterator++;
 		}
 		else {
-			//VPAEptr->m_routeID = -1;
-			//VPAEptr->m_routeVertexID_vehicle.clear();
-			//m_routeTableIterator = 0;
 			m_VPAptr->deallocate(VPAEptr);
 			return nullptr;
 		}

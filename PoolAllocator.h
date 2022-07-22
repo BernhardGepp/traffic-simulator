@@ -28,6 +28,7 @@ namespace bbe {
 	public:
 		PoolChunk<T>* m_head = nullptr;
 		PoolChunk<T>* m_maxHead = nullptr;
+		PoolChunk<T>* m_maxHeadPossible = nullptr;
 		PoolChunk<T>* m_minHead = nullptr;
 		std::vector<T*>m_vectorOfAllocatedObjekts;
 		std::vector<PoolChunk<T>*>m_quarantine;
@@ -35,7 +36,7 @@ namespace bbe {
 		explicit PoolAllocator(size_t size = DEFAULTSIZE, Allocator* parentAllocator = nullptr)
 			:m_size(size), m_parentAllocator(parentAllocator)
 		{
-			
+			//m_maxHeadPossible = std::addressof(m_data[m_size-1]);
 			if (parentAllocator == nullptr) {
 				m_parentAllocator = new Allocator();
 				m_needsToDeleteParentAllocator = true;
@@ -45,6 +46,7 @@ namespace bbe {
 			m_head = m_data;
 			if (m_minHead == nullptr) {
 				m_minHead = m_head;
+				//m_maxHeadPossible = m_minHead + (sizeof(PoolChunk) * (m_size - 1));
 			}
 
 			for (size_t i = 0; i < m_size - 1; i++) {
@@ -65,7 +67,7 @@ namespace bbe {
 			m_quarantine.clear();
 			m_vectorOfAllocatedObjekts.clear();
 			if (m_openallocations != 0) {
-				//__debugbreak();
+				__debugbreak();
 			}
 			
 			if (m_needsToDeleteParentAllocator) {
@@ -105,6 +107,9 @@ namespace bbe {
 			if (m_queueOfAllocatedObjekts.size() > 97) {
 				buildVectorOfObjektPtr();				
 			}
+			/*if (m_maxHead >= m_maxHeadPossible) {
+				__debugbreak();
+			}*/
 			return retVal;
 		}
 		/*void deallocate(T* data);
