@@ -6,7 +6,7 @@ edge::edge() = default;
 edge::edge(const int& startVertex, const int& endVertex, const int& numberOfLanes, std::unique_ptr<PrintPattern>&pp_ptr,
 	concreteObserverSubjekt * cOSptr)
 	: m_startVertex(startVertex), m_endVertex(endVertex), m_numberOfLanes(numberOfLanes), m_ppPtr(std::move(pp_ptr)), m_cOSptr(cOSptr) {
-	vehicleEraseVector.reserve(30);
+	vehicleEraseVector.reserve(150);
 	m_routeServiceBool = false;
 	sFs.m_CBLptr = m_ppPtr->m_CBLptr;
 	m_observerPTR = m_ppPtr->createObserver();
@@ -207,10 +207,11 @@ void edge::singleSimulationStep(const int& param) {
 
 void edge::sort() {
 	std::vector <vehicle*> vehicleVector;
+	vehicleVector.reserve(sFs.vehicleSetPtr->m_vehicleSet.size() + 1);
 	for (auto i : sFs.vehicleSetPtr->m_vehicleSet) {
 		if (i != nullptr) {
 			if((i->m_lane>0)&&(i->m_ID_ptr!=nullptr))
-				vehicleVector.push_back(i);
+				vehicleVector.emplace_back(i);
 		}
 	}
 	sFs.vehicleSetPtr->m_vehicleSet.clear();

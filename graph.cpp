@@ -179,7 +179,7 @@ void graph::generationOfRoutesNeu() {
 	//Vertex preparation
 	std::vector<std::tuple<bool, int, int>>topologyMarks;
 	topologyMarks.clear();
-	topologyMarks.reserve(m_vectorOfVertexPtr.size());
+	topologyMarks.reserve(m_vectorOfVertexPtr.size()+1);
 	for (auto& ic : m_vectorOfVertexPtr) {
 		if (ic->sizeOfTransmissiontable() == 0) {
 			topologyMarks.emplace_back(std::make_tuple(false, 0, 0));
@@ -265,7 +265,7 @@ void graph::generationOfRoutesNeu() {
 						if (!routeVertexIDs.empty()) {
 							std::vector<int>routeVertexIDsINT;
 							routeVertexIDsINT.clear();
-							routeVertexIDsINT.reserve(routeVertexIDs.size());
+							routeVertexIDsINT.reserve(routeVertexIDs.size()+1);
 							for (auto& routV_iter : routeVertexIDs) {
 								routeVertexIDsINT.emplace_back(routV_iter.first);
 							}
