@@ -348,7 +348,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	while (endprogram == false) {
 		PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
 
-		//Hier die Aktionque verwickrlichen
+		
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 		if (actionQueueBool == true) {

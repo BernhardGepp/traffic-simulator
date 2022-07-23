@@ -71,6 +71,7 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <PlatformToolset>v142</PlatformToolset>
@@ -236,6 +237,8 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>PrecompiledHeadersEdges.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalLibraryDirectories>
@@ -302,7 +305,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />
-    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\random_speed_neu.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vehicle.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\flowSimulation1NegStraight.cpp" />
