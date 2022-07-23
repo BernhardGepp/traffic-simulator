@@ -390,12 +390,12 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 
 	switch (uMsg) {
 	case WM_CHAR:
-		if (wParam == 0x31) {// Code für CHAR Ziffer 1
+		if (wParam == 0x31) {// Code for CHAR digit 1
 			numberOFLanes::one;
 			numberOfLanesINT = 1;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 		}
-		if (wParam == 0x32) {// Code für CHAR Ziffer 2
+		if (wParam == 0x32) {// Code for CHAR digit 2
 			numberOFLanes::two;
 			numberOfLanesINT = 2;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
@@ -421,7 +421,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			n->iPosYLK = (height - 110);
 
 		if (actionQueueBool == false) {
-			InvalidateRect(g_windowHandle, &Rechteck, TRUE); // Quadrat setzen!
+			InvalidateRect(g_windowHandle, &Rechteck, TRUE); // Set square!
 			SendMessage(g_windowHandle, WM_PAINT, wParam, lParam);
 		}
 		break;
@@ -445,7 +445,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		if (n->iPosYRK > (height - 100))
 			n->iPosYRK = (height - 110);
 
-		InvalidateRect(g_windowHandle, &Rechteck, TRUE);//Quadrat setzen!
+		InvalidateRect(g_windowHandle, &Rechteck, TRUE);//Set square!
 		SendMessage(g_windowHandle, WM_PAINT, wParam, lParam);
 		break;
 	}
