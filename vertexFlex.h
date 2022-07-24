@@ -5,7 +5,7 @@ class transmissionTable {
 public:
 	
 	int param1 = 0;
-	std::vector<vehicle*> param2;
+	std::queue<vehicle*> param2;
 	transmissionTable::transmissionTable() {
 		
 	}
