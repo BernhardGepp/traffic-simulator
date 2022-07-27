@@ -125,7 +125,7 @@ int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& lengt
 					if (i->m_processedByIteration == false) {
 						flag = true;
 						//Vehicles outside the range are not observed
-						if ((i->m_position >= length) || (i->m_position < 0)) {
+						if ((i->m_position >= length) || (i->m_position < -2)) {
 							i->m_inRange = false;
 						}
 						else {

@@ -11,7 +11,6 @@ public:
 	int m_pref_speed = 0;
 	int m_speed = 0;
 	bool m_inRange = true;
-	//bool serviceBool = false;
 	bool m_processedByIteration = true;
 	bool m_riseOrDecline = true;
 	bool m_moblieORStationary = true;

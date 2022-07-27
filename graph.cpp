@@ -59,7 +59,7 @@ void graph::simulation(const int& simulationIterator) {
 void graph::clean() {
 	//*************************************************
 	//methode for cleaning up multiple captured vehicles within the simulation
-	std::vector<std::pair<vehicle*, int>>vectorOfVehicleToErase;
+	/*std::vector<std::pair<vehicle*, int>>vectorOfVehicleToErase;
 	vectorOfVehicleToErase.clear();
 	if (!m_poolAllocator.m_vectorOfAllocatedObjekts.empty()) {
 		m_poolAllocator.buildVectorOfObjektPtr();
@@ -137,7 +137,7 @@ void graph::clean() {
 				m_poolAllocator.deallocateClean(j.first);
 			}
 		}
-	}
+	}*/
 }
 
 bool graph::isInsideRouteVertexIDs(const std::vector<std::pair<int, int>>& routeVertexIDs, const int& checkValue) {
