@@ -59,7 +59,7 @@ void graph::simulation(const int& simulationIterator) {
 void graph::clean() {
 	//*************************************************
 	//methode for cleaning up multiple captured vehicles within the simulation
-	/*std::vector<std::pair<vehicle*, int>>vectorOfVehicleToErase;
+	std::vector<std::pair<vehicle*, int>>vectorOfVehicleToErase;
 	vectorOfVehicleToErase.clear();
 	if (!m_poolAllocator.m_vectorOfAllocatedObjekts.empty()) {
 		m_poolAllocator.buildVectorOfObjektPtr();
@@ -72,9 +72,10 @@ void graph::clean() {
 	if (!vectorOfVehicleToErase.empty()) {
 		size_t serviceInt = 0;
 		for (auto& i : m_vectorOfEdgesPtr) {
-			for (auto& ii : i->sFs.vehicleSetPtr->m_vehicleSet) {
+			auto ii = i->sFs.vehicleSetPtr->m_vehicleSet.rbegin();
+			for (ii = i->sFs.vehicleSetPtr->m_vehicleSet.rbegin(); ii != i->sFs.vehicleSetPtr->m_vehicleSet.rend(); ++ii) {
 				for (auto& j : vectorOfVehicleToErase) {
-					if (ii == j.first) {
+					if ((*ii) == j.first) {
 						j.second++;
 					}
 				}
@@ -105,8 +106,9 @@ void graph::clean() {
 				for (auto& i : m_vectorOfEdgesPtr) {
 					serviceInt = 0;
 					if (!i->sFs.vehicleSetPtr->m_vehicleSet.empty()) {
-						for (auto& ii : i->sFs.vehicleSetPtr->m_vehicleSet) {
-							if (j.first == ii) {
+						auto ii = i->sFs.vehicleSetPtr->m_vehicleSet.rbegin();
+						for (ii = i->sFs.vehicleSetPtr->m_vehicleSet.rbegin(); ii != i->sFs.vehicleSetPtr->m_vehicleSet.rend(); ++ii) {
+							if (j.first == (*ii)) {
 								serviceInt++;
 							}
 						}
@@ -137,7 +139,7 @@ void graph::clean() {
 				m_poolAllocator.deallocateClean(j.first);
 			}
 		}
-	}*/
+	}
 }
 
 bool graph::isInsideRouteVertexIDs(const std::vector<std::pair<int, int>>& routeVertexIDs, const int& checkValue) {
