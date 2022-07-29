@@ -8,7 +8,8 @@
 #define START_SIMULATION 41
 #define MY_BUTTON_1 42
 #define MY_BUTTON_2 43
-#define ESTVertexOfGraph 44
+#define MY_BUTTON_3 44
+#define ESTVertexOfGraph 45
 #define createSecondWindow 101
 #define INT int
 
@@ -30,9 +31,12 @@ using namespace Gdiplus;
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, LPARAM lParam);
-LPCWSTR Questiontext1 = L"Wie viele Fahrstreifen                           ";
-LPCWSTR Questiontext2 = L"soll diese Fahrbahn haben?                       ";
-LPCWSTR Questiontext3 = L"1 oder 2?                                        ";
+LPCWSTR Questiontext1 = L"Wie viele Fahrstreifen                                ";
+LPCWSTR Questiontext2 = L"soll diese Fahrbahn haben?                            ";
+LPCWSTR Questiontext3 = L"1 oder 2?                                             ";
+LPCWSTR Questiontext4 = L"Soll der Verkehr über alle oder über die              ";
+LPCWSTR Questiontext5 = L"schnellsten Routen zwischen den Start- und End-       ";
+LPCWSTR Questiontext6 = L"punkten erzeugt werden?                               ";
 HINSTANCE g_hInstance = nullptr;
 WNDCLASSEX subWindowClass;
 WNDCLASSEX thirdWindowClass;
@@ -509,6 +513,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			hdc = BeginPaint(g_windowHandle, &ps);
 			n->m_CBLptr->m_hdc = hdc;
 			if ((actionQueueBool == false)&&(reStartSimulation==false)&&(!n->m_nCptr->networkLaneVector.empty())) {
+				numberOfLanesINT = 2;
 				g_windowHandle3 = CreateWindowEx(
 					NULL,
 					(LPCSTR)L"ThirdWindowClass",
@@ -516,27 +521,35 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					WS_VISIBLE | WS_CHILDWINDOW | WS_SYSMENU | WS_CHILD,
 					150,
 					150,
-					450,
-					300,
+					500,
+					350,
 					g_windowHandle,
 					(HMENU)createSecondWindow,
 					(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 					NULL);
-				CreateWindowExW(NULL, L"BUTTON", L"1", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+				CreateWindowExW(NULL, L"BUTTON", L"gleichverteilung über alle Routen", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON | BS_LEFTTEXT,
 					80,
 					80,
-					20,
+					300,
 					20, g_windowHandle3,
 					(HMENU)MY_BUTTON_1,
 					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 					NULL);
 
-				CreateWindowExW(NULL, L"BUTTON", L"2", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
-					110,
+				CreateWindowExW(NULL, L"BUTTON", L"auf schnelle Routen", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON | BS_LEFTTEXT,
 					80,
-					20,
+					110,
+					300,
 					20, g_windowHandle3,
 					(HMENU)MY_BUTTON_2,
+					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
+					NULL);
+				CreateWindowExW(NULL, L"BUTTON", L"OK", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+					80,
+					160,
+					30,
+					30, g_windowHandle3,
+					(HMENU)MY_BUTTON_3,
 					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 					NULL);
 				
@@ -593,8 +606,8 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			WS_VISIBLE  | WS_CHILDWINDOW/*WS_OVERLAPPEDWINDOW */ | WS_SYSMENU | WS_CHILD,
 			150,
 			150,
-			450,
-			300,
+			500,
+			320,
 			g_windowHandle,
 			(HMENU)createSecondWindow,
 			(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
@@ -689,9 +702,9 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 	{
 		PAINTSTRUCT ps_s;
 		HDC hdc_s = BeginPaint(g_windowHandle3, &ps_s);
-		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext1, wcslen(Questiontext1));
-		TextOut(hdc_s, 10, 30, (LPCSTR)Questiontext2, wcslen(Questiontext2));
-		TextOut(hdc_s, 10, 50, (LPCSTR)Questiontext3, wcslen(Questiontext3));
+		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext4, wcslen(Questiontext4));
+		TextOut(hdc_s, 10, 30, (LPCSTR)Questiontext5, wcslen(Questiontext5));
+		TextOut(hdc_s, 10, 50, (LPCSTR)Questiontext6, wcslen(Questiontext6));
 		numberOFLanes::one;
 		EndPaint(g_windowHandle3, &ps_s);
 	}
@@ -700,21 +713,19 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 		switch (LOWORD(wParam))
 		{
 		case MY_BUTTON_1:
-			
 			numberOfLanesINT = 1;
-			
-			SendMessage(g_windowHandle3, WM_CLOSE, NULL, NULL);
+			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_1, BM_SETCHECK, 1, 0);
+			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_2, BM_SETCHECK, 0, 1);
 			break;
 		case MY_BUTTON_2:
-			
 			numberOfLanesINT = 2;
-			
+			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_2, BM_SETCHECK, 1, 0);
+			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_1, BM_SETCHECK, 0, 1);
+			break;
+		case MY_BUTTON_3:
 			SendMessage(g_windowHandle3, WM_CLOSE, NULL, NULL);
 			break;
-		
 		}
-
-	
 	}
 	return DefWindowProcW(g_windowHandle3, message, wParam, lParam);
 }
