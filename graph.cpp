@@ -93,48 +93,14 @@ void graph::clean() {
 				j.first->m_inRange = false;
 				j.first->m_lane = 0;
 				j.first->m_moblieORStationary = true;
-				j.first->m_position = 0;
 				j.first->m_pref_speed = 0;
-				j.first->m_riseOrDecline = true;
 				j.first->m_routeID = 0;
 				j.first->m_routeVertexID_vehicle.clear();
-				j.first->m_processedByIteration = false;
-			}
-		}
-		for (auto& j : vectorOfVehicleToErase) {
-			if ((j.second == 0) || (j.second >= 2)) {
-				for (auto& i : m_vectorOfEdgesPtr) {
-					serviceInt = 0;
-					if (!i->sFs.vehicleSetPtr->m_vehicleSet.empty()) {
-						auto ii = i->sFs.vehicleSetPtr->m_vehicleSet.rbegin();
-						for (ii = i->sFs.vehicleSetPtr->m_vehicleSet.rbegin(); ii != i->sFs.vehicleSetPtr->m_vehicleSet.rend(); ++ii) {
-							if (j.first == (*ii)) {
-								serviceInt++;
-							}
-						}
-						if (serviceInt >= 1) {
-							do {
-								i->sFs.vehicleSetPtr->m_vehicleSet.erase(j.first);
-								serviceInt--;
-							} while (serviceInt == 0);
-						}
-					}
-				}
-			}
-		}
-
-		for (auto& j : vectorOfVehicleToErase) {
-
-			if (j.second >= 2) {
-				j.first->m_inRange = false;
-				j.first->m_lane = 0;
-				j.first->m_moblieORStationary = true;
-				j.first->m_position = 0;
-				j.first->m_pref_speed = 0;
-				j.first->m_riseOrDecline = true;
-				j.first->m_routeID = 0;
-				j.first->m_routeVertexID_vehicle.clear();
-				j.first->m_processedByIteration = false;
+				j.first->m_processedByIteration = true;
+				if (j.first->m_riseOrDecline)
+					j.first->m_position = 999999;
+				else
+					j.first->m_position = -500;
 
 				m_poolAllocator.deallocateClean(j.first);
 			}

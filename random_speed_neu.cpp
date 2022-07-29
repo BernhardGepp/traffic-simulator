@@ -46,14 +46,16 @@ void randomSpeed_neu::randomNumberGenerator() {
 	int bii = 0;
 	int cii = 0;
 	serviceBool = true;
-	while (q2.size() < 80) {
+	while (q2.size() < 150) {
 		serviceBool = true;
 		bii = intDist(mt);
 		if (bii != cii) {
 			if (bii == 0) {
 				bii = 80;
 			}
+			//try
 			q2.push(bii);
+			//catch
 		}
 		cii = bii;
 	}

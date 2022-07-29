@@ -536,7 +536,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					(HMENU)MY_BUTTON_2,
 					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 					NULL);
-				n->establishVertexOfGraph();
+				//n->establishVertexOfGraph(2);
 				n->iPosXLK = height;
 				n->iPosYLK = width;
 				n->printLanesAndVehiclesOfAllEdges();
@@ -688,6 +688,7 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 			for (auto& i : n->m_nCptr->networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
+			n->establishVertexOfGraph(1);
 			break;
 		case MY_BUTTON_2:
 			numberOFLanes::two;
@@ -696,6 +697,7 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 			for (auto& i : n->m_nCptr->networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
+			n->establishVertexOfGraph(2);
 			break;
 		default:
 			break;
