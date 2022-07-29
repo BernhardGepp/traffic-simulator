@@ -8,6 +8,7 @@
 #define START_SIMULATION 41
 #define MY_BUTTON_1 42
 #define MY_BUTTON_2 43
+#define ESTVertexOfGraph 44
 #define createSecondWindow 101
 #define INT int
 
@@ -24,6 +25,7 @@ bool window1closed = false;
 bool window2closed = false;
 bool actionQueueBool = false;
 bool reStartSimulation = false;
+bool StartSimulation = false;
 using namespace Gdiplus;
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, LPARAM lParam);
@@ -38,6 +40,7 @@ HWND  g_windowHandle = nullptr;
 HWND g_windowHandle2 = nullptr;
 HWND g_windowHandle3 = nullptr;
 HWND iter_button = nullptr;
+HWND hDlg = nullptr;
 RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
 //bool serviceBool = true;
 
@@ -536,13 +539,16 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					(HMENU)MY_BUTTON_2,
 					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 					NULL);
-				//n->establishVertexOfGraph(2);
+				
 				n->iPosXLK = height;
 				n->iPosYLK = width;
 				n->printLanesAndVehiclesOfAllEdges();
-				actionQueueBool = true;
+				
+				//actionQueueBool = true;
 			}
 			break;
+		
+
 		case START_SIMULATION:
 			if (n->appliedGraph.size() >= 1) {
 				for (auto& i : n->appliedGraph) {
@@ -557,6 +563,14 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				n->printLanesAndVehiclesOfAllEdges();
 			}
 			break;
+		case ESTVertexOfGraph:
+			n->establishVertexOfGraph(numberOfLanesINT);
+			n->iPosXLK = height;
+			n->iPosYLK = width;
+			n->printLanesAndVehiclesOfAllEdges();
+			actionQueueBool = true;
+			StartSimulation = false;
+			break;
 		default:
 			hdc = BeginPaint(g_windowHandle, &ps);	
 			n->m_CBLptr->m_hdc = hdc;
@@ -569,6 +583,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		}
 		return 0;
 	}
+	
 	case WM_CREATE:
 	{
 			g_windowHandle2 = CreateWindowEx(
@@ -611,6 +626,8 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 
 		break;
 	default:
+		if (StartSimulation)
+			SendMessage(g_windowHandle,WM_PAINT, ESTVertexOfGraph, NULL);
 		break;
 	}
 	return DefWindowProcW(g_windowHandle, uMsg, wParam, lParam);
@@ -665,6 +682,7 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, LPARAM lParam) {
 	switch (message) {
 	case WM_CLOSE:
+		StartSimulation = true;
 		PostQuitMessage(0);
 		break;
 	case WM_PAINT:
@@ -682,30 +700,21 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 		switch (LOWORD(wParam))
 		{
 		case MY_BUTTON_1:
-			numberOFLanes::one;
+			
 			numberOfLanesINT = 1;
+			
 			SendMessage(g_windowHandle3, WM_CLOSE, NULL, NULL);
-			for (auto& i : n->m_nCptr->networkLaneVector) {
-				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
-			}
-			n->establishVertexOfGraph(1);
 			break;
 		case MY_BUTTON_2:
-			numberOFLanes::two;
+			
 			numberOfLanesINT = 2;
+			
 			SendMessage(g_windowHandle3, WM_CLOSE, NULL, NULL);
-			for (auto& i : n->m_nCptr->networkLaneVector) {
-				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
-			}
-			n->establishVertexOfGraph(2);
 			break;
-		default:
-			break;
+		
 		}
 
-	default:
-		numberOFLanes::one;
-		break;
+	
 	}
 	return DefWindowProcW(g_windowHandle3, message, wParam, lParam);
 }
