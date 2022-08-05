@@ -21,14 +21,14 @@ public:
 	
 	graph::graph(const graph& other)  {
 		
-		m_setOfVertexes=std::move(other.m_setOfVertexes);
+		m_setOfVertexes=other.m_setOfVertexes;
 		m_vectorOfVertexPtr.reserve(other.m_vectorOfEdgesPtr.size());
 		for (auto& i : other.m_vectorOfVertexPtr){
-			m_vectorOfVertexPtr.emplace_back(std::move(i));
+			m_vectorOfVertexPtr.emplace_back(i);
 		}
 		m_vectorOfEdgesPtr.reserve(other.m_vectorOfEdgesPtr.size());
 		for (auto& i : other.m_vectorOfEdgesPtr){
-			m_vectorOfEdgesPtr.emplace_back(std::move(i));
+			m_vectorOfEdgesPtr.emplace_back(i);
 		}
 	}
 	graph::graph(const graph&& other) = delete;

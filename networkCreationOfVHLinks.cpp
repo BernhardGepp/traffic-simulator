@@ -664,4 +664,5 @@ std::unique_ptr<PrintPattern> networkCreationOfVHLinks::choosePrintPattern(const
 			return std::make_unique<PrintPatternLine2LaneVertiNeg>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
 		}
 	}
+	return nullptr;
 }

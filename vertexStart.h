@@ -5,28 +5,28 @@ class vertexStart :public vertex {
 private:
 	std::vector<int> m_transmissionTableInt;
 public:
-	explicit vertexStart(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd);
-	explicit vertexStart::vertexStart(const vertexStart& other) {
+	explicit vertexStart(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept;
+	explicit vertexStart::vertexStart(const vertexStart& other)noexcept {
 		m_transmissionTableInt = other.m_transmissionTableInt;
 	}
-	explicit vertexStart::vertexStart(const vertexStart&& other) {
+	explicit vertexStart::vertexStart(const vertexStart&& other) noexcept {
 		m_transmissionTableInt = other.m_transmissionTableInt;
 	}
-	vertexStart& operator=(const vertexStart& other) {
+	vertexStart& operator=(const vertexStart& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
 		m_transmissionTableInt = other.m_transmissionTableInt;
 		return *this;
 	}
-	vertexStart& operator=(const vertexStart&& other) {
+	vertexStart& operator=(const vertexStart&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
 		m_transmissionTableInt = other.m_transmissionTableInt;
 		return *this;
 	}
-	~vertexStart() noexcept;
+	~vertexStart();
 
 	vehicle* getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param) override;
 	void setTransmissionTable(int param)override;

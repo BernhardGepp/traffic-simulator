@@ -4,13 +4,13 @@
 class vertexEnd :public vertex {
 private:
 public:
-	explicit vertexEnd(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd);
-	vertexEnd::vertexEnd(const vertexEnd& other) = default;
-	vertexEnd::vertexEnd( vertexEnd&& other) = default;
-	vertexEnd& operator=(const vertexEnd& other) {
+	explicit vertexEnd(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept;
+	vertexEnd::vertexEnd(const vertexEnd& other)noexcept = default;
+	vertexEnd::vertexEnd( vertexEnd&& other)noexcept = default;
+	vertexEnd& operator=(const vertexEnd& other)noexcept {
 		return *this;		
 	}
-	vertexEnd& operator=(const vertexEnd&& other) {
+	vertexEnd& operator=(const vertexEnd&& other)noexcept {
 		return *this;
 	}
 	~vertexEnd() noexcept;

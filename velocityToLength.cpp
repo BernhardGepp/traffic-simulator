@@ -39,4 +39,5 @@ int velocityToLength::VLStepConversion(const int& m_velocity) {
 		return 3;
 	if (m_velocity <= 0)
 		return 0;
+	return 0;
 }

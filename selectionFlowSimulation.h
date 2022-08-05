@@ -66,16 +66,16 @@ public:
 	std::unique_ptr<observer> m_observer;
 	callBackLinks* m_CBLptr=nullptr;
 
-	PrintPattern();
-	PrintPattern::PrintPattern(const PrintPattern& other)  {
+	PrintPattern()noexcept;
+	PrintPattern::PrintPattern(const PrintPattern& other) noexcept {
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
 		m_risingOrDescention = other.m_risingOrDescention;
 	}
-	PrintPattern::PrintPattern(const PrintPattern&& other) {
+	PrintPattern::PrintPattern(const PrintPattern&& other) noexcept{
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
 		m_risingOrDescention = other.m_risingOrDescention;
 	}
-	PrintPattern& operator=(const PrintPattern& other) {
+	PrintPattern& operator=(const PrintPattern& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -83,7 +83,7 @@ public:
 		m_risingOrDescention = other.m_risingOrDescention;
 		return *this;
 	}
-	PrintPattern& operator=(const PrintPattern&& other) {
+	PrintPattern& operator=(const PrintPattern&& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -110,9 +110,9 @@ private:
 	
 public:
 
-	explicit PrintPatternLine1LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
+	explicit PrintPatternLine1LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr) noexcept;
 
-	PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const PrintPatternLine1LaneHoriNeg& other) : PrintPattern() {
+	PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const PrintPatternLine1LaneHoriNeg& other)noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -121,7 +121,7 @@ public:
 		m_p12y = other.m_p12y;
 		m_p2x = other.m_p2x;
 	}
-	PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const PrintPatternLine1LaneHoriNeg&& other) : PrintPattern() {
+	PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const PrintPatternLine1LaneHoriNeg&& other) noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -131,7 +131,7 @@ public:
 		m_p2x = other.m_p2x;
 		
 	}
-	PrintPatternLine1LaneHoriNeg& operator=(const PrintPatternLine1LaneHoriNeg& other) {
+	PrintPatternLine1LaneHoriNeg& operator=(const PrintPatternLine1LaneHoriNeg& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -144,7 +144,7 @@ public:
 		m_p2x = other.m_p2x;
 		return *this;
 	}
-	PrintPatternLine1LaneHoriNeg& operator=(const PrintPatternLine1LaneHoriNeg&& other) {
+	PrintPatternLine1LaneHoriNeg& operator=(const PrintPatternLine1LaneHoriNeg&& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -176,8 +176,8 @@ private:
 	
 public:
 	
-	explicit PrintPatternLine1LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
-	PrintPatternLine1LaneHoriPos::PrintPatternLine1LaneHoriPos(const PrintPatternLine1LaneHoriPos& other) : PrintPattern() {
+	explicit PrintPatternLine1LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr) noexcept;
+	PrintPatternLine1LaneHoriPos::PrintPatternLine1LaneHoriPos(const PrintPatternLine1LaneHoriPos& other) noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -186,7 +186,7 @@ public:
 		m_p12y = other.m_p12y;
 		m_p2x = other.m_p2x;
 	}
-	PrintPatternLine1LaneHoriPos::PrintPatternLine1LaneHoriPos(const PrintPatternLine1LaneHoriPos&& other) : PrintPattern() {
+	PrintPatternLine1LaneHoriPos::PrintPatternLine1LaneHoriPos(const PrintPatternLine1LaneHoriPos&& other)noexcept : PrintPattern()  {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -195,7 +195,7 @@ public:
 		m_p12y = other.m_p12y;
 		m_p2x = other.m_p2x;
 	}
-	PrintPatternLine1LaneHoriPos& operator=(const PrintPatternLine1LaneHoriPos& other) {
+	PrintPatternLine1LaneHoriPos& operator=(const PrintPatternLine1LaneHoriPos& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -208,7 +208,7 @@ public:
 		m_p2x = other.m_p2x;
 		return *this;
 	}
-	PrintPatternLine1LaneHoriPos& operator=(const PrintPatternLine1LaneHoriPos&& other) {
+	PrintPatternLine1LaneHoriPos& operator=(const PrintPatternLine1LaneHoriPos&& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -240,8 +240,8 @@ private:
 	
 public:
 	
-	explicit PrintPatternLine1LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
-	PrintPatternLine1LaneVertiNeg::PrintPatternLine1LaneVertiNeg(const PrintPatternLine1LaneVertiNeg& other) : PrintPattern() {
+	explicit PrintPatternLine1LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr) noexcept;
+	PrintPatternLine1LaneVertiNeg::PrintPatternLine1LaneVertiNeg(const PrintPatternLine1LaneVertiNeg& other) noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -250,7 +250,7 @@ public:
 		m_p1y = other.m_p1y;
 		m_p2y = other.m_p2y;
 	}
-	PrintPatternLine1LaneVertiNeg::PrintPatternLine1LaneVertiNeg(const PrintPatternLine1LaneVertiNeg&& other) : PrintPattern() {
+	PrintPatternLine1LaneVertiNeg::PrintPatternLine1LaneVertiNeg(const PrintPatternLine1LaneVertiNeg&& other)noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -260,7 +260,7 @@ public:
 		m_p2y = other.m_p2y;
 	}
 		
-	PrintPatternLine1LaneVertiNeg& operator=(const PrintPatternLine1LaneVertiNeg& other) {
+	PrintPatternLine1LaneVertiNeg& operator=(const PrintPatternLine1LaneVertiNeg& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -273,7 +273,7 @@ public:
 		m_p2y = other.m_p2y;
 		return *this;
 	}
-	PrintPatternLine1LaneVertiNeg& operator=(const PrintPatternLine1LaneVertiNeg&& other) {
+	PrintPatternLine1LaneVertiNeg& operator=(const PrintPatternLine1LaneVertiNeg&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -305,8 +305,8 @@ private:
 	
 public:
 	
-	explicit PrintPatternLine1LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
-	PrintPatternLine1LaneVertiPos::PrintPatternLine1LaneVertiPos(const PrintPatternLine1LaneVertiPos& other) : PrintPattern() {
+	explicit PrintPatternLine1LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
+	PrintPatternLine1LaneVertiPos::PrintPatternLine1LaneVertiPos(const PrintPatternLine1LaneVertiPos& other) noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -315,7 +315,7 @@ public:
 		m_p1y = other.m_p1y;
 		m_p2y = other.m_p2y;
 	}
-	PrintPatternLine1LaneVertiPos::PrintPatternLine1LaneVertiPos(const PrintPatternLine1LaneVertiPos&& other) : PrintPattern() {
+	PrintPatternLine1LaneVertiPos::PrintPatternLine1LaneVertiPos(const PrintPatternLine1LaneVertiPos&& other)noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -324,7 +324,7 @@ public:
 		m_p1y = other.m_p1y;
 		m_p2y = other.m_p2y;
 	}
-	PrintPatternLine1LaneVertiPos& operator=(const PrintPatternLine1LaneVertiPos& other) {
+	PrintPatternLine1LaneVertiPos& operator=(const PrintPatternLine1LaneVertiPos& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -337,7 +337,7 @@ public:
 		m_p2y = other.m_p2y;
 		return *this;
 	}
-	PrintPatternLine1LaneVertiPos& operator=(const PrintPatternLine1LaneVertiPos&& other) {
+	PrintPatternLine1LaneVertiPos& operator=(const PrintPatternLine1LaneVertiPos&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -369,8 +369,8 @@ private:
 	
 public:
 	
-	explicit PrintPatternLine2LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
-	PrintPatternLine2LaneHoriNeg::PrintPatternLine2LaneHoriNeg(const PrintPatternLine2LaneHoriNeg& other) : PrintPattern() {
+	explicit PrintPatternLine2LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
+	PrintPatternLine2LaneHoriNeg::PrintPatternLine2LaneHoriNeg(const PrintPatternLine2LaneHoriNeg& other) noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -379,7 +379,7 @@ public:
 		m_p12y = other.m_p12y;
 		m_p2x = other.m_p2x;
 	}
-	PrintPatternLine2LaneHoriNeg::PrintPatternLine2LaneHoriNeg(const PrintPatternLine2LaneHoriNeg&& other) : PrintPattern() {
+	PrintPatternLine2LaneHoriNeg::PrintPatternLine2LaneHoriNeg(const PrintPatternLine2LaneHoriNeg&& other) noexcept : PrintPattern()  {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -388,7 +388,7 @@ public:
 		m_p12y = other.m_p12y;
 		m_p2x = other.m_p2x;
 	}
-	PrintPatternLine2LaneHoriNeg& operator=(const PrintPatternLine2LaneHoriNeg& other) {
+	PrintPatternLine2LaneHoriNeg& operator=(const PrintPatternLine2LaneHoriNeg& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -401,7 +401,7 @@ public:
 		m_p2x = other.m_p2x;
 		return *this;
 	}
-	PrintPatternLine2LaneHoriNeg& operator=(const PrintPatternLine2LaneHoriNeg&& other) {
+	PrintPatternLine2LaneHoriNeg& operator=(const PrintPatternLine2LaneHoriNeg&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -432,8 +432,8 @@ private:
 	
 public:
 	
-	explicit PrintPatternLine2LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
-	PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const PrintPatternLine2LaneHoriPos& other) : PrintPattern() {
+	explicit PrintPatternLine2LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
+	PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const PrintPatternLine2LaneHoriPos& other)noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -442,7 +442,7 @@ public:
 		m_p12y = other.m_p12y;
 		m_p2x = other.m_p2x;
 	}
-	PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const PrintPatternLine2LaneHoriPos&& other) : PrintPattern() {
+	PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const PrintPatternLine2LaneHoriPos&& other)noexcept : PrintPattern()  {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -451,7 +451,7 @@ public:
 		m_p12y = other.m_p12y;
 		m_p2x = other.m_p2x;
 	}
-	PrintPatternLine2LaneHoriPos& operator=(const PrintPatternLine2LaneHoriPos& other) {
+	PrintPatternLine2LaneHoriPos& operator=(const PrintPatternLine2LaneHoriPos& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -464,7 +464,7 @@ public:
 		m_p2x = other.m_p2x;
 		return *this;
 	}
-	PrintPatternLine2LaneHoriPos& operator=(const PrintPatternLine2LaneHoriPos&& other) {
+	PrintPatternLine2LaneHoriPos& operator=(const PrintPatternLine2LaneHoriPos&& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -496,8 +496,8 @@ private:
 	
 public:
 	
-	explicit PrintPatternLine2LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
-	PrintPatternLine2LaneVertiNeg::PrintPatternLine2LaneVertiNeg(const PrintPatternLine2LaneVertiNeg& other) : PrintPattern() {
+	explicit PrintPatternLine2LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
+	PrintPatternLine2LaneVertiNeg::PrintPatternLine2LaneVertiNeg(const PrintPatternLine2LaneVertiNeg& other)noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -506,7 +506,7 @@ public:
 		m_p12x = other.m_p12x;
 		m_p2y = other.m_p2y;
 	}
-	PrintPatternLine2LaneVertiNeg::PrintPatternLine2LaneVertiNeg(const PrintPatternLine2LaneVertiNeg&& other) : PrintPattern() {
+	PrintPatternLine2LaneVertiNeg::PrintPatternLine2LaneVertiNeg(const PrintPatternLine2LaneVertiNeg&& other) noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -515,7 +515,7 @@ public:
 		m_p12x = other.m_p12x;
 		m_p2y = other.m_p2y;
 	}
-	PrintPatternLine2LaneVertiNeg& operator=(const PrintPatternLine2LaneVertiNeg& other) {
+	PrintPatternLine2LaneVertiNeg& operator=(const PrintPatternLine2LaneVertiNeg& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -528,7 +528,7 @@ public:
 		m_p2y = other.m_p2y;
 		return *this;
 	}
-	PrintPatternLine2LaneVertiNeg& operator=(const PrintPatternLine2LaneVertiNeg&& other) {
+	PrintPatternLine2LaneVertiNeg& operator=(const PrintPatternLine2LaneVertiNeg&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -560,8 +560,8 @@ private:
 	
 public:
 	
-	explicit PrintPatternLine2LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr);
-	PrintPatternLine2LaneVertiPos::PrintPatternLine2LaneVertiPos(const PrintPatternLine2LaneVertiPos& other) : PrintPattern() {
+	explicit PrintPatternLine2LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
+	PrintPatternLine2LaneVertiPos::PrintPatternLine2LaneVertiPos(const PrintPatternLine2LaneVertiPos& other)noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -570,7 +570,7 @@ public:
 		m_p12x = other.m_p12x;
 		m_p2y = other.m_p2y;
 	}
-	PrintPatternLine2LaneVertiPos::PrintPatternLine2LaneVertiPos(const PrintPatternLine2LaneVertiPos&& other) : PrintPattern() {
+	PrintPatternLine2LaneVertiPos::PrintPatternLine2LaneVertiPos(const PrintPatternLine2LaneVertiPos&& other) noexcept : PrintPattern() {
 		m_startVertexShort = other.m_startVertexShort;
 		m_endVertexShort = other.m_endVertexShort;
 		m_verticalOrHorizontal = other.m_verticalOrHorizontal;
@@ -579,7 +579,7 @@ public:
 		m_p12x = other.m_p12x;
 		m_p2y = other.m_p2y;
 	}
-	PrintPatternLine2LaneVertiPos& operator=(const PrintPatternLine2LaneVertiPos& other) {
+	PrintPatternLine2LaneVertiPos& operator=(const PrintPatternLine2LaneVertiPos& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -592,7 +592,7 @@ public:
 		m_p2y = other.m_p2y;
 		return *this;
 	}
-	PrintPatternLine2LaneVertiPos& operator=(const PrintPatternLine2LaneVertiPos&& other) {
+	PrintPatternLine2LaneVertiPos& operator=(const PrintPatternLine2LaneVertiPos&& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}

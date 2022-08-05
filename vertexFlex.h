@@ -6,18 +6,18 @@ public:
 	
 	int param1 = 0;
 	std::queue<vehicle*> param2;
-	transmissionTable::transmissionTable() {
+	transmissionTable::transmissionTable()noexcept {
 		
 	}
-	transmissionTable::transmissionTable(const transmissionTable& other) {
+	transmissionTable::transmissionTable(const transmissionTable& other)noexcept {
 		param1 = other.param1;
 		param2 = other.param2;
 	}
-	transmissionTable::transmissionTable(const transmissionTable&& other) {
+	transmissionTable::transmissionTable(const transmissionTable&& other)noexcept {
 		param1 = other.param1;
 		param2 = other.param2;
 	}
-	transmissionTable& operator=(transmissionTable& other) {
+	transmissionTable& operator=(transmissionTable& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -25,7 +25,7 @@ public:
 		param2 = other.param2;
 		return *this;
 	}
-	transmissionTable& operator=(transmissionTable&& other) {
+	transmissionTable& operator=(transmissionTable&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -44,18 +44,18 @@ private:
 public:
 	size_t m_printShape = 11;
 	std::vector<transmissionTable> m_vectorOfTransmissionTable;
-	explicit vertexFlex::vertexFlex();
-	explicit vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd);
-	explicit vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes);
-	vertexFlex::vertexFlex(const vertexFlex& other) {
+	explicit vertexFlex::vertexFlex()noexcept;
+	explicit vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept;
+	explicit vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)noexcept;
+	vertexFlex::vertexFlex(const vertexFlex& other) noexcept {
 		a = other.a;
 		m_vectorOfTransmissionTable = other.m_vectorOfTransmissionTable;
 	}
-	vertexFlex::vertexFlex(const vertexFlex&& other) {
+	vertexFlex::vertexFlex(const vertexFlex&& other)noexcept {
 		a = other.a;
 		m_vectorOfTransmissionTable = other.m_vectorOfTransmissionTable;
 	}
-	vertexFlex& operator=(const vertexFlex& other) {
+	vertexFlex& operator=(const vertexFlex& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -63,7 +63,7 @@ public:
 		m_vectorOfTransmissionTable = other.m_vectorOfTransmissionTable;
 		return *this;
 	}
-	vertexFlex& operator=(const vertexFlex&& other){
+	vertexFlex& operator=(const vertexFlex&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}

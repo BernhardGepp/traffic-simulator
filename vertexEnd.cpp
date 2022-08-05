@@ -2,8 +2,8 @@
 #include "vertexEnd.h"
 
 //Constructor and destructor of the class:
-vertexEnd::vertexEnd(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
-vertexEnd::~vertexEnd(){}
+vertexEnd::vertexEnd(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd){}
+vertexEnd::~vertexEnd()noexcept {}
 
 //********************************************************************
 //Implementations of the methods of the virtual functions of the parent class:

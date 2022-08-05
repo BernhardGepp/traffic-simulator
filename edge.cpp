@@ -309,15 +309,14 @@ void edge::allocateVehicleAtPositionX() {
 				VPAEptr = m_VPAptr->allocate(2, m_observerPTR->m_position.first);
 				VPAEptr->m_lane = 2;
 			}
-			VPAEptr->setPtr(VPAEptr);  //Setting the ID in vehicle object
-			VPAEptr->m_pref_speed = 0;
-			VPAEptr->m_moblieORStationary = false;
-			VPAEptr->m_position = m_observerPTR->m_position.first;
-			VPAEptr->m_inRange = true;
-			VPAEptr->m_riseOrDecline = m_risingOrDescention;
-
-
 			if (VPAEptr != nullptr) {
+				VPAEptr->setPtr(gsl::not_null <vehicle*> (VPAEptr));  //Setting the ID in vehicle object
+				int nullIntInit = 0;
+				VPAEptr->m_pref_speed = nullIntInit;
+				VPAEptr->m_moblieORStationary = false;
+				VPAEptr->m_position = m_observerPTR->m_position.first;
+				VPAEptr->m_inRange = true;
+				VPAEptr->m_riseOrDecline = m_risingOrDescention;
 				sFs.vehicleSetPtr->insertSET(VPAEptr);
 			}
 
