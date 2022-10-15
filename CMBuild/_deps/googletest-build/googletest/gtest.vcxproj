@@ -138,7 +138,7 @@
       <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_UNICODE;UNICODE;_WIN32;STRICT;WIN32_LEAN_AND_MEAN;GTEST_HAS_PTHREAD=0;_HAS_EXCEPTIONS=1;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\bin\Debug\gtestpdb_debug_postfix-NOTFOUND.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\lib\Debug\gtestpdb_debug_postfix-NOTFOUND.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_UNICODE;UNICODE;_WIN32;STRICT;WIN32_LEAN_AND_MEAN;GTEST_HAS_PTHREAD=0;_HAS_EXCEPTIONS=1;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
@@ -178,7 +178,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
-      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\bin\Release\gtest.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\lib\Release\gtest.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;UNICODE;_WIN32;STRICT;WIN32_LEAN_AND_MEAN;GTEST_HAS_PTHREAD=0;_HAS_EXCEPTIONS=1;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
@@ -218,7 +218,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
-      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\bin\MinSizeRel\gtest.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\lib\MinSizeRel\gtest.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;UNICODE;_WIN32;STRICT;WIN32_LEAN_AND_MEAN;GTEST_HAS_PTHREAD=0;_HAS_EXCEPTIONS=1;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
@@ -257,7 +257,7 @@
       <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;UNICODE;_WIN32;STRICT;WIN32_LEAN_AND_MEAN;GTEST_HAS_PTHREAD=0;_HAS_EXCEPTIONS=1;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\bin\RelWithDebInfo\gtest.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\lib\RelWithDebInfo\gtest.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;UNICODE;_WIN32;STRICT;WIN32_LEAN_AND_MEAN;GTEST_HAS_PTHREAD=0;_HAS_EXCEPTIONS=1;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
@@ -286,9 +286,6 @@
       <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
-    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\CMakeLists.txt">

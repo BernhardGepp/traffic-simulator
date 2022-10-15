@@ -9,9 +9,9 @@ public:
 	int m_lane = 1;
 	int m_position = 0;
 	int m_pref_speed = 0;
+	int m_speed = 0;
 	bool m_inRange = true;
-	bool serviceBool = false;
-	bool processedByIteration = true;
+	bool m_processedByIteration = true;
 	bool m_riseOrDecline = true;
 	bool m_moblieORStationary = true;
 	

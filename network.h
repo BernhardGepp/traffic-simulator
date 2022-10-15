@@ -118,7 +118,7 @@ public:
 		}
 	}
 
-	void  network::establishVertexOfGraph() {
+	void  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
 
 		callBackLinks* CBL = nullptr;
 		concreteObserverSubjekt* cOS = nullptr;
@@ -144,7 +144,7 @@ public:
 				}
 			}
 		}
-		networkCreationClass.establishVertexOfGraphA();
+		networkCreationClass.establishVertexOfGraphA(choiceOfRouteFinding);
 		if (networkCreationClass.appliedGraph.size() != 0) {
 			for (auto& i : networkCreationClass.appliedGraph) {
 				appliedGraph.push_back(std::move(i));

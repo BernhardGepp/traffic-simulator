@@ -3,6 +3,7 @@
 #include "velocityToLength.h"
 #include "PrintInGDIplusWin2LP.h"
 #include "PrecompiledHeadersEdges.h"
+
 class flowSimulation2PosStraightA: public sectionVehicleSet {
 private:
 	PrintInGDIplusWin2LP m_P2LP;
@@ -10,7 +11,7 @@ public:
 	velocityToLength VL;
 	bool flag = false;
 	int ownSpeed = 0;
-	int ownPosition = 0;
+	int laneAheadVehicle = 0;
 	int speedAheadVehicleAt1L = 0;
 	int positionAheadVehicleAt1L = 0;
 	int speedAheadVehicleAt2L = 0;

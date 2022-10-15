@@ -30,13 +30,11 @@ int vehicle::position()const {
 
 bool vehicle::operator<(const vehicle& l) const
 {
-	bool schau = true;
-	if (m_riseOrDecline == true) {
-		schau = (position() > l.position());
+	if (m_riseOrDecline) {
+		return (position() < l.position());
 	}
 	else {
-		schau = (position() < l.position());
+		return (position() > l.position());
 	}
-	return schau;
 }
 

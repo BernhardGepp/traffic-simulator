@@ -19,9 +19,12 @@ void flowSimulation1PosStraight::printContentOfSection(const int& p1xx, const in
 	//This method and the method "addPrintContent" of the inheriting classes of "PrintInGDIPlusWindow" form a unit, 
 	//whose goal is to fill the positions of the vehicle objects in a visually suitable form in a data container(m_pointContainer in class "PrintInGDIplusWindow").
 	for (auto& i : m_vehicleSet) {
-		i->serviceBool = false;
+		i->m_processedByIteration = false;
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_P1LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, i->m_routeVertexID_vehicle.back());
+		}
+		else {
+			m_P1LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, 0);
 		}
 	}
 }
@@ -29,23 +32,25 @@ void flowSimulation1PosStraight::printContentOfSection(const int& p1xx, const in
 int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	//********************************************************************
 	//Traffic flow simulation algorithm for connections with one lane in ascending direction
+	
 	flag = false;
 	ownSpeed = 0;
-	ownPosition = 0;
 	speedAheadVehicleAt1L = 0;
 	positionAheadVehicleAt1L = 0;
 	numberOfVehicleinRange = 0;
-	if (riseOrDecline == true) {
+	if (riseOrDecline) {
 		numberOfVehicleinRange = 0;
-
-		for (auto& i : m_vehicleSet) {
-			if (i->m_pref_speed <= 0)
-			{
-				if (i->m_moblieORStationary == false)
-				{
-					ownSpeed = 0;
-				}
-				else {
+		std::set<vehicle*>::reverse_iterator ii = m_vehicleSet.rbegin();
+		vehicle* i = nullptr;
+		for(ii = m_vehicleSet.rbegin(); ii != m_vehicleSet.rend(); ++ii){
+			i = *ii;
+			if (i->m_position > length) {
+				i->m_inRange = false;
+				i->m_processedByIteration = true;
+			}
+			//Determination of the velocity of the vehicle objects as a reference variable, which is used to determine the changes in the relevant variables.
+			if (i->m_pref_speed <= 0){
+				if (i->m_moblieORStationary){
 					if (m_CBLptr->m_callback_getRandomNumber == nullptr) {
 						ownSpeed = 100;
 					}
@@ -53,13 +58,17 @@ int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length
 						ownSpeed = m_CBLptr->m_callback_getRandomNumber();
 					}
 				}
+				else {
+					ownSpeed = 0;
+					i->m_pref_speed = 0;
+				}
 			}
 			else {
-				if (i->m_moblieORStationary == true) {
+				if (i->m_moblieORStationary) {
 					if (i->m_pref_speed < 50) {
 						ownSpeed = (i->m_pref_speed) + 30;
 					}
-					else {
+					if (i->m_pref_speed >= 50) {
 						ownSpeed = i->m_pref_speed;
 					}
 				}
@@ -67,16 +76,22 @@ int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length
 					i->m_pref_speed = 0;
 					ownSpeed = 0;
 				}
-			}
-			if ((flag == false) && (length > 0) && (i->m_inRange == true)) {
-				if (i->serviceBool == false) {
+			}//**************************************************
+			//In the following section, changes in the positions and velocities of the vehicle objects are determined. This section forms the core of the simulation.
+			if ((flag == false) && (i->m_ID_ptr!=nullptr) && (i->m_inRange == true) && (m_vehicleSet.size() >= 1)) {
+				if (i->m_processedByIteration == false) {
 					flag = true;
-					i->serviceBool = true;
-					if ((i->m_position > length) || (i->m_position < 0)) {
+					//Vehicles outside the range are not observed
+					if ((i->m_position > length) || (i->m_position < -3)) {
 						i->m_inRange = false;
+						i->m_position = length + 50;
+						//i->m_speed = 0;
+						i->m_pref_speed = 0;
 					}
 					else {
-						if (i->m_position == 0) {//Set-Beginn	
+						//For vehicles within the range, a distinction is made between vehicles that are newly inserted into the lane and those that are already present.
+						i->m_processedByIteration = true;
+						if (i->m_position <= 0) {	
 							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed)) {
 								ownSpeed = speedAheadVehicleAt1L;
 							}
@@ -86,54 +101,28 @@ int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length
 							if (ownSpeed > m_maxVelocity_Density) {
 								ownSpeed = m_maxVelocity_Density;
 							}
-							ownPosition = VL.VLStepConversion(ownSpeed);
 
-							if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() == 1)) {
-								i->m_pref_speed = ownSpeed;
-								if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
-
-									i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
-								}
-							}
-							if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() > 1)) {
+							if ((speedAheadVehicleAt1L == 0) && (m_vehicleSet.size() >= 1)) {
 								i->m_pref_speed = ownSpeed;
 								if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
 									i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
 								}
 							}
-							if ((positionAheadVehicleAt1L == length) && (m_vehicleSet.size() == 1)) {
-								if (i->m_position <= ownPosition) {
-									i->m_position = ownPosition;
-								}
-								i->m_pref_speed = ownSpeed;
-							}
-							if ((positionAheadVehicleAt1L == length) && (m_vehicleSet.size() > 1)) {
+							if (VL.VLStepConversion(ownSpeed) < positionAheadVehicleAt1L) {
 								if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
 									i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
 								}
 								i->m_pref_speed = ownSpeed;
 							}
-							if (ownPosition < positionAheadVehicleAt1L) {
-								if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
-
-									i->m_position = i->m_position + VL.VLStepConversion(ownSpeed);
+							if ((VL.VLStepConversion(ownSpeed) >= positionAheadVehicleAt1L) && (0 < positionAheadVehicleAt1L)) {
+								if (i->m_position <= positionAheadVehicleAt1L) {
+									i->m_position = (positionAheadVehicleAt1L - 2);
 								}
 								i->m_pref_speed = ownSpeed;
 							}
-							if ((positionAheadVehicleAt1L < 0) && (ownPosition >= positionAheadVehicleAt1L) && (0 < positionAheadVehicleAt1L)) {
-								if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
-									i->m_position = (positionAheadVehicleAt1L - 1);
-								}
-								ownPosition = i->m_position;
-								i->m_pref_speed = ownSpeed;
-							}
-
 						}
 						else {//m_postiion >0 && m_postion<length	
-							if (speedAheadVehicleAt1L == 0) {
-								ownSpeed = m_maxVelocity;
-							}
-							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L <= ownSpeed)) {
+							if ((speedAheadVehicleAt1L > 0) && (speedAheadVehicleAt1L >= ownSpeed)) {
 								if ((speedAheadVehicleAt1L - ownSpeed) > 20) {
 									if (i->m_moblieORStationary == true) {
 										ownSpeed += 21;
@@ -156,111 +145,79 @@ int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length
 							if (ownSpeed > m_maxVelocity_Density) {
 								ownSpeed = m_maxVelocity_Density;
 							}
+							if ((i->m_position >= (length - 30))&&(ownSpeed>0)) {
+								ownSpeed = 30;
+							}
 
 							if (i->m_moblieORStationary == false) {
 								ownSpeed = 0;
 								i->m_pref_speed = 0;
 								speedAheadVehicleAt1L = 0;
 							}
-
-							ownPosition = VL.VLStepConversion(ownSpeed);
-
-							i->m_pref_speed = ownSpeed;
-
-							if (positionAheadVehicleAt1L <= 0) {
-								if (i->m_moblieORStationary == true) {
-
-									if (i->m_position <= (i->m_position + ownPosition)) {
-										i->m_position = (i->m_position) + ownPosition;
-									}
-									i->m_pref_speed = ownSpeed;
+								
+							if (i->m_moblieORStationary == true) {
+								i->m_pref_speed = ownSpeed + 1;
+								if (positionAheadVehicleAt1L <= 0) {
+									i->m_position = (i->m_position) + VL.VLStepConversion(ownSpeed);
 								}
-							}
-							else {
-
-								if (positionAheadVehicleAt1L == i->m_position) {
-									if (i->m_moblieORStationary == true) {
-										if (i->m_position <= (i->m_position + ownPosition)) {
-											i->m_position = (i->m_position) + ownPosition;
-										}
-										i->m_pref_speed = ownSpeed;
+								else {
+									if (positionAheadVehicleAt1L > (i->m_position + VL.VLStepConversion(ownSpeed))) {
+										i->m_position = (i->m_position) + VL.VLStepConversion(ownSpeed);
 									}
-								}
-								else if (positionAheadVehicleAt1L > ((i->m_position) + ownPosition)) {
-									if (i->m_moblieORStationary == true) {
-										if (i->m_position <= (i->m_position + ownPosition)) {
-											i->m_position = (i->m_position) + ownPosition;
-										}
-										i->m_pref_speed = ownSpeed;
-
-									}
-								}
-								else if (positionAheadVehicleAt1L > i->m_position) {
-									if (i->m_moblieORStationary == true) {
-
-										if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
-											i->m_position = positionAheadVehicleAt1L - 1;
-										}
-									}
-								}
-								else if (positionAheadVehicleAt1L == ((i->m_position) + ownPosition)) {
-									if (i->m_moblieORStationary == true) {
+									else if (positionAheadVehicleAt1L == (i->m_position + VL.VLStepConversion(ownSpeed))) {
 										ownSpeed = speedAheadVehicleAt1L - 5;
-										if (i->m_position <= (i->m_position + VL.VLStepConversion(ownSpeed))) {
-											i->m_position = ((i->m_position) + VL.VLStepConversion(ownSpeed));
-										}
-										i->m_pref_speed = ownSpeed;
-										if (ownSpeed < 0) {
+										i->m_position = (i->m_position + VL.VLStepConversion(ownSpeed));
+										if (ownSpeed <= 0) {
 											if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
 												i->m_position = positionAheadVehicleAt1L - 1;
 											}
-											ownPosition = positionAheadVehicleAt1L - 1;
 											i->m_pref_speed = 0;
 											ownSpeed = 0;
 										}
 									}
-								}
-								else if (positionAheadVehicleAt1L < ((i->m_position) + ownPosition)) {
-									if (i->m_moblieORStationary == true) {
+									else if (positionAheadVehicleAt1L > i->m_position) {
+										if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
+											i->m_position = positionAheadVehicleAt1L - 1;
+										}
+										i->m_pref_speed = 0;
+									}
+									else if (positionAheadVehicleAt1L < ((i->m_position) + VL.VLStepConversion(ownSpeed))) {
 										if (positionAheadVehicleAt1L > i->m_position) {
 											if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
 												i->m_position = positionAheadVehicleAt1L - 1;
 											}
 										}
-										if (i->m_position <= (positionAheadVehicleAt1L - 3)) {
-
-											i->m_position = positionAheadVehicleAt1L - 2;
-										}
+										i->m_position = positionAheadVehicleAt1L - 2;
 										ownSpeed = speedAheadVehicleAt1L;
 									}
-								}
-
-								else if (positionAheadVehicleAt1L < i->m_position) {
-									if (i->m_moblieORStationary == true) {
-										if (i->m_position <= (positionAheadVehicleAt1L - 1)) {
+									else if (positionAheadVehicleAt1L < i->m_position) {
 											i->m_position = positionAheadVehicleAt1L - 1;
-										}
 									}
 								}
+							}
+							else {
+								ownSpeed = 0;
 							}
 						}
 					}
 				}
 			}
-
-			if ((i->m_position >= length) || (i->m_position < 0)) {
-				i->m_inRange = false;
-			}
-			else {
-
-				if (i->m_moblieORStationary == true) {
-					speedAheadVehicleAt1L = i->m_pref_speed;
+			//After completion of the simulation iteration, the position as well as the velocity of the treated vehicle object are written into variables to be available as a comparison value for the next iteration.
+			if ((i->m_ID_ptr != nullptr) && (m_vehicleSet.size() >= 1)) {
+				if ((i->m_position >= length) || (i->m_position < -3)) {
+					i->m_inRange = false;
 				}
 				else {
-					speedAheadVehicleAt1L = 0;
+					if (i->m_moblieORStationary == true) {
+						speedAheadVehicleAt1L = i->m_pref_speed;
+					}
+					else {
+						speedAheadVehicleAt1L = 0;
+					}
+					positionAheadVehicleAt1L = i->m_position;
+					i->m_speed = i->m_pref_speed;
+					numberOfVehicleinRange++;
 				}
-				positionAheadVehicleAt1L = i->m_position;
-				numberOfVehicleinRange++;
 			}
 		}
 	}

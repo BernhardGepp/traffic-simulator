@@ -108,7 +108,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Debug\</OutDir>
-    <IntDir>TrafficSimulatorApp.dir\Debug</IntDir>
+    <IntDir>TrafficSimulatorApp.dir\Debug\</IntDir>
     <TargetName>TrafficSimulatorApp</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -241,8 +241,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeadersEdges.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -319,40 +319,43 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\flowSimulation1NegStraight.cpp" />
-    <ClCompile Include="..\flowSimulation1PosStraight.cpp" />
-    <ClCompile Include="..\flowSimulation2NegStraight.cpp" />
-    <ClCompile Include="..\flowSimulation2PosStraightA.cpp" />
-    <ClCompile Include="..\graph.cpp" />
-    <ClCompile Include="..\networkCreationOfVHLinks.cpp" />
-    <ClCompile Include="..\networkCreationVHLinks.cpp" />
-    <ClCompile Include="..\observer.cpp" />
-    <ClCompile Include="..\observer_subjekt.cpp" />
-    <ClCompile Include="..\PrintInGDIplusWin1LN.cpp" />
-    <ClCompile Include="..\PrintInGDIplusWin1LP.cpp" />
-    <ClCompile Include="..\PrintInGDIplusWin2LN.cpp" />
-    <ClCompile Include="..\PrintInGDIplusWin2LP.cpp" />
-    <ClCompile Include="..\PrintInGDIplusWindow.cpp" />
-    <ClCompile Include="..\PrintInGDIplusWinEmpty.cpp" />
-    <ClCompile Include="..\route.cpp" />
-    <ClCompile Include="..\sectionVehicleSet.cpp" />
-    <ClCompile Include="..\selectionFlowSimulation.cpp" />
-    <ClCompile Include="..\velocityToLength.cpp" />
-    <ClCompile Include="..\vertex.cpp" />
-    <ClCompile Include="..\vertexEnd.cpp" />
-    <ClCompile Include="..\vertexFlex.cpp" />
-    <ClCompile Include="..\vertexStart.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\random_speed_neu.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vehicle.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\flowSimulation1NegStraight.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\flowSimulation1PosStraight.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\flowSimulation2NegStraight.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\flowSimulation2PosStraightA.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graph.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graphTrafficGenerationOnAllRoutes.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graphTrafficGenerationOnFastRoutes.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graphTrafficGenerationTrafficOnRoutesSelectedByDijkstraAlg.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkCreationOfVHLinks.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkCreationVHLinks.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\observer.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\observer_subjekt.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrintInGDIplusWin1LN.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrintInGDIplusWin1LP.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrintInGDIplusWin2LN.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrintInGDIplusWin2LP.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrintInGDIplusWindow.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrintInGDIplusWinEmpty.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\route.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\sectionVehicleSet.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\selectionFlowSimulation.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\velocityToLength.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vertex.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vertexEnd.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vertexFlex.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vertexStart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CMBuild\ZERO_CHECK.vcxproj">

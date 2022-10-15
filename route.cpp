@@ -22,27 +22,22 @@ bool route::checkIfSectionWasIncluded(const int& firstVertexID,const int& startV
 }
 
 void route::routeimpactIndexCalculation() {
-	if (m_routeLength == 0) {
-		m_impactIndexRoute = 0.0f;
-		//****
-		m_maxDensity = 0.0f;
-		m_routeLength = 0;
-		m_currentTravelTime = 0.0f;
-		//****
-		for (auto& i : m_edgesOfRoute) {
-			m_impactIndexRoute = i->m_weight + m_impactIndexRoute;
-			//****
-			m_routeLength = m_routeLength + i->m_length;
-			m_currentTravelTime = m_currentTravelTime + i->m_averageTravelTime;
-			if (i->m_density > m_maxDensity) {
-				m_maxDensity = i->m_density;
-			}
-			//****
+	m_impactIndexRoute = 0.0f;
+	m_maxDensity = 0.0f;
+	m_routeLength = 0;
+	m_currentTravelTime = 0.0f;
+	//****
+	for (auto& i : m_edgesOfRoute) {
+		m_impactIndexRoute = i->m_weight + m_impactIndexRoute;
+		m_routeLength = m_routeLength + i->m_length;
+		m_currentTravelTime = m_currentTravelTime + i->m_averageTravelTime;
+		if (i->m_density > m_maxDensity) {
+			m_maxDensity = i->m_density;
 		}
 	}
+	if (m_initalTravelTime == 0.0f)
+		m_initalTravelTime = m_currentTravelTime;
 }
-
-
 
 std::vector<int> route::vectorOfRouteID() {
 	return m_vertexOfRouteID;

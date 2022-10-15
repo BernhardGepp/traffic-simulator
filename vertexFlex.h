@@ -3,10 +3,12 @@
 
 class transmissionTable {
 public:
-
+	
 	int param1 = 0;
-	std::vector<vehicle*> param2;
-	transmissionTable::transmissionTable() = default;
+	std::queue<vehicle*> param2;
+	transmissionTable::transmissionTable() {
+		
+	}
 	transmissionTable::transmissionTable(const transmissionTable& other) {
 		param1 = other.param1;
 		param2 = other.param2;
@@ -32,16 +34,8 @@ public:
 		return *this;
 	}
 	transmissionTable::~transmissionTable() noexcept;
-
-	vehicle* /*transmissionTable::*/ getPTR();/* {
-		vehicle* PTR = nullptr;
-		if (param2.size()>0) {
-			PTR= param2.back();
-			param2.pop_back();
-		}
-		
-		return PTR;
-	}*/
+	
+	vehicle*  getPTR();
 };
 class vertexFlex :public vertex {
 private:
@@ -79,7 +73,6 @@ public:
 	}
 	~vertexFlex() noexcept;
 
-
 	vehicle* getVehiclePtrOutOfVertex(const int& endVertexNumber, const int& param) override;
 	void setTransmissionTable(int param)override;
 	void vehiclePTRmanipulationInV(vehicle* vehiclePTR) override;
@@ -90,4 +83,5 @@ public:
 	size_t sizeOfSingleTransmissiontable(int iter) override;
 	void setPrintShape(size_t param) override;
 	size_t getPrintShape() override;
+	float getVertexDelay(const int& destinationVertex) override;
 };

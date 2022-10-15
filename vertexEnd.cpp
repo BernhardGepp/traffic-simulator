@@ -27,8 +27,7 @@ void vertexEnd::vehiclePTRmanipulationInV(vehicle* vehiclePTR) {
 	vehiclePTR->m_riseOrDecline = true;
 	vehiclePTR->m_routeID = 0;
 	vehiclePTR->m_routeVertexID_vehicle.clear();
-	vehiclePTR->serviceBool = false;
-	vehiclePTR->processedByIteration = false;
+	vehiclePTR->m_processedByIteration = false;
 	if (m_VPAptr != nullptr) {
 		m_VPAptr->deallocate(vehiclePTR);
 	}
@@ -63,4 +62,8 @@ std::vector<std::pair<int, int>> vertexEnd::getAdjacentEdges() {
 	std::vector<std::pair<int, int>> returnValue;
 	returnValue.clear();
 	return returnValue;
+}
+
+float vertexEnd::getVertexDelay(const int& destinationVertex) {
+	return 0.0f;
 }

@@ -45,8 +45,9 @@ void randomSpeed_neu::randomNumberGenerator() {
 	std::lock_guard<std::mutex> lock(randomClacMutex);
 	int bii = 0;
 	int cii = 0;
+	int* intPTR = nullptr;
 	serviceBool = true;
-	while (q2.size() < 80) {
+	while (q2.size() < 150) {
 		serviceBool = true;
 		bii = intDist(mt);
 		if (bii != cii) {
@@ -54,6 +55,12 @@ void randomSpeed_neu::randomNumberGenerator() {
 				bii = 80;
 			}
 			q2.push(bii);
+			if (q2.size() > 1) {
+				if (&q2.back() != (intPTR + sizeof(bii))) {
+					throw 0;
+				}
+			}
+			intPTR = &q2.back();
 		}
 		cii = bii;
 	}
@@ -61,5 +68,15 @@ void randomSpeed_neu::randomNumberGenerator() {
 }
 
 void randomSpeed_neu::random() {
-	f1 = std::async(std::launch::async, randomNumberGenerator);
+	try {
+		f1 = std::async(std::launch::async, randomNumberGenerator);
+	}
+	catch (...) {
+		while (!q2.empty()) {
+			q2.pop();
+		}
+		q1.push(70);
+		q1.push(80);
+		q1.push(90);
+	}
 }

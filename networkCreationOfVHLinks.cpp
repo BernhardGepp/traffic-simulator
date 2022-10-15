@@ -3,6 +3,8 @@
 #include "vertexEnd.h"
 #include "vertexFlex.h"
 #include "vertexStart.h"
+#include "graphTrafficGenerationOnAllRoutes.h"
+#include "graphTrafficGenerationOnFastRoutes.h"
 
 bool sortBottomUp(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 	return a.first > b.first;
@@ -34,7 +36,7 @@ bool networkCreationOfVHLinks::checkIfInNetworkLaneVector() {
 	return true;
 }
 
-void  networkCreationOfVHLinks::establishVertexOfGraphA() {
+void  networkCreationOfVHLinks::establishVertexOfGraphA(const int& choiceOfRouteFinding) {
 	//********************************************************************
 	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
 	//A traffic graph (object "graph")consists of edges and vertices, which are created in this method in the form of objects.
@@ -548,8 +550,10 @@ void  networkCreationOfVHLinks::establishVertexOfGraphA() {
 					}
 				}
 			}
-
-			appliedGraph.push_back(std::make_unique<graph>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
+			if (choiceOfRouteFinding == 1)
+				appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnAllRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
+			if (choiceOfRouteFinding == 2)
+				appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnFastRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
 			setOfVertexes.clear();
 			vectorOfVertexPTR.clear();
 			vectorOfEdgePTR.clear();

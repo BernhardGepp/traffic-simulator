@@ -2,9 +2,6 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Release\TrafficSimulatorApp.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
       <FullPath>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\unitTest\Release\ExampleTests.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>

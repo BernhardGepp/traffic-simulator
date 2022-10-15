@@ -7,7 +7,6 @@
 #include "observer_subjekt.h"
 #include "observer.h"
 
-
 class edge {
 private:
 	int m_simulationIterator = 0;
@@ -17,7 +16,6 @@ private:
 	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer auf den Poolallocator
 	
 public:
-	
 	observer* m_observerPTR = nullptr;
 	concreteObserverSubjekt* m_cOSptr = nullptr;
 	selectionFlowSimulation sFs;

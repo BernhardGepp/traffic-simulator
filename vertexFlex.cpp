@@ -6,20 +6,15 @@ transmissionTable::~transmissionTable() noexcept {}
 
 vehicle* transmissionTable::getPTR() {
 	vehicle* PTR = nullptr;
-	if (param2.size() > 0) {
-		PTR = param2.back();
-		param2.pop_back();
+	if (param2.size() >0) {
+		PTR = param2.front();
+		param2.pop();
 	}
-
 	return PTR;
 }
 
-vertexFlex::vertexFlex() :vertex() {
-
-}
-vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {
-
-}
+vertexFlex::vertexFlex() :vertex() {}
+vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
 vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) : vertex(xCoordinate, yCoordinate, numberOfLanes) {}
 vertexFlex::~vertexFlex() noexcept {}
 
@@ -62,8 +57,7 @@ void vertexFlex::vehiclePTRmanipulationInV(vehicle* vehiclePTR) {
 		vehiclePTR->m_riseOrDecline = true;
 		vehiclePTR->m_routeID = -1;
 		vehiclePTR->m_routeVertexID_vehicle.clear();
-		vehiclePTR->serviceBool = false;
-		vehiclePTR->processedByIteration = false;
+		vehiclePTR->m_processedByIteration = false;
 		if (m_VPAptr != nullptr) {
 			m_VPAptr->deallocate(vehiclePTR);
 		}
@@ -78,7 +72,7 @@ void vertexFlex::vehiclePTRmanipulationInV(vehicle* vehiclePTR) {
 					for (auto& i : m_vectorOfTransmissionTable) {
 						if (a < vehiclePTR->m_routeVertexID_vehicle.size()) {
 							if (vehiclePTR->m_routeVertexID_vehicle[a + 1] == i.param1) {
-								i.param2.push_back(vehiclePTR);
+								i.param2.push(vehiclePTR);
 								serviceBool = true;
 							}
 						}
@@ -95,12 +89,15 @@ void vertexFlex::vehiclePTRmanipulationInV(vehicle* vehiclePTR) {
 
 int vertexFlex::checkIfVehicleIsInV(vehicle* vehiclePTR) {
 	int retVal = 0;
+	std::queue<vehicle*>extraQueue;
 	if (!m_vectorOfTransmissionTable.empty()) {
 		for (auto& i : m_vectorOfTransmissionTable) {
-			for (auto& j : i.param2) {
-				if (j == vehiclePTR) {
+			extraQueue = i.param2;
+			while(!extraQueue.empty()) {
+				if (extraQueue.front() == vehiclePTR) {
 					retVal++;
 				}
+				extraQueue.pop();
 			}
 		}
 	}
@@ -108,28 +105,16 @@ int vertexFlex::checkIfVehicleIsInV(vehicle* vehiclePTR) {
 }
 
 void vertexFlex::deleteVehicleInV(vehicle* vehiclePTR) {
-	serviceBool = false;
-
-	std::vector<vehicle*> param3;
+	std::queue<vehicle*>extraQueue;
 	if (!m_vectorOfTransmissionTable.empty()) {
 		for (auto& i : m_vectorOfTransmissionTable) {
-			for (auto& j : i.param2) {
-				if (j == vehiclePTR) {
-					serviceBool = true;
+			while (!i.param2.empty()) {
+				if (i.param2.front() != vehiclePTR) {
+					extraQueue.push(i.param2.front());
 				}
+				i.param2.pop();
 			}
-		}
-		if (serviceBool == true) {
-			for (auto& i : m_vectorOfTransmissionTable) {
-				for (auto& j : i.param2) {
-					if (j != vehiclePTR) {
-						param3.push_back(j);
-					}
-				}
-				i.param2.clear();
-				i.param2 = param3;
-				param3.clear();
-			}
+			i.param2 = extraQueue;
 		}
 	}
 }
@@ -160,4 +145,17 @@ std::vector<std::pair<int, int>> vertexFlex::getAdjacentEdges() {
 		}
 	}
 	return returnValue;
+}
+
+float vertexFlex::getVertexDelay(const int& destinationVertex) {
+	if (!m_vectorOfTransmissionTable.empty()) {
+		for (auto& i : m_vectorOfTransmissionTable) {
+			if (i.param1 == destinationVertex) {
+				if (i.param2.size() > 10)
+					return static_cast<float>(i.param2.size());
+			}
+			
+		}
+	}
+	return 0.0f;
 }
