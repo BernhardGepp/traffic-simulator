@@ -11,14 +11,14 @@ protected:
 public:
 	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer to the pool allocator
 	int m_vertexID = 0;
-	std::pair<int, int> m_vertexIDpair;
 	int m_XcoordinateVertex = 0;
 	int m_YcoordinateVertex = 0;	
-	std::pair<int, int> m_numberOfLanes;
 	int m_numberOfLanesVertical = 0;
 	int m_numberOfLanesHorizontal = 0;
-	unsigned int m_shapeOfThatVertex = unused;
 	int m_numberOfVehicle = 0;
+	unsigned int m_shapeOfThatVertex = unused;
+	std::pair<int, int> m_vertexIDpair;
+	std::pair<int, int> m_numberOfLanes;
 
 	explicit vertex::vertex() = default;
 	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes);
