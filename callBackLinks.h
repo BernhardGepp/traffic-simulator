@@ -18,9 +18,9 @@ public:
 	void(*m_f16PaintBoxFlex21)(HDC hdc, const int& x, const int& y) = nullptr;
 	void(*m_f17PaintBoxFlex22)(HDC hdc, const int& x, const int& y) = nullptr;
 	int(*m_callback_getRandomNumber)() = nullptr;
-	HDC m_hdc;
+	HDC m_hdc=0;
 
-	callBackLinks::callBackLinks() {}
+	//callBackLinks::callBackLinks() {}
 	callBackLinks::callBackLinks(const HDC& hdc,
 		void(*f1PaintBoxLB)(HDC hdc),
 		void(*f2PaintBoxRB)(HDC hdc), 
@@ -35,13 +35,13 @@ public:
 		void(*f15PaintBoxFlex12)(HDC hdc, const int& x, const int& y),
 		void(*f16PaintBoxFlex21)(HDC hdc, const int& x, const int& y),
 		void(*f17PaintBoxFlex22)(HDC hdc, const int& x, const int& y)
-	) :m_hdc(hdc), m_f1PaintBoxLB(f1PaintBoxLB), m_f2PaintBoxRB(f2PaintBoxRB), m_f3PaintFrame(f3PaintFrame), m_f5PaintLane(f5PaintLane),
+	) noexcept :m_hdc(hdc), m_f1PaintBoxLB(f1PaintBoxLB), m_f2PaintBoxRB(f2PaintBoxRB), m_f3PaintFrame(f3PaintFrame), m_f5PaintLane(f5PaintLane),
 		m_f7PrintVertexNumber(f7PrintVertexNumber), m_f10PaintBox(f10PaintBox), m_f11PaintWhiteLine(f11PaintWhiteLine),m_f12PaintBoxStart(f12PaintBoxStart),m_f13PaintBoxEnd(f13PaintBoxEnd),
 		m_f14PaintBoxFlex11(f14PaintBoxFlex11),m_f15PaintBoxFlex12(f15PaintBoxFlex12),m_f16PaintBoxFlex21(f16PaintBoxFlex21),m_f17PaintBoxFlex22(f17PaintBoxFlex22)
 	{
 
 	}
-	callBackLinks::callBackLinks(const callBackLinks& other) {
+	callBackLinks::callBackLinks(const callBackLinks& other)noexcept {
 		m_f1PaintBoxLB = other.m_f1PaintBoxLB;
 		m_f2PaintBoxRB = other.m_f2PaintBoxRB;
 		m_f3PaintFrame = other.m_f3PaintFrame;
@@ -56,8 +56,9 @@ public:
 		m_f16PaintBoxFlex21 = other.m_f16PaintBoxFlex21;
 		m_f17PaintBoxFlex22 = other.m_f17PaintBoxFlex22;
 		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
+		m_hdc = other.m_hdc;
 	}
-	callBackLinks::callBackLinks(const callBackLinks&& other) {
+	callBackLinks::callBackLinks(const callBackLinks&& other) noexcept {
 		m_f1PaintBoxLB = other.m_f1PaintBoxLB;
 		m_f2PaintBoxRB = other.m_f2PaintBoxRB;
 		m_f3PaintFrame = other.m_f3PaintFrame;
@@ -72,8 +73,9 @@ public:
 		m_f16PaintBoxFlex21 = other.m_f16PaintBoxFlex21;
 		m_f17PaintBoxFlex22 = other.m_f17PaintBoxFlex22;
 		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
+		m_hdc = other.m_hdc;
 	}
-	callBackLinks& operator=(const callBackLinks& other) {
+	callBackLinks& operator=(const callBackLinks& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -91,9 +93,10 @@ public:
 		m_f16PaintBoxFlex21 = other.m_f16PaintBoxFlex21;
 		m_f17PaintBoxFlex22 = other.m_f17PaintBoxFlex22;
 		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
+		m_hdc = other.m_hdc;
 		return *this;
 	}
-	callBackLinks& operator=(const callBackLinks&& other) {
+	callBackLinks& operator=(const callBackLinks&& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -111,6 +114,7 @@ public:
 		m_f16PaintBoxFlex21 = other.m_f16PaintBoxFlex21;
 		m_f17PaintBoxFlex22 = other.m_f17PaintBoxFlex22;
 		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
+		m_hdc = other.m_hdc;
 		return *this;
 	}
 	callBackLinks::~callBackLinks() noexcept {	}

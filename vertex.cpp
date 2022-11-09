@@ -2,17 +2,17 @@
 #include "vertex.h"
 
 //Constructor and destructor of the class:
-vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)
-		: m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_numberOfLanes(numberOfLanes){}
+vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)noexcept
+		: m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_numberOfLanes(numberOfLanes) {}
 	
-vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd, const int& numberOfLane)
-	:m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_shapeOfThatVertex(BeginnOrEnd), m_numberOfLanesVertical(numberOfLane){
+vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd, const int& numberOfLane)noexcept
+	:m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_shapeOfThatVertex(BeginnOrEnd), m_numberOfLanesVertical(numberOfLane) {
 	m_numberOfLanesHorizontal = m_numberOfLanesVertical;
 	m_numberOfLanes.first = 0;
 	m_numberOfLanes.second = 0;
 }
 
-vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)
+vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept
 	:m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_shapeOfThatVertex(BeginnOrEnd){}
 
 vertex::~vertex() noexcept {}

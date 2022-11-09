@@ -13,9 +13,9 @@ vehicle* transmissionTable::getPTR() {
 	return PTR;
 }
 
-vertexFlex::vertexFlex() :vertex() {}
-vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
-vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) : vertex(xCoordinate, yCoordinate, numberOfLanes) {}
+vertexFlex::vertexFlex() noexcept :vertex(){}
+vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
+vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) noexcept : vertex(xCoordinate, yCoordinate, numberOfLanes) {}
 vertexFlex::~vertexFlex() noexcept {}
 
 //********************************************************************
@@ -37,6 +37,7 @@ vehicle* vertexFlex::getVehiclePtrOutOfVertex(const int& endVertexNumber, const 
 	else {
 		return m_VPAptr->allocate(1, param);
 	}
+	return nullptr;
 }
 
 void vertexFlex::setTransmissionTable(int param) {

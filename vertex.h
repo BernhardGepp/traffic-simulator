@@ -20,12 +20,12 @@ public:
 	std::pair<int, int> m_vertexIDpair;
 	std::pair<int, int> m_numberOfLanes;
 
-	explicit vertex::vertex() = default;
-	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes);
-	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd, const int& numberOfLane);
-	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd);
+	explicit vertex::vertex()noexcept = default;
+	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)noexcept;
+	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd, const int& numberOfLane)noexcept;
+	explicit vertex::vertex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept;
 
-	vertex::vertex(const vertex& other) {
+	vertex::vertex(const vertex& other) noexcept {
 		m_vertexID = other.m_vertexID;
 		m_vertexIDpair = other.m_vertexIDpair;
 		m_XcoordinateVertex = other.m_XcoordinateVertex;
@@ -35,7 +35,7 @@ public:
 		m_numberOfLanesHorizontal = other.m_numberOfLanesHorizontal;
 		m_shapeOfThatVertex = other.m_shapeOfThatVertex;
 	}
-	vertex::vertex(const vertex&& other) {
+	vertex::vertex(const vertex&& other)noexcept {
 		m_vertexID = other.m_vertexID;
 		m_vertexIDpair = other.m_vertexIDpair;
 		m_XcoordinateVertex = other.m_XcoordinateVertex;
@@ -45,7 +45,7 @@ public:
 		m_numberOfLanesHorizontal = other.m_numberOfLanesHorizontal;
 		m_shapeOfThatVertex = other.m_shapeOfThatVertex;
 	}
-	vertex& operator=(vertex& other) {
+	vertex& operator=(vertex& other) noexcept {
 		if (&other == this) {
 			return *this;
 		}
@@ -61,7 +61,7 @@ public:
 			return *this;
 		}
 	}
-	vertex& operator=(const vertex&& other) {
+	vertex& operator=(const vertex&& other)noexcept {
 		if (&other == this) {
 			return *this;
 		}
