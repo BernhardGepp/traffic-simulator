@@ -360,7 +360,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DispatchMessage(&msg);
 		if (actionQueueBool == true) {
 			if (msg.message == WM_LBUTTONDOWN) {
-				if (!n->networkLaneVector.empty()) {
+				if (!n->m_nCptr->networkLaneVector.empty()) {
 					if (!n->networkCreationClass.appliedGraph.empty()) {
 						if ((n->iPosXLK < width) && (n->iPosYLK < height)) {
 							if (n->checkIfDubbleKlick(n->iPosXLK, n->iPosYLK)) {
@@ -633,7 +633,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		break;
 	case WM_CLOSE:
 		
-		n->networkLaneVector.clear();
+		n->m_nCptr->networkLaneVector.clear();
 		PostQuitMessage(0);
 		window1closed = true;
 

@@ -22,8 +22,6 @@ private:
 	const int& width;
 	const int& height;
 	bool lButtonServiceBool = true;
-	
-	enum m_numberOfLanes { oneLane = 1, twoLanes = 2 };
 
 	//Constructors and Destructor:
 	//explicit network(const int& width, const int& height, const callBackLinks& CBL);
@@ -56,7 +54,6 @@ public:
 	int iPosXRK = 0;
 	int iPosYRK = 0;
 	PrintInGDIplusWinEmpty m_PWE;
-	std::vector<std::tuple<std::pair<int, int>, std::pair<int, int>, bool, m_numberOfLanes>> networkLaneVector;//vertical=true, horizontal=false;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
 
 	/*static void destroy();
@@ -134,12 +131,12 @@ public:
 				endingPoint.first = std::get<1>(i).first;
 				endingPoint.second = std::get<1>(i).second;
 
-				if (std::get<3>(i) == oneLane) {
-					networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, std::get<2>(i), oneLane));
+				if (std::get<3>(i) == m_nCptr->oneLane) {
+					m_nCptr->networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, std::get<2>(i), m_nCptr->oneLane));
 					networkCreationClass.fillNetworkLaneVector(startingPoint, endingPoint, std::get<2>(i), 1);
 				}
-				if (std::get<3>(i) == twoLanes) {
-					networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, std::get<2>(i), twoLanes));
+				if (std::get<3>(i) == m_nCptr->twoLanes) {
+					m_nCptr->networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, std::get<2>(i), m_nCptr->twoLanes));
 					networkCreationClass.fillNetworkLaneVector(startingPoint, endingPoint, std::get<2>(i), 2);
 				}
 			}
