@@ -54,7 +54,7 @@ public:
 	int iPosXRK = 0;
 	int iPosYRK = 0;
 	PrintInGDIplusWinEmpty m_PWE;
-	std::vector<std::unique_ptr<graph>>appliedGraph;
+	//std::vector<std::unique_ptr<graph>>appliedGraph;
 
 	/*static void destroy();
 	static network* getInstance(const int& width, const int& height, const callBackLinks& CBL); {
@@ -132,32 +132,25 @@ public:
 				endingPoint.second = std::get<1>(i).second;
 
 				if (std::get<3>(i) == m_nCptr->oneLane) {
-					m_nCptr->networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, std::get<2>(i), m_nCptr->oneLane));
 					networkCreationClass.fillNetworkLaneVector(startingPoint, endingPoint, std::get<2>(i), 1);
 				}
 				if (std::get<3>(i) == m_nCptr->twoLanes) {
-					m_nCptr->networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, std::get<2>(i), m_nCptr->twoLanes));
 					networkCreationClass.fillNetworkLaneVector(startingPoint, endingPoint, std::get<2>(i), 2);
 				}
 			}
 		}
 		networkCreationClass.establishVertexOfGraphA(choiceOfRouteFinding);
-		if (networkCreationClass.appliedGraph.size() != 0) {
-			for (auto& i : networkCreationClass.appliedGraph) {
-				appliedGraph.push_back(std::move(i));
-			}
-		}
+		m_nCptr->networkLaneVector.clear();
+		networkCreationClass.networkLaneVector.clear();
 	}
 
 	void network::printLanesAndVehiclesOfAllEdges() {
 
-		for (auto& i : appliedGraph) {
-			i->printLanesAndVehiclesOfAllEdges();
-		}
+		networkCreationClass.printLanesAndVehiclesOfAllEdges();
 		m_PWE.fullemptyPrintContainer(m_CBLptr->m_hdc, m_CBLptr->m_f5PaintLane);
 	}
 
-	bool network::checkIfDubbleKlick(const int& a, const int& b) {
+	bool network::checkIfDubbleClick(const int& a, const int& b) {
 		if ((a == serviceInt1) && (b == serviceInt2)) {
 			return false;
 		}

@@ -360,12 +360,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DispatchMessage(&msg);
 		if (actionQueueBool == true) {
 			if (msg.message == WM_LBUTTONDOWN) {
-				if (!n->m_nCptr->networkLaneVector.empty()) {
-					if (!n->networkCreationClass.appliedGraph.empty()) {
-						if ((n->iPosXLK < width) && (n->iPosYLK < height)) {
-							if (n->checkIfDubbleKlick(n->iPosXLK, n->iPosYLK)) {
-								n->m_cObSptr->benachrichtigen(n->iPosXLK, n->iPosYLK);
-							}
+				if (!n->networkCreationClass.appliedGraph.empty()) {
+					if ((n->iPosXLK < width) && (n->iPosYLK < height)) {
+						if (n->checkIfDubbleClick(n->iPosXLK, n->iPosYLK)) {
+							n->m_cObSptr->benachrichtigen(n->iPosXLK, n->iPosYLK);
 						}
 					}
 				}
@@ -563,11 +561,11 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		
 
 		case START_SIMULATION:
-			if (n->appliedGraph.size() >= 1) {
-				for (auto& i : n->appliedGraph) {
+			if (n->networkCreationClass.appliedGraph.size() >= 1) {
+				for (auto& i : n->networkCreationClass.appliedGraph) {
 					i->simulation(simulationIteration);
 				}
-				if (n->appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
+				if (n->networkCreationClass.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
 					std::this_thread::sleep_for(std::chrono::milliseconds(250));
 				}
 				else {

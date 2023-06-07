@@ -666,3 +666,11 @@ std::unique_ptr<PrintPattern> networkCreationOfVHLinks::choosePrintPattern(const
 	}
 	return nullptr;
 }
+
+void networkCreationOfVHLinks::printLanesAndVehiclesOfAllEdges() {
+
+	for (auto& i : appliedGraph) {
+		i->printLanesAndVehiclesOfAllEdges();
+	}
+	//m_PWE.fullemptyPrintContainer(m_CBLptr->m_hdc, m_CBLptr->m_f5PaintLane);
+}
