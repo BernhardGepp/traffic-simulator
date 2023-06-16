@@ -28,7 +28,7 @@ private:
 	explicit network::network(const int& width, const int& height, const callBackLinks& CBL) :width(width), height(height) {
 
 		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
-		m_nCptr = std::make_unique<networkCreationVHLinks>();
+		m_nCptr = std::make_unique<networkCreationVHLinks> ();
 		m_nCptr->m_CBLptr = std::make_unique<callBackLinks>(CBL);
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
 		iPosXRK = width - 110;
@@ -54,24 +54,7 @@ public:
 	int iPosXRK = 0;
 	int iPosYRK = 0;
 	PrintInGDIplusWinEmpty m_PWE;
-	//std::vector<std::unique_ptr<graph>>appliedGraph;
-
-	/*static void destroy();
-	static network* getInstance(const int& width, const int& height, const callBackLinks& CBL); {
-		if (instance == 0) {
-			instance = new network(width, height, CBL);
-			return instance;
-		}
-		else {
-			return instance;
-		}
-	}
-	static int getRandomNumber();
-	void fieldRecalibarte();
-	bool setPoints(HDC hdc, const int& numberOfLanes);
-	void  establishVertexOfGraph();
-	void printLanesAndVehiclesOfAllEdges();
-	bool checkIfDubbleKlick(const int& a, const int& b);*/
+	
 
 	static void network::destroy() {
 		delete instance;
@@ -139,7 +122,7 @@ public:
 				}
 			}
 		}
-		networkCreationClass.establishVertexOfGraphA(choiceOfRouteFinding);
+		networkCreationClass.graphGenerationFromClickPairs(choiceOfRouteFinding);
 		m_nCptr->networkLaneVector.clear();
 		networkCreationClass.networkLaneVector.clear();
 	}

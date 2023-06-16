@@ -36,7 +36,7 @@ bool networkCreationOfVHLinks::checkIfInNetworkLaneVector() {
 	return true;
 }
 
-void  networkCreationOfVHLinks::establishVertexOfGraphA(const int& choiceOfRouteFinding) {
+void  networkCreationOfVHLinks::graphGenerationFromClickPairs(const int& choiceOfRouteFinding) {
 	//********************************************************************
 	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
 	//A traffic graph (object "graph")consists of edges and vertices, which are created in this method in the form of objects.
@@ -592,7 +592,7 @@ void  networkCreationOfVHLinks::establishVertexOfGraphA(const int& choiceOfRoute
 void networkCreationOfVHLinks::vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex) {
 	//********************************************************************
 	//Vertex generation for a graph with vertical and horizontal links
-	//This method is called by the method "establishVertexOfGraphA". This method is part of the traffic graph generation. 
+	//This method is called by the method "graphGenerationFromClickPairs". This method is part of the traffic graph generation. 
 	bool serviceBool = false;
 	int shapeOfThatVertex_var = shapeOfThatVertex;
 	if (vertexOfGraphPtrVectorConainer.size() == 0) {

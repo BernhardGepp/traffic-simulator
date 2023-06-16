@@ -24,7 +24,7 @@ public:
 	void fillNetworkLaneVector(std::pair<int, int> startingPoint, std::pair<int, int> endingPoint, bool horizontalOrVertival, int NoL);
 	bool checkIfInNetworkLaneVector();
 	void vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex);
-	void establishVertexOfGraphA(const int& choiceOfRouteFinding);
+	void graphGenerationFromClickPairs(const int& choiceOfRouteFinding);
 	std::unique_ptr<PrintPattern> choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV);
 	void printLanesAndVehiclesOfAllEdges();
 };
