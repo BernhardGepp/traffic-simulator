@@ -29,8 +29,10 @@ private:
 
 		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
 		m_nCptr = std::make_unique<networkCreationVHLinks> ();
-		m_nCptr->m_CBLptr = std::make_unique<callBackLinks>(CBL);
+		//m_nCptr->m_CBLptr = std::make_unique<callBackLinks>(CBL);
+		
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
+		//m_nCptr->m_CBLptr = m_CBLptr.get();
 		iPosXRK = width - 110;
 		iPosYRK = height - 110;
 		m_CBLptr->m_callback_getRandomNumber = &getRandomNumber;
@@ -98,7 +100,7 @@ public:
 		}
 	}
 
-	void  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
+	/*void  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
 
 		callBackLinks* CBL = nullptr;
 		concreteObserverSubjekt* cOS = nullptr;
@@ -125,7 +127,19 @@ public:
 		networkCreationClass.graphGenerationFromClickPairs(choiceOfRouteFinding);
 		m_nCptr->networkLaneVector.clear();
 		networkCreationClass.networkLaneVector.clear();
+	}*/
+	std::vector<std::unique_ptr<graph>>  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
+		callBackLinks* CBL = nullptr;
+		concreteObserverSubjekt* cOS = nullptr;
+		CBL = m_CBLptr.get();
+		cOS = m_cObSptr.get();
+		m_nCptr->iniziallizationOfPointer(gsl::not_null<callBackLinks*>(CBL), gsl::not_null<concreteObserverSubjekt* >(cOS));
+		m_nCptr->graphGenerationFromClickPairs(choiceOfRouteFinding);
+		networkCreationClass.appliedGraph = std::move(m_nCptr->appliedGraph);
+		m_nCptr->networkLaneVector.clear();
+		//m_nCptr->appliedGraph.clear();
 	}
+	
 
 	void network::printLanesAndVehiclesOfAllEdges() {
 

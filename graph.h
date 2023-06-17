@@ -31,9 +31,9 @@ public:
 			m_vectorOfEdgesPtr.emplace_back(i);
 		}
 	}
-	graph::graph(const graph&& other) = delete;
-	graph& operator=(const graph& other) = delete;
-	graph& operator=(const graph&& other) = delete;
+	//graph::graph(const graph&& other) = delete;
+	//graph& operator=(const graph& other) = delete;
+	//graph& operator=(const graph&& other) = delete;
 	~graph() noexcept;
 
 	void simulation(const int&); 

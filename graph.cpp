@@ -383,10 +383,10 @@ void graph::printLanesAndVehiclesOfAllEdges() {
 			doubleHorizontalVertex = false;
 			for (auto& ii : m_vectorOfEdgesPtr) {
 				if ((ii->m_startVertexPtr->m_vertexID == i->m_vertexID) || (ii->m_endVertexPtr->m_vertexID == i->m_vertexID)) {
-					if ((ii->m_startVertexPtr->m_shapeOfThatVertex == 11) && (i->m_shapeOfThatVertex = 11) && (ii->m_startVertexPtr->m_vertexID == i->m_vertexID)) {
+					if ((ii->m_startVertexPtr->m_shapeOfThatVertex == 11) && (i->m_shapeOfThatVertex == 11) && (ii->m_startVertexPtr->m_vertexID == i->m_vertexID)) {
 						ii->m_ppPtr->paintStartVertex11();
 					}
-					if ((ii->m_endVertexPtr->m_shapeOfThatVertex == 11) && (i->m_shapeOfThatVertex = 11) && (ii->m_endVertexPtr->m_vertexID == i->m_vertexID)) {
+					if ((ii->m_endVertexPtr->m_shapeOfThatVertex == 11) && (i->m_shapeOfThatVertex == 11) && (ii->m_endVertexPtr->m_vertexID == i->m_vertexID)) {
 						ii->m_ppPtr->paintEndVertex11();
 					}
 					if (ii->m_numberOfLanes == 2)

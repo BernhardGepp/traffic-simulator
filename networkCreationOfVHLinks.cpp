@@ -20,23 +20,23 @@ networkCreationOfVHLinks::~networkCreationOfVHLinks() {}
 //********************************************************************
 //Methods of the class:
 
-void networkCreationOfVHLinks::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
+/*void networkCreationOfVHLinks::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
-}
+}*/
 
-void networkCreationOfVHLinks::fillNetworkLaneVector(std::pair<int, int> startingPoint, std::pair<int, int> endingPoint, bool horizontalOrVertival, int NoL) {
+/*void networkCreationOfVHLinks::fillNetworkLaneVector(std::pair<int, int> startingPoint, std::pair<int, int> endingPoint, bool horizontalOrVertival, int NoL) {
 	if (NoL == 1)
 		networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, horizontalOrVertival, oneLane));
 	if (NoL == 2)
 		networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, horizontalOrVertival, twoLanes));
-}
+}*/
 
 bool networkCreationOfVHLinks::checkIfInNetworkLaneVector() {
 	return true;
 }
 
-void  networkCreationOfVHLinks::graphGenerationFromClickPairs(const int& choiceOfRouteFinding) {
+/*void  networkCreationOfVHLinks::graphGenerationFromClickPairs(const int& choiceOfRouteFinding) {
 	//********************************************************************
 	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
 	//A traffic graph (object "graph")consists of edges and vertices, which are created in this method in the form of objects.
@@ -631,7 +631,7 @@ void networkCreationOfVHLinks::vertexCreationVH_Network(const std::pair<int, int
 std::unique_ptr<PrintPattern> networkCreationOfVHLinks::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
 	//********************************************************************
 	//Selection of the appropriate print pattern
-	//This method is called by the method "establishVertexOfGraphA". This method is part of the traffic graph generation. 
+	//This method is called by the method "graphGenerationFromClickPairs". This method is part of the traffic graph generation. 
 	if ((p1x < p2x) && (p1y == p2y)) {
 		if (lanesH == 1) {
 			return std::make_unique<PrintPatternLine1LaneHoriPos>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
@@ -665,7 +665,7 @@ std::unique_ptr<PrintPattern> networkCreationOfVHLinks::choosePrintPattern(const
 		}
 	}
 	return nullptr;
-}
+}*/
 
 void networkCreationOfVHLinks::printLanesAndVehiclesOfAllEdges() {
 
