@@ -128,16 +128,19 @@ public:
 		m_nCptr->networkLaneVector.clear();
 		networkCreationClass.networkLaneVector.clear();
 	}*/
-	std::vector<std::unique_ptr<graph>>  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
+	void  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
 		callBackLinks* CBL = nullptr;
 		concreteObserverSubjekt* cOS = nullptr;
 		CBL = m_CBLptr.get();
 		cOS = m_cObSptr.get();
 		m_nCptr->iniziallizationOfPointer(gsl::not_null<callBackLinks*>(CBL), gsl::not_null<concreteObserverSubjekt* >(cOS));
 		m_nCptr->graphGenerationFromClickPairs(choiceOfRouteFinding);
-		networkCreationClass.appliedGraph = std::move(m_nCptr->appliedGraph);
+		
+		for (auto& i : m_nCptr->appliedGraph) {
+			networkCreationClass.appliedGraph.push_back(std::move(i));
+		}
 		m_nCptr->networkLaneVector.clear();
-		//m_nCptr->appliedGraph.clear();
+		m_nCptr->appliedGraph.clear();
 	}
 	
 
