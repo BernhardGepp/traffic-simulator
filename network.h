@@ -150,14 +150,13 @@ public:
 		m_PWE.fullemptyPrintContainer(m_CBLptr->m_hdc, m_CBLptr->m_f5PaintLane);
 	}
 
-	bool network::checkIfDubbleClick(const int& a, const int& b) {
+	void network::waitIfDubbleClick(const int& a, const int& b) {
 		if ((a == serviceInt1) && (b == serviceInt2)) {
-			return false;
+			std::this_thread::sleep_for(std::chrono::milliseconds(250));
 		}
 		else {
 			serviceInt1 = a;
 			serviceInt2 = b;
-			return true;
 		}
 	}
 };

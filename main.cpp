@@ -46,7 +46,7 @@ HWND g_windowHandle3 = nullptr;
 HWND iter_button = nullptr;
 HWND hDlg = nullptr;
 RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
-//bool serviceBool = true;
+
 
 VOID PaintBoxLB(HDC hdc) {
 	Graphics graphics1(hdc);
@@ -362,9 +362,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (msg.message == WM_LBUTTONDOWN) {
 				if (!n->networkCreationClass.appliedGraph.empty()) {
 					if ((n->iPosXLK < width) && (n->iPosYLK < height)) {
-						if (n->checkIfDubbleClick(n->iPosXLK, n->iPosYLK)) {
-							n->m_cObSptr->benachrichtigen(n->iPosXLK, n->iPosYLK);
-						}
+						n->waitIfDubbleClick(n->iPosXLK, n->iPosYLK);
+						n->m_cObSptr->benachrichtigen(n->iPosXLK, n->iPosYLK);
 					}
 				}
 			}
@@ -470,22 +469,23 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			hdc = BeginPaint(g_windowHandle, &ps);
 			n->m_CBLptr->m_hdc = hdc;
 			bool serviceBool = false;
-			if(numberOfLanesINT==1){
+			switch (numberOfLanesINT) {
+			case 1:
 				serviceBool = n->setPoints(hdc, 1);
-			}
-			
-			if (numberOfLanesINT == 2) {
+				break;
+			case 2:
 				serviceBool = n->setPoints(hdc, 2);
+				break;
 			}
-
-			if (serviceBool == false) {
+			if (serviceBool) {
+				SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
+			}
+			else{
 				numberOFLanes::one;
 				numberOfLanesINT = 1;
 				SendMessage(g_windowHandle, WM_CREATE, 0, 0);
 			}
-			if (serviceBool == true) {
-				SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
-			}
+			
 			for (auto &i : n->m_nCptr->networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
@@ -510,7 +510,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		case MY_BUTTON_ID:
 			hdc = BeginPaint(g_windowHandle, &ps);
 			n->m_CBLptr->m_hdc = hdc;
-			if ((actionQueueBool == false)&&(reStartSimulation==false)&&(!n->m_nCptr->networkLaneVector.empty())) {
+			if ((actionQueueBool == false)&&(reStartSimulation == false) && (!n->m_nCptr->networkLaneVector.empty())) {
 				numberOfLanesINT = 2;
 				g_windowHandle3 = CreateWindowEx(
 					NULL,
@@ -557,6 +557,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				
 				//actionQueueBool = true;
 			}
+
 			break;
 		
 
