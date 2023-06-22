@@ -4,7 +4,7 @@
 #include "edge.h"
 #include "graph.h"
 #include "vertex.h"
-class userFunctionsOfTheSimpleWindowSurface {
+class userFunctionsOfTheSimpleWindowInterface {
 private:
 	int xCordinadte_store_LB=0;
 	int yCordinadte_store_LB=0;
@@ -21,8 +21,8 @@ public:
 	std::vector<std::unique_ptr<edge>>edgeOfGraphPtrContainer;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
 
-	userFunctionsOfTheSimpleWindowSurface();
-	~userFunctionsOfTheSimpleWindowSurface();
+	userFunctionsOfTheSimpleWindowInterface();
+	~userFunctionsOfTheSimpleWindowInterface();
 
 	int edgeCaseDisplacement(const int& transferParm, const int& boundary);
 	void establishLane(const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool);

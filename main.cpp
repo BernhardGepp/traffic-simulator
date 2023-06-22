@@ -13,8 +13,8 @@
 #define createSecondWindow 101
 #define INT int
 
-network* n = nullptr;
-network* network::instance = 0;
+SimpleWindowUserInterface* n = nullptr;
+SimpleWindowUserInterface* SimpleWindowUserInterface::instance = 0;
 
 
 enum numberOFLanes { one = 1, two = 2 };
@@ -269,7 +269,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	
 	/*n = n->getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
 		PaintBoxStart, PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22));*/
-	n = network::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
+	n = SimpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
 		PaintBoxStart, PaintBoxEnd,PaintBoxFex11,PaintBoxFex12,PaintBoxFex21,PaintBoxFex22));
 	MSG msg;
 	bool endprogram = false;

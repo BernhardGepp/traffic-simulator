@@ -14,9 +14,9 @@
 #include "networkCreationVHLinks.h"
 #include "networkCreationOfVHLinks.h"
 
-class network  {
+class SimpleWindowUserInterface {
 private:
-	static network* instance;
+	static SimpleWindowUserInterface* instance;
 
 	
 	const int& width;
@@ -25,10 +25,10 @@ private:
 
 	//Constructors and Destructor:
 	//explicit network(const int& width, const int& height, const callBackLinks& CBL);
-	explicit network::network(const int& width, const int& height, const callBackLinks& CBL) :width(width), height(height) {
+	explicit SimpleWindowUserInterface::SimpleWindowUserInterface(const int& width, const int& height, const callBackLinks& CBL) :width(width), height(height) {
 
 		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
-		m_nCptr = std::make_unique<userFunctionsOfTheSimpleWindowSurface> ();
+		m_nCptr = std::make_unique<userFunctionsOfTheSimpleWindowInterface> ();
 		//m_nCptr->m_CBLptr = std::make_unique<callBackLinks>(CBL);
 		
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
@@ -38,15 +38,15 @@ private:
 		m_CBLptr->m_callback_getRandomNumber = &getRandomNumber;
 
 	}
-	network::network(network& other) = delete;
-	network::network(network&& other) = delete;
-	network& operator=(const network& other) = delete;
-	network&& operator=(network&& other) = delete;
-	network::~network() noexcept {}
+	SimpleWindowUserInterface::SimpleWindowUserInterface(SimpleWindowUserInterface& other) = delete;
+	SimpleWindowUserInterface::SimpleWindowUserInterface(SimpleWindowUserInterface&& other) = delete;
+	SimpleWindowUserInterface& operator=(const SimpleWindowUserInterface& other) = delete;
+	SimpleWindowUserInterface&& operator=(SimpleWindowUserInterface&& other) = delete;
+	SimpleWindowUserInterface::~SimpleWindowUserInterface() noexcept {}
 
 public:
 	networkDataStructure networkCreationClass;
-	std::unique_ptr <userFunctionsOfTheSimpleWindowSurface> m_nCptr;
+	std::unique_ptr <userFunctionsOfTheSimpleWindowInterface> m_nCptr;
 	std::unique_ptr<callBackLinks>m_CBLptr;
 	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
 	int serviceInt1 = 0;
@@ -58,14 +58,14 @@ public:
 	PrintInGDIplusWinEmpty m_PWE;
 	
 
-	static void network::destroy() {
+	static void SimpleWindowUserInterface::destroy() {
 		delete instance;
 		instance = nullptr;
 	}
 
-	static network* network::getInstance(const int& width, const int& height, const callBackLinks& CBL) {
+	static SimpleWindowUserInterface* SimpleWindowUserInterface::getInstance(const int& width, const int& height, const callBackLinks& CBL) {
 		if (instance == 0) {
-			instance = new network(width, height, CBL);
+			instance = new SimpleWindowUserInterface(width, height, CBL);
 			return instance;
 		}
 		else {
@@ -73,18 +73,18 @@ public:
 		}
 	}
 
-	static int network::getRandomNumber() {
+	static int SimpleWindowUserInterface::getRandomNumber() {
 		static randomSpeed_neu rSn;
 		rSn.randomNumberRequest();
 		return  rSn.a;
 	}
 
-	void network::fieldRecalibarte() {
+	void SimpleWindowUserInterface::fieldRecalibarte() {
 		iPosXRK = width - 110;
 		iPosYRK = height - 110;
 	}
 
-	bool network::setPoints(HDC hdc, const int& numberOfLanes) {
+	bool SimpleWindowUserInterface::setPoints(HDC hdc, const int& numberOfLanes) {
 		m_nCptr->establishLane(numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
 		m_CBLptr->topLevelFunctionPTR_f1PaintBoxLB();
 		m_CBLptr->topLevelFunctionPTR_f2PaintBoxRB();
@@ -128,7 +128,7 @@ public:
 		m_nCptr->networkLaneVector.clear();
 		networkCreationClass.networkLaneVector.clear();
 	}*/
-	void  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
+	void  SimpleWindowUserInterface::establishVertexOfGraph(const int& choiceOfRouteFinding) {
 		callBackLinks* CBL = nullptr;
 		concreteObserverSubjekt* cOS = nullptr;
 		CBL = m_CBLptr.get();
@@ -144,13 +144,13 @@ public:
 	}
 	
 
-	void network::printLanesAndVehiclesOfAllEdges() {
+	void SimpleWindowUserInterface::printLanesAndVehiclesOfAllEdges() {
 
 		networkCreationClass.printLanesAndVehiclesOfAllEdges();
 		m_PWE.fullemptyPrintContainer(m_CBLptr->m_hdc, m_CBLptr->m_f5PaintLane);
 	}
 
-	void network::waitIfDubbleClick(const int& a, const int& b) {
+	void SimpleWindowUserInterface::waitIfDubbleClick(const int& a, const int& b) {
 		if ((a == serviceInt1) && (b == serviceInt2)) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(250));
 		}
