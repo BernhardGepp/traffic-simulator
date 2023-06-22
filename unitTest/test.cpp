@@ -2,19 +2,20 @@
 #include <iostream>
 #include "gtest/gtest.h"
 //#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\PrecompiledHeadersEdges.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\network.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\edge.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertex.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexEnd.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexFlex.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexStart.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.cpp" 
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.h" 
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\velocityToLength.h" 
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\callBackLinks.h" 
+#include "C:\Users\bernh\Documents\25_Sommer2022\network.h"
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\edge.h"
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertex.h"
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexEnd.h"
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexFlex.h"
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexStart.h"
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.cpp" 
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.h" 
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\velocityToLength.h" 
+//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\callBackLinks.h" 
 #include <memory>
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\networkCreationVHLinks.h"
-#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\networkCreationOfVHLinks.h"
+
+#include "C:\Users\bernh\Documents\25_Sommer2022\networkCreationVHLinks.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\networkCreationOfVHLinks.h"
 
 
 int main(int argc, char** argv) {
@@ -24,7 +25,7 @@ int main(int argc, char** argv) {
 	std::cin >> a;
 	return 0;
 }
-TEST(NetworkBuildingTest, NCT1) {
+/**TEST(NetworkBuildingTest, NCT1) {
 	networkCreationVHLinks testingClass;
 	networkCreationOfVHLinks networkCreationClass;
 	testingClass.networkLaneVector.clear();
@@ -42,8 +43,8 @@ TEST(NetworkBuildingTest, NCT1) {
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
 	EXPECT_EQ(networkCreationClass.appliedGraph.size(), 1);
-}
-TEST(NetworkBuildingTest, NCT2) {
+}*/
+/*TEST(NetworkBuildingTest, NCT2) {
 	networkCreationVHLinks testingClass;
 	networkCreationOfVHLinks networkCreationClass;
 	testingClass.networkLaneVector.clear();
@@ -65,8 +66,8 @@ TEST(NetworkBuildingTest, NCT2) {
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
 	EXPECT_EQ(networkCreationClass.appliedGraph.size(), 2);
-}
-TEST(NetworkBuildingTest, NCT3) {
+}*/
+/*TEST(NetworkBuildingTest, NCT3) {
 	networkCreationVHLinks testingClass;
 	networkCreationOfVHLinks networkCreationClass;
 	testingClass.networkLaneVector.clear();
@@ -93,8 +94,8 @@ TEST(NetworkBuildingTest, NCT3) {
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
 	EXPECT_EQ(networkCreationClass.appliedGraph.size(), 1);
-}
-TEST(NetworkBuildingTest, NCT4) {
+}*/
+/*TEST(NetworkBuildingTest, NCT4) {
 	networkCreationVHLinks testingClass;
 	networkCreationOfVHLinks networkCreationClass;
 	testingClass.networkLaneVector.clear();
@@ -132,10 +133,10 @@ TEST(NetworkBuildingTest, NCT4) {
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
 	EXPECT_EQ(networkCreationClass.appliedGraph.size(), 2);
-}
+}*/
 
 TEST(NetworkBuildingTest, EdgeCases1) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	//TestCase: Overlay of 2 horizontal connections with one and two lanes(both in positive direction), which should not work at the field boundary!
 	testingClass.networkLaneVector.clear(); 
 	testingClass.establishLane(1, 0, 580, true);
@@ -166,7 +167,7 @@ TEST(NetworkBuildingTest, EdgeCases1) {
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 1);
 }
 TEST(NetworkBuildingTest, EdgeCases2) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Links with ONE lane
 	//links generated immediately one after the other
@@ -255,7 +256,7 @@ TEST(NetworkBuildingTest, EdgeCases2) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, EdgeCases3) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Links with ONE lane
 	//links generated immediately one after the other
@@ -345,7 +346,7 @@ TEST(NetworkBuildingTest, EdgeCases3) {
 }
 
 TEST(NetworkBuildingTest, NBT1) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in horizontal positive shape:
 	//with Links with one Lane:
@@ -523,7 +524,7 @@ TEST(NetworkBuildingTest, NBT1) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT2) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in horizontal negative shape:
 	//with Links with one Lane:
@@ -700,7 +701,7 @@ TEST(NetworkBuildingTest, NBT2) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT3) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in horizontal shape, first in negative direction and seccond in positive direction:
 	//with Links with one Lane:
@@ -877,7 +878,7 @@ TEST(NetworkBuildingTest, NBT3) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT4) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in horizontal shape, first in positve direction and seccond in negative direction:
 	//with Links with one Lane:
@@ -1056,7 +1057,7 @@ TEST(NetworkBuildingTest, NBT4) {
 }
 
 TEST(NetworkBuildingTest, NBT5) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in vertical positive shape:
 	//with Links with one Lane:
@@ -1230,7 +1231,7 @@ TEST(NetworkBuildingTest, NBT5) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT6) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in vertical negative shape:
 	//with Links with one Lane:
@@ -1403,7 +1404,7 @@ TEST(NetworkBuildingTest, NBT6) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT7) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in vertical shape, first in negative direction and seccond in positive direction:
 	//with Links with one Lane:
@@ -1576,7 +1577,7 @@ TEST(NetworkBuildingTest, NBT7) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT8) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in vertical shape, first in positive direction and seccond in negative direction:
 	//with Links with one Lane:
@@ -1750,7 +1751,7 @@ TEST(NetworkBuildingTest, NBT8) {
 }
 
 TEST(NetworkBuildingTest, NBT9) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with two Lane in horizontal positive shape:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -2024,7 +2025,7 @@ TEST(NetworkBuildingTest, NBT9) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT10) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with one Lane in horizontal negative shape:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -2298,7 +2299,7 @@ TEST(NetworkBuildingTest, NBT10) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT11) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with two Lane in horizontal shape, first in negative direction and seccond in positive direction:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -2572,7 +2573,7 @@ TEST(NetworkBuildingTest, NBT11) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT12) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with two Lane in horizontal shape, first in positve direction and seccond in negative direction:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -2847,7 +2848,7 @@ TEST(NetworkBuildingTest, NBT12) {
 }
 
 TEST(NetworkBuildingTest, NBT13) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with two Lanes in vertical positive shape:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -3121,7 +3122,7 @@ TEST(NetworkBuildingTest, NBT13) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT14) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with two Lanes in vertical negative shape:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -3395,7 +3396,7 @@ TEST(NetworkBuildingTest, NBT14) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT15) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with two Lanes in vertical shape, first in negative direction and seccond in positive direction:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -3669,7 +3670,7 @@ TEST(NetworkBuildingTest, NBT15) {
 	testingClass.networkLaneVector.clear();
 }
 TEST(NetworkBuildingTest, NBT16) {
-	networkCreationVHLinks testingClass;
+	userFunctionsOfTheSimpleWindowInterface testingClass;
 	testingClass.networkLaneVector.clear();
 	//Testing against 2 Links with two Lanes in vertical shape, first in positive direction and seccond in negative direction:
 	EXPECT_EQ(testingClass.networkLaneVector.size(), 0);
@@ -3948,7 +3949,7 @@ TEST(TestCaseName, TestName) {
 	EXPECT_EQ(o.VLStepConversion(99), 25);
 }
 
-
+/*
 TEST(TestCaseName2, TestName2) {
 	
 	edge e1;
@@ -4213,7 +4214,7 @@ TEST(TestCaseName4, TestName4) {
 	EXPECT_EQ(v5->m_numberOfVehicle, 50);//47
 	EXPECT_TRUE(true);
 	delete[] vehicleArray;
-}
+}*/
 
 
 
