@@ -4,9 +4,21 @@
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
@@ -15,6 +27,10 @@
     <ProjectConfiguration Include="MinSizeRel|x64">
       <Configuration>MinSizeRel</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="RelWithDebInfo|x64">
       <Configuration>RelWithDebInfo</Configuration>
@@ -50,6 +66,20 @@
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -75,6 +105,16 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">gtest.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">gtest</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\lib\Debug\</OutDir>
+    <IntDir>gtest.dir\Debug\</IntDir>
+    <TargetName>gtest</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\lib\Release\</OutDir>
+    <IntDir>gtest.dir\Release\</IntDir>
+    <TargetName>gtest</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -234,6 +274,24 @@
     <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
     </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\CMakeLists.txt">
