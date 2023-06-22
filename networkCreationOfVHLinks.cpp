@@ -14,8 +14,8 @@ bool sortTopDown(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 }
 
 //Constructor and destructor of the class:
-networkCreationOfVHLinks::networkCreationOfVHLinks() {}
-networkCreationOfVHLinks::~networkCreationOfVHLinks() {}
+networkDataStructure::networkDataStructure() {}
+networkDataStructure::~networkDataStructure() {}
 
 //********************************************************************
 //Methods of the class:
@@ -32,7 +32,7 @@ networkCreationOfVHLinks::~networkCreationOfVHLinks() {}
 		networkLaneVector.push_back(std::make_tuple(startingPoint, endingPoint, horizontalOrVertival, twoLanes));
 }*/
 
-bool networkCreationOfVHLinks::checkIfInNetworkLaneVector() {
+bool networkDataStructure::checkIfInNetworkLaneVector() {
 	return true;
 }
 
@@ -667,7 +667,7 @@ std::unique_ptr<PrintPattern> networkCreationOfVHLinks::choosePrintPattern(const
 	return nullptr;
 }*/
 
-void networkCreationOfVHLinks::printLanesAndVehiclesOfAllEdges() {
+void networkDataStructure::printLanesAndVehiclesOfAllEdges() {
 
 	for (auto& i : appliedGraph) {
 		i->printLanesAndVehiclesOfAllEdges();

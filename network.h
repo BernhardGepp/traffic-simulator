@@ -28,7 +28,7 @@ private:
 	explicit network::network(const int& width, const int& height, const callBackLinks& CBL) :width(width), height(height) {
 
 		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
-		m_nCptr = std::make_unique<networkCreationVHLinks> ();
+		m_nCptr = std::make_unique<userFunctionsOfTheSimpleWindowSurface> ();
 		//m_nCptr->m_CBLptr = std::make_unique<callBackLinks>(CBL);
 		
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
@@ -45,8 +45,8 @@ private:
 	network::~network() noexcept {}
 
 public:
-	networkCreationOfVHLinks networkCreationClass;
-	std::unique_ptr <networkCreationVHLinks> m_nCptr;
+	networkDataStructure networkCreationClass;
+	std::unique_ptr <userFunctionsOfTheSimpleWindowSurface> m_nCptr;
 	std::unique_ptr<callBackLinks>m_CBLptr;
 	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
 	int serviceInt1 = 0;

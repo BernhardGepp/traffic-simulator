@@ -7,18 +7,18 @@
 #include "graphTrafficGenerationOnFastRoutes.h"
 
 //Constructor and destructor of the class:
-networkCreationVHLinks::networkCreationVHLinks() {}
-networkCreationVHLinks::~networkCreationVHLinks() {}
+userFunctionsOfTheSimpleWindowSurface::userFunctionsOfTheSimpleWindowSurface() {}
+userFunctionsOfTheSimpleWindowSurface::~userFunctionsOfTheSimpleWindowSurface() {}
 
 //********************************************************************
 //Methods of the class:
 
-void networkCreationVHLinks::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
+void userFunctionsOfTheSimpleWindowSurface::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }
 
-void networkCreationVHLinks::establishLane(const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool) {
+void userFunctionsOfTheSimpleWindowSurface::establishLane(const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool) {
 	//********************************************************************
 	//This method is used to generate pairs of points.
 	//This method ensures that only feasible point pairs are generated, from which the links of the simulation graph are later created.
@@ -313,13 +313,13 @@ void networkCreationVHLinks::establishLane(const int& numberOfLanes, const int& 
 	}
 }
 
-int networkCreationVHLinks::edgeCaseDisplacement(const int& transferParm, const int& boundary) {
+int userFunctionsOfTheSimpleWindowSurface::edgeCaseDisplacement(const int& transferParm, const int& boundary) {
 	//********************************************************************
 	//This method is called by the method "establishLane" of that class.
 	return (transferParm > boundary ? boundary : transferParm);
 }
 
-void  networkCreationVHLinks::graphGenerationFromClickPairs(const int& choiceOfRouteFinding) {
+void  userFunctionsOfTheSimpleWindowSurface::graphGenerationFromClickPairs(const int& choiceOfRouteFinding) {
 	//********************************************************************
 	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
 	//A traffic graph (object "graph")consists of edges and vertices, which are created in this method in the form of objects.
@@ -872,7 +872,7 @@ void  networkCreationVHLinks::graphGenerationFromClickPairs(const int& choiceOfR
 	edgeOfGraphPtrContainer.clear();
 }
 
-void networkCreationVHLinks::vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex) {
+void userFunctionsOfTheSimpleWindowSurface::vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex) {
 	//********************************************************************
 	//Vertex generation for a graph with vertical and horizontal links
 	//This method is called by the method "graphGenerationFromClickPairs". This method is part of the traffic graph generation. 
@@ -911,7 +911,7 @@ void networkCreationVHLinks::vertexCreationVH_Network(const std::pair<int, int>&
 }
 
 
-std::unique_ptr<PrintPattern> networkCreationVHLinks::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
+std::unique_ptr<PrintPattern> userFunctionsOfTheSimpleWindowSurface::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
 	//********************************************************************
 	//Selection of the appropriate print pattern
 	//This method is called by the method "graphGenerationFromClickPairs". This method is part of the traffic graph generation. 

@@ -7,7 +7,7 @@
 //#include "PrintInGDIplusWinEmpty.h"
 
 
-class networkCreationOfVHLinks {
+class networkDataStructure {
 public:
 	//std::vector<std::unique_ptr<vertex>>vertexOfGraphPtrVectorConainer;
 	//std::vector<std::unique_ptr<edge>>edgeOfGraphPtrContainer;
@@ -17,8 +17,8 @@ public:
 	concreteObserverSubjekt* m_cObSptr=nullptr;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
 	//PrintInGDIplusWinEmpty m_PWE;
-	networkCreationOfVHLinks();
-	~networkCreationOfVHLinks();
+	networkDataStructure();
+	~networkDataStructure();
 	
 	//void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS);
 	void fillNetworkLaneVector(std::pair<int, int> startingPoint, std::pair<int, int> endingPoint, bool horizontalOrVertival, int NoL);
