@@ -1,21 +1,21 @@
 //#include "pch.h"
 #include <iostream>
 #include "gtest/gtest.h"
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\PrecompiledHeadersEdges.h"
-#include "C:\Users\bernh\Documents\25_Sommer2022\network.h"
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\edge.h"
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertex.h"
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexEnd.h"
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexFlex.h"
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vertexStart.h"
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.cpp" 
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\vehicle.h" 
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\velocityToLength.h" 
-//#include "C:\Users\bernh\Documents\23_Sommer2021\Projekt1\callBackLinks.h" 
+#include "C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\simpleWindowUserInterface.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\edge.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\vertex.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\vertexEnd.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\vertexFlex.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\vertexStart.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\vehicle.cpp" 
+#include "C:\Users\bernh\Documents\25_Sommer2022\vehicle.h" 
+#include "C:\Users\bernh\Documents\25_Sommer2022\velocityToLength.h" 
+#include "C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.h" 
 #include <memory>
 
-#include "C:\Users\bernh\Documents\25_Sommer2022\networkCreationVHLinks.h"
-#include "C:\Users\bernh\Documents\25_Sommer2022\networkCreationOfVHLinks.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\userFunctionsOfTheSimpleWindowInterface.h"
+#include "C:\Users\bernh\Documents\25_Sommer2022\networkDataStructure.h"
 
 
 int main(int argc, char** argv) {

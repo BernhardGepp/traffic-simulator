@@ -24,8 +24,8 @@ set(Sources
 	graphTrafficGenerationOnAllRoutes.cpp
 	graphTrafficGenerationOnFastRoutes.cpp
 	graphTrafficGenerationTrafficOnRoutesSelectedByDijkstraAlg.cpp
-	networkCreationOfVHLinks.cpp
-	networkCreationVHLinks.cpp
+	networkDataStructure.cpp
+	userFunctionsOfTheSimpleWindowInterface.cpp
 	observer.cpp
 	observer_subjekt.cpp
 	PrintInGDIplusWin1LN.cpp

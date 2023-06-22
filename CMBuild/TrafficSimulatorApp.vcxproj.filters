@@ -43,10 +43,10 @@
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graphTrafficGenerationTrafficOnRoutesSelectedByDijkstraAlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkCreationOfVHLinks.cpp">
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkDataStructure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkCreationVHLinks.cpp">
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\userFunctionsOfTheSimpleWindowInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\observer.cpp">

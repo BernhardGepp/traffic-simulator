@@ -4,21 +4,9 @@
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|Win32">
-      <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="MinSizeRel|Win32">
-      <Configuration>MinSizeRel</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
@@ -27,10 +15,6 @@
     <ProjectConfiguration Include="MinSizeRel|x64">
       <Configuration>MinSizeRel</Configuration>
       <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="RelWithDebInfo|Win32">
-      <Configuration>RelWithDebInfo</Configuration>
-      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="RelWithDebInfo|x64">
       <Configuration>RelWithDebInfo</Configuration>
@@ -66,20 +50,6 @@
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <PlatformToolset>v142</PlatformToolset>
-    <ConfigurationType>Application</ConfigurationType>
-  </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <PlatformToolset>v142</PlatformToolset>
-    <ConfigurationType>Application</ConfigurationType>
-  </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -105,16 +75,6 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">TrafficSimulatorApp.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">TrafficSimulatorApp</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Debug\</OutDir>
-    <IntDir>TrafficSimulatorApp.dir\Debug\</IntDir>
-    <TargetName>TrafficSimulatorApp</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Release\</OutDir>
-    <IntDir>TrafficSimulatorApp.dir\Release\</IntDir>
-    <TargetName>TrafficSimulatorApp</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -239,28 +199,6 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>PrecompiledHeadersEdges.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>PrecompiledHeadersEdges.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\GSL\include;</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\bernh\Documents\25_Sommer2022\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
@@ -322,12 +260,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />
-    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\random_speed_neu.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vehicle.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\flowSimulation1NegStraight.cpp" />
@@ -338,8 +271,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graphTrafficGenerationOnAllRoutes.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graphTrafficGenerationOnFastRoutes.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\graphTrafficGenerationTrafficOnRoutesSelectedByDijkstraAlg.cpp" />
-    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkCreationOfVHLinks.cpp" />
-    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkCreationVHLinks.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\networkDataStructure.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\userFunctionsOfTheSimpleWindowInterface.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\observer.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\observer_subjekt.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrintInGDIplusWin1LN.cpp" />

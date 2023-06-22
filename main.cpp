@@ -1,6 +1,6 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-#include "network.h"
+#include "simpleWindowUserInterface.h"
 #include "callBackLinks.h"
 
 #define MY_BUTTON_ID 38

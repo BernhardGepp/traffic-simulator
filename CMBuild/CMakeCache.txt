@@ -274,6 +274,10 @@ FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 //Enables UPDATE_DISCONNECTED behavior just for population of googletest
 FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
 
+//Use Abseil and RE2. Requires Abseil and RE2 to be separately
+// added to the build.
+GTEST_HAS_ABSL:BOOL=OFF
+
 //Enable installation of googletest. (Projects embedding googletest
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=ON
@@ -335,9 +339,6 @@ gtest_force_shared_crt:BOOL=ON
 
 //Build gtest with internal symbols hidden in shared libraries.
 gtest_hide_internal_symbols:BOOL=OFF
-
-//Dependencies for the target
-gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 
 
 ########################
@@ -510,8 +511,8 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[D:/vs_Community/boost/boost_1_64_0/boost_1_64_0][c ][v1.64.0(1.64.0)]
-//Details about finding Python
-FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[C:/Python310/python.exe][cfound components: Interpreter ][v3.10.0()]
+//Details about finding Python3
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[C:/Python310/python.exe][cfound components: Interpreter ][v3.10.0()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Components requested for this build tree.
@@ -527,10 +528,10 @@ _Boost_USE_STATIC_LIBS_LAST:INTERNAL=ON
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/TrafficSimulator
 //Path to a program.
-_Python_EXECUTABLE:INTERNAL=C:/Python310/python.exe
-//Python Properties
-_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;0;64;;cp310-win_amd64;C:\Python310\Lib;C:\Python310\Lib;C:\Python310\Lib\site-packages;C:\Python310\Lib\site-packages
-_Python_INTERPRETER_SIGNATURE:INTERNAL=4cb6b8d5fd90e217c459e5400d5fe50d
+_Python3_EXECUTABLE:INTERNAL=C:/Python310/python.exe
+//Python3 Properties
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;0;64;;cp310-win_amd64;C:\Python310\Lib;C:\Python310\Lib;C:\Python310\Lib\site-packages;C:\Python310\Lib\site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=7df3158d636d36d5081bf361c4bf02b0
 cmake_package_name:INTERNAL=GTest
 generated_dir:INTERNAL=C:/Users/bernh/Documents/25_Sommer2022/CMBuild/_deps/googletest-build/googletest/generated
 //ADVANCED property for variable: gmock_build_tests
