@@ -300,11 +300,11 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
