@@ -371,13 +371,16 @@ void graph::printLanesAndVehiclesOfAllEdges() {
 
 	for (auto& i : m_vectorOfVertexPtr) {
 		m_CBLptr->topLevelFunctionPTR_f7PrintVertexNumber(i->m_XcoordinateVertex, i->m_YcoordinateVertex, i->m_vertexID);
-		if (i->m_shapeOfThatVertex == 1)
+		switch (i->m_shapeOfThatVertex) {
+		case 1:
 			m_CBLptr->topLevelFunctionPTR_f12PaintBoxStart(i->m_XcoordinateVertex, i->m_YcoordinateVertex);
+			break;
 
-		if (i->m_shapeOfThatVertex == 2)
+		case 2:
 			m_CBLptr->topLevelFunctionPTR_f13PaintBoxEnd(i->m_XcoordinateVertex, i->m_YcoordinateVertex);
+			break;
 
-		if (i->m_shapeOfThatVertex == 11) {
+		case 11:
 			counter = 0;
 			doubleVerticalVertex = false;
 			doubleHorizontalVertex = false;
@@ -433,6 +436,7 @@ void graph::printLanesAndVehiclesOfAllEdges() {
 					}
 				}
 			}
+			break;
 		}
 	}
 	for (auto& i : m_vectorOfEdgesPtr) {

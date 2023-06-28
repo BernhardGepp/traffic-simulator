@@ -8,7 +8,7 @@
 #include "graph.h"
 //#include "vehicle.h"
 #include "random_speed_neu.h"
-#include "PrintInGDIplusWinEmpty.h"
+
 #include "callBackLinks.h"
 #include "observer_subjekt.h"
 #include "userFunctionsOfTheSimpleWindowInterface.h"
@@ -19,23 +19,20 @@ private:
 	static simpleWindowUserInterface* instance;
 
 	
-	const int& width;
-	const int& height;
+	const int& m_ref_width;
+	const int& m_ref_height;
 	bool lButtonServiceBool = true;
 
 	//Constructors and Destructor:
-	explicit simpleWindowUserInterface::simpleWindowUserInterface(const int& width, const int& height, const callBackLinks& CBL) :width(width), height(height) {
+	explicit simpleWindowUserInterface::simpleWindowUserInterface(const int& width, const int& height, const callBackLinks& CBL) :m_ref_width(width), m_ref_height(height) {
 
 		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
-		//m_nCptr = std::make_unique<userFunctionsOfTheSimpleWindowInterface> ();
-		//m_nCptr->m_CBLptr = std::make_unique<callBackLinks>(CBL);
-		
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
-		//m_nCptr->m_CBLptr = m_CBLptr.get();
+				
 		iPosXRK = width - 110;
 		iPosYRK = height - 110;
 		m_CBLptr->m_callback_getRandomNumber = &getRandomNumber;
-
+		m_networkCreationFunctions.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(m_CBLptr.get()), gsl::not_null<concreteObserverSubjekt* >(m_cObSptr.get()));
 	}
 	simpleWindowUserInterface::simpleWindowUserInterface(simpleWindowUserInterface& other) = delete;
 	simpleWindowUserInterface::simpleWindowUserInterface(simpleWindowUserInterface&& other) = delete;
@@ -45,8 +42,8 @@ private:
 
 public:
 	networkDataStructure m_networkDataStructure;
-	//std::unique_ptr <userFunctionsOfTheSimpleWindowInterface> m_nCptr;
 	userFunctionsOfTheSimpleWindowInterface m_networkCreationFunctions;
+	PrintInGDIplusWinEmpty m_PWE;
 	std::unique_ptr<callBackLinks>m_CBLptr;
 	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
 	int serviceInt1 = 0;
@@ -55,7 +52,7 @@ public:
 	int iPosYLK = 0;
 	int iPosXRK = 0;
 	int iPosYRK = 0;
-	PrintInGDIplusWinEmpty m_PWE;
+	
 	
 
 	static void simpleWindowUserInterface::destroy() {
@@ -80,12 +77,14 @@ public:
 	}
 
 	void simpleWindowUserInterface::fieldRecalibarte() {
-		iPosXRK = width - 110;
-		iPosYRK = height - 110;
+		iPosYLK = 0;
+		iPosXLK = 0;
+		iPosXRK = m_ref_width - 110;
+		iPosYRK = m_ref_height - 110;
 	}
 
 	bool simpleWindowUserInterface::setPoints(HDC hdc, const int& numberOfLanes) {
-		m_networkCreationFunctions.establishLane(numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
+		m_networkCreationFunctions.establishLane(m_ref_width, m_ref_height,numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
 		m_CBLptr->topLevelFunctionPTR_f1PaintBoxLB();
 		m_CBLptr->topLevelFunctionPTR_f2PaintBoxRB();
 		m_CBLptr->topLevelFunctionPTR_f3PaintFrame();
@@ -101,12 +100,8 @@ public:
 	}
 
 	void  simpleWindowUserInterface::establishVertexOfGraph(const int& choiceOfRouteFinding) {
-		callBackLinks* CBL = nullptr;
-		concreteObserverSubjekt* cOS = nullptr;
-		CBL = m_CBLptr.get();
-		cOS = m_cObSptr.get();
-		m_networkCreationFunctions.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(CBL), gsl::not_null<concreteObserverSubjekt* >(cOS));
-		m_networkCreationFunctions.graphGenerationFromClickPairs(choiceOfRouteFinding);
+		
+		m_networkCreationFunctions.graphGenerationFromClickPairs(m_ref_width, m_ref_height, choiceOfRouteFinding);
 		
 		for (auto& i : m_networkCreationFunctions.appliedGraph) {
 			m_networkDataStructure.appliedGraph.push_back(std::move(i));

@@ -18,7 +18,7 @@ void userFunctionsOfTheSimpleWindowInterface::iniziallizationOfPointer(callBackL
 	m_cObSptr = cOS;
 }
 
-void userFunctionsOfTheSimpleWindowInterface::establishLane(const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool) {
+void userFunctionsOfTheSimpleWindowInterface::establishLane(const int& width, const int& height, const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool) {
 	//********************************************************************
 	//This method is used to generate pairs of points.
 	//This method ensures that only feasible point pairs are generated, from which the links of the simulation graph are later created.
@@ -319,7 +319,7 @@ int userFunctionsOfTheSimpleWindowInterface::edgeCaseDisplacement(const int& tra
 	return (transferParm > boundary ? boundary : transferParm);
 }
 
-void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(const int& choiceOfRouteFinding) {
+void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(const int& width, const int& height, const int& choiceOfRouteFinding) {
 	//********************************************************************
 	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
 	//A traffic graph (object "graph")consists of edges and vertices, which are created in this method in the form of objects.
@@ -334,8 +334,6 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 	int iPosYLK = 0;
 	int iPosXRK = 0;
 	int iPosYRK = 0;
-	int width = 1200;
-	int height = 700;
 	//Preparation for coordinate correction, narrowing down the search space:
 	for (estVerITER = networkLaneVector.begin(); estVerITER != networkLaneVector.end(); ++estVerITER) {
 

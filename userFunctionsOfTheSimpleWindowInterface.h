@@ -8,8 +8,8 @@ class userFunctionsOfTheSimpleWindowInterface {
 private:
 	int xCordinadte_store_LB=0;
 	int yCordinadte_store_LB=0;
-	int width=1200;
-	int height=700;
+	//int width=1200;
+	//int height=700;
 	
 public:
 	enum m_numberOfLanes { oneLane = 1, twoLanes = 2 };
@@ -25,10 +25,10 @@ public:
 	~userFunctionsOfTheSimpleWindowInterface();
 
 	int edgeCaseDisplacement(const int& transferParm, const int& boundary);
-	void establishLane(const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool);
+	void establishLane(const int& width, const int& height, const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool);
 
 	void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS);
 	void vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex);
-	void graphGenerationFromClickPairs(const int& choiceOfRouteFinding);
+	void graphGenerationFromClickPairs(const int& width, const int& height, const int& choiceOfRouteFinding);
 	std::unique_ptr<PrintPattern> choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV);
 };

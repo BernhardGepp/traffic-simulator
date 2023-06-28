@@ -171,74 +171,76 @@ VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosX
 
 	if (!PointsToBePrinted.empty()) {//Hier werden die Punkte gezeichnet!
 		for (auto &i : PointsToBePrinted) {
-			if (std::get<2>(i) == 0) {
+			switch (std::get<2>(i)){
+				case 0:
 				graphics3.DrawLine(&pen23, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 1) {
+				break;
+				case 1:
 				graphics3.DrawLine(&pen11, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 2) {
+				break;
+				case 2:
 				graphics3.DrawLine(&pen11, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 3) {
+				break;
+				case 3:
 				graphics3.DrawLine(&pen10, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 4) {
+				break;
+				case 4:
 				graphics3.DrawLine(&pen14, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 5) {
+				break;
+				case 5:
 				graphics3.DrawLine(&pen11, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 6) {
+				break;
+				case 6:
 				graphics3.DrawLine(&pen17, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 7) {
+				break;
+				case 7:
 				graphics3.DrawLine(&pen15, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 8) {
+				break;
+				case 8:
 				graphics3.DrawLine(&pen20, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 9) {
+				break;
+				case 9:
 				graphics3.DrawLine(&pen13, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 10) {
+				break;
+				case 10:
 				graphics3.DrawLine(&pen24, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 11) {
+				break;
+				case 11:
 				graphics3.DrawLine(&pen19, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 12) {
+				break;
+				case 12:
 				graphics3.DrawLine(&pen22, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 13) {
+				break;
+				case 13:
 				graphics3.DrawLine(&pen12, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 14) {
+				break;
+				case 14:
 				graphics3.DrawLine(&pen25, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 15) {
+				break;
+				case 15:
 				graphics3.DrawLine(&pen16, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 16) {
+				break;
+				case 16:
 				graphics3.DrawLine(&pen26, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 17) {
+				break;
+				case 17:
 				graphics3.DrawLine(&pen18, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 18) {
+				break;
+				case 18:
 				graphics3.DrawLine(&pen27, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 19) {
+				break;
+				case 19:
 				graphics3.DrawLine(&pen21, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 20) {
+				break;
+				case 20:
 				graphics3.DrawLine(&pen28, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) == 21) {
+				break;
+				case 21:
 				graphics3.DrawLine(&pen30, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
-			}
-			if (std::get<2>(i) >= 22) {
+				break;
+				default:
 				graphics3.DrawLine(&pen29, std::get<0>(i) + 3, std::get<1>(i), std::get<0>(i) + 5, std::get<1>(i));
+				break;
 			}
 		}
 	}
@@ -267,8 +269,6 @@ static HDC hdc;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	
-	/*n = n->getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
-		PaintBoxStart, PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22));*/
 	n = simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
 		PaintBoxStart, PaintBoxEnd,PaintBoxFex11,PaintBoxFex12,PaintBoxFex21,PaintBoxFex22));
 	MSG msg;
@@ -383,6 +383,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		if (window1closed == true) {
 			endprogram = true;
+			n->m_networkDataStructure.appliedGraph.clear();
 			n->destroy();
 			n = nullptr;
 		}

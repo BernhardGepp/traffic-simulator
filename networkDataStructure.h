@@ -4,7 +4,7 @@
 #include "edge.h"
 #include "graph.h"
 #include "vertex.h"
-//#include "PrintInGDIplusWinEmpty.h"
+#include "PrintInGDIplusWinEmpty.h"
 
 
 class networkDataStructure {
@@ -14,6 +14,7 @@ public:
 	callBackLinks* m_CBLptr=nullptr;
 	concreteObserverSubjekt* m_cObSptr=nullptr;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
+	//PrintInGDIplusWinEmpty m_PWE;
 	//PrintInGDIplusWinEmpty m_PWE;
 	networkDataStructure();
 	~networkDataStructure();
