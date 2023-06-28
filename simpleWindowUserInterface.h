@@ -24,11 +24,10 @@ private:
 	bool lButtonServiceBool = true;
 
 	//Constructors and Destructor:
-	//explicit network(const int& width, const int& height, const callBackLinks& CBL);
 	explicit simpleWindowUserInterface::simpleWindowUserInterface(const int& width, const int& height, const callBackLinks& CBL) :width(width), height(height) {
 
 		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
-		m_nCptr = std::make_unique<userFunctionsOfTheSimpleWindowInterface> ();
+		//m_nCptr = std::make_unique<userFunctionsOfTheSimpleWindowInterface> ();
 		//m_nCptr->m_CBLptr = std::make_unique<callBackLinks>(CBL);
 		
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
@@ -45,8 +44,9 @@ private:
 	simpleWindowUserInterface::~simpleWindowUserInterface() noexcept {}
 
 public:
-	networkDataStructure networkCreationClass;
-	std::unique_ptr <userFunctionsOfTheSimpleWindowInterface> m_nCptr;
+	networkDataStructure m_networkDataStructure;
+	//std::unique_ptr <userFunctionsOfTheSimpleWindowInterface> m_nCptr;
+	userFunctionsOfTheSimpleWindowInterface m_networkCreationFunctions;
 	std::unique_ptr<callBackLinks>m_CBLptr;
 	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
 	int serviceInt1 = 0;
@@ -85,7 +85,7 @@ public:
 	}
 
 	bool simpleWindowUserInterface::setPoints(HDC hdc, const int& numberOfLanes) {
-		m_nCptr->establishLane(numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
+		m_networkCreationFunctions.establishLane(numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
 		m_CBLptr->topLevelFunctionPTR_f1PaintBoxLB();
 		m_CBLptr->topLevelFunctionPTR_f2PaintBoxRB();
 		m_CBLptr->topLevelFunctionPTR_f3PaintFrame();
@@ -100,53 +100,25 @@ public:
 		}
 	}
 
-	/*void  network::establishVertexOfGraph(const int& choiceOfRouteFinding) {
-
-		callBackLinks* CBL = nullptr;
-		concreteObserverSubjekt* cOS = nullptr;
-		CBL = m_CBLptr.get();
-		cOS = m_cObSptr.get();
-		networkCreationClass.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(CBL), gsl::not_null<concreteObserverSubjekt* >(cOS));
-		std::pair<int, int> startingPoint;
-		std::pair<int, int> endingPoint;
-		if (m_nCptr->networkLaneVector.size() > 0) {
-			for (auto& i : m_nCptr->networkLaneVector) {
-				startingPoint.first = std::get<0>(i).first;
-				startingPoint.second = std::get<0>(i).second;
-				endingPoint.first = std::get<1>(i).first;
-				endingPoint.second = std::get<1>(i).second;
-
-				if (std::get<3>(i) == m_nCptr->oneLane) {
-					networkCreationClass.fillNetworkLaneVector(startingPoint, endingPoint, std::get<2>(i), 1);
-				}
-				if (std::get<3>(i) == m_nCptr->twoLanes) {
-					networkCreationClass.fillNetworkLaneVector(startingPoint, endingPoint, std::get<2>(i), 2);
-				}
-			}
-		}
-		networkCreationClass.graphGenerationFromClickPairs(choiceOfRouteFinding);
-		m_nCptr->networkLaneVector.clear();
-		networkCreationClass.networkLaneVector.clear();
-	}*/
 	void  simpleWindowUserInterface::establishVertexOfGraph(const int& choiceOfRouteFinding) {
 		callBackLinks* CBL = nullptr;
 		concreteObserverSubjekt* cOS = nullptr;
 		CBL = m_CBLptr.get();
 		cOS = m_cObSptr.get();
-		m_nCptr->iniziallizationOfPointer(gsl::not_null<callBackLinks*>(CBL), gsl::not_null<concreteObserverSubjekt* >(cOS));
-		m_nCptr->graphGenerationFromClickPairs(choiceOfRouteFinding);
+		m_networkCreationFunctions.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(CBL), gsl::not_null<concreteObserverSubjekt* >(cOS));
+		m_networkCreationFunctions.graphGenerationFromClickPairs(choiceOfRouteFinding);
 		
-		for (auto& i : m_nCptr->appliedGraph) {
-			networkCreationClass.appliedGraph.push_back(std::move(i));
+		for (auto& i : m_networkCreationFunctions.appliedGraph) {
+			m_networkDataStructure.appliedGraph.push_back(std::move(i));
 		}
-		m_nCptr->networkLaneVector.clear();
-		m_nCptr->appliedGraph.clear();
+		m_networkCreationFunctions.networkLaneVector.clear();
+		m_networkCreationFunctions.appliedGraph.clear();
 	}
 	
 
 	void simpleWindowUserInterface::printLanesAndVehiclesOfAllEdges() {
 
-		networkCreationClass.printLanesAndVehiclesOfAllEdges();
+		m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 		m_PWE.fullemptyPrintContainer(m_CBLptr->m_hdc, m_CBLptr->m_f5PaintLane);
 	}
 

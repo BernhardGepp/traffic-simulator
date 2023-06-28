@@ -360,7 +360,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DispatchMessage(&msg);
 		if (actionQueueBool == true) {
 			if (msg.message == WM_LBUTTONDOWN) {
-				if (!n->networkCreationClass.appliedGraph.empty()) {
+				if (!n->m_networkDataStructure.appliedGraph.empty()) {
 					if ((n->iPosXLK < width) && (n->iPosYLK < height)) {
 						n->waitIfDubbleClick(n->iPosXLK, n->iPosYLK);
 						n->m_cObSptr->benachrichtigen(n->iPosXLK, n->iPosYLK);
@@ -486,7 +486,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				SendMessage(g_windowHandle, WM_CREATE, 0, 0);
 			}
 			
-			for (auto &i : n->m_nCptr->networkLaneVector) {
+			for (auto &i : n->m_networkCreationFunctions.networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			PaintBoxRB(hdc);
@@ -510,7 +510,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		case MY_BUTTON_ID:
 			hdc = BeginPaint(g_windowHandle, &ps);
 			n->m_CBLptr->m_hdc = hdc;
-			if ((actionQueueBool == false)&&(reStartSimulation == false) && (!n->m_nCptr->networkLaneVector.empty())) {
+			if ((actionQueueBool == false)&&(reStartSimulation == false) && (!n->m_networkCreationFunctions.networkLaneVector.empty())) {
 				numberOfLanesINT = 2;
 				g_windowHandle3 = CreateWindowEx(
 					NULL,
@@ -562,11 +562,11 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		
 
 		case START_SIMULATION:
-			if (n->networkCreationClass.appliedGraph.size() >= 1) {
-				for (auto& i : n->networkCreationClass.appliedGraph) {
+			if (n->m_networkDataStructure.appliedGraph.size() >= 1) {
+				for (auto& i : n->m_networkDataStructure.appliedGraph) {
 					i->simulation(simulationIteration);
 				}
-				if (n->networkCreationClass.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
+				if (n->m_networkDataStructure.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
 					std::this_thread::sleep_for(std::chrono::milliseconds(250));
 				}
 				else {
@@ -632,7 +632,6 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		break;
 	case WM_CLOSE:
 		
-		n->m_nCptr->networkLaneVector.clear();
 		PostQuitMessage(0);
 		window1closed = true;
 
@@ -668,7 +667,7 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 			numberOFLanes::one;
 			numberOfLanesINT = 1;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
-			for (auto& i : n->m_nCptr->networkLaneVector) {
+			for (auto& i : n->m_networkCreationFunctions.networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			break;
@@ -676,7 +675,7 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 			numberOFLanes::two;
 			numberOfLanesINT = 2;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
-			for (auto& i : n->m_nCptr->networkLaneVector) {
+			for (auto& i : n->m_networkCreationFunctions.networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			break;

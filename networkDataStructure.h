@@ -9,8 +9,6 @@
 
 class networkDataStructure {
 public:
-	//std::vector<std::unique_ptr<vertex>>vertexOfGraphPtrVectorConainer;
-	//std::vector<std::unique_ptr<edge>>edgeOfGraphPtrContainer;
 	enum m_numberOfLanes { oneLane = 1, twoLanes = 2 };
 	//std::vector<std::tuple<std::pair<int, int>, std::pair<int, int>, bool, m_numberOfLanes>> networkLaneVector;
 	callBackLinks* m_CBLptr=nullptr;
