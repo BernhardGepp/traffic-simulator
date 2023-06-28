@@ -8,8 +8,6 @@ class userFunctionsOfTheSimpleWindowInterface {
 private:
 	int xCordinadte_store_LB=0;
 	int yCordinadte_store_LB=0;
-	//int width=1200;
-	//int height=700;
 	
 public:
 	enum m_numberOfLanes { oneLane = 1, twoLanes = 2 };

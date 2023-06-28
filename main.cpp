@@ -577,13 +577,13 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			}
 			break;
 		case ESTVertexOfGraph:
-			n->establishVertexOfGraph(numberOfLanesINT);
-			n->iPosXLK = height;
-			n->iPosYLK = width;
-			n->printLanesAndVehiclesOfAllEdges();
-			actionQueueBool = true;
-			StartSimulation = false;
-			break;
+			if (n->establishVertexOfGraph(numberOfLanesINT)) {
+				n->iPosXLK = height;
+				n->iPosYLK = width;
+				n->printLanesAndVehiclesOfAllEdges();
+				actionQueueBool = true;
+				StartSimulation = false;
+			}
 		default:
 			hdc = BeginPaint(g_windowHandle, &ps);	
 			n->m_CBLptr->m_hdc = hdc;

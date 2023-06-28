@@ -99,15 +99,18 @@ public:
 		}
 	}
 
-	void  simpleWindowUserInterface::establishVertexOfGraph(const int& choiceOfRouteFinding) {
-		
-		m_networkCreationFunctions.graphGenerationFromClickPairs(m_ref_width, m_ref_height, choiceOfRouteFinding);
-		
-		for (auto& i : m_networkCreationFunctions.appliedGraph) {
-			m_networkDataStructure.appliedGraph.push_back(std::move(i));
+	bool  simpleWindowUserInterface::establishVertexOfGraph(const int& choiceOfRouteFinding) {
+		if (!m_networkCreationFunctions.networkLaneVector.empty()) {
+			m_networkCreationFunctions.graphGenerationFromClickPairs(m_ref_width, m_ref_height, choiceOfRouteFinding);
+			for (auto& i : m_networkCreationFunctions.appliedGraph) {
+				m_networkDataStructure.appliedGraph.push_back(std::move(i));
+			}
+			m_networkCreationFunctions.networkLaneVector.clear();
+			m_networkCreationFunctions.appliedGraph.clear();
+			return true;
 		}
-		m_networkCreationFunctions.networkLaneVector.clear();
-		m_networkCreationFunctions.appliedGraph.clear();
+		else
+			false;
 	}
 	
 
