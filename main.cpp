@@ -27,7 +27,6 @@ int numberOfLanesINT = 1;
 bool window1closed = false;
 bool window2closed = false;
 bool actionQueueBool = false;
-//bool reStartSimulation = false;
 bool StartSimulation = false;
 using namespace Gdiplus;
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
@@ -40,7 +39,7 @@ LPCWSTR Questiontext3 = L"1 oder 2?                                             
 LPCWSTR Questiontext4 = L"Soll der Verkehr über alle oder über die              ";
 LPCWSTR Questiontext5 = L"schnellsten Routen zwischen den Start- und End-       ";
 LPCWSTR Questiontext6 = L"punkten erzeugt werden?                               ";
-LPCWSTR Questiontext7 = L"Soll die Simulation fortgesetzt werden?               ";
+LPCWSTR Questiontext7 = L"Soll die Simulation fortgesetzt werden?                                      ";
 HINSTANCE g_hInstance = nullptr;
 WNDCLASSEX subWindowClass;
 WNDCLASSEX thirdWindowClass;
@@ -49,7 +48,6 @@ HWND  g_windowHandle = nullptr;
 HWND g_windowHandle2 = nullptr;
 HWND g_windowHandle3 = nullptr;
 HWND g_windowHandle4 = nullptr;
-HWND iter_button = nullptr;
 HWND hDlg = nullptr;
 RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
 
@@ -271,14 +269,12 @@ VOID PaintWhiteClearLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const 
 
 static HDC hdc;
 
-
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	
 	n = simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
 		PaintBoxStart, PaintBoxEnd,PaintBoxFex11,PaintBoxFex12,PaintBoxFex21,PaintBoxFex22));
 	MSG msg;
-	bool endprogram = false;
+	bool mainProgramLoopFlag = true;
 	PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
 	
 	WNDCLASSEX windowClass;
@@ -355,7 +351,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	fourthWindowClass.cbWndExtra = NULL;
 	fourthWindowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	fourthWindowClass.style = CS_OWNDC | CS_VREDRAW | CS_HREDRAW;
-	fourthWindowClass.lpfnWndProc = (WNDPROC)WindowProc3;
+	fourthWindowClass.lpfnWndProc = (WNDPROC)WindowProc4;
 	fourthWindowClass.hInstance = hInstance;
 	fourthWindowClass.hIcon = NULL;
 	fourthWindowClass.hIconSm = NULL;
@@ -364,7 +360,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	RegisterClassEx(&fourthWindowClass);
 
-	iter_button = CreateWindowExW(NULL, L"BUTTON", L"Start", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+	CreateWindowExW(NULL, L"BUTTON", L"Start", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 		width - 100,
 		height - 100,
 		100,
@@ -373,7 +369,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 		NULL);
 	
-	while (endprogram == false) {
+	while (mainProgramLoopFlag) {
 		PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
 
 		
@@ -391,7 +387,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			else {
 				if (simulationIteration > 0) {
 					simulationIteration--;
-				
 					PaintFrame(hdc);
 					SendMessageCallback(g_windowHandle, WM_PAINT, START_SIMULATION, NULL, NULL, NULL);
 				}
@@ -399,16 +394,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 					actionQueueBool = false;
 					PAINTSTRUCT ps_s;
 					HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
-					TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext7, wcslen(Questiontext7));
 					g_windowHandle4 = CreateWindowEx(
 						NULL,
-						(LPCSTR)L"ThirdWindowClass",
+						(LPCSTR)L"FourthWindowClass",
 						(LPCSTR)L"Bestimmung ",
 						WS_VISIBLE | WS_CHILDWINDOW | WS_SYSMENU | WS_CHILD,
+						10,
 						150,
-						150,
-						500,
-						350,
+						1200,
+						550,
 						g_windowHandle,
 						(HMENU)createSecondWindow,
 						(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
@@ -416,16 +410,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 					CreateWindowExW(NULL, L"BUTTON", L"Yes", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 						80,
 						160,
-						30,
-						30, g_windowHandle4,
+						35,
+						35, g_windowHandle4,
 						(HMENU)MY_BUTTON_YES,
 						(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
 						NULL);
 					CreateWindowExW(NULL, L"BUTTON", L"No", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
-						80,
-						460,
-						30,
-						30, g_windowHandle4,
+						120,
+						160,
+						35,
+						35, g_windowHandle4,
 						(HMENU)MY_BUTTON_NO,
 						(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
 						NULL);
@@ -433,7 +427,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 		}
 		if (window1closed == true) {
-			endprogram = true;
+			mainProgramLoopFlag=false;
 			n->m_networkDataStructure.appliedGraph.clear();
 			n->destroy();
 			n = nullptr;
@@ -784,14 +778,17 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 	case WM_CLOSE:
 		
 		PostQuitMessage(0);
+		if (simulationIteration == 0) {
+			window1closed = true;
+		}
 		break;
 	case WM_PAINT:
 	{
 		PAINTSTRUCT ps_s;
 		HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
 		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext7, wcslen(Questiontext7));
-		
-		
+		n->iPosXLK = height;
+		n->iPosYLK = width;
 		EndPaint(g_windowHandle4, &ps_s);
 	}
 	break;
@@ -805,6 +802,8 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 			break;
 		case MY_BUTTON_NO:
 			actionQueueBool = false;
+			simulationIteration = 0;
+			n->m_networkDataStructure.appliedGraph.clear();
 			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
 			break;
 		
