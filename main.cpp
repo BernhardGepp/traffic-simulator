@@ -10,6 +10,8 @@
 #define MY_BUTTON_2 43
 #define MY_BUTTON_3 44
 #define ESTVertexOfGraph 45
+#define MY_BUTTON_YES 46
+#define MY_BUTTON_NO 47
 #define createSecondWindow 101
 #define INT int
 
@@ -18,31 +20,35 @@ simpleWindowUserInterface* simpleWindowUserInterface::instance = 0;
 
 
 enum numberOFLanes { one = 1, two = 2 };
-int simulationIteration =1000;
+int simulationIteration =100;
 const int width = 1200;
 const int height = 700;
 int numberOfLanesINT = 1;
 bool window1closed = false;
 bool window2closed = false;
 bool actionQueueBool = false;
-bool reStartSimulation = false;
+//bool reStartSimulation = false;
 bool StartSimulation = false;
 using namespace Gdiplus;
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK WindowProc4(HWND g_windowHandle3, UINT message, WPARAM wParam, LPARAM lParam);
 LPCWSTR Questiontext1 = L"Wie viele Fahrstreifen                                ";
 LPCWSTR Questiontext2 = L"soll diese Fahrbahn haben?                            ";
 LPCWSTR Questiontext3 = L"1 oder 2?                                             ";
 LPCWSTR Questiontext4 = L"Soll der Verkehr über alle oder über die              ";
 LPCWSTR Questiontext5 = L"schnellsten Routen zwischen den Start- und End-       ";
 LPCWSTR Questiontext6 = L"punkten erzeugt werden?                               ";
+LPCWSTR Questiontext7 = L"Soll die Simulation fortgesetzt werden?               ";
 HINSTANCE g_hInstance = nullptr;
 WNDCLASSEX subWindowClass;
 WNDCLASSEX thirdWindowClass;
+WNDCLASSEX fourthWindowClass;
 HWND  g_windowHandle = nullptr;
 HWND g_windowHandle2 = nullptr;
 HWND g_windowHandle3 = nullptr;
+HWND g_windowHandle4 = nullptr;
 HWND iter_button = nullptr;
 HWND hDlg = nullptr;
 RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
@@ -343,6 +349,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	RegisterClassEx(&thirdWindowClass);
 
+	ZeroMemory(&fourthWindowClass, sizeof(WNDCLASSEX));
+	fourthWindowClass.cbClsExtra = NULL;
+	fourthWindowClass.cbSize = sizeof(WNDCLASSEX);
+	fourthWindowClass.cbWndExtra = NULL;
+	fourthWindowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+	fourthWindowClass.style = CS_OWNDC | CS_VREDRAW | CS_HREDRAW;
+	fourthWindowClass.lpfnWndProc = (WNDPROC)WindowProc3;
+	fourthWindowClass.hInstance = hInstance;
+	fourthWindowClass.hIcon = NULL;
+	fourthWindowClass.hIconSm = NULL;
+	fourthWindowClass.lpszMenuName = NULL;
+	fourthWindowClass.lpszClassName = (LPCSTR)L"FourthWindowClass";
+
+	RegisterClassEx(&fourthWindowClass);
+
 	iter_button = CreateWindowExW(NULL, L"BUTTON", L"Start", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 		width - 100,
 		height - 100,
@@ -370,14 +391,44 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			else {
 				if (simulationIteration > 0) {
 					simulationIteration--;
-					if (simulationIteration == 0) {
-						reStartSimulation = true;
-					}
+				
 					PaintFrame(hdc);
 					SendMessageCallback(g_windowHandle, WM_PAINT, START_SIMULATION, NULL, NULL, NULL);
 				}
 				else {
 					actionQueueBool = false;
+					PAINTSTRUCT ps_s;
+					HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
+					TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext7, wcslen(Questiontext7));
+					g_windowHandle4 = CreateWindowEx(
+						NULL,
+						(LPCSTR)L"ThirdWindowClass",
+						(LPCSTR)L"Bestimmung ",
+						WS_VISIBLE | WS_CHILDWINDOW | WS_SYSMENU | WS_CHILD,
+						150,
+						150,
+						500,
+						350,
+						g_windowHandle,
+						(HMENU)createSecondWindow,
+						(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
+						NULL);
+					CreateWindowExW(NULL, L"BUTTON", L"Yes", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+						80,
+						160,
+						30,
+						30, g_windowHandle4,
+						(HMENU)MY_BUTTON_YES,
+						(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
+						NULL);
+					CreateWindowExW(NULL, L"BUTTON", L"No", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+						80,
+						460,
+						30,
+						30, g_windowHandle4,
+						(HMENU)MY_BUTTON_NO,
+						(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
+						NULL);
 				}
 			}
 		}
@@ -392,7 +443,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	return msg.wParam;
 }
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-
+	
 	switch (uMsg) {
 	case WM_CHAR:
 		if (wParam == 0x31) {// Code for CHAR digit 1
@@ -511,7 +562,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		case MY_BUTTON_ID:
 			hdc = BeginPaint(g_windowHandle, &ps);
 			n->m_CBLptr->m_hdc = hdc;
-			if ((actionQueueBool == false)&&(reStartSimulation == false) && (!n->m_networkCreationFunctions.networkLaneVector.empty())) {
+			if ((actionQueueBool == false)/* && (reStartSimulation == false) * / /* && (!n->m_networkDataStructure.appliedGraph.empty()) */) {
 				numberOfLanesINT = 2;
 				g_windowHandle3 = CreateWindowEx(
 					NULL,
@@ -727,4 +778,37 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 		}
 	}
 	return DefWindowProcW(g_windowHandle3, message, wParam, lParam);
+}
+LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, LPARAM lParam) {
+	switch (message) {
+	case WM_CLOSE:
+		
+		PostQuitMessage(0);
+		break;
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps_s;
+		HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
+		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext7, wcslen(Questiontext7));
+		
+		
+		EndPaint(g_windowHandle4, &ps_s);
+	}
+	break;
+	case WM_COMMAND:
+		switch (LOWORD(wParam))
+		{
+		case MY_BUTTON_YES:
+			actionQueueBool = true;
+			simulationIteration = 1000;
+			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
+			break;
+		case MY_BUTTON_NO:
+			actionQueueBool = false;
+			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
+			break;
+		
+		}
+	}
+	return DefWindowProcW(g_windowHandle4, message, wParam, lParam);
 }
