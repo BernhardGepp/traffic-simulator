@@ -407,7 +407,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						(HMENU)createSecondWindow,
 						(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 						NULL);
-					CreateWindowExW(NULL, L"BUTTON", L"Yes", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+					CreateWindowExW(NULL, L"BUTTON", L"JA", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 						80,
 						160,
 						35,
@@ -415,7 +415,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						(HMENU)MY_BUTTON_YES,
 						(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
 						NULL);
-					CreateWindowExW(NULL, L"BUTTON", L"No", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+					CreateWindowExW(NULL, L"BUTTON", L"Nein", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 						120,
 						160,
 						35,
@@ -619,6 +619,9 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					std::this_thread::sleep_for(std::chrono::milliseconds(260));
 				}
 				n->printLanesAndVehiclesOfAllEdges();
+			}
+			else {
+				window1closed = true;
 			}
 			break;
 		case ESTVertexOfGraph:
