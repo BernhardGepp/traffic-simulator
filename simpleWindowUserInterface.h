@@ -33,6 +33,7 @@ private:
 		iPosYRK = height - 110;
 		m_CBLptr->m_callback_getRandomNumber = &getRandomNumber;
 		m_networkCreationFunctions.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(m_CBLptr.get()), gsl::not_null<concreteObserverSubjekt* >(m_cObSptr.get()));
+		m_networkDataStructure.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(m_CBLptr.get()));
 	}
 	simpleWindowUserInterface::simpleWindowUserInterface(simpleWindowUserInterface& other) = delete;
 	simpleWindowUserInterface::simpleWindowUserInterface(simpleWindowUserInterface&& other) = delete;
@@ -54,7 +55,8 @@ public:
 	int iPosYRK = 0;
 	
 	
-
+	//***************************************************************
+	//Implementation methods:
 	static void simpleWindowUserInterface::destroy() {
 		delete instance;
 		instance = nullptr;
@@ -76,14 +78,28 @@ public:
 		return  rSn.a;
 	}
 
-	void simpleWindowUserInterface::fieldRecalibarte() {
+	//***************************************************************
+	//Methods for user interface support:
+
+	void simpleWindowUserInterface::waitIfDubbleClick(const int& a, const int& b) {
+		if ((a == serviceInt1) && (b == serviceInt2)) {
+			std::this_thread::sleep_for(std::chrono::milliseconds(250));
+		}
+		else {
+			serviceInt1 = a;
+			serviceInt2 = b;
+		}
+	}
+
+	void simpleWindowUserInterface::clickPointsResetInTheField() {
 		iPosYLK = 0;
 		iPosXLK = 0;
 		iPosXRK = m_ref_width - 110;
 		iPosYRK = m_ref_height - 110;
 	}
-
-	bool simpleWindowUserInterface::setPoints(HDC hdc, const int& numberOfLanes) {
+	//***************************************************************
+	//Network generation methods:
+	bool simpleWindowUserInterface::setClickPoints(HDC hdc, const int& numberOfLanes) {
 		m_networkCreationFunctions.establishLane(m_ref_width, m_ref_height,numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
 		m_CBLptr->topLevelFunctionPTR_f1PaintBoxLB();
 		m_CBLptr->topLevelFunctionPTR_f2PaintBoxRB();
@@ -99,7 +115,7 @@ public:
 		}
 	}
 
-	bool  simpleWindowUserInterface::establishVertexOfGraph(const int& choiceOfRouteFinding) {
+	bool  simpleWindowUserInterface::generationOfTheNetworkGraphsFromNetworkLanes(const int& choiceOfRouteFinding) {
 		if (!m_networkCreationFunctions.networkLaneVector.empty()) {
 			m_networkCreationFunctions.graphGenerationFromClickPairs(m_ref_width, m_ref_height, choiceOfRouteFinding);
 			for (auto& i : m_networkCreationFunctions.appliedGraph) {
@@ -111,23 +127,6 @@ public:
 		}
 		else
 			false;
-	}
-	
-
-	void simpleWindowUserInterface::printLanesAndVehiclesOfAllEdges() {
-
-		m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
-		m_PWE.fullemptyPrintContainer(m_CBLptr->m_hdc, m_CBLptr->m_f5PaintLane);
-	}
-
-	void simpleWindowUserInterface::waitIfDubbleClick(const int& a, const int& b) {
-		if ((a == serviceInt1) && (b == serviceInt2)) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(250));
-		}
-		else {
-			serviceInt1 = a;
-			serviceInt2 = b;
-		}
 	}
 };
 

@@ -67,30 +67,30 @@ VOID PaintBoxRB(HDC hdc) {
 }
 VOID PaintBoxStart(HDC hdc,const int& x, const int& y) {
 	Graphics graphics3(hdc);
-	Pen	pen3(Gdiplus::Color(245, 0, 125, 125), 10.0F);//Grün
+	Pen	pen3(Gdiplus::Color(245, 0, 125, 125), 10.0F);//greenBox
 	graphics3.DrawLine(&pen3, x, y + 5, x + 10, y + 5);
 }
-VOID PaintBoxEnd(HDC hdc, const int& x, const int& y) {
+VOID PaintBoxEnd(HDC hdc, const int& x, const int& y) {//redBox
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 0), 10.0F);
 	graphics3.DrawLine(&pen3, x, y + 5, x + 10, y + 5);
 }
-VOID PaintBoxFex11(HDC hdc, const int& x, const int& y) {
+VOID PaintBoxFex11(HDC hdc, const int& x, const int& y) {//small_pinkBox
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
 	graphics3.DrawLine(&pen3, x, y + 5, x + 10, y + 5);
 }
-VOID PaintBoxFex12(HDC hdc, const int& x, const int& y) {
+VOID PaintBoxFex12(HDC hdc, const int& x, const int& y) {//half_pinkBox
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
 	graphics3.DrawLine(&pen3, x, y + 5, x + 20, y + 5);
 }
-VOID PaintBoxFex21(HDC hdc, const int& x, const int& y) {
+VOID PaintBoxFex21(HDC hdc, const int& x, const int& y) {//half_pinkBox
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 20.0F);
 	graphics3.DrawLine(&pen3, x, y+10 , x + 10, y +10);
 }
-VOID PaintBoxFex22(HDC hdc, const int& x, const int& y) {
+VOID PaintBoxFex22(HDC hdc, const int& x, const int& y) {//big_prinkBox
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 20.0F);
 	graphics3.DrawLine(&pen3, x, y + 10, x + 20, y + 10);
@@ -517,10 +517,10 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			bool serviceBool = false;
 			switch (numberOfLanesINT) {
 			case 1:
-				serviceBool = n->setPoints(hdc, 1);
+				serviceBool = n->setClickPoints(hdc, 1);
 				break;
 			case 2:
-				serviceBool = n->setPoints(hdc, 2);
+				serviceBool = n->setClickPoints(hdc, 2);
 				break;
 			}
 			if (serviceBool) {
@@ -539,8 +539,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			PaintBoxLB(hdc);
 			EndPaint(g_windowHandle, &ps);
 			
-			n->iPosXLK = height;
-			n->iPosYLK = width;
+			n->clickPointsResetInTheField();
 			
 		}
 			break;
@@ -597,9 +596,8 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 					NULL);
 				
-				n->iPosXLK = height;
-				n->iPosYLK = width;
-				n->printLanesAndVehiclesOfAllEdges();
+				n->clickPointsResetInTheField();
+				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 				
 				//actionQueueBool = true;
 			}
@@ -618,24 +616,23 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				else {
 					std::this_thread::sleep_for(std::chrono::milliseconds(260));
 				}
-				n->printLanesAndVehiclesOfAllEdges();
+				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 			}
 			else {
 				window1closed = true;
 			}
 			break;
 		case ESTVertexOfGraph:
-			if (n->establishVertexOfGraph(numberOfLanesINT)) {
-				n->iPosXLK = height;
-				n->iPosYLK = width;
-				n->printLanesAndVehiclesOfAllEdges();
+			if (n->generationOfTheNetworkGraphsFromNetworkLanes(numberOfLanesINT)) {
+				n->clickPointsResetInTheField();
+				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 				actionQueueBool = true;
 				StartSimulation = false;
 			}
 		default:
 			hdc = BeginPaint(g_windowHandle, &ps);	
 			n->m_CBLptr->m_hdc = hdc;
-			n->fieldRecalibarte();
+			n->clickPointsResetInTheField();
 			PaintBoxRB(hdc);
 			PaintBoxLB(hdc);
 			PaintFrame(hdc);
@@ -790,8 +787,7 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 		PAINTSTRUCT ps_s;
 		HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
 		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext7, wcslen(Questiontext7));
-		n->iPosXLK = height;
-		n->iPosYLK = width;
+		n->clickPointsResetInTheField();
 		EndPaint(g_windowHandle4, &ps_s);
 	}
 	break;
