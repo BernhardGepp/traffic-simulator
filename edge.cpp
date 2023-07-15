@@ -118,13 +118,16 @@ void edge::simiRun(const int& simulationIterator) {
 	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
 		i->m_riseOrDecline = m_risingOrDescention;
 	}
-	if (m_numberOfLanes == 1) {
+	switch(m_numberOfLanes){
+	case 1:
 		flow1L(1, 220);					//Insertion of new vehicles into the edge
 		singleSimulationStep(220);		//Treatment of all vehicles in the edge according the traffic flow simulation alg.
-	}
-	if (m_numberOfLanes == 2) {
+		break;
+	
+	case 2:
 		flow1L(1, 440);					//Insertion of new vehicles into the edge
 		singleSimulationStep(440);		//Treatment of all vehicles in the edge according the traffic flow simulation alg.
+		break;
 	}
 	//********************************************************************
 	//The method "allocateVehicleAtPositionX()" can be used to block the lane (edge). 

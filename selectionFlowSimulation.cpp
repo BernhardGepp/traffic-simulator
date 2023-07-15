@@ -46,7 +46,7 @@ PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const int& p1x, const
 	m_verticalOrHorizontal = false;
 	m_risingOrDescention = false;
 	m_CBLptr = CBLptr;
-
+	
 }
 
 void PrintPatternLine1LaneHoriNeg::accept(selectionFlowSimulation& v){

@@ -13,9 +13,15 @@ vehicle* transmissionTable::getPTR() {
 	return PTR;
 }
 
-vertexFlex::vertexFlex() noexcept :vertex(){}
-vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
-vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) noexcept : vertex(xCoordinate, yCoordinate, numberOfLanes) {}
+vertexFlex::vertexFlex() noexcept :vertex(){
+	m_shapeOfThatVertex = 11;
+}
+vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd) noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {
+	m_shapeOfThatVertex = 11;
+}
+vertexFlex::vertexFlex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes) noexcept : vertex(xCoordinate, yCoordinate, numberOfLanes) {
+	m_shapeOfThatVertex = 11;
+}
 vertexFlex::~vertexFlex() noexcept {}
 
 //********************************************************************

@@ -2,7 +2,9 @@
 #include "vertexEnd.h"
 
 //Constructor and destructor of the class:
-vertexEnd::vertexEnd(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd){}
+vertexEnd::vertexEnd(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd){
+	m_shapeOfThatVertex = 2;
+}
 vertexEnd::~vertexEnd()noexcept {}
 
 //********************************************************************

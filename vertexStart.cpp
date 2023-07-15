@@ -2,7 +2,9 @@
 #include "vertexStart.h"
 
 //Constructor and destructor of the class:
-vertexStart::vertexStart(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {}
+vertexStart::vertexStart(const int& xCoordinate, const int& yCoordinate, const int& BeginnOrEnd)noexcept : vertex(xCoordinate, yCoordinate, BeginnOrEnd) {
+	m_shapeOfThatVertex = 1;
+}
 
 vertexStart::~vertexStart() noexcept {}
 

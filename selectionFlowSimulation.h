@@ -17,20 +17,9 @@ class PrintPatternLine2LaneHoriNeg;
 class PrintPatternLine2LaneHoriPos;
 class PrintPatternLine2LaneVertiNeg;
 class PrintPatternLine2LaneVertiPos;
-/*class sectionVisitor {
 
-public:
-	virtual void setStrategy(PrintPatternLine1LaneHoriNeg& ppt) = 0;
-	virtual void setStrategy(PrintPatternLine1LaneHoriPos& ppt) = 0;
-	virtual void setStrategy(PrintPatternLine1LaneVertiNeg& ppt) = 0;
-	virtual void setStrategy(PrintPatternLine1LaneVertiPos& ppt) = 0;
-	virtual void setStrategy(PrintPatternLine2LaneHoriNeg& ppt) = 0;
-	virtual void setStrategy(PrintPatternLine2LaneHoriPos& ppt) = 0;
-	virtual void setStrategy(PrintPatternLine2LaneVertiNeg& ppt) = 0;
-	virtual void setStrategy(PrintPatternLine2LaneVertiPos& ppt) = 0;
-};*/
 
-class selectionFlowSimulation{//:public sectionVisitor {
+class selectionFlowSimulation{
 private:
 	int m_p1x = 0;
 	int m_p1y = 0;
@@ -47,14 +36,6 @@ public:
 	void selectionFlowSimulation::setEndingPoints(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& maxVelocity, const int& maxVelocity_Density);
 	
 	//********************************************
-	/*void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt) override;
-	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriPos& ppt) override;
-	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneVertiNeg& ppt) override;
-	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneVertiPos& ppt) override;
-	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneHoriNeg& ppt) override;
-	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneHoriPos& ppt)override;
-	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiNeg& ppt) override;
-	void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiPos& ppt) override;*/
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt);
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriPos& ppt);
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneVertiNeg& ppt);
