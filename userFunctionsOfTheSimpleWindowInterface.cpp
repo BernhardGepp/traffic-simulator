@@ -1,14 +1,21 @@
 #include "PrecompiledHeadersEdges.h"
 #include "userFunctionsOfTheSimpleWindowInterface.h"
+#include "vertex.h"
 #include "vertexEnd.h"
 #include "vertexFlex.h"
 #include "vertexStart.h"
 #include "graphTrafficGenerationOnAllRoutes.h"
 #include "graphTrafficGenerationOnFastRoutes.h"
+#include "vertexObjectCreator.h"
+
 
 //Constructor and destructor of the class:
-userFunctionsOfTheSimpleWindowInterface::userFunctionsOfTheSimpleWindowInterface() {}
-userFunctionsOfTheSimpleWindowInterface::~userFunctionsOfTheSimpleWindowInterface() {}
+userFunctionsOfTheSimpleWindowInterface::userFunctionsOfTheSimpleWindowInterface() { 
+	vertrexCreator_ptr = new createVertex; 
+}
+userFunctionsOfTheSimpleWindowInterface::~userFunctionsOfTheSimpleWindowInterface() {
+	delete vertrexCreator_ptr;
+}
 
 //********************************************************************
 //Methods of the class:
@@ -874,6 +881,7 @@ void userFunctionsOfTheSimpleWindowInterface::vertexCreationVH_Network(const std
 	//********************************************************************
 	//Vertex generation for a graph with vertical and horizontal links
 	//This method is called by the method "graphGenerationFromClickPairs". This method is part of the traffic graph generation. 
+	
 	bool serviceBool = false;
 	int shapeOfThatVertex_var = shapeOfThatVertex;
 	if (vertexOfGraphPtrVectorConainer.size() == 0) {
@@ -896,16 +904,10 @@ void userFunctionsOfTheSimpleWindowInterface::vertexCreationVH_Network(const std
 		}
 	}
 	if (serviceBool) {
-		if (shapeOfThatVertex_var == 1) {
-			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexStart>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
-		}
-		if (shapeOfThatVertex_var == 2) {
-			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexEnd>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
-		}
-		if (shapeOfThatVertex_var == 11) {
-			vertexOfGraphPtrVectorConainer.push_back(std::make_unique<vertexFlex>(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
-		}
+		
+		vertexOfGraphPtrVectorConainer.push_back(vertrexCreator_ptr->create(XandYpostion.first, XandYpostion.second, shapeOfThatVertex_var));
 	}
+	
 }
 
 

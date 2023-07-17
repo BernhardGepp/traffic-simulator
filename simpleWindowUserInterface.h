@@ -125,8 +125,9 @@ public:
 			m_networkCreationFunctions.appliedGraph.clear();
 			return true;
 		}
-		else
-			false;
+		else {
+			return false;
+		}
 	}
 };
 

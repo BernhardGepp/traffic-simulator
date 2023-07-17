@@ -1,5 +1,24 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vertex.h"
+/*#include "vertexEnd.h"
+#include "vertexFlex.h"
+#include "vertexStart.h"
+
+std::unique_ptr <vertex> createVertex::create(const int& xvalue, const int& yvalue, const int& shapeOfThatVertex) {
+	switch (shapeOfThatVertex) {
+	case 1:
+		return std::make_unique<vertexStart>(xvalue, yvalue, shapeOfThatVertex);
+		break;
+	case 2:
+		return std::make_unique<vertexEnd>(xvalue, yvalue, shapeOfThatVertex);
+		break;
+	case 11:
+		return std::make_unique<vertexFlex>(xvalue, yvalue, shapeOfThatVertex);
+		break;
+	default:
+		return 0;
+	}
+}*/
 
 //Constructor and destructor of the class:
 vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)noexcept

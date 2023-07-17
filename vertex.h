@@ -4,6 +4,11 @@
 #include "PoolAllocator.h"
 
 
+/*class createVertex {
+	public:
+		std::unique_ptr <vertex> create(const int& xvalue, const int& yvalue, const int& shapeOfThatVertex);
+};*/
+
 enum shapeOfVertex { transision = 0, begin = 1, end = 2, oneByone = 11, oneBytwo = 12, twoByone = 21, twoBytwo = 22, undefindShape = 99, unused = 100 };
 class vertex {
 private:
