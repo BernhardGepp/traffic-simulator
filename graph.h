@@ -10,7 +10,7 @@ class graph {
 private:
 public:
 	bbe::PoolAllocator<vehicle> m_poolAllocator;
-	std::set<int>m_setOfVertexes;
+	//std::set<int>m_setOfVertexes;
 	std::vector<std::shared_ptr<vertex>> m_vectorOfVertexPtr;
 	std::vector<std::shared_ptr<edge>> m_vectorOfEdgesPtr;
 	std::vector<std::unique_ptr<route>>m_vectorOfRoutesPtr;
@@ -21,7 +21,7 @@ public:
 	
 	graph::graph(const graph& other)  {
 		
-		m_setOfVertexes=other.m_setOfVertexes;
+		//m_setOfVertexes=other.m_setOfVertexes;
 		m_vectorOfVertexPtr.reserve(other.m_vectorOfEdgesPtr.size());
 		for (auto& i : other.m_vectorOfVertexPtr){
 			m_vectorOfVertexPtr.emplace_back(i);

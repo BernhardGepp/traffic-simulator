@@ -791,8 +791,8 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 
 					if (!appliedGraph.empty()) {
 						for (auto& id : appliedGraph) {
-							for (auto& ie : id->m_setOfVertexes) {
-								if ((ie == ja->m_startVertex) || (ie == ja->m_endVertex)) {
+							for (auto& ie : id->m_vectorOfVertexPtr/*m_setOfVertexes*/) {
+								if ((ie->m_vertexID == ja->m_startVertex) || (ie->m_vertexID == ja->m_endVertex)) {
 									serviceBool = true;
 								}
 							}

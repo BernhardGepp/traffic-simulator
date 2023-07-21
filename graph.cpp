@@ -7,12 +7,12 @@ graph::graph(const std::set<int>& setOfVertexes,
 	std::vector<std::shared_ptr<edge>>& vectorOfEdges,
 	callBackLinks* CBLptr
 )
-	: m_setOfVertexes(setOfVertexes),
+	: /*m_setOfVertexes(setOfVertexes), */
 	m_vectorOfVertexPtr(vectorOfVertex),
 	m_vectorOfEdgesPtr(vectorOfEdges),
 	m_CBLptr(CBLptr)
 {
-	m_setOfVertexes.clear();
+	//m_setOfVertexes.clear();
 	int counter = 0;
 	for (auto& i : m_vectorOfVertexPtr) {
 		i->setPoolAllocatorPtr(m_poolAllocator);		//Assigning the corresponding PoolAllocator to the vertices of the graph
