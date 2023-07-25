@@ -44,7 +44,6 @@ private:
 public:
 	networkDataStructure m_networkDataStructure;
 	userFunctionsOfTheSimpleWindowInterface m_networkCreationFunctions;
-	PrintInGDIplusWinEmpty m_PWE;
 	std::unique_ptr<callBackLinks>m_CBLptr;
 	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
 	int serviceInt1 = 0;
