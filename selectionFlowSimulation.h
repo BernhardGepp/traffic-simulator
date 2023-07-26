@@ -8,7 +8,7 @@
 #include "observer.h"
 
 
-class selectionFlowSimulation;
+
 class PrintPatternLine1LaneHoriNeg;
 class PrintPatternLine1LaneHoriPos;
 class PrintPatternLine1LaneVertiNeg;
@@ -21,19 +21,16 @@ class PrintPatternLine2LaneVertiPos;
 
 class selectionFlowSimulation{
 private:
-	int m_p1x = 0;
-	int m_p1y = 0;
-	int m_p2x = 0;
-	int m_p2y = 0;
-	int m_maxVelocity = 0;
-	int m_maxVelocity_Density = 0;
+	
+	int m_maxVelocity = 140;
+	int m_maxVelocity_Density = 140;
 	
 public:
 	callBackLinks* m_CBLptr = nullptr;
 	std::unique_ptr<sectionVehicleSet> vehicleSetPtr;
 	
 
-	void selectionFlowSimulation::setEndingPoints(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& maxVelocity, const int& maxVelocity_Density);
+	//void selectionFlowSimulation::setEndingPoints(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& maxVelocity, const int& maxVelocity_Density);
 	
 	//********************************************
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt);
@@ -48,6 +45,7 @@ public:
 
 class PrintPattern {
 public:
+	int m_length = 0;
 	bool m_verticalOrHorizontal = false;
 	bool m_risingOrDescention = false;
 	bool m_startVertexShort = false;

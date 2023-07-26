@@ -31,7 +31,7 @@ graph::graph(const std::set<int>& setOfVertexes,
 				i->m_endVertexPtr = j;
 			}
 		}
-		i->initialisation();
+		
 	}
 	generationOfRoutesNeu();
 }

@@ -9,8 +9,13 @@ edge::edge(const int& startVertex, const int& endVertex, const int& numberOfLane
 	vehicleEraseVector.reserve(150);
 	m_routeServiceBool = false;
 	sFs.m_CBLptr = m_ppPtr->m_CBLptr;
+	 //m_maxVelocity, m_maxVelocity_Density);
 	m_observerPTR = m_ppPtr->createObserver();
 	m_cOSptr->registrieren(m_observerPTR);
+	m_length = m_ppPtr->m_length;
+	m_risingOrDescention = m_ppPtr->m_risingOrDescention;
+	
+	m_ppPtr->accept(sFs);
 }
 edge::edge(edge && other) = default;
 edge::~edge() noexcept {}
@@ -47,45 +52,7 @@ void edge::sectionDestruct() {
 	}
 }
 
-void edge::initialisation() {
-	//********************************************************************
-	//Determination of the characteristics of the lane:
-	sFs.setEndingPoints(m_startVertexPtr->m_XcoordinateVertex, m_startVertexPtr->m_YcoordinateVertex, m_endVertexPtr->m_XcoordinateVertex, m_endVertexPtr->m_YcoordinateVertex, m_maxVelocity, m_maxVelocity_Density);
-	//********************************************************************
-	//Determination of how the results are displayed in the simulation. 
-	//Selection of the "PrintPattern"!
-	//The selection of the "PrintPattern" depends on the characteristics of the lane. 
-	m_ppPtr->accept(sFs);
-	//********************************************************************
-	//Determination of the position of the lanes of the traffic graph in space.
-	// Setting the parameters:
-	//1)vertical vs. hoirzontal (bool: m_verticalOrHorizontal)
-	//2)in ascending or descending direction (bool: m_risingOrDescention)
-	if (m_startVertexPtr->m_XcoordinateVertex == m_endVertexPtr->m_XcoordinateVertex) {
-		// vertical lane
-		m_verticalOrHorizontal = true;
-		if (m_startVertexPtr->m_YcoordinateVertex < m_endVertexPtr->m_YcoordinateVertex) {
-			m_risingOrDescention = true;
-			m_length = m_endVertexPtr->m_YcoordinateVertex - m_startVertexPtr->m_YcoordinateVertex;
-		}
-		if (m_startVertexPtr->m_YcoordinateVertex > m_endVertexPtr->m_YcoordinateVertex) {
-			m_risingOrDescention = false;
-			m_length = m_startVertexPtr->m_YcoordinateVertex - m_endVertexPtr->m_YcoordinateVertex;
-		}
-	}
-	if (m_startVertexPtr->m_YcoordinateVertex == m_endVertexPtr->m_YcoordinateVertex) {
-		//hoirzontal lane
-		m_verticalOrHorizontal = false;
-		if (m_startVertexPtr->m_XcoordinateVertex < m_endVertexPtr->m_XcoordinateVertex) {
-			m_risingOrDescention = true;
-			m_length = m_endVertexPtr->m_XcoordinateVertex - m_startVertexPtr->m_XcoordinateVertex;
-		}
-		if (m_startVertexPtr->m_XcoordinateVertex > m_endVertexPtr->m_XcoordinateVertex) {
-			m_risingOrDescention = false;
-			m_length = m_startVertexPtr->m_XcoordinateVertex - m_endVertexPtr->m_XcoordinateVertex;
-		}
-	}
-}
+
 
 //********************************************************************
 //Two methods for calculating the characteristics of simulated traffic in the lane (in the edge of the network-graph):

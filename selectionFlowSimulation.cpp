@@ -1,15 +1,12 @@
 #include "PrecompiledHeadersEdges.h"
 #include "selectionFlowSimulation.h"
 
-void selectionFlowSimulation::setEndingPoints(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& maxVelocity, const int& maxVelocity_Density) {
-	m_p1x = p1x;
-	m_p1y = p1y;
-	m_p2x = p2x;
-	m_p2y = p2y;
+/*void selectionFlowSimulation::setEndingPoints(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& maxVelocity, const int& maxVelocity_Density) {
+	
 	m_maxVelocity = maxVelocity;
 	m_maxVelocity_Density = maxVelocity_Density;
 
-}
+}*/
 
 //********************************************
 void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt) {
@@ -41,6 +38,7 @@ PrintPattern::PrintPattern() noexcept{}
 
 PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
+	m_length = m_p1x - m_p2x;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = false;
@@ -98,6 +96,7 @@ void PrintPatternLine1LaneHoriNeg::setEndVertexShort(const bool& setOrRelease){
 
 PrintPatternLine1LaneHoriPos::PrintPatternLine1LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
+	m_length = m_p2x - m_p1x;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = false;
@@ -151,6 +150,7 @@ void PrintPatternLine1LaneHoriPos::setEndVertexShort(const bool& setOrRelease){
 
 PrintPatternLine1LaneVertiNeg::PrintPatternLine1LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
+	m_length = m_p1y - m_p2y;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = true;
@@ -200,6 +200,7 @@ void PrintPatternLine1LaneVertiNeg::setEndVertexShort(const bool& setOrRelease){
 
 PrintPatternLine1LaneVertiPos::PrintPatternLine1LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
+	m_length = m_p2y - m_p1y;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = true;
@@ -258,6 +259,7 @@ void PrintPatternLine1LaneVertiPos::setEndVertexShort(const bool& setOrRelease){
 
 PrintPatternLine2LaneHoriNeg::PrintPatternLine2LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
+	m_length = m_p1x - m_p2x;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = false;
@@ -311,6 +313,7 @@ void PrintPatternLine2LaneHoriNeg::setEndVertexShort(const bool& setOrRelease){
 
 PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
+	m_length = m_p2x - m_p1x;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = false;
@@ -372,6 +375,7 @@ void PrintPatternLine2LaneHoriPos::setEndVertexShort(const bool& setOrRelease){
 
 PrintPatternLine2LaneVertiNeg::PrintPatternLine2LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
+	m_length = m_p1y - m_p2y;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = true;
@@ -426,6 +430,7 @@ void PrintPatternLine2LaneVertiNeg::setEndVertexShort(const bool& setOrRelease){
 
 PrintPatternLine2LaneVertiPos::PrintPatternLine2LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
+	m_length = m_p2y - m_p1y;
 	m_startVertexShort = false;
 	m_endVertexShort = false;
 	m_verticalOrHorizontal = true;
