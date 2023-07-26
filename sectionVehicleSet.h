@@ -20,8 +20,7 @@ public:
 	sectionVehicleSet& operator=(const sectionVehicleSet&& other) = delete;
 	~sectionVehicleSet() noexcept;
 
-	virtual void sectionVehicleSet::printContentOfSection(const int& p1xx, const int& p1yy,
-		const int& p2xx, const int& p2yy) = 0;
+	
 
 	virtual int sectionVehicleSet::flow(const int &numberOfLanes,
 		const int &length,

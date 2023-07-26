@@ -6,7 +6,7 @@
 
 class flowSimulation2NegStraight : public sectionVehicleSet{
 private:
-	PrintInGDIplusWin2LN m_P2LN;
+	
 public:
 	velocityToLength VL;
 	bool flag = false;
@@ -27,6 +27,6 @@ public:
 	flowSimulation2NegStraight& operator=(const flowSimulation2NegStraight&& other) = delete; 
 	~flowSimulation2NegStraight() noexcept;
 
-	void printContentOfSection(const int&, const int&, const int&, const int&) override;
+	
 	int flow(const int&, const int&, const bool&) override;
 };

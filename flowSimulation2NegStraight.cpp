@@ -10,23 +10,7 @@ flowSimulation2NegStraight::flowSimulation2NegStraight(callBackLinks* CBLptr, co
 flowSimulation2NegStraight::~flowSimulation2NegStraight() noexcept {
 }
 
-void flowSimulation2NegStraight::printContentOfSection(const int& p1xx, const int& p1yy, const int& p2xx, const int& p2yy) {
-	//********************************************************************
-	//This method and the method "addPrintContent" of the inheriting classes of "PrintInGDIPlusWindow" form a unit, 
-	//whose goal is to fill the positions of the vehicle objects in a visually suitable form in a data container(m_pointContainer in class "PrintInGDIplusWindow").
-	vehicle* i = nullptr;
-	for (std::set<vehicle*, boost::indirect_fun<std::less<vehicle>>>::reverse_iterator a = m_vehicleSet.rbegin();
-		a != m_vehicleSet.rend(); ++a) {
-		i = *a;
-		i->m_processedByIteration = false;
-		if (!i->m_routeVertexID_vehicle.empty()) {
-			m_P2LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
-		}
-		else {
-			m_P2LN.addPrintContent(p1xx, p1yy, p2xx, p2yy, i->m_lane, i->m_position, 0);
-		}
-	}
-}
+
 
 int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	//********************************************************************

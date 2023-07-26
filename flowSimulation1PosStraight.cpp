@@ -14,20 +14,7 @@ flowSimulation1PosStraight::flowSimulation1PosStraight(const int& maxVelocity, c
 
 flowSimulation1PosStraight::~flowSimulation1PosStraight() noexcept {}
 
-void flowSimulation1PosStraight::printContentOfSection(const int& p1xx, const int& p1yy, const int& p2xx, const int& p2yy) {
-	//********************************************************************
-	//This method and the method "addPrintContent" of the inheriting classes of "PrintInGDIPlusWindow" form a unit, 
-	//whose goal is to fill the positions of the vehicle objects in a visually suitable form in a data container(m_pointContainer in class "PrintInGDIplusWindow").
-	for (auto& i : m_vehicleSet) {
-		i->m_processedByIteration = false;
-		if (!i->m_routeVertexID_vehicle.empty()) {
-			m_P1LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, i->m_routeVertexID_vehicle.back());
-		}
-		else {
-			m_P1LP.addPrintContent(p1xx, p1yy, p2xx, p2yy, 1, i->m_position, 0);
-		}
-	}
-}
+
 
 int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	//********************************************************************

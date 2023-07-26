@@ -87,6 +87,7 @@ public:
 	virtual void paintEndVertex11() = 0;
 	virtual void setStartVertexShort(const bool& setOrRelease) = 0;
 	virtual void setEndVertexShort(const bool& setOrRelease) = 0;
+	virtual void printContentOfSection(const int& lane, const int& position, const int& destination) = 0;
 };
 class PrintPatternLine1LaneHoriNeg :public PrintPattern {
 private:
@@ -94,7 +95,7 @@ private:
 	int m_p1x = 0;
 	int m_p2x = 0;
 	int m_p12y = 0;
-	
+	PrintInGDIplusWin1LN m_P1LN;
 public:
 
 	explicit PrintPatternLine1LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr) noexcept;
@@ -153,6 +154,7 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };
 class PrintPatternLine1LaneHoriPos :public PrintPattern {
 private:
@@ -160,7 +162,7 @@ private:
 	int m_p1x = 0;
 	int m_p2x = 0;
 	int m_p12y = 0;
-	
+	PrintInGDIplusWin1LP m_P1LP;
 public:
 	
 	explicit PrintPatternLine1LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr) noexcept;
@@ -217,6 +219,7 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };
 class PrintPatternLine1LaneVertiNeg :public PrintPattern {
 private:
@@ -224,7 +227,7 @@ private:
 	int m_p12x = 0;
 	int m_p1y = 0;
 	int m_p2y = 0;
-	
+	PrintInGDIplusWin1LN m_P1LN;
 public:
 	
 	explicit PrintPatternLine1LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr) noexcept;
@@ -282,6 +285,7 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };
 class PrintPatternLine1LaneVertiPos :public PrintPattern {
 private:
@@ -289,7 +293,7 @@ private:
 	int m_p12x = 0;
 	int m_p1y = 0;
 	int m_p2y = 0;
-	
+	PrintInGDIplusWin1LP m_P1LP;
 public:
 	
 	explicit PrintPatternLine1LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
@@ -346,6 +350,7 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };
 class PrintPatternLine2LaneHoriNeg :public PrintPattern {
 private:
@@ -353,7 +358,7 @@ private:
 	int m_p1x = 0;
 	int m_p2x = 0;
 	int m_p12y = 0;
-	
+	PrintInGDIplusWin2LN m_P2LN;
 public:
 	
 	explicit PrintPatternLine2LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
@@ -409,6 +414,7 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };
 class PrintPatternLine2LaneHoriPos : public PrintPattern {
 private:
@@ -416,7 +422,7 @@ private:
 	int m_p1x = 0;
 	int m_p2x = 0;
 	int m_p12y = 0;
-	
+	PrintInGDIplusWin2LP m_P2LP;
 public:
 	
 	explicit PrintPatternLine2LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
@@ -473,6 +479,7 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };
 class PrintPatternLine2LaneVertiNeg :public PrintPattern {
 private:
@@ -480,7 +487,7 @@ private:
 	int m_p12x = 0;
 	int m_p1y = 0;
 	int m_p2y = 0;
-	
+	PrintInGDIplusWin2LN m_P2LN;
 public:
 	
 	explicit PrintPatternLine2LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
@@ -537,6 +544,7 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };
 class PrintPatternLine2LaneVertiPos : public PrintPattern {
 private:
@@ -544,7 +552,7 @@ private:
 	int m_p12x = 0;
 	int m_p1y = 0;
 	int m_p2y = 0;
-	
+	PrintInGDIplusWin2LP m_P2LP;
 public:
 	
 	explicit PrintPatternLine2LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept;
@@ -601,4 +609,5 @@ public:
 	void paintEndVertex11() override;
 	void setStartVertexShort(const bool& setOrRelease) override;
 	void setEndVertexShort(const bool& setOrRelease) override;
+	void printContentOfSection(const int& lane, const int& position, const int& destination)override;
 };

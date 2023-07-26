@@ -93,6 +93,9 @@ void PrintPatternLine1LaneHoriNeg::setStartVertexShort(const bool& setOrRelease)
 void PrintPatternLine1LaneHoriNeg::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
 }
+void PrintPatternLine1LaneHoriNeg::printContentOfSection(const int& lane, const int& position, const int& destination){
+	m_P1LN.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
+}
 
 PrintPatternLine1LaneHoriPos::PrintPatternLine1LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
@@ -147,6 +150,9 @@ void PrintPatternLine1LaneHoriPos::setStartVertexShort(const bool& setOrRelease)
 void PrintPatternLine1LaneHoriPos::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
 }
+void PrintPatternLine1LaneHoriPos::printContentOfSection(const int& lane, const int& position, const int& destination) {
+	m_P1LP.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
+}
 
 PrintPatternLine1LaneVertiNeg::PrintPatternLine1LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
@@ -196,6 +202,9 @@ void PrintPatternLine1LaneVertiNeg::setStartVertexShort(const bool& setOrRelease
 }
 void PrintPatternLine1LaneVertiNeg::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
+}
+void PrintPatternLine1LaneVertiNeg::printContentOfSection(const int& lane, const int& position, const int& destination) {
+	m_P1LN.addPrintContent(m_p12x, m_p1y, m_p12x, m_p2y, lane, position, destination);
 }
 
 PrintPatternLine1LaneVertiPos::PrintPatternLine1LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
@@ -256,7 +265,9 @@ void PrintPatternLine1LaneVertiPos::setStartVertexShort(const bool& setOrRelease
 void PrintPatternLine1LaneVertiPos::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
 }
-
+void PrintPatternLine1LaneVertiPos::printContentOfSection(const int& lane, const int& position, const int& destination) {
+	m_P1LP.addPrintContent(m_p12x, m_p1y, m_p12x, m_p2y, lane, position, destination);
+}
 PrintPatternLine2LaneHoriNeg::PrintPatternLine2LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
 	m_length = m_p1x - m_p2x;
@@ -310,7 +321,9 @@ void PrintPatternLine2LaneHoriNeg::setStartVertexShort(const bool& setOrRelease)
 void PrintPatternLine2LaneHoriNeg::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
 }
-
+void PrintPatternLine2LaneHoriNeg::printContentOfSection(const int& lane, const int& position, const int& destination) {
+	m_P2LN.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
+}
 PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
 	m_length = m_p2x - m_p1x;
@@ -372,6 +385,9 @@ void PrintPatternLine2LaneHoriPos::setStartVertexShort(const bool& setOrRelease)
 void PrintPatternLine2LaneHoriPos::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
 }
+void PrintPatternLine2LaneHoriPos::printContentOfSection(const int& lane, const int& position, const int& destination) {
+	m_P2LP.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
+}
 
 PrintPatternLine2LaneVertiNeg::PrintPatternLine2LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
@@ -426,6 +442,9 @@ void PrintPatternLine2LaneVertiNeg::setStartVertexShort(const bool& setOrRelease
 }
 void PrintPatternLine2LaneVertiNeg::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
+}
+void PrintPatternLine2LaneVertiNeg::printContentOfSection(const int& lane, const int& position, const int& destination) {
+	m_P2LN.addPrintContent(m_p12x, m_p1y, m_p12x, m_p2y, lane, position, destination);
 }
 
 PrintPatternLine2LaneVertiPos::PrintPatternLine2LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
@@ -489,4 +508,7 @@ void PrintPatternLine2LaneVertiPos::setStartVertexShort(const bool& setOrRelease
 }
 void PrintPatternLine2LaneVertiPos::setEndVertexShort(const bool& setOrRelease){
 	m_endVertexShort = setOrRelease;
+}
+void PrintPatternLine2LaneVertiPos::printContentOfSection(const int& lane, const int& position, const int& destination) {
+	m_P2LP.addPrintContent(m_p12x, m_p1y, m_p12x, m_p2y, lane, position, destination);
 }

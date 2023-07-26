@@ -6,7 +6,7 @@
 
 class flowSimulation2PosStraightA: public sectionVehicleSet {
 private:
-	PrintInGDIplusWin2LP m_P2LP;
+	
 public:
 	velocityToLength VL;
 	bool flag = false;
@@ -28,7 +28,7 @@ public:
 	~flowSimulation2PosStraightA()noexcept;
 	
 	int flow(const int& , const int& , const bool& )override;
-	void printContentOfSection(const int& , const int& , const int& , const int& ) override;
+	
 	
 };
 

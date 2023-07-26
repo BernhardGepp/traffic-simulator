@@ -6,7 +6,7 @@
 
 class flowSimulation1PosStraight : public sectionVehicleSet {
 private:
-	PrintInGDIplusWin1LP m_P1LP;
+	
 public:
 	velocityToLength VL;
 	bool flag = false;
@@ -29,6 +29,6 @@ public:
 	flowSimulation1PosStraight& operator=(const flowSimulation1PosStraight&& other) = delete; 
 	flowSimulation1PosStraight::~flowSimulation1PosStraight() noexcept;
 
-	void printContentOfSection(const int&, const int&, const int&, const int&) override;
+	
 	int flow(const int&, const int&, const bool&)override; 
 };

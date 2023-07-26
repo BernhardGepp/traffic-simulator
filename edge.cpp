@@ -109,7 +109,17 @@ void edge::simiRun(const int& simulationIterator) {
 	}
 	//********************************************************************
 	//Print of the simulation result:
-	sFs.vehicleSetPtr->printContentOfSection(m_startVertexPtr->m_XcoordinateVertex, m_startVertexPtr->m_YcoordinateVertex, m_endVertexPtr->m_XcoordinateVertex, m_endVertexPtr->m_YcoordinateVertex);
+	
+	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
+		i->m_processedByIteration = false;
+		if (!i->m_routeVertexID_vehicle.empty()) {
+			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
+			
+		}
+		else {
+			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, 0);
+		}
+	}
 }
 
 void edge::flow1L(const int& a, const int& b) {
