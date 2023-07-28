@@ -5,6 +5,7 @@
 #include "graph.h"
 #include "vertex.h"
 #include "vertexObjectCreator.h"
+#include "edgeObjectCreator.h"
 class userFunctionsOfTheSimpleWindowInterface {
 private:
 	int xCordinadte_store_LB=0;
@@ -17,6 +18,7 @@ public:
 	concreteObserverSubjekt* m_cObSptr = nullptr;
 	callBackLinks* m_CBLptr = nullptr;
 	createVertex* vertrexCreator_ptr=nullptr;
+	createEdge* edgeCreator_ptr = nullptr;
 	std::vector<std::unique_ptr<vertex>>vertexOfGraphPtrVectorConainer;
 	std::vector<std::unique_ptr<edge>>edgeOfGraphPtrContainer;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
@@ -30,5 +32,4 @@ public:
 	void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS);
 	void vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex);
 	void graphGenerationFromClickPairs(const int& width, const int& height, const int& choiceOfRouteFinding);
-	std::unique_ptr<PrintPattern> choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV);
 };

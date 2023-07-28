@@ -54,6 +54,7 @@ public:
 	void computeWeightOfEdge();
 	void computeEdgesCharactaristics();
 	void simiRun(const int& );
+	void writeSimulationResultsIntoDataContainer();
 	void flow1L(const int& , const int& );
 	void singleSimulationStep(const int& );
 	void sort();

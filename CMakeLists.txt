@@ -45,6 +45,7 @@ set(Sources
 	vertexFlex.cpp
 	vertexStart.cpp
 	vertexObjectCreator.cpp
+	edgeObjectCreator.cpp
 	)
 
 add_subdirectory(googletest)

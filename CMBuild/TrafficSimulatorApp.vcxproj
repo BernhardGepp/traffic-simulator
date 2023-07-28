@@ -336,6 +336,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vertexFlex.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vertexStart.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\vertexObjectCreator.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edgeObjectCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\bernh\Documents\25_Sommer2022\CMBuild\ZERO_CHECK.vcxproj">

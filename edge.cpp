@@ -108,13 +108,16 @@ void edge::simiRun(const int& simulationIterator) {
 		computeEdgesCharactaristics();
 	}
 	//********************************************************************
+	writeSimulationResultsIntoDataContainer();
+}
+void edge::writeSimulationResultsIntoDataContainer(){
 	//Print of the simulation result:
-	
+
 	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
 		i->m_processedByIteration = false;
 		if (!i->m_routeVertexID_vehicle.empty()) {
 			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
-			
+
 		}
 		else {
 			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, 0);

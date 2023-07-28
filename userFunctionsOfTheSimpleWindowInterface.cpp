@@ -12,9 +12,11 @@
 //Constructor and destructor of the class:
 userFunctionsOfTheSimpleWindowInterface::userFunctionsOfTheSimpleWindowInterface() { 
 	vertrexCreator_ptr = new createVertex; 
+	edgeCreator_ptr = new createEdge(m_CBLptr, m_cObSptr);
 }
 userFunctionsOfTheSimpleWindowInterface::~userFunctionsOfTheSimpleWindowInterface() {
 	delete vertrexCreator_ptr;
+	delete edgeCreator_ptr;
 }
 
 //********************************************************************
@@ -327,6 +329,7 @@ int userFunctionsOfTheSimpleWindowInterface::edgeCaseDisplacement(const int& tra
 }
 
 void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(const int& width, const int& height, const int& choiceOfRouteFinding) {
+	edgeCreator_ptr->iniziallizationOfPointer(m_CBLptr, m_cObSptr);
 	//********************************************************************
 	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
 	//A traffic graph (object "graph")consists of edges and vertices, which are created in this method in the form of objects.
@@ -634,26 +637,20 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 					}
 					if ((possibleEdge.first.first != 0) && (possibleEdge.second.first != 0)) {
 						if (increasingOrDecreasing)
-							edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(possibleEdge.first.first - 1, possibleEdge.second.first - 1, std::get<3>(ia),
-								std::move(choosePrintPattern(vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex,
-
-									std::get<3>(ia), 0)),
-								m_cObSptr));
+							
+							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(possibleEdge.first.first - 1, possibleEdge.second.first - 1, std::get<3>(ia), vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex, std::get<3>(ia), 0, m_cObSptr));
 
 						if (!increasingOrDecreasing)
 
-							edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(possibleEdge.second.first - 1, possibleEdge.first.first - 1, std::get<3>(ia),
-								std::move(choosePrintPattern(vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
+							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(possibleEdge.second.first - 1, possibleEdge.first.first - 1, std::get<3>(ia), vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
 
-									std::get<3>(ia), 0)),
-								m_cObSptr));
-
+								std::get<3>(ia), 0, m_cObSptr));
 
 						possibleEdge.first.first = possibleEdge.second.first;
 						possibleEdge.first.second = possibleEdge.second.second;
@@ -693,25 +690,22 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 					}
 					if ((possibleEdge.first.first != 0) && (possibleEdge.second.first != 0)) {
 						if (increasingOrDecreasing)
-							edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(possibleEdge.first.first - 1, possibleEdge.second.first - 1, std::get<3>(ia),
-								std::move(choosePrintPattern(vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex,
-									0,
-									std::get<3>(ia))),
-								m_cObSptr));
-
+							
+							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(possibleEdge.first.first - 1, possibleEdge.second.first - 1, std::get<3>(ia), vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex,
+								0,
+								std::get<3>(ia), m_cObSptr));
 						if (!increasingOrDecreasing)
 
-							edgeOfGraphPtrContainer.push_back(std::make_unique<edge>(possibleEdge.second.first - 1, possibleEdge.first.first - 1, std::get<3>(ia),
-								std::move(choosePrintPattern(vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
-									vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
-									0,
-									std::get<3>(ia))),
-								m_cObSptr));
+							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(possibleEdge.second.first - 1, possibleEdge.first.first - 1, std::get<3>(ia), vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex,
+								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex,
+								0,
+								std::get<3>(ia), m_cObSptr));
+
 
 						possibleEdge.first.first = possibleEdge.second.first;
 						possibleEdge.first.second = possibleEdge.second.second;
@@ -911,41 +905,3 @@ void userFunctionsOfTheSimpleWindowInterface::vertexCreationVH_Network(const std
 }
 
 
-std::unique_ptr<PrintPattern> userFunctionsOfTheSimpleWindowInterface::choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV) {
-	//********************************************************************
-	//Selection of the appropriate print pattern
-	//This method is called by the method "graphGenerationFromClickPairs". This method is part of the traffic graph generation. 
-	if ((p1x < p2x) && (p1y == p2y)) {
-		if (lanesH == 1) {
-			return std::make_unique<PrintPatternLine1LaneHoriPos>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-		else if (lanesH == 2) {
-			return std::make_unique<PrintPatternLine2LaneHoriPos>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-	}
-	if ((p1x > p2x) && (p1y == p2y)) {
-		if (lanesH == 1) {
-			return std::make_unique<PrintPatternLine1LaneHoriNeg>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-		else if (lanesH == 2) {
-			return std::make_unique<PrintPatternLine2LaneHoriNeg>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-	}
-	if ((p1x == p2x) && (p1y < p2y)) {
-		if (lanesV == 1) {
-			return std::make_unique<PrintPatternLine1LaneVertiPos>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-		else if (lanesV == 2) {
-			return std::make_unique<PrintPatternLine2LaneVertiPos>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-	}
-	if ((p1x == p2x) && (p1y > p2y)) {
-		if (lanesV == 1) {
-			return std::make_unique<PrintPatternLine1LaneVertiNeg>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-		else if (lanesV == 2) {
-			return std::make_unique<PrintPatternLine2LaneVertiNeg>(p1x, p1y, p2x, p2y, gsl::not_null<callBackLinks*>(m_CBLptr));
-		}
-	}
-	return nullptr;
-}
