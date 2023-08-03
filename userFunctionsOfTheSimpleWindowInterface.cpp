@@ -7,7 +7,7 @@
 #include "graphTrafficGenerationOnAllRoutes.h"
 #include "graphTrafficGenerationOnFastRoutes.h"
 #include "vertexObjectCreator.h"
-#include <fstream>
+
 
 //Constructor and destructor of the class:
 userFunctionsOfTheSimpleWindowInterface::userFunctionsOfTheSimpleWindowInterface() { 
@@ -329,9 +329,6 @@ int userFunctionsOfTheSimpleWindowInterface::edgeCaseDisplacement(const int& tra
 }
 
 void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(const int& width, const int& height, const int& choiceOfRouteFinding) {
-	std::ofstream file;
-	file.open("C:/Users/bernh/Desktop/Auslesen.txt");
-	file << "Beginn\n";
 	edgeCreator_ptr->iniziallizationOfPointer(m_CBLptr, m_cObSptr);
 	//********************************************************************
 	//This method generates one or more traffic graphs from a set of point pairs in which the traffic simulation is executed.
@@ -607,11 +604,7 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 	std::pair<int, int>CrossingVertex;
 	bool increasingOrDecreasing = true;
 	int maxValue = 0;
-	file << "vertexOfGraphPtrVectorConainer:\n";
-	for (auto& iG : vertexOfGraphPtrVectorConainer) {
-		file << iG->m_vertexID << " ";
-	}
-	file << "\n";
+	
 	for (auto& ia : networkLaneVector) {
 		possibleEdge.first.first = 0;
 		possibleEdge.second.first = 0;
@@ -647,21 +640,10 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 						
 							
 						if (increasingOrDecreasing) {
-							file << "1. " << increasingOrDecreasing << "  " << possibleEdge.first.first - 1 << "  " << possibleEdge.second.first - 1 << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_vertexID << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_vertexID;
-							file << " || " << std::get<3>(ia) << " || " << vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex << "  " << std::get<3>(ia) << "  " << 0 << "\n";
-
 							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1], vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1], std::get<3>(ia)));
 						}
 
 						if (!increasingOrDecreasing) {
-							file << "2. " << increasingOrDecreasing << "  " << possibleEdge.second.first - 1 << "  " << possibleEdge.first.first - 1 << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_vertexID << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_vertexID;
-							file << " || " << std::get<3>(ia) << " || " << vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex << "  " << std::get<3>(ia) << "  " << 0 << "\n";
 							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1], vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1], std::get<3>(ia)));
 						}
 
@@ -703,22 +685,9 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 					}
 					if ((possibleEdge.first.first != 0) && (possibleEdge.second.first != 0)) {
 						if (increasingOrDecreasing) {
-							file << "3. " << increasingOrDecreasing << "  " << possibleEdge.first.first - 1 << "  " << possibleEdge.second.first - 1 << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_vertexID << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_vertexID;
-							file << " || " << std::get<3>(ia) << " || " << vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex << "  " <<0 << "  " << std::get<3>(ia)   << "\n";
-
-
 							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1], vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1], std::get<3>(ia)));
 						}
 						if (!increasingOrDecreasing) {
-							file << "4. " << increasingOrDecreasing << "  " << possibleEdge.second.first - 1 << "  " << possibleEdge.first.first - 1 << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_vertexID << "  " << vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_vertexID;
-							file << " || " << std::get<3>(ia) << " || " << vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1]->m_YcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_XcoordinateVertex << "  " <<
-								vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1]->m_YcoordinateVertex << "  " <<0<< "  " << std::get<3>(ia) <<"\n";
-
 							edgeOfGraphPtrContainer.push_back(edgeCreator_ptr->create(vertexOfGraphPtrVectorConainer[possibleEdge.second.first - 1], vertexOfGraphPtrVectorConainer[possibleEdge.first.first - 1], std::get<3>(ia)));
 						}
 
@@ -729,14 +698,6 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 					}
 				}
 			}
-		}
-	}
-	file << "\n***************************************************\n";
-	if (!edgeOfGraphPtrContainer.empty()) {
-		for (auto& i : edgeOfGraphPtrContainer) {
-			//i->m_startVertex++;
-			//i->m_endVertex++;
-			file << "edge: " << i->m_startVertex << "\t" << i->m_endVertex << "\n";
 		}
 	}
 
@@ -850,7 +811,7 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 					}
 				}
 			}
-			file.close();
+			
 			if (choiceOfRouteFinding == 1)
 				appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnAllRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
 			if (choiceOfRouteFinding == 2)
@@ -888,7 +849,6 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 	}
 	vertexOfGraphPtrVectorConainer.clear();
 	edgeOfGraphPtrContainer.clear();
-	file.close();
 }
 
 void userFunctionsOfTheSimpleWindowInterface::vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex) {
@@ -898,6 +858,7 @@ void userFunctionsOfTheSimpleWindowInterface::vertexCreationVH_Network(const std
 	
 	bool serviceBool = false;
 	int shapeOfThatVertex_var = shapeOfThatVertex;
+	int counter = 1;
 	if (vertexOfGraphPtrVectorConainer.size() == 0) {
 		serviceBool = true;
 	}
@@ -912,6 +873,12 @@ void userFunctionsOfTheSimpleWindowInterface::vertexCreationVH_Network(const std
 					serviceBool = true;
 					shapeOfThatVertex_var = 11;
 					vertexOfGraphPtrVectorConainer.erase(i--);
+					vertrexCreator_ptr->decrementCounter();
+					for (auto ii = vertexOfGraphPtrVectorConainer.begin(); ii != vertexOfGraphPtrVectorConainer.end(); ii++) {
+						(*ii)->m_vertexID = counter;
+						counter++;
+					}
+					counter = 1;
 					break;
 				}
 			}

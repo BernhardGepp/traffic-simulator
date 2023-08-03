@@ -24,3 +24,7 @@ std::shared_ptr <vertex> createVertex::create(const int& xvalue, const int& yval
 	counter++;
 	return createdVertex;
 }
+
+void createVertex::decrementCounter() {
+	counter--;
+}

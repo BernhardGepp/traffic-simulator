@@ -15,6 +15,7 @@ graph::graph(const std::set<int>& setOfVertexes,
 	//m_setOfVertexes.clear();
 	int counter = 0;
 	for (auto& i : m_vectorOfVertexPtr) {
+		//i->m_vertexID = counter + 1;
 		i->setPoolAllocatorPtr(m_poolAllocator);		//Assigning the corresponding PoolAllocator to the vertices of the graph
 		i->m_vertexIDpair.first = i->m_vertexID;
 		i->m_vertexIDpair.second = counter;
