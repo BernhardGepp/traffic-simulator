@@ -24,12 +24,12 @@ graph::graph(const std::set<int>& setOfVertexes,
 		i->setPoolAllocatorPtr(m_poolAllocator);
 		for (auto& j : m_vectorOfVertexPtr) {			//Initialization of the vertices in the graph
 			if (j->m_vertexID == i->m_startVertex) {
-				i->m_startVertexPtr = j;
+				//i->m_startVertexPtr = j;
 				j->setTransmissionTable(i->m_endVertex);
 			}
-			if (j->m_vertexID == i->m_endVertex) {
+			/*if (j->m_vertexID == i->m_endVertex) {
 				i->m_endVertexPtr = j;
-			}
+			}*/
 		}
 		
 	}
@@ -168,6 +168,7 @@ void graph::generationOfRoutesNeu() {
 	int zIter = 0;
 	std::vector<std::pair<int, int>> testV;
 	while (hj != m_vectorOfVertexPtr.end()) {
+		
 		routeVertexIDs.clear();
 		if ((*hj)->m_shapeOfThatVertex == 1) {
 
@@ -177,7 +178,7 @@ void graph::generationOfRoutesNeu() {
 			serviceInt1 = (*hj)->sizeOfTransmissiontable() - 1;
 			testV = (*hj)->getAdjacentEdges();
 			processedVertex = testV[serviceInt1].second;
-			routeVertexIDs.push_back((*hj)->m_vertexIDpair);
+			routeVertexIDs.push_back((*hj)->m_vertexIDpair);//hier problem
 			while (true) {
 				if (std::get<2>(topologyMarks[(*hj)->m_vertexIDpair.second]) <= 0) {
 
@@ -440,6 +441,7 @@ void graph::printLanesAndVehiclesOfAllEdges() {
 			break;
 		}
 	}
+
 	for (auto& i : m_vectorOfEdgesPtr) {
 		i->m_ppPtr->paintBoxPP();
 	}

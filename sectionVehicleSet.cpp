@@ -4,7 +4,7 @@
 //Constructor and destructor of the class:
 sectionVehicleSet::sectionVehicleSet() {}
 	
-sectionVehicleSet::sectionVehicleSet(callBackLinks* CBLptr )
+sectionVehicleSet::sectionVehicleSet(callBackLinks* CBLptr)
 	:m_CBLptr(CBLptr){}
 
 sectionVehicleSet::~sectionVehicleSet() noexcept {}

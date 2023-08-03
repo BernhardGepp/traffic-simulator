@@ -375,9 +375,7 @@ void PrintPatternLine2LaneHoriPos::paintStartVertex11(){
 	m_CBLptr->topLevelFunctionPTR_f16PaintBoxFlex21(m_p1x, m_p12y);
 }
 void PrintPatternLine2LaneHoriPos::paintEndVertex11(){
-
 	m_CBLptr->topLevelFunctionPTR_f16PaintBoxFlex21(m_p2x, m_p12y);
-
 }
 void PrintPatternLine2LaneHoriPos::setStartVertexShort(const bool& setOrRelease){
 	m_startVertexShort = setOrRelease;

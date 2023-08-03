@@ -19,7 +19,7 @@ public:
 	callBackLinks* m_CBLptr = nullptr;
 	createVertex* vertrexCreator_ptr=nullptr;
 	createEdge* edgeCreator_ptr = nullptr;
-	std::vector<std::unique_ptr<vertex>>vertexOfGraphPtrVectorConainer;
+	std::vector<std::shared_ptr<vertex>>vertexOfGraphPtrVectorConainer;
 	std::vector<std::unique_ptr<edge>>edgeOfGraphPtrContainer;
 	std::vector<std::unique_ptr<graph>>appliedGraph;
 
