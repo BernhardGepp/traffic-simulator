@@ -10,8 +10,6 @@ edge::edge(const std::shared_ptr<vertex>& startVertex, const std::shared_ptr<ver
 	m_endVertex = m_endVertexPtr->m_vertexID;
 	vehicleEraseVector.reserve(150);
 	m_routeServiceBool = false;
-	
-	 //m_maxVelocity, m_maxVelocity_Density);
 	m_observerPTR = m_ppPtr->createObserver();
 	m_cOSptr->registrieren(m_observerPTR);
 	m_length = m_ppPtr->m_length;

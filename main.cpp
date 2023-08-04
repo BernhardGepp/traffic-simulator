@@ -597,6 +597,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					NULL);
 				
 				n->clickPointsResetInTheField();
+				n->displayNetworkWithSimulationStepResult();
 				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 				
 				//actionQueueBool = true;
@@ -616,6 +617,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				else {
 					std::this_thread::sleep_for(std::chrono::milliseconds(260));
 				}
+				n->displayNetworkWithSimulationStepResult();
 				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 			}
 			else {
@@ -625,6 +627,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		case ESTVertexOfGraph:
 			if (n->generationOfTheNetworkGraphsFromNetworkLanes(numberOfLanesINT)) {
 				n->clickPointsResetInTheField();
+				n->displayNetworkWithSimulationStepResult();
 				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 				actionQueueBool = true;
 				StartSimulation = false;

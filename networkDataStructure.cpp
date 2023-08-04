@@ -16,9 +16,9 @@ networkDataStructure::~networkDataStructure() {}
 
 void networkDataStructure::printLanesAndVehiclesOfAllEdges() {
 
-	for (auto& i : appliedGraph) {
+	/*for (auto& i : appliedGraph) {
 		i->printLanesAndVehiclesOfAllEdges();
-	}
+	}*/
 	m_PWE.fullemptyPrintContainer(m_CBLptr->m_hdc, m_CBLptr->m_f5PaintLane);
 }
 

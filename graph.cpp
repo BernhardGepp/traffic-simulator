@@ -4,18 +4,13 @@
 //Constructor and destructor of the class:
 graph::graph(const std::set<int>& setOfVertexes,
 	std::vector<std::shared_ptr<vertex>>& vectorOfVertex,
-	std::vector<std::shared_ptr<edge>>& vectorOfEdges,
-	callBackLinks* CBLptr
+	std::vector<std::shared_ptr<edge>>& vectorOfEdges
 )
-	: /*m_setOfVertexes(setOfVertexes), */
-	m_vectorOfVertexPtr(vectorOfVertex),
-	m_vectorOfEdgesPtr(vectorOfEdges),
-	m_CBLptr(CBLptr)
+	:m_vectorOfVertexPtr(vectorOfVertex),
+	m_vectorOfEdgesPtr(vectorOfEdges)
 {
-	//m_setOfVertexes.clear();
 	int counter = 0;
 	for (auto& i : m_vectorOfVertexPtr) {
-		//i->m_vertexID = counter + 1;
 		i->setPoolAllocatorPtr(m_poolAllocator);		//Assigning the corresponding PoolAllocator to the vertices of the graph
 		i->m_vertexIDpair.first = i->m_vertexID;
 		i->m_vertexIDpair.second = counter;
@@ -25,14 +20,9 @@ graph::graph(const std::set<int>& setOfVertexes,
 		i->setPoolAllocatorPtr(m_poolAllocator);
 		for (auto& j : m_vectorOfVertexPtr) {			//Initialization of the vertices in the graph
 			if (j->m_vertexID == i->m_startVertex) {
-				//i->m_startVertexPtr = j;
 				j->setTransmissionTable(i->m_endVertex);
 			}
-			/*if (j->m_vertexID == i->m_endVertex) {
-				i->m_endVertexPtr = j;
-			}*/
 		}
-		
 	}
 	generationOfRoutesNeu();
 }
@@ -361,100 +351,6 @@ void graph::generationOfRoutesNeu() {
 	}
 }
 
-void graph::printLanesAndVehiclesOfAllEdges() {
-	//********************************************************************
-	//method for displaying all vertexes, edges and vehicles on the surface
-	int counter = 0;
-	bool doubleVerticalVertex = false;
-	bool doubleHorizontalVertex = false;
-	
-	for (auto& i : m_vectorOfEdgesPtr) {
-		i->m_ppPtr->paintWhiteLinePP();
-	}
-
-	for (auto& i : m_vectorOfVertexPtr) {
-		m_CBLptr->topLevelFunctionPTR_f7PrintVertexNumber(i->m_XcoordinateVertex, i->m_YcoordinateVertex, i->m_vertexID);
-		switch (i->m_shapeOfThatVertex) {
-		case 1:
-			m_CBLptr->topLevelFunctionPTR_f12PaintBoxStart(i->m_XcoordinateVertex, i->m_YcoordinateVertex);
-			break;
-
-		case 2:
-			m_CBLptr->topLevelFunctionPTR_f13PaintBoxEnd(i->m_XcoordinateVertex, i->m_YcoordinateVertex);
-			break;
-
-		case 11:
-			counter = 0;
-			doubleVerticalVertex = false;
-			doubleHorizontalVertex = false;
-			for (auto& ii : m_vectorOfEdgesPtr) {
-				if ((ii->m_startVertexPtr->m_vertexID == i->m_vertexID) || (ii->m_endVertexPtr->m_vertexID == i->m_vertexID)) {
-					if ((ii->m_startVertexPtr->m_shapeOfThatVertex == 11) && (i->m_shapeOfThatVertex == 11) && (ii->m_startVertexPtr->m_vertexID == i->m_vertexID)) {
-						ii->m_ppPtr->paintStartVertex11();
-					}
-					if ((ii->m_endVertexPtr->m_shapeOfThatVertex == 11) && (i->m_shapeOfThatVertex == 11) && (ii->m_endVertexPtr->m_vertexID == i->m_vertexID)) {
-						ii->m_ppPtr->paintEndVertex11();
-					}
-					if (ii->m_numberOfLanes == 2)
-						counter++;
-					if ((ii->m_verticalOrHorizontal == true) && (ii->m_numberOfLanes == 2))
-						doubleVerticalVertex = true;
-					if ((ii->m_verticalOrHorizontal == false) && (ii->m_numberOfLanes == 2))
-						doubleHorizontalVertex = true;
-				}
-
-				if (counter >= 3) {
-					m_CBLptr->topLevelFunctionPTR_f17PaintBoxFlex22(i->m_XcoordinateVertex, i->m_YcoordinateVertex);
-					for (auto& iii : m_vectorOfEdgesPtr) {
-						if ((iii->m_startVertexPtr->m_vertexID == i->m_vertexID) && (iii->m_risingOrDescention == true)) {
-							iii->m_ppPtr->setStartVertexShort(true);
-						}
-						if ((iii->m_endVertexPtr->m_vertexID == i->m_vertexID) && (iii->m_risingOrDescention == false)) {
-							iii->m_ppPtr->setEndVertexShort(true);
-						}
-					}
-				}
-			}
-
-			m_CBLptr->topLevelFunctionPTR_f14PaintBoxFlex11(i->m_XcoordinateVertex, i->m_YcoordinateVertex);
-
-			counter = 0;
-			if ((doubleVerticalVertex == true) || (doubleHorizontalVertex == true)) {
-				for (auto& ii : m_vectorOfEdgesPtr) {
-					if (doubleHorizontalVertex == true) {
-						if ((ii->m_startVertexPtr->m_vertexID == i->m_vertexID) && (ii->m_verticalOrHorizontal == true) && (ii->m_risingOrDescention == true))
-							ii->m_ppPtr->setStartVertexShort(true);
-						if ((ii->m_endVertexPtr->m_vertexID == i->m_vertexID) && (ii->m_verticalOrHorizontal == true) && (ii->m_risingOrDescention == false))
-							ii->m_ppPtr->setEndVertexShort(true);
-						if ((ii->m_endVertexPtr->m_vertexID == i->m_vertexID) && (ii->m_verticalOrHorizontal == true) && (ii->m_risingOrDescention == true))
-							ii->m_ppPtr->setEndVertexShort(true);
-					}
-					if (doubleVerticalVertex == true) {
-						if ((ii->m_startVertexPtr->m_vertexID == i->m_vertexID) && (ii->m_verticalOrHorizontal == false) && (ii->m_risingOrDescention == true))
-							ii->m_ppPtr->setStartVertexShort(true);
-						if ((ii->m_endVertexPtr->m_vertexID == i->m_vertexID) && (ii->m_verticalOrHorizontal == false) && (ii->m_risingOrDescention == false))
-							ii->m_ppPtr->setEndVertexShort(true);
-						if ((ii->m_endVertexPtr->m_vertexID == i->m_vertexID) && (ii->m_verticalOrHorizontal == false) && (ii->m_risingOrDescention == true))
-							ii->m_ppPtr->setEndVertexShort(true);
-					}
-				}
-			}
-			break;
-		}
-	}
-
-	for (auto& i : m_vectorOfEdgesPtr) {
-		i->m_ppPtr->paintBoxPP();
-	}
-}
-
-void graph::showVertex() {
-	//********************************************************************
-	//method for displaying the numbers of the vertices on the surface
-	for (auto& i : m_vectorOfVertexPtr) {
-		m_CBLptr->topLevelFunctionPTR_f7PrintVertexNumber(i->m_XcoordinateVertex, i->m_YcoordinateVertex, i->m_vertexID);
-	}
-}
 
 void graph::destructSectionInGraph() {
 	//********************************************************************

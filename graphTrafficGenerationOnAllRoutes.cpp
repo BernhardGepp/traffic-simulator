@@ -4,7 +4,7 @@
 
 //Constructor and destructor of the class:
 graphTrafficGenerationOnAllRoutes::graphTrafficGenerationOnAllRoutes(const std::set<int>& setOfVertexes, std::vector<std::shared_ptr<vertex>>& vectorOfVertex,
-	std::vector<std::shared_ptr<edge>>& vectorOfEdges, callBackLinks* CBLptr) : graph(setOfVertexes, vectorOfVertex, vectorOfEdges, CBLptr) {}
+	std::vector<std::shared_ptr<edge>>& vectorOfEdges) : graph(setOfVertexes, vectorOfVertex, vectorOfEdges) {}
 
 graphTrafficGenerationOnAllRoutes::~graphTrafficGenerationOnAllRoutes() {}
 

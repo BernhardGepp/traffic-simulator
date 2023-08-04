@@ -580,10 +580,8 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 	iPosYRK = 0;
 	//*******************************************************
 	//Numbering of the nodes(Vertex):
-	counter = 1;
+
 	for (auto& iEb : vertexOfGraphPtrVectorConainer) {
-		//iEb->numberingOfVertexes(counter);
-		counter++;
 		iEb->setPrintShape(iEb->m_shapeOfThatVertex);
 	}
 
@@ -813,9 +811,9 @@ void  userFunctionsOfTheSimpleWindowInterface::graphGenerationFromClickPairs(con
 			}
 			
 			if (choiceOfRouteFinding == 1)
-				appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnAllRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
+				appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnAllRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR));
 			if (choiceOfRouteFinding == 2)
-				appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnFastRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR, gsl::not_null<callBackLinks*>(m_CBLptr)));
+				appliedGraph.push_back(std::make_unique<graphTrafficGenerationOnFastRoutes>(setOfVertexes, vectorOfVertexPTR, vectorOfEdgePTR));
 			setOfVertexes.clear();
 			vectorOfVertexPTR.clear();
 			vectorOfEdgePTR.clear();
@@ -875,7 +873,7 @@ void userFunctionsOfTheSimpleWindowInterface::vertexCreationVH_Network(const std
 					vertexOfGraphPtrVectorConainer.erase(i--);
 					vertrexCreator_ptr->decrementCounter();
 					for (auto ii = vertexOfGraphPtrVectorConainer.begin(); ii != vertexOfGraphPtrVectorConainer.end(); ii++) {
-						(*ii)->m_vertexID = counter;
+						(*ii)->numberingOfVertexes(counter);
 						counter++;
 					}
 					counter = 1;
