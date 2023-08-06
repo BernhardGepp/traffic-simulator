@@ -14,6 +14,13 @@
 #include "userFunctionsOfTheSimpleWindowInterface.h"
 #include "networkDataStructure.h"
 
+using namespace Gdiplus;
+VOID PaintBoxStart(HDC hdc, const int& x, const int& y) {
+	Graphics graphics3(hdc);
+	Pen	pen3(Color(245, 0, 125, 125), 10.0F);//greenBox
+	graphics3.DrawLine(&pen3, x, y + 5, x + 10, y + 5);
+}
+
 class simpleWindowUserInterface {
 private:
 	static simpleWindowUserInterface* instance;
@@ -28,7 +35,7 @@ private:
 
 		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
-				
+		m_CBLptr->m_f12PaintBoxStart = PaintBoxStart;
 		iPosXRK = width - 110;
 		iPosYRK = height - 110;
 		m_CBLptr->m_callback_getRandomNumber = &getRandomNumber;

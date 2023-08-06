@@ -10,9 +10,12 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 enable_testing()
 
 set(Sources 
-	main.cpp 
+	main.cpp
+	trafficSimulator.cpp
+	trafficSimulatorWithSimpleUserInterface.cpp 
 	edge.cpp
 	callBackLinks.cpp 
+	callBackFunctions.cpp
 	PrecompiledHeadersEdges.cpp 
 	random_speed_neu.cpp 
 	vehicle.cpp

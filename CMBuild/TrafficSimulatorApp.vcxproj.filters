@@ -4,10 +4,19 @@
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\trafficSimulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\trafficSimulatorWithSimpleUserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp">

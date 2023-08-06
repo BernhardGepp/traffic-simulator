@@ -302,8 +302,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\main.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\trafficSimulator.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\trafficSimulatorWithSimpleUserInterface.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\edge.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.cpp" />
+    <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\callBackFunctions.cpp" />
     <ClCompile Include="C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
