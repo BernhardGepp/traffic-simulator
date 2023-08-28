@@ -7,6 +7,8 @@ private:
 public:
 	unsigned int m_simulationStepsToBeCarriedOut = 0;
 	unsigned int m_currentSimulationStep = 0;
+	int height;
+	int width;
 	
 	
 	

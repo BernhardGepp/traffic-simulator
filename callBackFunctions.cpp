@@ -1,26 +1,51 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
 #include "callBackFunctions.h"
+#include "trafficSimulatorWithSimpleUserInterface.h"
 using namespace Gdiplus;
-/*VOID PaintBoxLB(HDC hdc) {
+VOID PaintBoxLB(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK,const int& iPosYRK) {
 	Graphics graphics1(hdc);
-	Pen	pen2(Gdiplus::Color(255, 255, 0, 255), 10.0F);
-	TextOutW(hdc, n->iPosXLK + 10, n->iPosYLK + 10, L"P1", wcslen(L"P1 "));
-	graphics1.DrawLine(&pen2, n->iPosXLK, n->iPosYLK + 5, n->iPosXLK + 10, n->iPosYLK + 5);
+	Pen	pen2(Color(255, 255, 0, 255), 10.0F);
+	TextOutW(hdc, iPosXLK + 10, iPosYLK + 10, L"P1", wcslen(L"P1 "));
+	graphics1.DrawLine(&pen2, iPosXLK, iPosYLK + 5, iPosXLK + 10, iPosYLK + 5);
 
 }
-VOID PaintBoxRB(HDC hdc) {
+VOID PaintBoxRB(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK) {
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
-	TextOutW(hdc, n->iPosXRK + 10, n->iPosYRK + 10, L"P2", wcslen(L"P2 "));
-	graphics3.DrawLine(&pen3, n->iPosXRK, n->iPosYRK + 5, n->iPosXRK + 10, n->iPosYRK + 5);
-}*/
-/*
+	TextOutW(hdc, iPosXRK + 10, iPosYRK + 10, L"P2", wcslen(L"P2 "));
+	graphics3.DrawLine(&pen3, iPosXRK, iPosYRK + 5, iPosXRK + 10,iPosYRK + 5);
+}
+
+
+VOID PaintFrame(HDC hdc, const int& height, const int& width) {
+	Graphics graphicsFR(hdc);
+	Pen	penFR(Gdiplus::Color(255, 0, 0, 255), 2);
+	graphicsFR.DrawLine(&penFR, 0, 0, 0, height - 100);
+	graphicsFR.DrawLine(&penFR, 0, 0, width - 100, 0);
+	graphicsFR.DrawLine(&penFR, 0, height - 100, width - 100, height - 100);
+	graphicsFR.DrawLine(&penFR, width - 100, 0, width - 100, height - 100);
+}
+
+VOID PrintVertexNumber(HDC hdc, const int& iPosX, const int& iPosY, const int& iVertexID) {
+	wchar_t buffer1[256];
+	wsprintfW(buffer1, L"%d", iVertexID);
+	TextOutW(hdc,
+		iPosX + 25,
+		iPosY + 25,
+		buffer1,
+		wcslen(buffer1));
+	Graphics graphics3(hdc);
+	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
+	graphics3.DrawLine(&pen3, iPosX, iPosY + 5, iPosX + 10, iPosY + 5);
+}
+
+
 VOID PaintBoxStart(HDC hdc,const int& x, const int& y) {
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(245, 0, 125, 125), 10.0F);//greenBox
 	graphics3.DrawLine(&pen3, x, y + 5, x + 10, y + 5);
-}*/
+}
 VOID PaintBoxEnd(HDC hdc, const int& x, const int& y) {//redBox
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 0), 10.0F);

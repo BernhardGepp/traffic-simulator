@@ -316,6 +316,10 @@ void userFunctionsOfTheSimpleWindowInterface::establishLane(const int& width, co
 			if (addCoordinate == true) {
 				networkLaneVector.push_back(laneCoordinate);
 			}
+			else
+			{
+				int test = 77;
+			}
 			xCordinadte_store_LB = width;
 			yCordinadte_store_LB = height;
 		}

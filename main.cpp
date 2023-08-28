@@ -18,12 +18,13 @@
 #define createSecondWindow 101
 #define INT int
 
-simpleWindowUserInterface* n = nullptr;
-simpleWindowUserInterface* simpleWindowUserInterface::instance = 0;
-
+//simpleWindowUserInterface* n = nullptr;
+//simpleWindowUserInterface* simpleWindowUserInterface::instance = 0;
+static HDC hdc;
+trafficSimulatorWithSimpleUserInterface ts(hdc);
 
 enum numberOFLanes { one = 1, two = 2 };
-int simulationIteration =100;
+
 const int width = 1200;
 const int height = 700;
 int numberOfLanesINT = 1;
@@ -55,55 +56,17 @@ HWND hDlg = nullptr;
 RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
 
 
-VOID PaintBoxLB(HDC hdc) {
-	Graphics graphics1(hdc);
-	Pen	pen2(Gdiplus::Color(255, 255, 0, 255), 10.0F);
-	TextOutW(hdc, n->iPosXLK + 10, n->iPosYLK + 10, L"P1", wcslen(L"P1 "));
-	graphics1.DrawLine(&pen2, n->iPosXLK, n->iPosYLK + 5, n->iPosXLK + 10, n->iPosYLK + 5);
-
-}
-VOID PaintBoxRB(HDC hdc) {
-	Graphics graphics3(hdc);
-	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
-	TextOutW(hdc, n->iPosXRK + 10, n->iPosYRK + 10, L"P2", wcslen(L"P2 "));
-	graphics3.DrawLine(&pen3, n->iPosXRK, n->iPosYRK + 5, n->iPosXRK + 10, n->iPosYRK + 5);
-}
-/*VOID PaintBoxStart(HDC hdc, const int& x, const int& y) {
-	Graphics graphics3(hdc);
-	Pen	pen3(Gdiplus::Color(245, 0, 125, 125), 10.0F);//greenBox
-	graphics3.DrawLine(&pen3, x, y + 5, x + 10, y + 5);
-}*/
-
-VOID PaintFrame(HDC hdc) {
-	Graphics graphicsFR(hdc);
-	Pen	penFR(Gdiplus::Color(255, 0, 0, 255), 2);
-	graphicsFR.DrawLine(&penFR, 0, 0, 0, height - 100);
-	graphicsFR.DrawLine(&penFR, 0, 0, width - 100, 0);
-	graphicsFR.DrawLine(&penFR, 0, height - 100, width - 100, height - 100);
-	graphicsFR.DrawLine(&penFR, width - 100, 0, width - 100, height - 100);
-}
-
-VOID PrintVertexNumber(HDC hdc, const int &iPosX, const int &iPosY, const int &iVertexID) {
-	wchar_t buffer1[256];
-	wsprintfW(buffer1, L"%d", iVertexID);
-	TextOutW(hdc,
-		iPosX+25,
-		iPosY+25,
-		buffer1,
-		wcslen(buffer1));
-	Graphics graphics3(hdc);
-	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
-	graphics3.DrawLine(&pen3, n->iPosXRK, n->iPosYRK + 5, n->iPosXRK + 10, n->iPosYRK + 5);
-}
 
 
-static HDC hdc;
+
+
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
-	trafficSimulatorWithSimpleUserInterface ts;
-	n = simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
-		/*PaintBoxStart,*/ PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22));
+	
+	//trafficSimulatorWithSimpleUserInterface ts;
+	/*n = simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
+		PaintBoxStart, PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22));*/
 	MSG msg;
 	bool mainProgramLoopFlag = true;
 	PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
@@ -201,6 +164,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		NULL);
 	
 	while (mainProgramLoopFlag) {
+		ts.n->m_CBLptr->m_hdc = hdc;
+		ts.n->a.m_hdc = hdc;
+		ts.width = width;
+		ts.height = height;
+		//ts.n->a.fileoutput();
+		//ts.n->m_CBLptr->fileoutput();
+		//ts.n->clickPointsResetInTheField();
+	
 		PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
 
 		
@@ -208,17 +179,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DispatchMessage(&msg);
 		if (actionQueueBool == true) {
 			if (msg.message == WM_LBUTTONDOWN) {
-				if (!n->m_networkDataStructure.appliedGraph.empty()) {
-					if ((n->iPosXLK < width) && (n->iPosYLK < height)) {
-						n->waitIfDubbleClick(n->iPosXLK, n->iPosYLK);
-						n->m_cObSptr->benachrichtigen(n->iPosXLK, n->iPosYLK);
+				if (!ts.n->m_networkDataStructure.appliedGraph.empty()) {
+					if ((ts.n->iPosXLK < width) && (ts.n->iPosYLK < height)) {
+						ts.n->waitIfDubbleClick(ts.n->iPosXLK, ts.n->iPosYLK);
+						ts.n->m_cObSptr->benachrichtigen(ts.n->iPosXLK, ts.n->iPosYLK);
 					}
 				}
 			}
 			else {
-				if (simulationIteration > 0) {
-					simulationIteration--;
-					PaintFrame(hdc);
+				if (ts.m_currentSimulationStep> 0) {
+					ts.m_currentSimulationStep--;
+					//ts.m_f3PaintFrame(hdc);
+					//PaintFrame(hdc,height,width);
+					ts.n->a.m_f3PaintFrame(hdc, height, width);
+
 					SendMessageCallback(g_windowHandle, WM_PAINT, START_SIMULATION, NULL, NULL, NULL);
 				}
 				else {
@@ -259,9 +233,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		if (window1closed == true) {
 			mainProgramLoopFlag=false;
-			n->m_networkDataStructure.appliedGraph.clear();
-			n->destroy();
-			n = nullptr;
+			ts.n->m_networkDataStructure.appliedGraph.clear();
+			ts.n->destroy();
+			ts.n = nullptr;
 		}
 	}
 	GdiplusShutdown(gdiplusToken);
@@ -284,22 +258,22 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		break;
 	case WM_LBUTTONDOWN:
 	{
-		n->iPosXLK = LOWORD(lParam);
-		n->iPosYLK = HIWORD(lParam);
+		ts.n->iPosXLK = LOWORD(lParam);
+		ts.n->iPosYLK = HIWORD(lParam);
 		while (true) {
-			if ((n->iPosXLK % 10) == 0)
+			if ((ts.n->iPosXLK % 10) == 0)
 				break;
-			n->iPosXLK--;
+			ts.n->iPosXLK--;
 		}
-		if (n->iPosXLK > (width - 100))
-			n->iPosXLK = (width - 110);
+		if (ts.n->iPosXLK > (width - 100))
+			ts.n->iPosXLK = (width - 110);
 		while (true) {
-			if ((n->iPosYLK % 10) == 0)
+			if ((ts.n->iPosYLK % 10) == 0)
 				break;
-			n->iPosYLK--;
+			ts.n->iPosYLK--;
 		}
-		if (n->iPosYLK > (height - 100))
-			n->iPosYLK = (height - 110);
+		if (ts.n->iPosYLK > (height - 100))
+			ts.n->iPosYLK = (height - 110);
 
 		if (actionQueueBool == false) {
 			InvalidateRect(g_windowHandle, &Rechteck, TRUE); // Set square!
@@ -309,22 +283,22 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	}
 	case WM_RBUTTONDOWN:
 	{
-		n->iPosXRK = LOWORD(lParam);
-		n->iPosYRK = HIWORD(lParam);
+		ts.n->iPosXRK = LOWORD(lParam);
+		ts.n->iPosYRK = HIWORD(lParam);
 		while (true) {
-			if ((n->iPosXRK % 10) == 0)
+			if ((ts.n->iPosXRK % 10) == 0)
 				break;
-			n->iPosXRK--;
+			ts.n->iPosXRK--;
 		}
-		if (n->iPosXRK > (width - 100))
-			n->iPosXRK = (width - 100);
+		if (ts.n->iPosXRK > (width - 100))
+			ts.n->iPosXRK = (width - 100);
 		while (true) {
-			if ((n->iPosYRK % 10) == 0)
+			if ((ts.n->iPosYRK % 10) == 0)
 				break;
-			n->iPosYRK--;
+			ts.n->iPosYRK--;
 		}
-		if (n->iPosYRK > (height - 100))
-			n->iPosYRK = (height - 110);
+		if (ts.n->iPosYRK > (height - 100))
+			ts.n->iPosYRK = (height - 110);
 
 		InvalidateRect(g_windowHandle, &Rechteck, TRUE);//Set square!
 		SendMessage(g_windowHandle, WM_PAINT, wParam, lParam);
@@ -344,14 +318,14 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		{
 			
 			hdc = BeginPaint(g_windowHandle, &ps);
-			n->m_CBLptr->m_hdc = hdc;
+			ts.n->m_CBLptr->m_hdc = hdc;
 			bool serviceBool = false;
 			switch (numberOfLanesINT) {
 			case 1:
-				serviceBool = n->setClickPoints(hdc, 1);
+				serviceBool = ts.n->setClickPoints(hdc, 1);
 				break;
 			case 2:
-				serviceBool = n->setClickPoints(hdc, 2);
+				serviceBool = ts.n->setClickPoints(hdc, 2);
 				break;
 			}
 			if (serviceBool) {
@@ -363,29 +337,36 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				SendMessage(g_windowHandle, WM_CREATE, 0, 0);
 			}
 			
-			for (auto &i : n->m_networkCreationFunctions.networkLaneVector) {
+			for (auto &i : ts.n->m_networkCreationFunctions.networkLaneVector) {
+				
+				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
-			PaintBoxRB(hdc);
-			PaintBoxLB(hdc);
+			ts.n->m_CBLptr->m_hdc = hdc;
+			//ts.n->m_CBLptr->m_f2PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintBoxRB(hdc,ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			EndPaint(g_windowHandle, &ps);
 			
-			n->clickPointsResetInTheField();
+			ts.n->clickPointsResetInTheField();
 			
 		}
 			break;
 
 		case MK_RBUTTON:
 			hdc = BeginPaint(g_windowHandle, &ps);
-			n->m_CBLptr->m_hdc = hdc;
-			PaintBoxRB(hdc);
-			PaintBoxLB(hdc);
+			ts.n->m_CBLptr->m_hdc = hdc;
+			//ts.n->m_CBLptr->m_f2PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			EndPaint(g_windowHandle, &ps);
 			break;
 
 		case MY_BUTTON_ID:
 			hdc = BeginPaint(g_windowHandle, &ps);
-			n->m_CBLptr->m_hdc = hdc;
+			ts.n->m_CBLptr->m_hdc = hdc;
 			if ((actionQueueBool == false)/* && (reStartSimulation == false) * / /* && (!n->m_networkDataStructure.appliedGraph.empty()) */) {
 				numberOfLanesINT = 2;
 				g_windowHandle3 = CreateWindowEx(
@@ -427,9 +408,9 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 					NULL);
 				
-				n->clickPointsResetInTheField();
-				n->displayNetworkWithSimulationStepResult();
-				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
+				ts.n->clickPointsResetInTheField();
+				ts.n->displayNetworkWithSimulationStepResult();
+				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 				
 				//actionQueueBool = true;
 			}
@@ -438,38 +419,45 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		
 
 		case START_SIMULATION:
-			if (n->m_networkDataStructure.appliedGraph.size() >= 1) {
-				for (auto& i : n->m_networkDataStructure.appliedGraph) {
-					i->simulation(simulationIteration);
+			if (ts.n->m_networkDataStructure.appliedGraph.size() >= 1) {
+				for (auto& i : ts.n->m_networkDataStructure.appliedGraph) {
+					i->simulation(ts.m_currentSimulationStep);
 				}
-				if (n->m_networkDataStructure.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
+				if (ts.n->m_networkDataStructure.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
 					std::this_thread::sleep_for(std::chrono::milliseconds(250));
 				}
 				else {
 					std::this_thread::sleep_for(std::chrono::milliseconds(260));
 				}
-				n->displayNetworkWithSimulationStepResult();
-				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
+				ts.n->displayNetworkWithSimulationStepResult();
+				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 			}
 			else {
 				window1closed = true;
 			}
 			break;
 		case ESTVertexOfGraph:
-			if (n->generationOfTheNetworkGraphsFromNetworkLanes(numberOfLanesINT)) {
-				n->clickPointsResetInTheField();
-				n->displayNetworkWithSimulationStepResult();
-				n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
+			if (ts.n->generationOfTheNetworkGraphsFromNetworkLanes(numberOfLanesINT)) {
+				ts.n->clickPointsResetInTheField();
+				ts.n->displayNetworkWithSimulationStepResult();
+				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 				actionQueueBool = true;
 				StartSimulation = false;
 			}
 		default:
 			hdc = BeginPaint(g_windowHandle, &ps);	
-			n->m_CBLptr->m_hdc = hdc;
-			n->clickPointsResetInTheField();
-			PaintBoxRB(hdc);
-			PaintBoxLB(hdc);
-			PaintFrame(hdc);
+			ts.n->m_CBLptr->m_hdc = hdc;
+			ts.n->clickPointsResetInTheField();
+			//ts.n->m_CBLptr->m_f2PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			//ts.n->m_CBLptr->m_f3PaintFrame(hdc, height, width);
+
+			//ts.n->a.topLevelFunctionPTR_f2PaintBoxRB(ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			//ts.n->a.topLevelFunctionPTR_f1PaintBoxLB(ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			//ts.n->a.topLevelFunctionPTR_f3PaintFrame(height, width);
+			PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintFrame(hdc, height, width);
 			EndPaint(g_windowHandle, &ps);
 			break;
 		}
@@ -478,6 +466,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	
 	case WM_CREATE:
 	{
+		
 			g_windowHandle2 = CreateWindowEx(
 			NULL,
 			(LPCSTR)L"SubWindowClass",	
@@ -547,15 +536,18 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 			numberOFLanes::one;
 			numberOfLanesINT = 1;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
-			for (auto& i : n->m_networkCreationFunctions.networkLaneVector) {
+			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
+				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
+				//ts.n->m_CBLptr->m_f5PaintLane(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			break;
 		case MY_BUTTON_2:
 			numberOFLanes::two;
 			numberOfLanesINT = 2;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
-			for (auto& i : n->m_networkCreationFunctions.networkLaneVector) {
+			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
+				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			break;
@@ -612,7 +604,7 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 	case WM_CLOSE:
 		
 		PostQuitMessage(0);
-		if (simulationIteration == 0) {
+		if (ts.m_currentSimulationStep == 0) {
 			window1closed = true;
 		}
 		break;
@@ -621,7 +613,7 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 		PAINTSTRUCT ps_s;
 		HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
 		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext7, wcslen(Questiontext7));
-		n->clickPointsResetInTheField();
+		ts.n->clickPointsResetInTheField();
 		EndPaint(g_windowHandle4, &ps_s);
 	}
 	break;
@@ -630,13 +622,13 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 		{
 		case MY_BUTTON_YES:
 			actionQueueBool = true;
-			simulationIteration = 1000;
+			ts.m_currentSimulationStep = 1000;
 			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
 			break;
 		case MY_BUTTON_NO:
 			actionQueueBool = false;
-			simulationIteration = 0;
-			n->m_networkDataStructure.appliedGraph.clear();
+			ts.m_currentSimulationStep = 0;
+			ts.n->m_networkDataStructure.appliedGraph.clear();
 			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
 			break;
 		
