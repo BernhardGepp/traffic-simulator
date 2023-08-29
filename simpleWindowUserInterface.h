@@ -178,17 +178,17 @@ public:
 			}
 
 			for (auto& ii : i->m_vectorOfVertexPtr) {
-				//m_CBLptr->topLevelFunctionPTR_f7PrintVertexNumber(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex, ii->m_vertexID);
-				a.topLevelFunctionPTR_f7PrintVertexNumber(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex, ii->m_vertexID);
+				m_CBLptr->topLevelFunctionPTR_f7PrintVertexNumber(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex, ii->m_vertexID);
+				//a.topLevelFunctionPTR_f7PrintVertexNumber(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex, ii->m_vertexID);
 				switch (ii->m_shapeOfThatVertex) {
 				case 1:
-					//m_CBLptr->topLevelFunctionPTR_f12PaintBoxStart(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
-					a.topLevelFunctionPTR_f12PaintBoxStart(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+					m_CBLptr->topLevelFunctionPTR_f12PaintBoxStart(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+					//a.topLevelFunctionPTR_f12PaintBoxStart(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
 					break;
 
 				case 2:
-					//m_CBLptr->topLevelFunctionPTR_f13PaintBoxEnd(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
-					a.topLevelFunctionPTR_f13PaintBoxEnd(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+					m_CBLptr->topLevelFunctionPTR_f13PaintBoxEnd(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+					//a.topLevelFunctionPTR_f13PaintBoxEnd(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
 					break;
 
 				case 11:
@@ -212,8 +212,8 @@ public:
 						}
 
 						if (counter >= 3) {
-							//m_CBLptr->topLevelFunctionPTR_f17PaintBoxFlex22(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
-							a.topLevelFunctionPTR_f17PaintBoxFlex22(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+							m_CBLptr->topLevelFunctionPTR_f17PaintBoxFlex22(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+							//a.topLevelFunctionPTR_f17PaintBoxFlex22(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
 							for (auto& iiii : i->m_vectorOfEdgesPtr) {
 								if ((iiii->m_startVertexPtr->m_vertexID == ii->m_vertexID) && (iiii->m_risingOrDescention == true)) {
 									iiii->m_ppPtr->setStartVertexShort(true);

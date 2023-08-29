@@ -27,7 +27,6 @@ enum numberOFLanes { one = 1, two = 2 };
 
 const int width = 1200;
 const int height = 700;
-int numberOfLanesINT = 1;
 bool window1closed = false;
 bool window2closed = false;
 bool StartSimulation = false;
@@ -310,16 +309,14 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			
 			if (ts.queryOnTheSelectedNumberOfLanes()) {
 				numberOFLanes::one;
-				numberOfLanesINT = 1;
+				ts.m_determinationVariableOfNumberOfLanes = 1;
 				SendMessage(g_windowHandle, WM_CREATE, 0, 0);
 			}
 			else {
 				SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			}
 		
-			
 			for (auto &i : ts.n->m_networkCreationFunctions.networkLaneVector) {
-				
 				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
@@ -416,7 +413,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			}
 			break;
 		case ESTVertexOfGraph:
-			if (ts.n->generationOfTheNetworkGraphsFromNetworkLanes(numberOfLanesINT)) {
+			if (ts.n->generationOfTheNetworkGraphsFromNetworkLanes(ts.m_determinationVariableOfNumberOfLanes)) {
 				ts.n->clickPointsResetInTheField();
 				ts.n->displayNetworkWithSimulationStepResult();
 				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
@@ -513,7 +510,7 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 		{
 		case MY_BUTTON_1:
 			numberOFLanes::one;
-			numberOfLanesINT = 1;
+			ts.m_determinationVariableOfNumberOfLanes = 1;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
 				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
@@ -523,7 +520,7 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 			break;
 		case MY_BUTTON_2:
 			numberOFLanes::two;
-			numberOfLanesINT = 2;
+			ts.m_determinationVariableOfNumberOfLanes = 2;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
 				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
@@ -562,12 +559,12 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 		switch (LOWORD(wParam))
 		{
 		case MY_BUTTON_1:
-			numberOfLanesINT = 1;
+			ts.m_determinationVariableOfNumberOfLanes = 1;
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_1, BM_SETCHECK, 1, 0);
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_2, BM_SETCHECK, 0, 1);
 			break;
 		case MY_BUTTON_2:
-			numberOfLanesINT = 2;
+			ts.m_determinationVariableOfNumberOfLanes = 2;
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_2, BM_SETCHECK, 1, 0);
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_1, BM_SETCHECK, 0, 1);
 			break;

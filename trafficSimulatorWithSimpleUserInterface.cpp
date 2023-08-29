@@ -39,7 +39,7 @@ void trafficSimulatorWithSimpleUserInterface::rightClick(const int& paramX, cons
 	if (iPosYRK > (height - 100))
 		iPosYRK = (height - 110);
 	n->iPosXRK = iPosXRK;
-	n->iPosXLK = iPosYRK;
+	n->iPosYRK = iPosYRK;
 }
 void trafficSimulatorWithSimpleUserInterface::leftClick(const int& paramX, const int& paramY) {
 	bool serviceBool = false;
