@@ -325,6 +325,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintBoxRB(hdc,ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintFrame(hdc, height, width);
 			EndPaint(g_windowHandle, &ps);
 			
 			ts.n->clickPointsResetInTheField();

@@ -124,19 +124,19 @@ public:
 	bool simpleWindowUserInterface::setClickPoints(HDC hdc, const int& numberOfLanes) {
 		m_networkCreationFunctions.establishLane(m_ref_width, m_ref_height,numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
 		a.fileprint(m_ref_width, m_ref_height, numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);
-		//m_CBLptr->m_hdc = hdc;
+		m_CBLptr->m_hdc = hdc;
 		//m_CBLptr->m_f1PaintBoxLB(hdc, iPosXLK, iPosYLK, iPosXRK, iPosYRK);
 		//m_CBLptr->m_f2PaintBoxRB(hdc, iPosXLK, iPosYLK, iPosXRK, iPosYRK);
 		//m_CBLptr->fileoutput();
 		a.m_hdc = hdc;
 		a.fileoutput();
-		a.topLevelFunctionPTR_f1PaintBoxLB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
-		a.topLevelFunctionPTR_f2PaintBoxRB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
+		//a.topLevelFunctionPTR_f1PaintBoxLB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
+		//a.topLevelFunctionPTR_f2PaintBoxRB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
 		a.topLevelFunctionPTR_f3PaintFrame(m_ref_height, m_ref_width);
 		
-		//m_CBLptr->topLevelFunctionPTR_f1PaintBoxLB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
-		//m_CBLptr->topLevelFunctionPTR_f2PaintBoxRB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
-		//m_CBLptr->topLevelFunctionPTR_f3PaintFrame(height,width);
+		m_CBLptr->topLevelFunctionPTR_f1PaintBoxLB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
+		m_CBLptr->topLevelFunctionPTR_f2PaintBoxRB(iPosXLK, iPosYLK, iPosXRK, iPosYRK);
+		m_CBLptr->topLevelFunctionPTR_f3PaintFrame(m_ref_height, m_ref_width);
 		file << "\n" << m_CBLptr.get() << "\t" << &(m_CBLptr->m_f1PaintBoxLB) << "\t"<<&a;// << (m_CBLptr->topLevelFunctionPTR_f1PaintBoxLB(iPosXLK, iPosYLK, iPosXRK, iPosYRK)*) << "/t";
 	
 		if (lButtonServiceBool) {
@@ -225,8 +225,8 @@ public:
 						}
 					}
 
-					//m_CBLptr->topLevelFunctionPTR_f14PaintBoxFlex11(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
-					a.topLevelFunctionPTR_f14PaintBoxFlex11(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+					m_CBLptr->topLevelFunctionPTR_f14PaintBoxFlex11(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
+					//a.topLevelFunctionPTR_f14PaintBoxFlex11(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex);
 					counter = 0;
 					if ((doubleVerticalVertex == true) || (doubleHorizontalVertex == true)) {
 						for (auto& iii : i->m_vectorOfEdgesPtr) {
