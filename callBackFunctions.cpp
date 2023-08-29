@@ -242,3 +242,4 @@ VOID PaintWhiteClearLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const 
 	Pen pen7(Gdiplus::Color(245, 245, 245, 255), 4);
 	graphics3.DrawLine(&pen7, iPosXLk, iPosYLk + 5, iPosXRk, iPosYLk + 5);
 }
+

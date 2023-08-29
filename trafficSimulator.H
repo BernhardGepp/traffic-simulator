@@ -3,12 +3,12 @@
 
 class trafficSimulator {
 private:
-	unsigned int m_programStatus = 0;
+	
 public:
+	bool m_programStatus = false;
 	unsigned int m_simulationStepsToBeCarriedOut = 0;
 	unsigned int m_currentSimulationStep = 0;
-	int height;
-	int width;
+	
 	
 	
 	

@@ -16,5 +16,16 @@ public:
 	//simpleWindowUserInterface* simpleWindowUserInterface::instance=0;
 	//void displaySimulationStepResult()override;
 	HDC hdc;
+	int height;
+	int width;
+	int m_serviceInt1 = 0;
+	int m_serviceInt2 = 0;
+	int m_determinationVariableOfNumberOfLanes = 0;
+	bool m_statusDuringPointPairDetermination = true;
 	explicit trafficSimulatorWithSimpleUserInterface::trafficSimulatorWithSimpleUserInterface(HDC hdc);
+	bool queryOnTheSelectedNumberOfLanes();
+	bool waitIfDubbleClick(const int& a, const int& b);
+
+	void rightClick(const int&,const int&);
+	void leftClick(const int&, const int&);
 };

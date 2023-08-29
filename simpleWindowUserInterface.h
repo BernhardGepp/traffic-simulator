@@ -76,8 +76,6 @@ public:
 	userFunctionsOfTheSimpleWindowInterface m_networkCreationFunctions;
 	std::unique_ptr<callBackLinks>m_CBLptr;
 	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
-	int serviceInt1 = 0;
-	int serviceInt2 = 0;
 	int iPosXLK = 0;
 	int iPosYLK = 0;
 	int iPosXRK = 0;
@@ -111,15 +109,7 @@ public:
 	//***************************************************************
 	//Methods for user interface support:
 
-	void simpleWindowUserInterface::waitIfDubbleClick(const int& a, const int& b) {
-		if ((a == serviceInt1) && (b == serviceInt2)) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(250));
-		}
-		else {
-			serviceInt1 = a;
-			serviceInt2 = b;
-		}
-	}
+	
 
 	void simpleWindowUserInterface::clickPointsResetInTheField() {
 		iPosYLK = 0;
@@ -127,6 +117,8 @@ public:
 		iPosXRK = m_ref_width - 110;
 		iPosYRK = m_ref_height - 110;
 	}
+
+
 	//***************************************************************
 	//Network generation methods:
 	bool simpleWindowUserInterface::setClickPoints(HDC hdc, const int& numberOfLanes) {

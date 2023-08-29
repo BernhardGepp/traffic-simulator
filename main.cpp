@@ -30,7 +30,6 @@ const int height = 700;
 int numberOfLanesINT = 1;
 bool window1closed = false;
 bool window2closed = false;
-bool actionQueueBool = false;
 bool StartSimulation = false;
 using namespace Gdiplus;
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT message, WPARAM wParam, LPARAM lParam);
@@ -64,9 +63,6 @@ RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
 	
-	//trafficSimulatorWithSimpleUserInterface ts;
-	/*n = simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber, PaintBox, PaintWhiteLine,
-		PaintBoxStart, PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22));*/
 	MSG msg;
 	bool mainProgramLoopFlag = true;
 	PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
@@ -162,41 +158,37 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		(HMENU)MY_BUTTON_ID,
 		(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 		NULL);
-	
+
+
+	ts.n->m_CBLptr->m_hdc = hdc;
+	ts.n->a.m_hdc = hdc;
+	ts.width = width;
+	ts.height = height;
+	//***************************************************************
+	//"Program surfaces loop" respectively  "Program interfaces loop" 
 	while (mainProgramLoopFlag) {
-		ts.n->m_CBLptr->m_hdc = hdc;
-		ts.n->a.m_hdc = hdc;
-		ts.width = width;
-		ts.height = height;
-		//ts.n->a.fileoutput();
-		//ts.n->m_CBLptr->fileoutput();
-		//ts.n->clickPointsResetInTheField();
 	
 		PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
 
-		
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
-		if (actionQueueBool == true) {
+		if (ts.m_programStatus) {
 			if (msg.message == WM_LBUTTONDOWN) {
 				if (!ts.n->m_networkDataStructure.appliedGraph.empty()) {
 					if ((ts.n->iPosXLK < width) && (ts.n->iPosYLK < height)) {
-						ts.n->waitIfDubbleClick(ts.n->iPosXLK, ts.n->iPosYLK);
-						ts.n->m_cObSptr->benachrichtigen(ts.n->iPosXLK, ts.n->iPosYLK);
+						//ts.n->waitIfDubbleClick(ts.n->iPosXLK, ts.n->iPosYLK);
+						//ts.n->m_cObSptr->benachrichtigen(ts.n->iPosXLK, ts.n->iPosYLK);
 					}
 				}
 			}
 			else {
 				if (ts.m_currentSimulationStep> 0) {
 					ts.m_currentSimulationStep--;
-					//ts.m_f3PaintFrame(hdc);
-					//PaintFrame(hdc,height,width);
 					ts.n->a.m_f3PaintFrame(hdc, height, width);
-
 					SendMessageCallback(g_windowHandle, WM_PAINT, START_SIMULATION, NULL, NULL, NULL);
 				}
 				else {
-					actionQueueBool = false;
+					ts.m_programStatus = false;
 					PAINTSTRUCT ps_s;
 					HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
 					g_windowHandle4 = CreateWindowEx(
@@ -231,13 +223,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				}
 			}
 		}
-		if (window1closed == true) {
+		if (window1closed) {
 			mainProgramLoopFlag=false;
 			ts.n->m_networkDataStructure.appliedGraph.clear();
 			ts.n->destroy();
 			ts.n = nullptr;
 		}
 	}
+	//***************************************************************
 	GdiplusShutdown(gdiplusToken);
 	return msg.wParam;
 }
@@ -247,35 +240,34 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	case WM_CHAR:
 		if (wParam == 0x31) {// Code for CHAR digit 1
 			numberOFLanes::one;
-			numberOfLanesINT = 1;
+			ts.m_determinationVariableOfNumberOfLanes = 1;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 		}
 		if (wParam == 0x32) {// Code for CHAR digit 2
 			numberOFLanes::two;
-			numberOfLanesINT = 2;
+			ts.m_determinationVariableOfNumberOfLanes = 2;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 		}
 		break;
 	case WM_LBUTTONDOWN:
 	{
-		ts.n->iPosXLK = LOWORD(lParam);
-		ts.n->iPosYLK = HIWORD(lParam);
+		int param1 = LOWORD(lParam);
+		int param2 = HIWORD(lParam);
+		
 		while (true) {
-			if ((ts.n->iPosXLK % 10) == 0)
+			if ((param1 % 10) == 0)
 				break;
-			ts.n->iPosXLK--;
+			param1--;
 		}
-		if (ts.n->iPosXLK > (width - 100))
-			ts.n->iPosXLK = (width - 110);
+		
 		while (true) {
-			if ((ts.n->iPosYLK % 10) == 0)
+			if ((param2 % 10) == 0)
 				break;
-			ts.n->iPosYLK--;
+			param2--;
 		}
-		if (ts.n->iPosYLK > (height - 100))
-			ts.n->iPosYLK = (height - 110);
 
-		if (actionQueueBool == false) {
+		ts.leftClick(param1,param2);
+		if (ts.m_programStatus == false) {
 			InvalidateRect(g_windowHandle, &Rechteck, TRUE); // Set square!
 			SendMessage(g_windowHandle, WM_PAINT, wParam, lParam);
 		}
@@ -283,23 +275,19 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	}
 	case WM_RBUTTONDOWN:
 	{
-		ts.n->iPosXRK = LOWORD(lParam);
-		ts.n->iPosYRK = HIWORD(lParam);
+		int param1 = LOWORD(lParam);
+		int param2 = HIWORD(lParam);
 		while (true) {
-			if ((ts.n->iPosXRK % 10) == 0)
+			if ((param1 % 10) == 0)
 				break;
-			ts.n->iPosXRK--;
+			param1--;
 		}
-		if (ts.n->iPosXRK > (width - 100))
-			ts.n->iPosXRK = (width - 100);
 		while (true) {
-			if ((ts.n->iPosYRK % 10) == 0)
+			if ((param2 % 10) == 0)
 				break;
-			ts.n->iPosYRK--;
+			param2--;
 		}
-		if (ts.n->iPosYRK > (height - 100))
-			ts.n->iPosYRK = (height - 110);
-
+		ts.rightClick(param1, param2);
 		InvalidateRect(g_windowHandle, &Rechteck, TRUE);//Set square!
 		SendMessage(g_windowHandle, WM_PAINT, wParam, lParam);
 		break;
@@ -319,23 +307,16 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			
 			hdc = BeginPaint(g_windowHandle, &ps);
 			ts.n->m_CBLptr->m_hdc = hdc;
-			bool serviceBool = false;
-			switch (numberOfLanesINT) {
-			case 1:
-				serviceBool = ts.n->setClickPoints(hdc, 1);
-				break;
-			case 2:
-				serviceBool = ts.n->setClickPoints(hdc, 2);
-				break;
-			}
-			if (serviceBool) {
-				SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
-			}
-			else{
+			
+			if (ts.queryOnTheSelectedNumberOfLanes()) {
 				numberOFLanes::one;
 				numberOfLanesINT = 1;
 				SendMessage(g_windowHandle, WM_CREATE, 0, 0);
 			}
+			else {
+				SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
+			}
+		
 			
 			for (auto &i : ts.n->m_networkCreationFunctions.networkLaneVector) {
 				
@@ -367,8 +348,8 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		case MY_BUTTON_ID:
 			hdc = BeginPaint(g_windowHandle, &ps);
 			ts.n->m_CBLptr->m_hdc = hdc;
-			if ((actionQueueBool == false)/* && (reStartSimulation == false) * / /* && (!n->m_networkDataStructure.appliedGraph.empty()) */) {
-				numberOfLanesINT = 2;
+			if (ts.m_programStatus == false) {
+				ts.m_determinationVariableOfNumberOfLanes= 2;
 				g_windowHandle3 = CreateWindowEx(
 					NULL,
 					(LPCSTR)L"ThirdWindowClass",
@@ -411,8 +392,6 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				ts.n->clickPointsResetInTheField();
 				ts.n->displayNetworkWithSimulationStepResult();
 				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
-				
-				//actionQueueBool = true;
 			}
 
 			break;
@@ -441,7 +420,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				ts.n->clickPointsResetInTheField();
 				ts.n->displayNetworkWithSimulationStepResult();
 				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
-				actionQueueBool = true;
+				ts.m_programStatus = true;
 				StartSimulation = false;
 			}
 		default:
@@ -621,12 +600,12 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 		switch (LOWORD(wParam))
 		{
 		case MY_BUTTON_YES:
-			actionQueueBool = true;
+			ts.m_programStatus = true;
 			ts.m_currentSimulationStep = 1000;
 			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
 			break;
 		case MY_BUTTON_NO:
-			actionQueueBool = false;
+			ts.m_programStatus = false;
 			ts.m_currentSimulationStep = 0;
 			ts.n->m_networkDataStructure.appliedGraph.clear();
 			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
