@@ -18,8 +18,6 @@
 #define createSecondWindow 101
 #define INT int
 
-//simpleWindowUserInterface* n = nullptr;
-//simpleWindowUserInterface* simpleWindowUserInterface::instance = 0;
 static HDC hdc;
 trafficSimulatorWithSimpleUserInterface ts(hdc);
 
@@ -54,14 +52,8 @@ HWND hDlg = nullptr;
 RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
 
 
-
-
-
-
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
-	
 	MSG msg;
 	bool mainProgramLoopFlag = true;
 	PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
@@ -171,56 +163,53 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
-		if (ts.m_programStatus) {
-			if (msg.message == WM_LBUTTONDOWN) {
-				if (!ts.n->m_networkDataStructure.appliedGraph.empty()) {
-					if ((ts.n->iPosXLK < width) && (ts.n->iPosYLK < height)) {
-						//ts.n->waitIfDubbleClick(ts.n->iPosXLK, ts.n->iPosYLK);
-						//ts.n->m_cObSptr->benachrichtigen(ts.n->iPosXLK, ts.n->iPosYLK);
-					}
-				}
-			}
-			else {
-				if (ts.m_currentSimulationStep> 0) {
-					ts.m_currentSimulationStep--;
-					ts.n->a.m_f3PaintFrame(hdc, height, width);
-					SendMessageCallback(g_windowHandle, WM_PAINT, START_SIMULATION, NULL, NULL, NULL);
-				}
-				else {
-					ts.m_programStatus = false;
-					PAINTSTRUCT ps_s;
-					HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
-					g_windowHandle4 = CreateWindowEx(
-						NULL,
-						(LPCSTR)L"FourthWindowClass",
-						(LPCSTR)L"Bestimmung ",
-						WS_VISIBLE | WS_CHILDWINDOW | WS_SYSMENU | WS_CHILD,
-						10,
-						150,
-						1200,
-						550,
-						g_windowHandle,
-						(HMENU)createSecondWindow,
-						(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
-						NULL);
-					CreateWindowExW(NULL, L"BUTTON", L"JA", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
-						80,
-						160,
-						35,
-						35, g_windowHandle4,
-						(HMENU)MY_BUTTON_YES,
-						(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
-						NULL);
-					CreateWindowExW(NULL, L"BUTTON", L"Nein", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
-						120,
-						160,
-						35,
-						35, g_windowHandle4,
-						(HMENU)MY_BUTTON_NO,
-						(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
-						NULL);
-				}
-			}
+		
+		switch (ts.mainInterfaceFunction()) {
+		case 0:
+			break;
+		case 1:
+			ts.n->a.m_f3PaintFrame(hdc, height, width);
+			break;
+		
+		case 2:
+		{
+			ts.m_programStatus = false;
+			PAINTSTRUCT ps_s;
+			HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
+			g_windowHandle4 = CreateWindowEx(
+				NULL,
+				(LPCSTR)L"FourthWindowClass",
+				(LPCSTR)L"Bestimmung ",
+				WS_VISIBLE | WS_CHILDWINDOW | WS_SYSMENU | WS_CHILD,
+				10,
+				150,
+				1200,
+				550,
+				g_windowHandle,
+				(HMENU)createSecondWindow,
+				(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
+				NULL);
+			CreateWindowExW(NULL, L"BUTTON", L"JA", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+				80,
+				160,
+				35,
+				35, g_windowHandle4,
+				(HMENU)MY_BUTTON_YES,
+				(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
+				NULL);
+			CreateWindowExW(NULL, L"BUTTON", L"Nein", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+				120,
+				160,
+				35,
+				35, g_windowHandle4,
+				(HMENU)MY_BUTTON_NO,
+				(HINSTANCE)GetWindowLong(g_windowHandle4, GWL_HINSTANCE),
+				NULL);
+			break;
+		}
+		case 3:
+			window1closed = true;
+			break;
 		}
 		if (window1closed) {
 			mainProgramLoopFlag=false;
@@ -252,19 +241,16 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	{
 		int param1 = LOWORD(lParam);
 		int param2 = HIWORD(lParam);
-		
 		while (true) {
 			if ((param1 % 10) == 0)
 				break;
 			param1--;
 		}
-		
 		while (true) {
 			if ((param2 % 10) == 0)
 				break;
 			param2--;
 		}
-
 		ts.leftClick(param1,param2);
 		if (ts.m_programStatus == false) {
 			InvalidateRect(g_windowHandle, &Rechteck, TRUE); // Set square!
@@ -302,11 +288,8 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		switch (wParam) {
 		
 		case MK_LBUTTON:
-		{
-			
 			hdc = BeginPaint(g_windowHandle, &ps);
 			ts.n->m_CBLptr->m_hdc = hdc;
-			
 			if (ts.queryOnTheSelectedNumberOfLanes()) {
 				numberOFLanes::one;
 				ts.m_determinationVariableOfNumberOfLanes = 1;
@@ -315,24 +298,20 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			else {
 				SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			}
-		
-			for (auto &i : ts.n->m_networkCreationFunctions.networkLaneVector) {
+			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
 				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			ts.n->m_CBLptr->m_hdc = hdc;
 			//ts.n->m_CBLptr->m_f2PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
-			PaintBoxRB(hdc,ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
+			PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintFrame(hdc, height, width);
 			EndPaint(g_windowHandle, &ps);
-			
-			ts.n->clickPointsResetInTheField();
-			
-		}
-			break;
+			ts.clickPointsResetInTheField();
 
+			break;
 		case MK_RBUTTON:
 			hdc = BeginPaint(g_windowHandle, &ps);
 			ts.n->m_CBLptr->m_hdc = hdc;
@@ -387,35 +366,17 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 					(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 					NULL);
 				
-				ts.n->clickPointsResetInTheField();
+				ts.clickPointsResetInTheField();
 				ts.n->displayNetworkWithSimulationStepResult();
 				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 			}
 
 			break;
-		
-
-		case START_SIMULATION:
-			if (ts.n->m_networkDataStructure.appliedGraph.size() >= 1) {
-				for (auto& i : ts.n->m_networkDataStructure.appliedGraph) {
-					i->simulation(ts.m_currentSimulationStep);
-				}
-				if (ts.n->m_networkDataStructure.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
-					std::this_thread::sleep_for(std::chrono::milliseconds(250));
-				}
-				else {
-					std::this_thread::sleep_for(std::chrono::milliseconds(260));
-				}
-				ts.n->displayNetworkWithSimulationStepResult();
-				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
-			}
-			else {
-				window1closed = true;
-			}
-			break;
+			
+			
 		case ESTVertexOfGraph:
 			if (ts.n->generationOfTheNetworkGraphsFromNetworkLanes(ts.m_determinationVariableOfNumberOfLanes)) {
-				ts.n->clickPointsResetInTheField();
+				ts.clickPointsResetInTheField();
 				ts.n->displayNetworkWithSimulationStepResult();
 				ts.n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 				ts.m_programStatus = true;
@@ -424,7 +385,7 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		default:
 			hdc = BeginPaint(g_windowHandle, &ps);	
 			ts.n->m_CBLptr->m_hdc = hdc;
-			ts.n->clickPointsResetInTheField();
+			ts.clickPointsResetInTheField();
 			//ts.n->m_CBLptr->m_f2PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			//ts.n->m_CBLptr->m_f3PaintFrame(hdc, height, width);
@@ -590,7 +551,7 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 		PAINTSTRUCT ps_s;
 		HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
 		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext7, wcslen(Questiontext7));
-		ts.n->clickPointsResetInTheField();
+		ts.clickPointsResetInTheField();
 		EndPaint(g_windowHandle4, &ps_s);
 	}
 	break;

@@ -24,8 +24,9 @@ public:
 	bool m_statusDuringPointPairDetermination = true;
 	explicit trafficSimulatorWithSimpleUserInterface::trafficSimulatorWithSimpleUserInterface(HDC hdc);
 	bool queryOnTheSelectedNumberOfLanes();
+	void clickPointsResetInTheField();
 	bool waitIfDubbleClick(const int& a, const int& b);
-
+	int mainInterfaceFunction();
 	void rightClick(const int&,const int&);
 	void leftClick(const int&, const int&);
 };

@@ -107,19 +107,6 @@ public:
 	}
 
 	//***************************************************************
-	//Methods for user interface support:
-
-	
-
-	void simpleWindowUserInterface::clickPointsResetInTheField() {
-		iPosYLK = 0;
-		iPosXLK = 0;
-		iPosXRK = m_ref_width - 110;
-		iPosYRK = m_ref_height - 110;
-	}
-
-
-	//***************************************************************
 	//Network generation methods:
 	bool simpleWindowUserInterface::setClickPoints(HDC hdc, const int& numberOfLanes) {
 		m_networkCreationFunctions.establishLane(m_ref_width, m_ref_height,numberOfLanes, iPosXLK, iPosYLK, lButtonServiceBool);

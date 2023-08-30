@@ -8,12 +8,47 @@ using namespace Gdiplus;
 
 simpleWindowUserInterface* simpleWindowUserInterface::instance = 0;
 trafficSimulatorWithSimpleUserInterface::trafficSimulatorWithSimpleUserInterface(HDC hdc):trafficSimulator(){
-	n = simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber,PaintBox, PaintWhiteLine, PaintBoxStart,
-		 PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22,PrintLaneIF,PaintWhiteClearLane));
+	n = gsl::not_null<simpleWindowUserInterface*>(simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber,PaintBox, PaintWhiteLine, PaintBoxStart,
+		 PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22,PrintLaneIF,PaintWhiteClearLane)));
+}
+int trafficSimulatorWithSimpleUserInterface::mainInterfaceFunction() {
+	if ((m_currentSimulationStep > 0) && (m_programStatus)) {
+		m_currentSimulationStep--;
+		if (n->m_networkDataStructure.appliedGraph.size() >= 1) {
+			for (auto& i : n->m_networkDataStructure.appliedGraph) {
+				i->simulation(m_currentSimulationStep);
+			}
+			if (n->m_networkDataStructure.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
+				std::this_thread::sleep_for(std::chrono::milliseconds(250));
+			}
+			else {
+				std::this_thread::sleep_for(std::chrono::milliseconds(260));
+			}
+			n->displayNetworkWithSimulationStepResult();
+			n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
+		}
+		
+		return 1;
+	}
+	if ((m_currentSimulationStep == 0) && (m_programStatus)) {
+		return 2;
+	}
+	if ((n->m_networkDataStructure.appliedGraph.size() == 0) && (m_programStatus)) {
+		return 3;
+	}
+	return 0;
+}
+void trafficSimulatorWithSimpleUserInterface::clickPointsResetInTheField() {
+	n->iPosYLK = 0;
+	n->iPosXLK = 0;
+	n->iPosXRK = width - 110;
+	n->iPosYRK = height - 110;
 }
 bool trafficSimulatorWithSimpleUserInterface::waitIfDubbleClick(const int& a, const int& b) {
 	if ((a == m_serviceInt1) && (b == m_serviceInt2)) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
+		m_serviceInt1 = 0;
+		m_serviceInt2 = 0;
 		return false;
 	}
 	else {
