@@ -49,7 +49,6 @@ public:
 	int getStartVertex();
 	int getEndVertex();
 	void sectionDestruct();
-	void initialisation();
 	void setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& );
 	void computeWeightOfEdge();
 	void computeEdgesCharactaristics();

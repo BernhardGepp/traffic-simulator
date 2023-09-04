@@ -17,10 +17,6 @@
 #include <fstream>
 
 
-
-
-
-
 class simpleWindowUserInterface {
 private:
 	static simpleWindowUserInterface* instance;
@@ -157,13 +153,9 @@ public:
 		bool doubleVerticalVertex = false;
 		bool doubleHorizontalVertex = false;
 		for (auto& i : m_networkDataStructure.appliedGraph) {
-			
-			
-
 			for (auto& ii : i->m_vectorOfEdgesPtr) {
 				ii->m_ppPtr->paintWhiteLinePP();
 			}
-
 			for (auto& ii : i->m_vectorOfVertexPtr) {
 				m_CBLptr->topLevelFunctionPTR_f7PrintVertexNumber(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex, ii->m_vertexID);
 				//a.topLevelFunctionPTR_f7PrintVertexNumber(ii->m_XcoordinateVertex, ii->m_YcoordinateVertex, ii->m_vertexID);
@@ -238,16 +230,11 @@ public:
 					break;
 				}
 			}
-
 			for (auto& ii : i->m_vectorOfEdgesPtr) {
 				ii->m_ppPtr->paintBoxPP();
 			}
 		}
-
 	}
-
-
-
 };
 
 

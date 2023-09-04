@@ -15,6 +15,7 @@ public:
 	bool m_riseOrDecline = true;
 	bool m_moblieORStationary = true;
 	
+	
 
 
 	vehicle();

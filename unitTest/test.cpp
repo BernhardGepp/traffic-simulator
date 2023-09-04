@@ -1,9 +1,5 @@
-//#include "pch.h"
-#include <iostream>
 #include "gtest/gtest.h"
 #include "C:\Users\bernh\Documents\25_Sommer2022\PrecompiledHeadersEdges.h"
-//#include "C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Debug\TrafficSimulatorApp.pch"
-
 #include "C:\Users\bernh\Documents\25_Sommer2022\simpleWindowUserInterface.h"
 #include "C:\Users\bernh\Documents\25_Sommer2022\edge.h"
 #include "C:\Users\bernh\Documents\25_Sommer2022\vertex.h"
@@ -14,15 +10,11 @@
 #include "C:\Users\bernh\Documents\25_Sommer2022\vehicle.h" 
 #include "C:\Users\bernh\Documents\25_Sommer2022\velocityToLength.h" 
 #include "C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.h" 
-#include <memory>
-
 #include "C:\Users\bernh\Documents\25_Sommer2022\userFunctionsOfTheSimpleWindowInterface.h"
 #include "C:\Users\bernh\Documents\25_Sommer2022\networkDataStructure.h"
 
-
 int main(int argc, char** argv) {
 	int a = 0;
-	//InitGoogleTest();
 	RUN_ALL_TESTS();
 	std::cin >> a;
 	return 0;
@@ -3926,9 +3918,8 @@ TEST(TestCaseName, TestName) {
 	EXPECT_EQ(o.VLStepConversion(99), 25);
 }
 
-/*
 TEST(TestCaseName2, TestName2) {
-
+	
 	edge e1;
 	edge e2;
 	edge e3;
@@ -3942,7 +3933,7 @@ TEST(TestCaseName2, TestName2) {
 	e4.m_startVertex = 12;
 	e4.m_endVertex = 15;
 	std::shared_ptr<vertex>v1 = std::make_shared<vertexStart>(200, 0, 1);
-	std::shared_ptr<vertex>v2 = std::make_shared<vertexFlex>(200, 200, 0);
+	std::shared_ptr<vertex>v2 = std::make_shared<vertexFlex>(200, 200, 11);
 	std::shared_ptr<vertex>v3 = std::make_shared<vertexEnd>(0, 200, 2);
 	std::shared_ptr<vertex>v4 = std::make_shared<vertexEnd>(200, 400, 2);
 	std::shared_ptr<vertex>v5 = std::make_shared<vertexEnd>(400, 200, 2);
@@ -3970,10 +3961,11 @@ TEST(TestCaseName2, TestName2) {
 	e2.sFs.vehicleSetPtr = std::make_unique<flowSimulation1NegStraight>(120, 200);
 	e3.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
 	e4.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
-	e2.p1Shape = 0;
-	e3.p1Shape = 0;
-	e4.p1Shape = 0;
-
+	v1->m_shapeOfThatVertex = 1;
+	v2->m_shapeOfThatVertex = 11;
+	v3->m_shapeOfThatVertex = 2;
+	v4->m_shapeOfThatVertex = 2;
+	v5->m_shapeOfThatVertex = 2;
 	v1->m_vertexID = 10;
 	v2->m_vertexID = 12;
 	v3->m_vertexID = 13;
@@ -3982,7 +3974,6 @@ TEST(TestCaseName2, TestName2) {
 	v2->setTransmissionTable(13);
 	v2->setTransmissionTable(14);
 	v2->setTransmissionTable(15);
-	std::vector<vehicle*> vehicle_vector;
 	vehicle* vehicleArray = new vehicle[91];
 	int counter = 0;
 	for (int i = 0; i < 90; i++) {
@@ -3990,8 +3981,8 @@ TEST(TestCaseName2, TestName2) {
 		vehicleArray[i].m_position = 0;
 		vehicleArray[i].m_pref_speed = 100;
 		vehicleArray[i].m_inRange = true;
-		vehicleArray[i].serviceBool = false;
-		vehicleArray[i].processedByIteration = true;
+		vehicleArray[i].m_ID_ptr = &vehicleArray[i];
+		vehicleArray[i].m_processedByIteration = true;
 		vehicleArray[i].m_riseOrDecline = true;
 		vehicleArray[i].m_moblieORStationary = true;
 
@@ -4014,16 +4005,15 @@ TEST(TestCaseName2, TestName2) {
 	}
 	counter = 0;
 	for (int i = 0; i < 500; i++) {
-		if (counter < 90) {
-			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[i]);
+		if ((counter <= 89)&&((i%2)==0)) {
+			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[counter]);
+			
+			counter++;
 		}
-		counter++;
-
 		e1.singleSimulationStep(220);
 		e1.deallocateVehicleAtEnd(true);
 		e2.flow1L(1, 220);
-		e2.singleSimulationStep(220);
-		e2.deallocateVehicleAtEnd(true);
+		e2.singleSimulationStep(true);
 		e3.flow1L(1, 220);
 		e3.singleSimulationStep(220);
 		e3.deallocateVehicleAtEnd(true);
@@ -4031,10 +4021,12 @@ TEST(TestCaseName2, TestName2) {
 		e4.singleSimulationStep(220);
 		e4.deallocateVehicleAtEnd(true);
 	}
+	EXPECT_EQ(v2->m_numberOfVehicle, 90);
 	EXPECT_EQ(v3->m_numberOfVehicle, 30);
 	EXPECT_EQ(v4->m_numberOfVehicle, 30);
 	EXPECT_EQ(v5->m_numberOfVehicle, 30);
 	delete[] vehicleArray;
+	
 }
 
 TEST(TestCaseName3, TestName3) {
@@ -4061,13 +4053,11 @@ TEST(TestCaseName3, TestName3) {
 	e2.m_risingOrDescention = false;
 	e1.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
 	e2.sFs.vehicleSetPtr = std::make_unique<flowSimulation1NegStraight>(120, 200);
-	e2.p1Shape = 0;
+	
 	v1->m_vertexID = 10;
 	v2->m_vertexID = 12;
 	v3->m_vertexID = 13;
 	v2->setTransmissionTable(13);
-
-	std::vector<vehicle*> vehicle_vector;
 	vehicle* vehicleArray = new vehicle[91];
 
 	for (int i = 0; i < 90; i++) {
@@ -4075,25 +4065,28 @@ TEST(TestCaseName3, TestName3) {
 		vehicleArray[i].m_position = 0;
 		vehicleArray[i].m_pref_speed = 100;
 		vehicleArray[i].m_inRange = true;
-		vehicleArray[i].serviceBool = false;
-		vehicleArray[i].processedByIteration = true;
+		vehicleArray[i].m_ID_ptr = &vehicleArray[i];
+		vehicleArray[i].m_processedByIteration = true;
 		vehicleArray[i].m_riseOrDecline = true;
 		vehicleArray[i].m_moblieORStationary = true;
 		vehicleArray[i].m_routeID = 1;
 		vehicleArray[i].m_routeVertexID_vehicle = { 10,12,13 };
 
 	}
+	int counter = 0;
 	for (int i = 0; i < 500; i++) {
 
-		if (i < 90) {
-			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[i]);
-		}
+		if ((counter < 90) && ((i % 2) == 0)) {
+			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[counter]);
+			counter++;
+		} 
 		e1.singleSimulationStep(220);
 		e1.deallocateVehicleAtEnd(true);
 		e2.flow1L(1, 220);
 		e2.singleSimulationStep(220);
 		e2.deallocateVehicleAtEnd(true);
 	}
+	EXPECT_EQ(v2->m_numberOfVehicle, 90);
 	EXPECT_EQ(v3->m_numberOfVehicle, 90);
 	delete[] vehicleArray;
 }
@@ -4130,17 +4123,12 @@ TEST(TestCaseName4, TestName4) {
 	e1.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
 	e3.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
 	e4.sFs.vehicleSetPtr = std::make_unique<flowSimulation1PosStraight>(120, 200);
-	e3.p1Shape = 0;
-	e4.p1Shape = 0;
-
 	v1->m_vertexID = 10;
 	v2->m_vertexID = 12;
 	v4->m_vertexID = 14;
 	v5->m_vertexID = 15;
 	v2->setTransmissionTable(14);
 	v2->setTransmissionTable(15);
-
-	std::vector<vehicle*> vehicle_vector;
 	vehicle* vehicleArray = new vehicle[101];
 	int counter = 0;
 	for (int i = 0; i < 100; i++) {
@@ -4149,8 +4137,8 @@ TEST(TestCaseName4, TestName4) {
 		vehicleArray[i].m_position = 0;
 		vehicleArray[i].m_pref_speed = 100;
 		vehicleArray[i].m_inRange = true;
-		vehicleArray[i].serviceBool = false;
-		vehicleArray[i].processedByIteration = true;
+		vehicleArray[i].m_ID_ptr = &vehicleArray[i];
+		vehicleArray[i].m_processedByIteration = true;
 		vehicleArray[i].m_riseOrDecline = true;
 		vehicleArray[i].m_moblieORStationary = true;
 
@@ -4162,7 +4150,6 @@ TEST(TestCaseName4, TestName4) {
 			vehicleArray[i].m_routeID = 2;
 			vehicleArray[i].m_routeVertexID_vehicle = { 10,12,15 };
 		}
-
 		counter++;
 		if (counter == 2) {
 			counter = 0;
@@ -4171,10 +4158,11 @@ TEST(TestCaseName4, TestName4) {
 
 	counter = 0;
 	for (int i = 0; i < 500; i++) {
-		if (counter < 100) {
-			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[i]);
+		if ((counter < 100) && ((i % 2) == 0)) {
+			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[counter]);
+			counter++;
 		}
-		counter++;
+		
 		e1.singleSimulationStep(220);
 		e1.deallocateVehicleAtEnd(true);
 		e3.flow1L(1, 220);
@@ -4186,9 +4174,9 @@ TEST(TestCaseName4, TestName4) {
 	}
 	EXPECT_EQ(v2->m_numberOfVehicle, 100);
 	EXPECT_TRUE(true);
-	EXPECT_EQ(v4->m_numberOfVehicle, 50);//48
+	EXPECT_EQ(v4->m_numberOfVehicle, 50);
 	EXPECT_TRUE(true);
-	EXPECT_EQ(v5->m_numberOfVehicle, 50);//47
+	EXPECT_EQ(v5->m_numberOfVehicle, 50);
 	EXPECT_TRUE(true);
 	delete[] vehicleArray;
-}*/
+}
