@@ -12,6 +12,8 @@
 #include "C:\Users\bernh\Documents\25_Sommer2022\callBackLinks.h" 
 #include "C:\Users\bernh\Documents\25_Sommer2022\userFunctionsOfTheSimpleWindowInterface.h"
 #include "C:\Users\bernh\Documents\25_Sommer2022\networkDataStructure.h"
+#include "gmock/gmock.h"
+//#include <fstream>
 
 int main(int argc, char** argv) {
 	int a = 0;
@@ -4179,4 +4181,20 @@ TEST(TestCaseName4, TestName4) {
 	EXPECT_EQ(v5->m_numberOfVehicle, 50);
 	EXPECT_TRUE(true);
 	delete[] vehicleArray;
+}
+TEST(randomTest,randomTest) {
+	//std::ofstream file;
+	//file.open("C:/Users/bernh/Desktop/randomzahlem.txt");
+	bool testVar = true;
+	randomSpeed_neu rs;
+	for (int i = 99999; i > 0; i--) {
+		rs.randomNumberRequest();
+		//file << "\n" << rs.a;
+		if ((rs.a < 30) || (rs.a > 130)) {
+			testVar = false;
+		}
+		//file << "\t" << testVar;
+	}
+	//file.close();
+	EXPECT_TRUE(testVar);
 }

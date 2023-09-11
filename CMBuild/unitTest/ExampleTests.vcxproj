@@ -292,7 +292,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Debug%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googlemock\include;D:\vs_Community\boost\boost_1_64_0\boost_1_64_0;C:\Users\bernh\Documents\25_Sommer2022\unitTest\Microsoft.GSL::GSL;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\_deps\googletest-src\googletest;C:\GSL\include;C:\Users\bernh\Documents\25_Sommer2022\CMBuild\Debug%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
