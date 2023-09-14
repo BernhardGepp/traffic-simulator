@@ -16,8 +16,6 @@ VOID PaintBoxRB(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPos
 	TextOutW(hdc, iPosXRK + 10, iPosYRK + 10, L"P2", wcslen(L"P2 "));
 	graphics3.DrawLine(&pen3, iPosXRK, iPosYRK + 5, iPosXRK + 10,iPosYRK + 5);
 }
-
-
 VOID PaintFrame(HDC hdc, const int& height, const int& width) {
 	Graphics graphicsFR(hdc);
 	Pen	penFR(Gdiplus::Color(255, 0, 0, 255), 2);
@@ -26,7 +24,6 @@ VOID PaintFrame(HDC hdc, const int& height, const int& width) {
 	graphicsFR.DrawLine(&penFR, 0, height - 100, width - 100, height - 100);
 	graphicsFR.DrawLine(&penFR, width - 100, 0, width - 100, height - 100);
 }
-
 VOID PrintVertexNumber(HDC hdc, const int& iPosX, const int& iPosY, const int& iVertexID) {
 	wchar_t buffer1[256];
 	wsprintfW(buffer1, L"%d", iVertexID);
@@ -39,8 +36,6 @@ VOID PrintVertexNumber(HDC hdc, const int& iPosX, const int& iPosY, const int& i
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
 	graphics3.DrawLine(&pen3, iPosX, iPosY + 5, iPosX + 10, iPosY + 5);
 }
-
-
 VOID PaintBoxStart(HDC hdc,const int& x, const int& y) {
 	Graphics graphics3(hdc);
 	Pen	pen3(Gdiplus::Color(245, 0, 125, 125), 10.0F);//greenBox
@@ -71,14 +66,6 @@ VOID PaintBoxFex22(HDC hdc, const int& x, const int& y) {//big_prinkBox
 	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 20.0F);
 	graphics3.DrawLine(&pen3, x, y + 10, x + 20, y + 10);
 }
-/*VOID PaintFrame(HDC hdc) {
-	Graphics graphicsFR(hdc);
-	Pen	penFR(Gdiplus::Color(255, 0, 0, 255), 2);
-	graphicsFR.DrawLine(&penFR, 0, 0, 0, height - 100);
-	graphicsFR.DrawLine(&penFR, 0, 0, width - 100, 0);
-	graphicsFR.DrawLine(&penFR, 0, height - 100, width - 100, height - 100);
-	graphicsFR.DrawLine(&penFR, width - 100, 0, width - 100, height - 100);
-}*/
 VOID PaintBox(HDC hdc, const int &param1, const int &param2, const int &param3, const int &param4, const bool &param5) {
 	Graphics graphics5(hdc);
 	Pen	pen1(Gdiplus::Color(255, 0, 0, 255), 2);
@@ -225,18 +212,6 @@ VOID PaintLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosX
 		}
 	}
 }
-/*VOID PrintVertexNumber(HDC hdc, const int& iPosX, const int& iPosY, const int& iVertexID) {
-	wchar_t buffer1[256];
-	wsprintfW(buffer1, L"%d", iVertexID);
-	TextOutW(hdc,
-		iPosX+25,
-		iPosY+25,
-		buffer1,
-		wcslen(buffer1));
-	Graphics graphics3(hdc);
-	Pen	pen3(Gdiplus::Color(255, 255, 0, 255), 10.0F);
-	graphics3.DrawLine(&pen3, n->iPosXRK, n->iPosYRK + 5, n->iPosXRK + 10, n->iPosYRK + 5);
-}*/
 VOID PaintWhiteClearLane(HDC hdc, const int &iPosXLk, const int &iPosYLk, const int &iPosXRk, const int &iPosYRk, const bool &HorV) {
 	Graphics graphics3(hdc);
 	Pen pen7(Gdiplus::Color(245, 245, 245, 255), 4);

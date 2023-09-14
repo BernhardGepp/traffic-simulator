@@ -1,14 +1,8 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-#include <fstream>
 
-static int counter;
 class callBackLinks {
-private:
 public:
-	
-	std::string fileString;
-	std::ofstream file;
 	void(*m_f1PaintBoxLB)(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK)=nullptr;
 	void(*m_f2PaintBoxRB)(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK)=nullptr;
 	void(*m_f3PaintFrame)(HDC hdc, const int& height, const int& width)=nullptr;
@@ -27,12 +21,8 @@ public:
 	int(*m_callback_getRandomNumber)() = nullptr;
 	HDC m_hdc=0;
 
-	callBackLinks::callBackLinks() {
-		counter++;
-		fileString = "C:/Users/bernh/Desktop/callBackfile" + std::to_string(counter) + ".txt";
-		file.open(fileString);
-		file << "Beginn STandardkonstruktor\t hdc: " << m_hdc;
-	}
+	callBackLinks::callBackLinks() {}
+		
 	callBackLinks::callBackLinks(const HDC& hdc,
 		void(*f1PaintBoxLB)(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK),
 		void(*f2PaintBoxRB)(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK),
@@ -54,10 +44,7 @@ public:
 		m_f14PaintBoxFlex11(f14PaintBoxFlex11),m_f15PaintBoxFlex12(f15PaintBoxFlex12),m_f16PaintBoxFlex21(f16PaintBoxFlex21),m_f17PaintBoxFlex22(f17PaintBoxFlex22),m_f18PrintLaneIF(f18PrintLaneIF),
 		m_f19PaintWhiteClearLane(f19PaintWhiteClearLane)
 	{
-		counter++;
-		fileString = "C:/Users/bernh/Desktop/callBackfile" + std::to_string(counter) + ".txt";
-		file.open(fileString);
-		file << "Beginn\t hdc: "<<m_hdc;
+		
 	}
 	callBackLinks::callBackLinks(const callBackLinks& other)noexcept {
 		m_f1PaintBoxLB = other.m_f1PaintBoxLB;
@@ -76,118 +63,28 @@ public:
 		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
 		m_hdc = other.m_hdc;
 	}
-	/*callBackLinks::callBackLinks(const callBackLinks&& other) noexcept {
-		m_f1PaintBoxLB = other.m_f1PaintBoxLB;
-		m_f2PaintBoxRB = other.m_f2PaintBoxRB;
-		m_f3PaintFrame = other.m_f3PaintFrame;
-		m_f5PaintLane = other.m_f5PaintLane;
-		m_f7PrintVertexNumber = other.m_f7PrintVertexNumber;
-		m_f10PaintBox = other.m_f10PaintBox;
-		m_f11PaintWhiteLine = other.m_f11PaintWhiteLine;
-		m_f12PaintBoxStart = other.m_f12PaintBoxStart;
-		m_f13PaintBoxEnd = other.m_f13PaintBoxEnd;
-		m_f14PaintBoxFlex11 = other.m_f14PaintBoxFlex11;
-		m_f15PaintBoxFlex12 = other.m_f15PaintBoxFlex12;
-		m_f16PaintBoxFlex21 = other.m_f16PaintBoxFlex21;
-		m_f17PaintBoxFlex22 = other.m_f17PaintBoxFlex22;
-		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
-		m_hdc = other.m_hdc;
-	}
-	callBackLinks& operator=(const callBackLinks& other)noexcept {
-		if (&other == this) {
-			return *this;
-		}
-		m_f1PaintBoxLB = other.m_f1PaintBoxLB;
-		m_f2PaintBoxRB = other.m_f2PaintBoxRB;
-		m_f3PaintFrame = other.m_f3PaintFrame;
-		m_f5PaintLane = other.m_f5PaintLane;
-		m_f7PrintVertexNumber = other.m_f7PrintVertexNumber;
-		m_f10PaintBox = other.m_f10PaintBox;
-		m_f11PaintWhiteLine = other.m_f11PaintWhiteLine;
-		m_f12PaintBoxStart = other.m_f12PaintBoxStart;
-		m_f13PaintBoxEnd = other.m_f13PaintBoxEnd;
-		m_f14PaintBoxFlex11 = other.m_f14PaintBoxFlex11;
-		m_f15PaintBoxFlex12 = other.m_f15PaintBoxFlex12;
-		m_f16PaintBoxFlex21 = other.m_f16PaintBoxFlex21;
-		m_f17PaintBoxFlex22 = other.m_f17PaintBoxFlex22;
-		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
-		m_hdc = other.m_hdc;
-		return *this;
-	}
-	callBackLinks& operator=(const callBackLinks&& other) noexcept {
-		if (&other == this) {
-			return *this;
-		}
-		m_f1PaintBoxLB = other.m_f1PaintBoxLB;
-		m_f2PaintBoxRB = other.m_f2PaintBoxRB;
-		m_f3PaintFrame = other.m_f3PaintFrame;
-		m_f5PaintLane = other.m_f5PaintLane;
-		m_f7PrintVertexNumber = other.m_f7PrintVertexNumber;
-		m_f10PaintBox = other.m_f10PaintBox;
-		m_f11PaintWhiteLine = other.m_f11PaintWhiteLine;
-		m_f12PaintBoxStart = other.m_f12PaintBoxStart;
-		m_f13PaintBoxEnd = other.m_f13PaintBoxEnd;
-		m_f14PaintBoxFlex11 = other.m_f14PaintBoxFlex11;
-		m_f15PaintBoxFlex12 = other.m_f15PaintBoxFlex12;
-		m_f16PaintBoxFlex21 = other.m_f16PaintBoxFlex21;
-		m_f17PaintBoxFlex22 = other.m_f17PaintBoxFlex22;
-		m_callback_getRandomNumber = other.m_callback_getRandomNumber;
-		m_hdc = other.m_hdc;
-		return *this;
-	}*/
+
 	callBackLinks::~callBackLinks() noexcept {
-		file.close();
+		
 	}
-	/*
-	auto topLevelFunctionPTR_f1PaintBoxLB(const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK);
-	auto topLevelFunctionPTR_f2PaintBoxRB(const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK);
-	auto topLevelFunctionPTR_f3PaintFrame(const int& height, const int& width);
-	auto topLevelFunctionPTR_f5PaintLane(const int& iPosXLk, const int& iPosYLk, const int& iPosXRk, const int& iPosYRk, const bool& HorV, const int& numberOfLanesa, const std::vector<std::tuple<int, int, int>>& PointsToBePrinted);
-	auto topLevelFunctionPTR_f7PrintVertexNumber(const int& iPosX, const int& iPosY, const int& iVertexID);
-	auto topLevelFunctionPTR_f10PaintBox(int param1, int param2, int param3, int param4, bool param5);
-	auto topLevelFunctionPTR_f11PaintWhiteLine(const int& param1, const int& param2, const int& param3, const int& param4, const int& param5);
-	auto topLevelFunctionPTR_f12PaintBoxStart(const int& x, const int& y);
-	auto topLevelFunctionPTR_f13PaintBoxEnd(const int& x, const int& y);
-	auto topLevelFunctionPTR_f14PaintBoxFlex11(const int& x, const int& y);
-	auto topLevelFunctionPTR_f15PaintBoxFlex12(const int& x, const int& y);
-	auto topLevelFunctionPTR_f16PaintBoxFlex21(const int& x, const int& y);
-	auto topLevelFunctionPTR_f17PaintBoxFlex22(const int& x, const int& y);*/
-	void callBackLinks::fileprint(const int& width, const int& height, const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool) {
-		file << "\nwidth:" << width << "\theight: " << height << "\tnumberOfLAnes: " << numberOfLanes << " " << iPosXLK_transfer << " " << iPosYLK_transfer << " " << lButtonServiceBool;
-	}
-	void callBackLinks::fileoutput() {
-		file << "\nFileoutput"<<"\t"<<this;
-	}
+	
 	void callBackLinks::topLevelFunctionPTR_f1PaintBoxLB(const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK) {
-		
-		
-		file << "\ninnerhalb topLevelFunctionPTR_f1PaintBoxLB\t"<<m_hdc;
 		m_f1PaintBoxLB(m_hdc, iPosXLK, iPosYLK, iPosXRK, iPosYRK);
-		
-		//int param1 = iPosXLK;
-		//return &m_f1PaintBoxLB(m_hdc, param1, iPosYLK, iPosXRK, iPosYRK);
 	}
 	auto callBackLinks::topLevelFunctionPTR_f2PaintBoxRB(const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK) {
-		file << "\ninnerhalb topLevelFunctionPTR_f2PaintBoxRB\t" << m_hdc;
 		return m_f2PaintBoxRB(m_hdc, iPosXLK, iPosYLK, iPosXRK, iPosYRK);
-		//return &m_f2PaintBoxRB;
 	}
 	auto callBackLinks::topLevelFunctionPTR_f3PaintFrame(const int& height, const int& width) {
-		file << "\ninnerhalb topLevelFunctionPTR_f3PaintFrame\t" << m_hdc;
 		return m_f3PaintFrame(m_hdc, height, width);
-		//return &m_f3PaintFrame;
 	}
 	auto callBackLinks::topLevelFunctionPTR_f5PaintLane(const int& iPosXLk, const int& iPosYLk, const int& iPosXRk, const int& iPosYRk, const bool& HorV, const int& numberOfLanesa, const std::vector<std::tuple<int, int, int>>& PointsToBePrinted) {
 		return m_f5PaintLane(m_hdc, iPosXLk, iPosYLk, iPosXRk, iPosYRk, HorV, numberOfLanesa, PointsToBePrinted);
-		//return &m_f5PaintLane;
 	}
 	auto callBackLinks::topLevelFunctionPTR_f7PrintVertexNumber(const int& iPosX, const int& iPosY, const int& iVertexID) {
 		return m_f7PrintVertexNumber(m_hdc, iPosX, iPosY, iVertexID);
-		//return m_f7PrintVertexNumber;
 	}
 	auto callBackLinks::topLevelFunctionPTR_f10PaintBox(int param1, int param2, int param3, int param4, bool param5) {
 		return m_f10PaintBox(m_hdc, param1, param2, param3, param4, param5);
-
 	}
 	auto callBackLinks::topLevelFunctionPTR_f11PaintWhiteLine(const int& param1, const int& param2, const int& param3, const int& param4, const int& param5) {
 		return m_f11PaintWhiteLine(m_hdc, param1, param2, param3, param4, param5);

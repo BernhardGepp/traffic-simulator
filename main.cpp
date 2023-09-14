@@ -152,7 +152,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
 	ts.n->m_CBLptr->m_hdc = hdc;
-	ts.n->a.m_hdc = hdc;
 	ts.width = width;
 	ts.height = height;
 	//***************************************************************
@@ -168,7 +167,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		case 0:
 			break;
 		case 1:
-			ts.n->a.m_f3PaintFrame(hdc, height, width);
+			ts.n->m_CBLptr->m_f3PaintFrame(hdc, height, width);
 			break;
 		
 		case 2:
