@@ -1,7 +1,5 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-//#include <fstream>
-//static int hilfeVar = 0;
 
 class randomSpeed_neu {
 public:
@@ -27,25 +25,4 @@ private:
 	static void randomSpeed_neu::randomNumberGenerator();
 
 };
-/*
-class printFunc {
-public:
-	std::ofstream file;
-	std::string name= "C:/Users/bernh/Desktop/donne/randontestXXX" + std::to_string(hilfeVar) + ".txt";
-	printFunc() {
-		hilfeVar++;
-	
-		file.open(name);
-	}
-	~printFunc() {
-		file.close();
-	}
-	void printFuncA(int param) {
-		file << "\n" << param;
-	}
-	void printFuncB(int param) {
-		file << "\t" << param;
-	}
-};
 
-*/
