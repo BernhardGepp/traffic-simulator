@@ -110,6 +110,7 @@ void edge::simiRun(const int& simulationIterator) {
 	//********************************************************************
 	writeSimulationResultsIntoDataContainer();
 }
+
 void edge::writeSimulationResultsIntoDataContainer(){
 	//Print of the simulation result:
 

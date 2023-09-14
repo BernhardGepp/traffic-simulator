@@ -1,12 +1,6 @@
 #include "PrecompiledHeadersEdges.h"
 #include "selectionFlowSimulation.h"
 
-/*void selectionFlowSimulation::setEndingPoints(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& maxVelocity, const int& maxVelocity_Density) {
-	
-	m_maxVelocity = maxVelocity;
-	m_maxVelocity_Density = maxVelocity_Density;
-
-}*/
 
 //********************************************
 void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt) {

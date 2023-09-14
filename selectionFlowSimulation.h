@@ -29,8 +29,6 @@ public:
 	callBackLinks* m_CBLptr = nullptr;
 	std::unique_ptr<sectionVehicleSet> vehicleSetPtr;
 	
-
-	//void selectionFlowSimulation::setEndingPoints(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& maxVelocity, const int& maxVelocity_Density);
 	
 	//********************************************
 	void selectionFlowSimulation::setStrategy(PrintPatternLine1LaneHoriNeg& ppt);

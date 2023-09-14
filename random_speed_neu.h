@@ -1,14 +1,12 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
 //#include <fstream>
-static int hilfeVar = 0;
+//static int hilfeVar = 0;
 
 class randomSpeed_neu {
 public:
 	
 	int a=100;
-	int bii = 0;
-	int cii = 0;
 	randomSpeed_neu();
 	randomSpeed_neu::randomSpeed_neu(const randomSpeed_neu& other) = delete;
 	randomSpeed_neu& operator= (const randomSpeed_neu& other) = delete;
@@ -24,13 +22,13 @@ private:
 	static std::queue<int>q2;
 	std::future<void> f1;
 	static bool serviceBool;
-
+	
 	void randomSpeed_neu::random();
 	static void randomSpeed_neu::randomNumberGenerator();
 
 };
-
-/*class printFunc {
+/*
+class printFunc {
 public:
 	std::ofstream file;
 	std::string name= "C:/Users/bernh/Desktop/donne/randontestXXX" + std::to_string(hilfeVar) + ".txt";
@@ -48,6 +46,6 @@ public:
 	void printFuncB(int param) {
 		file << "\t" << param;
 	}
-};*/
+};
 
-
+*/
