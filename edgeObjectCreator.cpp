@@ -6,14 +6,14 @@
 #include "selectionFlowSimulation.h"
 #include "edge.h"
 
-createEdge::createEdge(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
+createEdge::createEdge(callBackLinks* CBL, concreteObserverSubject* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }
 createEdge::~createEdge() {
 	
 }
-void createEdge::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
+void createEdge::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubject* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }

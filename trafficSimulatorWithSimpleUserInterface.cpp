@@ -88,7 +88,7 @@ void trafficSimulatorWithSimpleUserInterface::leftClick(const int& paramX, const
 	n->iPosXLK = iPosXLK;
 	n->iPosYLK = iPosYLK;
 	if (serviceBool) {
-		n->m_cObSptr->benachrichtigen(iPosXLK, iPosYLK);
+		n->m_cObSptr->toNotify(iPosXLK, iPosYLK);
 		if (m_programStatus == false) {
 			switch (m_determinationVariableOfNumberOfLanes) {
 			case 1:

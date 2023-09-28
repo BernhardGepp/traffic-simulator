@@ -22,7 +22,7 @@ userFunctionsOfTheSimpleWindowInterface::~userFunctionsOfTheSimpleWindowInterfac
 //********************************************************************
 //Methods of the class:
 
-void userFunctionsOfTheSimpleWindowInterface::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS) {
+void userFunctionsOfTheSimpleWindowInterface::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubject* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }

@@ -4,14 +4,14 @@
 //Constructor and destructor of the class:
 edge::edge() = default;
 edge::edge(const std::shared_ptr<vertex>& startVertex, const std::shared_ptr<vertex>& endVertex,  int numberOfLanes, std::unique_ptr<PrintPattern> pp_ptr,
-	concreteObserverSubjekt* cOSptr)
+	concreteObserverSubject* cOSptr)
 	: m_startVertexPtr(startVertex), m_endVertexPtr(endVertex), m_numberOfLanes(numberOfLanes), m_ppPtr(std::move(pp_ptr)), m_cOSptr(cOSptr) {
 	m_startVertex = m_startVertexPtr->m_vertexID;
 	m_endVertex = m_endVertexPtr->m_vertexID;
 	vehicleEraseVector.reserve(150);
 	m_routeServiceBool = false;
 	m_observerPTR = m_ppPtr->createObserver();
-	m_cOSptr->registrieren(m_observerPTR);
+	m_cOSptr->toRegister(m_observerPTR);
 	m_length = m_ppPtr->m_length;
 	m_risingOrDescention = m_ppPtr->m_risingOrDescention;
 	sFs.m_CBLptr = m_ppPtr->m_CBLptr;

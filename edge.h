@@ -17,7 +17,7 @@ private:
 	
 public:
 	observer* m_observerPTR = nullptr;
-	concreteObserverSubjekt* m_cOSptr = nullptr;
+	concreteObserverSubject* m_cOSptr = nullptr;
 	selectionFlowSimulation sFs;
 	std::unique_ptr<PrintPattern> m_ppPtr;	
 	std::shared_ptr<vertex> m_startVertexPtr;
@@ -38,7 +38,7 @@ public:
 	std::vector<vehicle*> vehicleEraseVector;
 
 	edge();
-	explicit edge(const std::shared_ptr<vertex>&, const std::shared_ptr<vertex>&,  int , std::unique_ptr<PrintPattern>,concreteObserverSubjekt* );
+	explicit edge(const std::shared_ptr<vertex>&, const std::shared_ptr<vertex>&,  int , std::unique_ptr<PrintPattern>,concreteObserverSubject* );
 	edge(const edge& other)=delete;
 	edge(edge&& );
 	edge& operator=(const edge& other) = delete;

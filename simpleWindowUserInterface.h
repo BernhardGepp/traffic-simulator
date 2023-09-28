@@ -27,13 +27,13 @@ private:
 	//Constructors and Destructor:
 	explicit simpleWindowUserInterface::simpleWindowUserInterface(const int& width, const int& height, const callBackLinks& CBL) :m_ref_width(width), m_ref_height(height) {
 		//file.open("C:/Users/bernh/Desktop/prüfe.txt");
-		m_cObSptr = std::make_unique<concreteObserverSubjekt>();
+		m_cObSptr = std::make_unique<concreteObserverSubject>();
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
 	
 		iPosXRK = width - 110;
 		iPosYRK = height - 110;
 		m_CBLptr->m_callback_getRandomNumber = &getRandomNumber;
-		m_networkCreationFunctions.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(m_CBLptr.get()), gsl::not_null<concreteObserverSubjekt* >(m_cObSptr.get()));
+		m_networkCreationFunctions.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(m_CBLptr.get()), gsl::not_null<concreteObserverSubject* >(m_cObSptr.get()));
 		m_networkDataStructure.iniziallizationOfPointer(gsl::not_null<callBackLinks*>(m_CBLptr.get()));
 	}
 	simpleWindowUserInterface::simpleWindowUserInterface(simpleWindowUserInterface& other) = delete;
@@ -46,7 +46,7 @@ public:
 	networkDataStructure m_networkDataStructure;
 	userFunctionsOfTheSimpleWindowInterface m_networkCreationFunctions;
 	std::unique_ptr<callBackLinks>m_CBLptr;
-	std::unique_ptr<concreteObserverSubjekt> m_cObSptr;
+	std::unique_ptr<concreteObserverSubject> m_cObSptr;
 	int iPosXLK = 0;
 	int iPosYLK = 0;
 	int iPosXRK = 0;

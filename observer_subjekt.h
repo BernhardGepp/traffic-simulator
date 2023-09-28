@@ -1,20 +1,19 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
 #include "observer.h"
-class observerSubjekt {
+class observerSubject {
 private:
 public:
 	std::vector<observer*>m_observerPTRvector;
-	virtual void registrieren(observer* obserPTR) = 0;
-	virtual void entfernen() {
-	}
-	virtual void benachrichtigen(const int& param1, const int& param2) = 0;
+	virtual void toRegister(observer* obserPTR) = 0;
+	virtual void toRemove() = 0;
+	virtual void toNotify(const int& param1, const int& param2) = 0;
 	
 };
 
-class concreteObserverSubjekt :public observerSubjekt {
+class concreteObserverSubject :public observerSubject {
 public:
-	void registrieren(observer* obserPTR) override;
-	void entfernen() override;
-	void benachrichtigen(const int& param1, const int& param2) override;
+	void toRegister(observer* obserPTR) override;
+	void toRemove() override;
+	void toNotify(const int& param1, const int& param2) override;
 };

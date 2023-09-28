@@ -15,7 +15,7 @@ public:
 	enum m_numberOfLanes { oneLane = 1, twoLanes = 2 };
 	std::vector<std::tuple<std::pair<int, int>, std::pair<int, int>, bool, m_numberOfLanes>> networkLaneVector;//vertical=true, horizontal=false;
 
-	concreteObserverSubjekt* m_cObSptr = nullptr;
+	concreteObserverSubject* m_cObSptr = nullptr;
 	callBackLinks* m_CBLptr = nullptr;
 	createVertex* vertrexCreator_ptr=nullptr;
 	createEdge* edgeCreator_ptr = nullptr;
@@ -29,7 +29,7 @@ public:
 	int edgeCaseDisplacement(const int& transferParm, const int& boundary);
 	void establishLane(const int& width, const int& height, const int& numberOfLanes, const int& iPosXLK_transfer, const int& iPosYLK_transfer, bool lButtonServiceBool);
 
-	void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS);
+	void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubject* cOS);
 	void vertexCreationVH_Network(const std::pair<int, int>& XandYpostion, const int& shapeOfThatVertex);
 	void graphGenerationFromClickPairs(const int& width, const int& height, const int& choiceOfRouteFinding);
 };

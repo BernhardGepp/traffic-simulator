@@ -389,9 +389,6 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			//ts.n->m_CBLptr->m_f3PaintFrame(hdc, height, width);
 
-			//ts.n->a.topLevelFunctionPTR_f2PaintBoxRB(ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
-			//ts.n->a.topLevelFunctionPTR_f1PaintBoxLB(ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
-			//ts.n->a.topLevelFunctionPTR_f3PaintFrame(height, width);
 			PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintFrame(hdc, height, width);

@@ -9,7 +9,7 @@
 class createEdge {
 	public:
 		
-		concreteObserverSubjekt* m_cObSptr = nullptr;
+		concreteObserverSubject* m_cObSptr = nullptr;
 		callBackLinks* m_CBLptr = nullptr;
 		std::shared_ptr<vertex> m_startVertex;
 		std::shared_ptr<vertex> m_endVertex;
@@ -22,11 +22,11 @@ class createEdge {
 		int m_lanesV = 0;
 		
 		std::unique_ptr<edge> createdEdge;
-		createEdge(callBackLinks* CBL, concreteObserverSubjekt* cOS);
+		createEdge(callBackLinks* CBL, concreteObserverSubject* cOS);
 		~createEdge();
 		std::unique_ptr <edge>&& create(const std::shared_ptr<vertex>&, const std::shared_ptr<vertex>&, const int&);
 		//std::unique_ptr<PrintPattern>&& choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV);
 		std::unique_ptr<PrintPattern> choosePrintPattern();
-		void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubjekt* cOS);
+		void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubject* cOS);
 		
 };
