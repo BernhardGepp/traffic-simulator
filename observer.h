@@ -1,5 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 class observer {
 public:
 	int m_startValue = 0;

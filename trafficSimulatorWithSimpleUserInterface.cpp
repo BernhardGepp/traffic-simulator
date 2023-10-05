@@ -2,9 +2,8 @@
 #include "PrecompiledHeadersEdges.h"
 #include "trafficSimulator.h"
 #include "trafficSimulatorWithSimpleUserInterface.h"
-#include "callBackFunctions.h"
-using namespace Gdiplus;
 
+using namespace Gdiplus;
 
 simpleWindowUserInterface* simpleWindowUserInterface::instance = 0;
 trafficSimulatorWithSimpleUserInterface::trafficSimulatorWithSimpleUserInterface(HDC hdc):trafficSimulator(){

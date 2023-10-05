@@ -1,6 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
-#include"vehicle.h"
 #include "random_speed_neu.h"
 #include "callBackLinks.h"
 
@@ -20,12 +18,9 @@ public:
 	sectionVehicleSet& operator=(const sectionVehicleSet&& other) = delete;
 	~sectionVehicleSet() noexcept;
 
-	
-
 	virtual int sectionVehicleSet::flow(const int &numberOfLanes,
 		const int &length,
 		const bool &riseOrDecline) = 0;
-
 	void insertSET(vehicle* a);
 	size_t getVehicleSetSize() const;
 	int sumOfVehicleSpeedInEdge();

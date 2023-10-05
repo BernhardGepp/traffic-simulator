@@ -1,11 +1,6 @@
 #pragma once
-#include "vertex.h"
-#include "PoolAllocator.h"
-#include "vehicle.h"
 #include "selectionFlowSimulation.h"
-#include "PrecompiledHeadersEdges.h"
 #include "observer_subjekt.h"
-#include "observer.h"
 
 class edge {
 private:
@@ -44,7 +39,6 @@ public:
 	edge& operator=(const edge& other) = delete;
 	edge& operator=( edge&& other) = default;
 	~edge() noexcept;
-
 
 	int getStartVertex();
 	int getEndVertex();

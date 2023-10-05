@@ -1,14 +1,13 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
 #include "callBackFunctions.h"
-#include "trafficSimulatorWithSimpleUserInterface.h"
 using namespace Gdiplus;
+
 VOID PaintBoxLB(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK,const int& iPosYRK) {
 	Graphics graphics1(hdc);
 	Pen	pen2(Color(255, 255, 0, 255), 10.0F);
 	TextOutW(hdc, iPosXLK + 10, iPosYLK + 10, L"P1", wcslen(L"P1 "));
 	graphics1.DrawLine(&pen2, iPosXLK, iPosYLK + 5, iPosXLK + 10, iPosYLK + 5);
-
 }
 VOID PaintBoxRB(HDC hdc, const int& iPosXLK, const int& iPosYLK, const int& iPosXRK, const int& iPosYRK) {
 	Graphics graphics3(hdc);

@@ -1,5 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 
 class vertexEnd :public vertex {
 private:

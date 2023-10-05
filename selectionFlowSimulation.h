@@ -1,13 +1,9 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 #include "flowSimulation1PosStraight.h"
 #include "flowSimulation2PosStraight.h"
 #include "flowSimulation1NegStraight.h"
 #include "flowSimulation2NegStraight.h"
-#include "callBackLinks.h"
 #include "observer.h"
-
-
 
 class PrintPatternLine1LaneHoriNeg;
 class PrintPatternLine1LaneHoriPos;

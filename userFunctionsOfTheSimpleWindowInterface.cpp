@@ -1,12 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "userFunctionsOfTheSimpleWindowInterface.h"
-#include "vertex.h"
-#include "vertexEnd.h"
-#include "vertexFlex.h"
-#include "vertexStart.h"
 #include "graphTrafficGenerationOnAllRoutes.h"
 #include "graphTrafficGenerationOnFastRoutes.h"
-#include "vertexObjectCreator.h"
 
 
 //Constructor and destructor of the class:

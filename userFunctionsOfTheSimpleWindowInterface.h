@@ -1,11 +1,8 @@
 #pragma once
-#include "callBackLinks.h"
-#include "PrecompiledHeadersEdges.h"
-#include "edge.h"
 #include "graph.h"
-#include "vertex.h"
 #include "vertexObjectCreator.h"
 #include "edgeObjectCreator.h"
+
 class userFunctionsOfTheSimpleWindowInterface {
 private:
 	int xCordinadte_store_LB=0;

@@ -1,6 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
-
 
 namespace bbe {
 	template <typename T>

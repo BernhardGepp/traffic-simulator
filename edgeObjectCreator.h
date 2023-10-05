@@ -1,10 +1,5 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
-#include "callBackLinks.h"
-#include "observer_subjekt.h"
-#include "selectionFlowSimulation.h"
 #include "edge.h"
-
 
 class createEdge {
 	public:
@@ -20,13 +15,11 @@ class createEdge {
 		int m_p2y = 0; 
 		int m_lanesH = 0;
 		int m_lanesV = 0;
-		
 		std::unique_ptr<edge> createdEdge;
+
 		createEdge(callBackLinks* CBL, concreteObserverSubject* cOS);
 		~createEdge();
 		std::unique_ptr <edge>&& create(const std::shared_ptr<vertex>&, const std::shared_ptr<vertex>&, const int&);
-		//std::unique_ptr<PrintPattern>&& choosePrintPattern(const int& p1x, const int& p1y, const int& p2x, const int& p2y, const int& lanesH, const int& lanesV);
 		std::unique_ptr<PrintPattern> choosePrintPattern();
 		void iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubject* cOS);
-		
 };

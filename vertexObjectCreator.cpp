@@ -1,7 +1,6 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
 #include "vertexObjectCreator.h"
-#include "vertex.h"
 #include "vertexEnd.h"
 #include "vertexFlex.h"
 #include "vertexStart.h"
@@ -24,7 +23,6 @@ std::shared_ptr <vertex> createVertex::create(const int& xvalue, const int& yval
 	counter++;
 	return createdVertex;
 }
-
 void createVertex::decrementCounter() {
 	counter--;
 }

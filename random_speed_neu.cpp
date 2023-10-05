@@ -14,7 +14,6 @@ randomSpeed_neu::~randomSpeed_neu() noexcept {}
 
 void randomSpeed_neu::randomNumberRequest() {
 	if (q1.empty()) {
-		//if (serviceBool == false) {
 		if (!q2.empty()) {
 			q1 = std::move(q2);
 			std::queue<int> q3;
@@ -23,7 +22,6 @@ void randomSpeed_neu::randomNumberRequest() {
 			}
 		}
 		randomSpeed_neu::random();
-		//}
 		a = 100;
 	}
 	else {

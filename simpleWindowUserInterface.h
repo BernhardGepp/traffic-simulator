@@ -1,32 +1,18 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
-//#include "vertex.h"
-#include "vertexFlex.h"
-#include "vertexStart.h"
-#include "vertexEnd.h"
-//#include "edge.h"
-#include "graph.h"
-//#include "vehicle.h"
-#include "random_speed_neu.h"
-
 #include "callBackLinks.h"
-#include "observer_subjekt.h"
 #include "userFunctionsOfTheSimpleWindowInterface.h"
 #include "networkDataStructure.h"
 #include "callBackFunctions.h"
 
-
 class simpleWindowUserInterface {
 private:
 	static simpleWindowUserInterface* instance;
-	
 	const int& m_ref_width;
 	const int& m_ref_height;
 	bool lButtonServiceBool = true;
 
 	//Constructors and Destructor:
 	explicit simpleWindowUserInterface::simpleWindowUserInterface(const int& width, const int& height, const callBackLinks& CBL) :m_ref_width(width), m_ref_height(height) {
-		//file.open("C:/Users/bernh/Desktop/prüfe.txt");
 		m_cObSptr = std::make_unique<concreteObserverSubject>();
 		m_CBLptr = std::make_unique<callBackLinks>(CBL);
 	

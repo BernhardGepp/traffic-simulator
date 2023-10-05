@@ -1,10 +1,7 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
-#include "simpleWindowUserInterface.h"
-#include "callBackLinks.h"
-#include "trafficSimulator.h"
 #include "trafficSimulatorWithSimpleUserInterface.h"
-#include "callBackFunctions.h"
+
 
 #define MY_BUTTON_ID 38
 #define MY_RKLICK_ID 37
@@ -20,9 +17,7 @@
 
 static HDC hdc;
 trafficSimulatorWithSimpleUserInterface ts(hdc);
-
 enum numberOFLanes { one = 1, two = 2 };
-
 const int width = 1200;
 const int height = 700;
 bool window1closed = false;

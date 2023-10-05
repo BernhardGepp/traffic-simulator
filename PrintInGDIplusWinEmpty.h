@@ -1,5 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 
 class PrintInGDIplusWinEmpty :public PrintInGDIplusWindow {
 private:

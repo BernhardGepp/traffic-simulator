@@ -1,11 +1,8 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
-#include "vertex.h"
 #include "edge.h"
 class route {
 private:
 public:
-	
 	std::vector<int> m_vertexOfRouteID;
 	std::vector<int>::iterator iterator;
 	std::vector<std::shared_ptr<edge>>m_edgesOfRoute;

@@ -1,5 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 
 class randomSpeed_neu {
 public:
@@ -14,15 +13,13 @@ public:
 	
 	void randomNumberRequest();
 	
-	
 private:
 	std::queue<int>q1;
 	static std::queue<int>q2;
 	std::future<void> f1;
 	static bool serviceBool;
 	
-	void randomSpeed_neu::random();
-	static void randomSpeed_neu::randomNumberGenerator();
-
+	void random();
+	static void randomNumberGenerator();
 };
 

@@ -1,5 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 
 class PrintInGDIplusWin1LP :public PrintInGDIplusWindow {
 private:
@@ -15,7 +14,6 @@ public:
 	PrintInGDIplusWin1LP::PrintInGDIplusWin1LP(const PrintInGDIplusWin1LP&& other) = delete;
 	PrintInGDIplusWin1LP& operator=(const PrintInGDIplusWin1LP& other) = delete;
 	PrintInGDIplusWin1LP& operator=(const PrintInGDIplusWin1LP&& other) = delete;
-	
 	
 	void addPrintContent(const int&, const int&, const int&, const int&, const int&, const int&, const int&);
 };

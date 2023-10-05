@@ -1,5 +1,4 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 class vehicle {
 private:
 public:
@@ -14,9 +13,6 @@ public:
 	bool m_processedByIteration = true;
 	bool m_riseOrDecline = true;
 	bool m_moblieORStationary = true;
-	
-	
-
 
 	vehicle();
 	explicit vehicle( const int& , const int& );
@@ -29,6 +25,5 @@ public:
 	void setPtr(vehicle* );
 	bool operator<(const vehicle& ) const;
 	int position() const;
-
 };
 

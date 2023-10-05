@@ -1,17 +1,12 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
 #include "edgeObjectCreator.h"
-#include "callBackLinks.h"
-#include "observer_subjekt.h"
-#include "selectionFlowSimulation.h"
-#include "edge.h"
 
 createEdge::createEdge(callBackLinks* CBL, concreteObserverSubject* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }
 createEdge::~createEdge() {
-	
 }
 void createEdge::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubject* cOS) {
 	m_CBLptr = CBL;
@@ -29,8 +24,6 @@ std::unique_ptr <edge>&& createEdge::create(const std::shared_ptr<vertex>& start
 	createdEdge = std::make_unique<edge>(m_startVertex, m_endVertex, m_numberOfLanes, choosePrintPattern(), m_cObSptr);
 	return std::move(createdEdge);
 }
-
-
 std::unique_ptr<PrintPattern> createEdge::choosePrintPattern() {
 	//********************************************************************
 	//Selection of the appropriate print pattern

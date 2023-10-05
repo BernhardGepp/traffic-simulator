@@ -2,11 +2,9 @@
 #include "sectionVehicleSet.h"
 #include "velocityToLength.h"
 #include "PrintInGDIplusWin2LP.h"
-#include "PrecompiledHeadersEdges.h"
 
 class flowSimulation2PosStraightA: public sectionVehicleSet {
 private:
-	
 public:
 	velocityToLength VL;
 	bool flag = false;
@@ -28,8 +26,6 @@ public:
 	~flowSimulation2PosStraightA()noexcept;
 	
 	int flow(const int& , const int& , const bool& )override;
-	
-	
 };
 
 	

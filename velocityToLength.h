@@ -1,9 +1,7 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 class velocityToLength {
 private:
 public:
-	
 	velocityToLength();
 	velocityToLength::velocityToLength(const velocityToLength &other) = delete;
 	velocityToLength::velocityToLength(const velocityToLength &&other) = delete;	

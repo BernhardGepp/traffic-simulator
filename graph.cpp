@@ -29,6 +29,17 @@ graph::graph(const std::set<int>& setOfVertexes,
 
 graph::~graph() noexcept {}
 
+graph::graph(const graph& other) {
+	m_vectorOfVertexPtr.reserve(other.m_vectorOfEdgesPtr.size());
+	for (auto& i : other.m_vectorOfVertexPtr) {
+		m_vectorOfVertexPtr.emplace_back(i);
+	}
+	m_vectorOfEdgesPtr.reserve(other.m_vectorOfEdgesPtr.size());
+	for (auto& i : other.m_vectorOfEdgesPtr) {
+		m_vectorOfEdgesPtr.emplace_back(i);
+	}
+}
+
 //********************************************************************
 //Methods of the class:
 

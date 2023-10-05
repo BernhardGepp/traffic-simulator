@@ -1,9 +1,7 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
 
 class transmissionTable {
 public:
-	
 	int param1 = 0;
 	std::queue<vehicle*> param2;
 	transmissionTable::transmissionTable()noexcept {

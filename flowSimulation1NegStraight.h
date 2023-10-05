@@ -2,11 +2,9 @@
 #include "sectionVehicleSet.h"
 #include "velocityToLength.h"
 #include "PrintInGDIplusWin1LN.h"
-#include "PrecompiledHeadersEdges.h"
 
 class flowSimulation1NegStraight : public sectionVehicleSet {
 private:
-	
 public:
 	velocityToLength VL;
 	bool flag = false;
@@ -28,6 +26,5 @@ public:
 	flowSimulation1NegStraight& operator=(const flowSimulation1NegStraight&& other) = delete;
 	~flowSimulation1NegStraight() noexcept;
 
-	
 	int flow(const int&, const int&, const bool&)override;
 };

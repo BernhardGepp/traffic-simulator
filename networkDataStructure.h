@@ -1,11 +1,6 @@
 #pragma once
-#include "PrecompiledHeadersEdges.h"
-#include "callBackLinks.h"
-#include "edge.h"
 #include "graph.h"
-#include "vertex.h"
 #include "PrintInGDIplusWinEmpty.h"
-
 
 class networkDataStructure {
 public:
