@@ -158,7 +158,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 		
-		switch (ts.mainInterfaceFunction()) {
+		switch (ts.mainFunctionOfTheTrafficSimulator()) {
 		case 0:
 			break;
 		case 1:
@@ -380,9 +380,6 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			hdc = BeginPaint(g_windowHandle, &ps);	
 			ts.n->m_CBLptr->m_hdc = hdc;
 			ts.clickPointsResetInTheField();
-			//ts.n->m_CBLptr->m_f2PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
-			//ts.n->m_CBLptr->m_f1PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
-			//ts.n->m_CBLptr->m_f3PaintFrame(hdc, height, width);
 
 			PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);

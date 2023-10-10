@@ -2,10 +2,14 @@
 #include "sectionVehicleSet.h"
 
 //Constructor and destructor of the class:
-sectionVehicleSet::sectionVehicleSet() {}
+sectionVehicleSet::sectionVehicleSet() {
+	vehicleEraseVector.reserve(150);
+}
 	
 sectionVehicleSet::sectionVehicleSet(callBackLinks* CBLptr)
-	:m_CBLptr(CBLptr){}
+	:m_CBLptr(CBLptr){
+	vehicleEraseVector.reserve(150);
+}
 
 sectionVehicleSet::~sectionVehicleSet() noexcept {}
 
@@ -43,4 +47,46 @@ std::pair<int, int> sectionVehicleSet::trafficCharacteristics() {
 		sumOfVehicles++;
 	}
 	return std::pair<int, int>(sumOfVehicleSpeed, sumOfVehicles);
+}
+
+void sectionVehicleSet::sort() {
+	std::vector <vehicle*> vehicleVector;
+	vehicleVector.reserve(m_vehicleSet.size() + 1);
+	for (auto i : m_vehicleSet) {
+		if (i != nullptr) {
+			if ((i->m_lane > 0) && (i->m_ID_ptr != nullptr))
+				vehicleVector.emplace_back(i);
+		}
+	}
+	m_vehicleSet.clear();
+	for (auto& i : vehicleVector) {
+		m_vehicleSet.insert(i);
+	}
+}
+
+void sectionVehicleSet::deallocateVehicleAtEnd(const bool& totalRelease, const bool& risingOrDescention, std::shared_ptr<vertex> endVertexPtr) {
+	//********************************************************************
+	//This method removes vehicles from the edge, which have already passed it
+	size_t a = 0;
+	vehicleEraseVector.clear();
+	if (!m_vehicleSet.empty()) {
+		for (auto& ii : m_vehicleSet) {
+			ii->m_processedByIteration = false;
+			ii->m_riseOrDecline = risingOrDescention;
+			if (totalRelease == true) {
+				if (ii->m_inRange == false) {
+					vehicleEraseVector.push_back(ii);
+				}
+			}
+			else {
+				vehicleEraseVector.push_back(ii);
+			}
+		}
+		if (!vehicleEraseVector.empty()) {
+			for (auto i : vehicleEraseVector) {
+				m_vehicleSet.erase(i);
+				endVertexPtr->vehiclePTRmanipulationInV(i);
+			}
+		}
+	}
 }

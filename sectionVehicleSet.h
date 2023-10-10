@@ -9,6 +9,7 @@ public:
 	unsigned int m_sumOfVehicleSpeed = 0;
 	callBackLinks* m_CBLptr = nullptr;
 	std::set<vehicle*, boost::indirect_fun<std::less<vehicle>>>m_vehicleSet;
+	std::vector<vehicle*> vehicleEraseVector;
 	
 	explicit sectionVehicleSet();
 	explicit sectionVehicleSet(callBackLinks* CBLptr);
@@ -25,5 +26,7 @@ public:
 	size_t getVehicleSetSize() const;
 	int sumOfVehicleSpeedInEdge();
 	std::pair<int, int> trafficCharacteristics();
+	void sort();
+	void deallocateVehicleAtEnd(const bool&, const bool&, std::shared_ptr<vertex> m_endVertexPtr);
 };
 

@@ -10,19 +10,26 @@ trafficSimulatorWithSimpleUserInterface::trafficSimulatorWithSimpleUserInterface
 	n = gsl::not_null<simpleWindowUserInterface*>(simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber,PaintBox, PaintWhiteLine, PaintBoxStart,
 		 PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22,PrintLaneIF,PaintWhiteClearLane)));
 }
-int trafficSimulatorWithSimpleUserInterface::mainInterfaceFunction() {
+int trafficSimulatorWithSimpleUserInterface::mainFunctionOfTheTrafficSimulator() {
 	if ((m_currentSimulationStep > 0) && (m_programStatus)) {
+		//***********************************************************************
+		// Option 1: Carrying out a simulation sequence of the traffic simulator
+		
+		//Reduction of the number of simulation iterations to be performed
 		m_currentSimulationStep--;
 		if (n->m_networkDataStructure.appliedGraph.size() >= 1) {
+			//Command to call a simulation sequence (for all graphs)
 			for (auto& i : n->m_networkDataStructure.appliedGraph) {
 				i->simulation(m_currentSimulationStep);
 			}
+			//Pause between the calculation of the result of a simulation sequence and its display
 			if (n->m_networkDataStructure.appliedGraph[0]->m_vectorOfEdgesPtr.size() <= 6) {
 				std::this_thread::sleep_for(std::chrono::milliseconds(250));
 			}
 			else {
 				std::this_thread::sleep_for(std::chrono::milliseconds(260));
 			}
+			//Commands for displaying the result of the simulation
 			n->displayNetworkWithSimulationStepResult();
 			n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
 		}
@@ -30,11 +37,17 @@ int trafficSimulatorWithSimpleUserInterface::mainInterfaceFunction() {
 		return 1;
 	}
 	if ((m_currentSimulationStep == 0) && (m_programStatus)) {
+		//***********************************************************************
+		// Option 2: After running the simulation (traffic simulator counter is zero)
 		return 2;
 	}
 	if ((n->m_networkDataStructure.appliedGraph.size() == 0) && (m_programStatus)) {
+		//***********************************************************************
+		//Option 3: This programe path prevents a simulation process from being executed if no traffic graphs are available.
 		return 3;
 	}
+	//***********************************************************************
+	// Option 4: This option becomes effective if no traffic graphs have been created yet and no traffic simulation is possible!
 	return 0;
 }
 void trafficSimulatorWithSimpleUserInterface::clickPointsResetInTheField() {

@@ -22,7 +22,7 @@ public:
 	bool queryOnTheSelectedNumberOfLanes();
 	void clickPointsResetInTheField();
 	bool waitIfDubbleClick(const int& a, const int& b);
-	int mainInterfaceFunction();
+	int mainFunctionOfTheTrafficSimulator();
 	void rightClick(const int&,const int&);
 	void leftClick(const int&, const int&);
 };

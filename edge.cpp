@@ -8,7 +8,6 @@ edge::edge(const std::shared_ptr<vertex>& startVertex, const std::shared_ptr<ver
 	: m_startVertexPtr(startVertex), m_endVertexPtr(endVertex), m_numberOfLanes(numberOfLanes), m_ppPtr(std::move(pp_ptr)), m_cOSptr(cOSptr) {
 	m_startVertex = m_startVertexPtr->m_vertexID;
 	m_endVertex = m_endVertexPtr->m_vertexID;
-	vehicleEraseVector.reserve(150);
 	m_routeServiceBool = false;
 	m_observerPTR = m_ppPtr->createObserver();
 	m_cOSptr->toRegister(m_observerPTR);
@@ -78,7 +77,7 @@ void edge::computeEdgesCharactaristics() {
 }
 
 void edge::simiRun(const int& simulationIterator) {
-	sort();
+	sFs.vehicleSetPtr->sort();
 	//********************************************************************
 	//This method orchestrates together with the subordinated methods "flow1L" and "singleSimulationStep" the simulation in the lane.
 	m_simulationIterator = simulationIterator;
@@ -160,7 +159,7 @@ void edge::flow1L(const int& a, const int& b) {
 				m_numberOfVehicleinRange++;
 				sFs.vehicleSetPtr->insertSET(insertion(m_startVertexPtr->getVehiclePtrOutOfVertex(m_endVertex, 0)));
 			}
-			sort();
+			sFs.vehicleSetPtr->sort();
 		}
 	}
 }
@@ -186,22 +185,7 @@ void edge::singleSimulationStep(const int& param) {
 		}
 	} while (counter < vehicleSetSize);
 	//Vehicles who reached the end of the lane will be removed of the lane by the methode "deallocateVehicleAtEnd"!
-	deallocateVehicleAtEnd(true);
-}
-
-void edge::sort() {
-	std::vector <vehicle*> vehicleVector;
-	vehicleVector.reserve(sFs.vehicleSetPtr->m_vehicleSet.size() + 1);
-	for (auto i : sFs.vehicleSetPtr->m_vehicleSet) {
-		if (i != nullptr) {
-			if((i->m_lane>0)&&(i->m_ID_ptr!=nullptr))
-				vehicleVector.emplace_back(i);
-		}
-	}
-	sFs.vehicleSetPtr->m_vehicleSet.clear();
-	for (auto& i : vehicleVector) {
-		sFs.vehicleSetPtr->m_vehicleSet.insert(i);
-	}
+	sFs.vehicleSetPtr->deallocateVehicleAtEnd(true,m_risingOrDescention,m_endVertexPtr);
 }
 
 vehicle* edge::routeAssignment(vehicle* VPAEptr) {
@@ -304,36 +288,9 @@ void edge::allocateVehicleAtPositionX() {
 				sFs.vehicleSetPtr->insertSET(VPAEptr);
 			}
 
-			sort();
+			sFs.vehicleSetPtr->sort();
 			m_observerPTR->m_position.first = 0;
 			m_observerPTR->m_position.second = 0;
-		}
-	}
-}
-
-void edge::deallocateVehicleAtEnd(bool totalRelease) {
-	//********************************************************************
-	//This method removes vehicles from the edge, which have already passed it
-	size_t a = 0;
-	vehicleEraseVector.clear();
-	if (!sFs.vehicleSetPtr->m_vehicleSet.empty()) {
-		for (auto& ii : sFs.vehicleSetPtr->m_vehicleSet) {
-			ii->m_processedByIteration = false;
-			ii->m_riseOrDecline = m_risingOrDescention;
-			if (totalRelease == true) {
-				if (ii->m_inRange == false) {
-					vehicleEraseVector.push_back(ii);
-				}
-			}
-			else {
-				vehicleEraseVector.push_back(ii);
-			}
-		}
-		if (!vehicleEraseVector.empty()) {
-			for (auto i : vehicleEraseVector) {
-				sFs.vehicleSetPtr->m_vehicleSet.erase(i);
-				m_endVertexPtr->vehiclePTRmanipulationInV(i);
-			}
 		}
 	}
 }

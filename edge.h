@@ -30,7 +30,7 @@ public:
 	float m_averageTravelTime = 0.0f;
 	int m_length = 0;
 	bool m_risingOrDescention = true;
-	std::vector<vehicle*> vehicleEraseVector;
+	
 
 	edge();
 	explicit edge(const std::shared_ptr<vertex>&, const std::shared_ptr<vertex>&,  int , std::unique_ptr<PrintPattern>,concreteObserverSubject* );
@@ -50,11 +50,9 @@ public:
 	void writeSimulationResultsIntoDataContainer();
 	void flow1L(const int& , const int& );
 	void singleSimulationStep(const int& );
-	void sort();
 	vehicle* routeAssignment(vehicle* );
 	vehicle* insertion(vehicle* );
 	void allocateVehicleAtPositionX();
-	void deallocateVehicleAtEnd(bool);
 };
 
 
