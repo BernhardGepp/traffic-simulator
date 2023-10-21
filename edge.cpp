@@ -8,7 +8,7 @@ edge::edge(const std::shared_ptr<vertex>& startVertex, const std::shared_ptr<ver
 	: m_startVertexPtr(startVertex), m_endVertexPtr(endVertex), m_numberOfLanes(numberOfLanes), m_ppPtr(std::move(pp_ptr)), m_cOSptr(cOSptr) {
 	m_startVertex = m_startVertexPtr->m_vertexID;
 	m_endVertex = m_endVertexPtr->m_vertexID;
-	m_routeServiceBool = false;
+	//m_routeServiceBool = false;
 	m_observerPTR = m_ppPtr->createObserver();
 	m_cOSptr->toRegister(m_observerPTR);
 	m_length = m_ppPtr->m_length;
@@ -80,13 +80,13 @@ void edge::simiRun(const int& simulationIterator) {
 	}
 	switch(m_numberOfLanes){
 	case 1:
-		flow1L(1, 220);					//Insertion of new vehicles into the edge
-		singleSimulationStep(220);		//Treatment of all vehicles in the edge according the traffic flow simulation alg.
+		sFs.vehicleSetPtr->flow1L(1, 220, m_length, m_risingOrDescention, m_startVertexPtr, m_endVertex, m_numberOfLanes);					//Insertion of new vehicles into the edge
+		m_maxVelocity_Density= sFs.vehicleSetPtr->singleSimulationStep(220,m_length,m_numberOfLanes,m_risingOrDescention,m_endVertexPtr);		//Treatment of all vehicles in the edge according the traffic flow simulation alg.
 		break;
 	
 	case 2:
-		flow1L(1, 440);					//Insertion of new vehicles into the edge
-		singleSimulationStep(440);		//Treatment of all vehicles in the edge according the traffic flow simulation alg.
+		sFs.vehicleSetPtr->flow1L(1, 440, m_length, m_risingOrDescention, m_startVertexPtr, m_endVertex, m_numberOfLanes);					//Insertion of new vehicles into the edge
+		m_maxVelocity_Density= sFs.vehicleSetPtr->singleSimulationStep(440, m_length, m_numberOfLanes, m_risingOrDescention, m_endVertexPtr);		//Treatment of all vehicles in the edge according the traffic flow simulation alg.
 		break;
 	}
 	//********************************************************************
@@ -119,128 +119,6 @@ void edge::writeSimulationResultsIntoDataContainer(){
 	}
 }
 
-void edge::flow1L(const int& a, const int& b) {
-	bool checkIfPositionIsEmpty = false;
-	//************************************************************
-	//Check whether the first position in the set is occupied!
-	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
-		i->m_riseOrDecline = m_risingOrDescention;
-		if ((i->m_position == 0) && (m_risingOrDescention == true)) {
-			checkIfPositionIsEmpty = true;
-		}
-		if ((i->m_position == m_length) && (m_risingOrDescention == false)) {
-			checkIfPositionIsEmpty = true;
-		}
-	}
-	//If the first position of the lane is not occupied, the program continues with the insertion of the vehicle objects into the lane.
-	if (checkIfPositionIsEmpty == false) {
-		if (m_startVertexPtr->m_shapeOfThatVertex == 1) {
-			if (a < 150) {
-				vehicle* VPAEptr = nullptr;
-				VPAEptr = m_startVertexPtr->getVehiclePtrOutOfVertex(0, 0);
-				if (VPAEptr != nullptr) {
-					VPAEptr->m_routeVertexID_vehicle.clear();
-					VPAEptr->m_routeID = -1;
-					VPAEptr = routeAssignment(VPAEptr);
-					if(VPAEptr != nullptr)
-						sFs.vehicleSetPtr->insertSET(insertion(VPAEptr));// Inserting the vehicle objects into the set(lane)! New!
-				}
-			}
-		}
-		if ((m_startVertexPtr->m_shapeOfThatVertex == 0) || (m_startVertexPtr->m_shapeOfThatVertex == 11)) {
-			sFs.vehicleSetPtr->insertSET(insertion(m_startVertexPtr->getVehiclePtrOutOfVertex(m_endVertex, 0)));
-			if ((m_startVertexPtr->getVertexDelay(m_endVertex) > 11.0f) && (m_numberOfLanes == 2)) {
-				m_numberOfVehicleinRange++;
-				sFs.vehicleSetPtr->insertSET(insertion(m_startVertexPtr->getVehiclePtrOutOfVertex(m_endVertex, 0)));
-			}
-			sFs.vehicleSetPtr->sort();
-		}
-	}
-}
-
-void edge::singleSimulationStep(const int& param) {
-	//Treatment of all vehicles in the edge in order to execute the simulation!
-	size_t vehicleSetSize = 0;
-	vehicleSetSize = sFs.vehicleSetPtr->getVehicleSetSize();
-	size_t counter = 0;
-	do {
-		counter++;
-
-		if (sFs.vehicleSetPtr->m_vehicleSet.size() > 0) {
-			//Determination of the maximum speed from certain traffic densities!
-			if ((m_length / sFs.vehicleSetPtr->m_vehicleSet.size()) >= param) {
-				m_maxVelocity_Density = 80;
-			}
-			else {
-				m_maxVelocity_Density = 140;
-			}
-			//The methode "flow" of the inheriting classes of the class "selectionFlow Simulation" contains the traffic flow simulation algorithm!
-			m_numberOfVehicleinRange = sFs.vehicleSetPtr->flow(m_numberOfLanes, m_length, m_risingOrDescention);
-		}
-	} while (counter < vehicleSetSize);
-	//Vehicles who reached the end of the lane will be removed of the lane by the methode "deallocateVehicleAtEnd"!
-	sFs.vehicleSetPtr->deallocateVehicleAtEnd(true,m_risingOrDescention,m_endVertexPtr);
-}
-
-vehicle* edge::routeAssignment(vehicle* VPAEptr) {
-	//********************************************************************
-	//This method is called when a route is assigned in a vehicle object.
-	VPAEptr->m_routeVertexID_vehicle.clear();
-
-	if (!m_routeTable_IDrValueIDvertex.empty()) {
-		if (m_routeTableIterator >= m_routeTable_IDrValueIDvertex.size()) {
-			m_routeTableIterator = 0;//Reset Iterator!
-		}
-		if (m_routeServiceBool == false) {
-			m_routeServiceBool = true;
-		}
-		if (m_routeTableIterator < m_routeTable_IDrValueIDvertex.size()) {
-			VPAEptr->m_routeVertexID_vehicle.clear();
-			VPAEptr->m_routeID = m_routeTable_IDrValueIDvertex[m_routeTableIterator].first.first;
-
-			for (size_t i = 0; i < m_routeTable_IDrValueIDvertex[m_routeTableIterator].second.size(); i++) {
-				VPAEptr->m_routeVertexID_vehicle.push_back(m_routeTable_IDrValueIDvertex[m_routeTableIterator].second[i]);
-			}
-			m_routeTableIterator++;
-		}
-		else {
-			m_VPAptr->deallocate(VPAEptr);
-			return nullptr;
-		}
-	}
-	return VPAEptr;
-}
-
-vehicle* edge::insertion(vehicle* VPAEptr) {
-	//********************************************************************
-	//This method is used to insert vehicle objects into the lane.
-	if (VPAEptr != nullptr) {
-		VPAEptr->setPtr(VPAEptr);
-		VPAEptr->m_moblieORStationary = true;
-		VPAEptr->m_riseOrDecline = m_risingOrDescention;
-		VPAEptr->m_inRange = true;
-		VPAEptr->m_processedByIteration = false;
-		if (m_risingOrDescention == true) {
-			VPAEptr->m_position = 0;
-		}
-		if (m_risingOrDescention == false) {
-			VPAEptr->m_position = m_length;
-		}
-		if (m_numberOfLanes == 2) {
-			if ((m_numberOfVehicleinRange % 2) == 0)
-				VPAEptr->m_lane = 1;
-			else {
-				VPAEptr->m_lane = 2;
-				VPAEptr->m_position -= 1;
-			}
-		}
-		else
-			VPAEptr->m_lane = 1;
-		return VPAEptr;
-		
-	}
-	return nullptr;
-}
 
 void edge::allocateVehicleAtPositionX() {
 	//********************************************************************

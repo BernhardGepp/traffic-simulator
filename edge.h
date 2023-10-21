@@ -7,7 +7,6 @@ private:
 	int m_simulationIterator = 0;
 	int m_maxVelocity = 140;
 	int m_maxVelocity_Density = 140;
-	int m_numberOfVehicleinRange = 0;
 	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer auf den Poolallocator
 	
 public:
@@ -19,9 +18,6 @@ public:
 	std::shared_ptr<vertex> m_endVertexPtr;
 	int m_numberOfLanes = 1;
 	bool m_verticalOrHorizontal = true;
-	std::vector<std::pair<std::pair<int, float>, std::vector<int>>> m_routeTable_IDrValueIDvertex;
-	size_t m_routeTableIterator = 0;
-	bool m_routeServiceBool = false;
 	int m_startVertex = 0;
 	int m_endVertex = 0;
 	float m_weight = 0.0f;
@@ -48,10 +44,6 @@ public:
 	void computeEdgesCharactaristics();
 	void simiRun(const int& );
 	void writeSimulationResultsIntoDataContainer();
-	void flow1L(const int& , const int& );
-	void singleSimulationStep(const int& );
-	vehicle* routeAssignment(vehicle* );
-	vehicle* insertion(vehicle* );
 	void allocateVehicleAtPositionX();
 };
 
