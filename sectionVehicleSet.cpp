@@ -16,6 +16,23 @@ sectionVehicleSet::~sectionVehicleSet() noexcept {}
 //********************************************************************
 //Methods of the class:
 
+float sectionVehicleSet::computeAverageSpeedOfSection() {
+	float averageSpeed = 0.0f;
+	averageSpeed = (static_cast<float>(trafficCharacteristics().first)) / (static_cast<float>(trafficCharacteristics().second));
+	return averageSpeed;
+}
+
+float sectionVehicleSet::computeTrafficDensityOfSection(const int& length) {
+	float density = 0.0f;
+	density= static_cast<float>(static_cast<float>(trafficCharacteristics().second) / (static_cast<float>(length) * 0.001));
+	return density;
+}
+float sectionVehicleSet::computeWeightOfSection(const int& length) {
+	float weight = 0.0f;
+	weight = 1 / ((static_cast<float>(sumOfVehicleSpeedInEdge())) / (static_cast<float>(length)));
+	return weight;
+}
+
 void sectionVehicleSet::sectionDestruct() {
 	//****************************************************************
 	//In this method the vehicles are taken out of the lane, that means out of the edge of the traffic graph.

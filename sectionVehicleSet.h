@@ -31,5 +31,8 @@ public:
 	void sort();
 	void deallocateVehicleAtEnd(const bool&, const bool&, std::shared_ptr<vertex> m_endVertexPtr);
 	void sectionDestruct();
+	float computeWeightOfSection(const int&);
+	float computeTrafficDensityOfSection(const int&);
+	float computeAverageSpeedOfSection();
 };
 

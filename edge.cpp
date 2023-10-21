@@ -42,14 +42,6 @@ void edge::sectionDestruct() {
 	//The vehicle objects, which are controlled in the lane via pointer, are prepared again for a new use in 
 	//the simulation by calling the method "deallocate" of the class "PoolAllocator".
 	//****************************************************************
-	/*vehicle* vehiclePtr = nullptr;
-	while (!sFs.vehicleSetPtr->m_vehicleSet.empty()) {
-
-		vehiclePtr = *sFs.vehicleSetPtr->m_vehicleSet.begin();
-		sFs.vehicleSetPtr->m_vehicleSet.erase(sFs.vehicleSetPtr->m_vehicleSet.begin());
-		m_VPAptr->deallocate(vehiclePtr);
-		vehiclePtr = nullptr;
-	}*/
 	sFs.vehicleSetPtr->sectionDestruct();
 }
 
@@ -58,7 +50,7 @@ void edge::sectionDestruct() {
 //********************************************************************
 //Two methods for calculating the characteristics of simulated traffic in the lane (in the edge of the network-graph):
 void edge::computeWeightOfEdge() {
-	m_weight = 1 / ((static_cast<float>(sFs.vehicleSetPtr->sumOfVehicleSpeedInEdge())) / (static_cast<float>(m_length)));
+	m_weight = sFs.vehicleSetPtr->computeWeightOfSection(m_length);
 }
 
 void edge::computeEdgesCharactaristics() {
@@ -66,8 +58,8 @@ void edge::computeEdgesCharactaristics() {
 	m_averageSpeed = 0.0f;
 	if (m_length > 0) {
 		if (sFs.vehicleSetPtr->trafficCharacteristics().second > 0) {//vehicleSetPtr->trafficCharacteristics().second  =>> Anzahl der Fahrzeuge in Edge
-			m_density = static_cast<float>(static_cast<float>(sFs.vehicleSetPtr->trafficCharacteristics().second) / (static_cast<float>(m_length) * 0.001));
-			m_averageSpeed = (static_cast<float>(sFs.vehicleSetPtr->trafficCharacteristics().first)) / (static_cast<float>(sFs.vehicleSetPtr->trafficCharacteristics().second));
+			m_density = sFs.vehicleSetPtr->computeTrafficDensityOfSection(m_length);
+			m_averageSpeed = sFs.vehicleSetPtr->computeAverageSpeedOfSection();
 		}
 	}
 	if (m_averageSpeed > 0) {
