@@ -32,6 +32,7 @@ void edge::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
 	//****************************************************************
 	//This method sets the pointer that points to the "PoolAllocator" associated with the graph whose part this link is.
 	m_VPAptr = &poolAllocatorRef;
+	sFs.vehicleSetPtr->setPoolAllocatorPtr(poolAllocatorRef);
 }
 
 
@@ -41,14 +42,15 @@ void edge::sectionDestruct() {
 	//The vehicle objects, which are controlled in the lane via pointer, are prepared again for a new use in 
 	//the simulation by calling the method "deallocate" of the class "PoolAllocator".
 	//****************************************************************
-	vehicle* vehiclePtr = nullptr;
+	/*vehicle* vehiclePtr = nullptr;
 	while (!sFs.vehicleSetPtr->m_vehicleSet.empty()) {
 
 		vehiclePtr = *sFs.vehicleSetPtr->m_vehicleSet.begin();
 		sFs.vehicleSetPtr->m_vehicleSet.erase(sFs.vehicleSetPtr->m_vehicleSet.begin());
 		m_VPAptr->deallocate(vehiclePtr);
 		vehiclePtr = nullptr;
-	}
+	}*/
+	sFs.vehicleSetPtr->sectionDestruct();
 }
 
 

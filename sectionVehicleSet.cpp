@@ -16,6 +16,22 @@ sectionVehicleSet::~sectionVehicleSet() noexcept {}
 //********************************************************************
 //Methods of the class:
 
+void sectionVehicleSet::sectionDestruct() {
+	//****************************************************************
+	//In this method the vehicles are taken out of the lane, that means out of the edge of the traffic graph.
+	//The vehicle objects, which are controlled in the lane via pointer, are prepared again for a new use in 
+	//the simulation by calling the method "deallocate" of the class "PoolAllocator".
+	//****************************************************************
+	vehicle* vehiclePtr = nullptr;
+	while (!(m_vehicleSet.empty())) {
+
+		vehiclePtr = *m_vehicleSet.begin();
+		m_vehicleSet.erase(m_vehicleSet.begin());
+		m_VPAptr->deallocate(vehiclePtr);
+		vehiclePtr = nullptr;
+	}
+}
+
 void sectionVehicleSet::insertSET(vehicle* a)
 {
 	if (a != nullptr) {
@@ -47,6 +63,12 @@ std::pair<int, int> sectionVehicleSet::trafficCharacteristics() {
 		sumOfVehicles++;
 	}
 	return std::pair<int, int>(sumOfVehicleSpeed, sumOfVehicles);
+}
+
+void sectionVehicleSet::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
+	//****************************************************************
+	//This method sets the pointer that points to the "PoolAllocator" associated with the graph whose part this link is.
+	m_VPAptr = &poolAllocatorRef;
 }
 
 void sectionVehicleSet::sort() {

@@ -5,6 +5,7 @@
 class sectionVehicleSet 
 {
 private:
+	bbe::PoolAllocator<vehicle>* m_VPAptr = nullptr; //Pointer auf den Poolallocator
 public:
 	unsigned int m_sumOfVehicleSpeed = 0;
 	callBackLinks* m_CBLptr = nullptr;
@@ -26,7 +27,9 @@ public:
 	size_t getVehicleSetSize() const;
 	int sumOfVehicleSpeedInEdge();
 	std::pair<int, int> trafficCharacteristics();
+	void sectionVehicleSet::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef);
 	void sort();
 	void deallocateVehicleAtEnd(const bool&, const bool&, std::shared_ptr<vertex> m_endVertexPtr);
+	void sectionDestruct();
 };
 
