@@ -75,9 +75,6 @@ void edge::simiRun(const int& simulationIterator) {
 	//********************************************************************
 	//This method orchestrates together with the subordinated methods "flow1L" and "singleSimulationStep" the simulation in the lane.
 	m_simulationIterator = simulationIterator;
-	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
-		i->m_riseOrDecline = m_risingOrDescention;
-	}
 	switch(m_numberOfLanes){
 	case 1:
 		sFs.vehicleSetPtr->flow1L(1, 220, m_length, m_risingOrDescention, m_startVertexPtr, m_endVertex, m_numberOfLanes);					//Insertion of new vehicles into the edge
@@ -126,18 +123,10 @@ void edge::allocateVehicleAtPositionX() {
 	//The method is executed when a lane should to be blocked at a certain position												
 	bool checkIfPositionIsEmpty = false;
 	if (m_observerPTR->m_position.second > 0) {
-		for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
-			if (i->m_position == m_observerPTR->m_position.first) {
-				checkIfPositionIsEmpty = true;
-				i->m_moblieORStationary = true;
-				m_observerPTR->m_position.first = 0;
-				m_observerPTR->m_position.second = 0;
-
-				break;
-			}
-			else {
-				checkIfPositionIsEmpty = false;
-			}
+		if (sFs.vehicleSetPtr->vehiclePositionCheckInLane(m_observerPTR->m_position.first)) {
+			checkIfPositionIsEmpty = true;
+			m_observerPTR->m_position.first = 0;
+			m_observerPTR->m_position.second = 0;
 		}
 		if (checkIfPositionIsEmpty == false) {
 			vehicle* VPAEptr = nullptr;
@@ -150,16 +139,9 @@ void edge::allocateVehicleAtPositionX() {
 				VPAEptr->m_lane = 2;
 			}
 			if (VPAEptr != nullptr) {
-				VPAEptr->setPtr(gsl::not_null <vehicle*> (VPAEptr));  //Setting the ID in vehicle object
-				int nullIntInit = 0;
-				VPAEptr->m_pref_speed = nullIntInit;
-				VPAEptr->m_moblieORStationary = false;
-				VPAEptr->m_position = m_observerPTR->m_position.first;
-				VPAEptr->m_inRange = true;
-				VPAEptr->m_riseOrDecline = m_risingOrDescention;
+				VPAEptr = sFs.vehicleSetPtr->insertion(VPAEptr, m_length, m_numberOfLanes, m_observerPTR->m_position.first, m_risingOrDescention, false);
 				sFs.vehicleSetPtr->insertSET(VPAEptr);
 			}
-
 			sFs.vehicleSetPtr->sort();
 			m_observerPTR->m_position.first = 0;
 			m_observerPTR->m_position.second = 0;

@@ -39,7 +39,8 @@ public:
 	float computeAverageSpeedOfSection();
 	vehicle* routeAssignment(vehicle*);
 	void flow1L(const int&, const int&, const int&, const bool&, const std::shared_ptr<vertex>&, const int&, const int&);
-	vehicle* insertion(vehicle*, const int&, const int&, const bool&, const bool&);
+	vehicle* insertion(vehicle*, const int&, const int&, const int&, const bool&, const bool&);
 	int singleSimulationStep(const int&, const int&, const int&, const bool&, const std::shared_ptr<vertex>&);
+	bool vehiclePositionCheckInLane(const int&);
 };
 
