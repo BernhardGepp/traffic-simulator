@@ -45,7 +45,7 @@ public:
 	bool m_startVertexShort = false;
 	bool m_endVertexShort = false;
 	std::unique_ptr<observer> m_observer;
-	callBackLinks* m_CBLptr=nullptr;
+	callBackLinks* m_CBLptr  = nullptr;
 
 	PrintPattern()noexcept;
 	PrintPattern::PrintPattern(const PrintPattern& other) noexcept {

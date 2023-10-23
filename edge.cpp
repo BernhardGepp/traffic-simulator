@@ -8,7 +8,6 @@ edge::edge(const std::shared_ptr<vertex>& startVertex, const std::shared_ptr<ver
 	: m_startVertexPtr(startVertex), m_endVertexPtr(endVertex), m_numberOfLanes(numberOfLanes), m_ppPtr(std::move(pp_ptr)), m_cOSptr(cOSptr) {
 	m_startVertex = m_startVertexPtr->m_vertexID;
 	m_endVertex = m_endVertexPtr->m_vertexID;
-	//m_routeServiceBool = false;
 	m_observerPTR = m_ppPtr->createObserver();
 	m_cOSptr->toRegister(m_observerPTR);
 	m_length = m_ppPtr->m_length;
@@ -35,7 +34,6 @@ void edge::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
 	sFs.vehicleSetPtr->setPoolAllocatorPtr(poolAllocatorRef);
 }
 
-
 void edge::sectionDestruct() {
 	//****************************************************************
 	//In this method the vehicles are taken out of the lane, that means out of the edge of the traffic graph.
@@ -44,8 +42,6 @@ void edge::sectionDestruct() {
 	//****************************************************************
 	sFs.vehicleSetPtr->sectionDestruct();
 }
-
-
 
 //********************************************************************
 //Two methods for calculating the characteristics of simulated traffic in the lane (in the edge of the network-graph):
@@ -101,22 +97,6 @@ void edge::simiRun(const int& simulationIterator) {
 	writeSimulationResultsIntoDataContainer();
 }
 
-void edge::writeSimulationResultsIntoDataContainer(){
-	//Print of the simulation result:
-
-	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
-		i->m_processedByIteration = false;
-		if (!i->m_routeVertexID_vehicle.empty()) {
-			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
-
-		}
-		else {
-			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, 0);
-		}
-	}
-}
-
-
 void edge::allocateVehicleAtPositionX() {
 	//********************************************************************
 	//The method "allocateVehicleAtPositionX()" can be used to block the link (edge). 
@@ -148,3 +128,19 @@ void edge::allocateVehicleAtPositionX() {
 		}
 	}
 }
+
+void edge::writeSimulationResultsIntoDataContainer(){
+	//Print of the simulation result:
+	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {
+		i->m_processedByIteration = false;
+		if (!i->m_routeVertexID_vehicle.empty()) {
+			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, i->m_routeVertexID_vehicle.back());
+
+		}
+		else {
+			m_ppPtr->printContentOfSection(i->m_lane, i->m_position, 0);
+		}
+	}
+}
+
+

@@ -30,6 +30,7 @@ void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiPos& ppt) {
 
 PrintPattern::PrintPattern() noexcept{}
 
+
 PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
 	m_length = m_p1x - m_p2x;

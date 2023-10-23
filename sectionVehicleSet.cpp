@@ -14,210 +14,7 @@ sectionVehicleSet::sectionVehicleSet(callBackLinks* CBLptr)
 sectionVehicleSet::~sectionVehicleSet() noexcept {}
 
 //********************************************************************
-//Methods of the class:
-bool sectionVehicleSet::vehiclePositionCheckInLane(const int& position) {
-	for (auto& i : m_vehicleSet) {
-		if (i->m_position == position) {
-			i->m_moblieORStationary = true;
-			break;
-			return true;
-		}
-	}
-	return false;
-}
-int sectionVehicleSet::singleSimulationStep(const int& param, const int& length, const int& numberOfLanes, const bool& risingOrDescention, const std::shared_ptr<vertex>& endVertexPtr) {
-	//Treatment of all vehicles in the edge in order to execute the simulation!
-	size_t vehicleSetSize = 0;
-	int maxVelocity_Density = 0;
-	vehicleSetSize = getVehicleSetSize();
-	size_t counter = 0;
-	do {
-		counter++;
-
-		if (m_vehicleSet.size() > 0) {
-			//Determination of the maximum speed from certain traffic densities!
-			if ((length / m_vehicleSet.size()) >= param) {
-				maxVelocity_Density = 80;
-			}
-			else {
-				maxVelocity_Density = 140;
-			}
-			//The methode "flow" of the inheriting classes of the class "selectionFlow Simulation" contains the traffic flow simulation algorithm!
-			m_numberOfVehicleinRange = flow(numberOfLanes, length, risingOrDescention);
-		}
-	} while (counter < vehicleSetSize);
-	//Vehicles who reached the end of the lane will be removed of the lane by the methode "deallocateVehicleAtEnd"!
-	deallocateVehicleAtEnd(true, risingOrDescention, endVertexPtr);
-	return maxVelocity_Density;
-}
-
-vehicle* sectionVehicleSet::routeAssignment(vehicle* VPAEptr) {
-	//********************************************************************
-	//This method is called when a route is assigned in a vehicle object.
-	VPAEptr->m_routeVertexID_vehicle.clear();
-
-	if (!m_routeTable_IDrValueIDvertex.empty()) {
-		if (m_routeTableIterator >= m_routeTable_IDrValueIDvertex.size()) {
-			m_routeTableIterator = 0;//Reset Iterator!
-		}
-		if (m_routeServiceBool == false) {
-			m_routeServiceBool = true;
-		}
-		if (m_routeTableIterator < m_routeTable_IDrValueIDvertex.size()) {
-			VPAEptr->m_routeVertexID_vehicle.clear();
-			VPAEptr->m_routeID = m_routeTable_IDrValueIDvertex[m_routeTableIterator].first.first;
-
-			for (size_t i = 0; i < m_routeTable_IDrValueIDvertex[m_routeTableIterator].second.size(); i++) {
-				VPAEptr->m_routeVertexID_vehicle.push_back(m_routeTable_IDrValueIDvertex[m_routeTableIterator].second[i]);
-			}
-			m_routeTableIterator++;
-		}
-		else {
-			m_VPAptr->deallocate(VPAEptr);
-			return nullptr;
-		}
-	}
-	return VPAEptr;
-}
-void sectionVehicleSet::flow1L(const int& a, const int& b,const int& length, const bool& risingOrDescention, const std::shared_ptr<vertex>& startVertexPtr, 
-	const int& endVertex, const int& numberOfLanes) {
-	bool checkIfPositionIsEmpty = false;
-	//************************************************************
-	//Check whether the first position in the set is occupied!
-	for (auto& i : m_vehicleSet) {
-		i->m_riseOrDecline = risingOrDescention;
-		if ((i->m_position == 0) && (risingOrDescention == true)) {
-			checkIfPositionIsEmpty = true;
-		}
-		if ((i->m_position == length) && (risingOrDescention == false)) {
-			checkIfPositionIsEmpty = true;
-		}
-	}
-	//If the first position of the lane is not occupied, the program continues with the insertion of the vehicle objects into the lane.
-	if (checkIfPositionIsEmpty == false) {
-		if (startVertexPtr->m_shapeOfThatVertex == 1) {
-			if (a < 150) {
-				vehicle* VPAEptr = nullptr;
-				VPAEptr = startVertexPtr->getVehiclePtrOutOfVertex(0, 0);
-				if (VPAEptr != nullptr) {
-					VPAEptr->m_routeVertexID_vehicle.clear();
-					VPAEptr->m_routeID = -1;
-					VPAEptr = routeAssignment(VPAEptr);
-					if (VPAEptr != nullptr)
-						insertSET(insertion(VPAEptr, length, numberOfLanes, 0, risingOrDescention, true));// Inserting the vehicle objects into the set(lane)! New!
-				}
-			}
-		}
-		if ((startVertexPtr->m_shapeOfThatVertex == 0) || (startVertexPtr->m_shapeOfThatVertex == 11)) {
-			insertSET(insertion(startVertexPtr->getVehiclePtrOutOfVertex(endVertex, 0), length, numberOfLanes, 0, risingOrDescention, true));
-			if ((startVertexPtr->getVertexDelay(endVertex) > 11.0f) && (numberOfLanes == 2)) {
-				m_numberOfVehicleinRange++;
-				insertSET(insertion(startVertexPtr->getVehiclePtrOutOfVertex(endVertex, 0), length, numberOfLanes, 0, risingOrDescention, true));
-			}
-			sort();
-		}
-	}
-}
-
-vehicle* sectionVehicleSet::insertion(vehicle* VPAEptr, const int& length, const int& numberOfLanes,const int& position, const bool& risingOrDescention, const bool& moblieORStationary) {
-	//********************************************************************
-	//This method is used to insert vehicle objects into the lane.
-	if (VPAEptr != nullptr) {
-		VPAEptr->setPtr(VPAEptr);
-		VPAEptr->m_moblieORStationary = moblieORStationary;
-		VPAEptr->m_riseOrDecline = risingOrDescention;
-		VPAEptr->m_inRange = true;
-		VPAEptr->m_processedByIteration = false;
-		if ((risingOrDescention == true) && (moblieORStationary == true)) {
-			VPAEptr->m_position = 0;
-			VPAEptr->m_lane = 1;
-		}
-		if ((risingOrDescention == false) && (moblieORStationary == true)) {
-			VPAEptr->m_position = length;
-			VPAEptr->m_lane = 1;
-		}
-		if ((numberOfLanes == 2) && (moblieORStationary == true)) {
-			if ((m_numberOfVehicleinRange % 2) == 0)
-				VPAEptr->m_lane = 1;
-			else {
-				VPAEptr->m_lane = 2;
-				VPAEptr->m_position -= 1;
-			}
-		}
-		if (moblieORStationary == false) {
-			VPAEptr->m_position = position;
-			VPAEptr->m_pref_speed = 0;
-		}
-		return VPAEptr;
-	}
-	return nullptr;
-}
-
-float sectionVehicleSet::computeAverageSpeedOfSection() {
-	float averageSpeed = 0.0f;
-	averageSpeed = (static_cast<float>(trafficCharacteristics().first)) / (static_cast<float>(trafficCharacteristics().second));
-	return averageSpeed;
-}
-
-float sectionVehicleSet::computeTrafficDensityOfSection(const int& length) {
-	float density = 0.0f;
-	density= static_cast<float>(static_cast<float>(trafficCharacteristics().second) / (static_cast<float>(length) * 0.001));
-	return density;
-}
-float sectionVehicleSet::computeWeightOfSection(const int& length) {
-	float weight = 0.0f;
-	weight = 1 / ((static_cast<float>(sumOfVehicleSpeedInEdge())) / (static_cast<float>(length)));
-	return weight;
-}
-
-void sectionVehicleSet::sectionDestruct() {
-	//****************************************************************
-	//In this method the vehicles are taken out of the lane, that means out of the edge of the traffic graph.
-	//The vehicle objects, which are controlled in the lane via pointer, are prepared again for a new use in 
-	//the simulation by calling the method "deallocate" of the class "PoolAllocator".
-	//****************************************************************
-	vehicle* vehiclePtr = nullptr;
-	while (!(m_vehicleSet.empty())) {
-
-		vehiclePtr = *m_vehicleSet.begin();
-		m_vehicleSet.erase(m_vehicleSet.begin());
-		m_VPAptr->deallocate(vehiclePtr);
-		vehiclePtr = nullptr;
-	}
-}
-
-void sectionVehicleSet::insertSET(vehicle* a)
-{
-	if (a != nullptr) {
-		m_vehicleSet.insert(a);
-	}
-	else {
-		//std::cout << "Allocation in VehicleSet failed!\n";
-	}
-}
-
-size_t sectionVehicleSet::getVehicleSetSize() const {
-	return m_vehicleSet.size();
-}
-
-int sectionVehicleSet::sumOfVehicleSpeedInEdge() {
-	int sumOfVehicleSpeed = 0;
-	for (auto& i : m_vehicleSet) {
-		sumOfVehicleSpeed = i->m_pref_speed + sumOfVehicleSpeed;
-	}
-	return sumOfVehicleSpeed;
-}
-
-std::pair<int, int> sectionVehicleSet::trafficCharacteristics() {
-	int sumOfVehicleSpeed = 0;
-	int sumOfVehicles = 0;
-	for (auto& i : m_vehicleSet) {
-		
-		sumOfVehicleSpeed = i->m_speed + sumOfVehicleSpeed;
-		sumOfVehicles++;
-	}
-	return std::pair<int, int>(sumOfVehicleSpeed, sumOfVehicles);
-}
+//Basic methods of the class:
 
 void sectionVehicleSet::setPoolAllocatorPtr(bbe::PoolAllocator<vehicle>& poolAllocatorRef) {
 	//****************************************************************
@@ -266,3 +63,218 @@ void sectionVehicleSet::deallocateVehicleAtEnd(const bool& totalRelease, const b
 		}
 	}
 }
+
+void sectionVehicleSet::sectionDestruct() {
+	//****************************************************************
+	//In this method the vehicles are taken out of the lane, that means out of the edge of the traffic graph.
+	//The vehicle objects, which are controlled in the lane via pointer, are prepared again for a new use in 
+	//the simulation by calling the method "deallocate" of the class "PoolAllocator".
+	//****************************************************************
+	vehicle* vehiclePtr = nullptr;
+	while (!(m_vehicleSet.empty())) {
+
+		vehiclePtr = *m_vehicleSet.begin();
+		m_vehicleSet.erase(m_vehicleSet.begin());
+		m_VPAptr->deallocate(vehiclePtr);
+		vehiclePtr = nullptr;
+	}
+}
+
+//Methods of traffic simulation:
+
+size_t sectionVehicleSet::getVehicleSetSize() const {
+	return m_vehicleSet.size();
+}
+
+int sectionVehicleSet::singleSimulationStep(const int& param, const int& length, const int& numberOfLanes, const bool& risingOrDescention, const std::shared_ptr<vertex>& endVertexPtr) {
+	//Treatment of all vehicles in the edge in order to execute the simulation!
+	size_t vehicleSetSize = 0;
+	int maxVelocity_Density = 0;
+	vehicleSetSize = getVehicleSetSize();
+	size_t counter = 0;
+	do {
+		counter++;
+
+		if (m_vehicleSet.size() > 0) {
+			//Determination of the maximum speed from certain traffic densities!
+			if ((length / m_vehicleSet.size()) >= param) {
+				maxVelocity_Density = 80;
+			}
+			else {
+				maxVelocity_Density = 140;
+			}
+			//The methode "flow" of the inheriting classes of the class "selectionFlow Simulation" contains the traffic flow simulation algorithm!
+			m_numberOfVehicleinRange = flow(numberOfLanes, length, risingOrDescention);
+		}
+	} while (counter < vehicleSetSize);
+	//Vehicles who reached the end of the lane will be removed of the lane by the methode "deallocateVehicleAtEnd"!
+	deallocateVehicleAtEnd(true, risingOrDescention, endVertexPtr);
+	return maxVelocity_Density;
+}
+
+void sectionVehicleSet::flow1L(const int& a, const int& b, const int& length, const bool& risingOrDescention, const std::shared_ptr<vertex>& startVertexPtr,
+	const int& endVertex, const int& numberOfLanes) {
+	bool checkIfPositionIsEmpty = false;
+	//************************************************************
+	//Check whether the first position in the set is occupied!
+	for (auto& i : m_vehicleSet) {
+		i->m_riseOrDecline = risingOrDescention;
+		if ((i->m_position == 0) && (risingOrDescention == true)) {
+			checkIfPositionIsEmpty = true;
+		}
+		if ((i->m_position == length) && (risingOrDescention == false)) {
+			checkIfPositionIsEmpty = true;
+		}
+	}
+	//If the first position of the lane is not occupied, the program continues with the insertion of the vehicle objects into the lane.
+	if (checkIfPositionIsEmpty == false) {
+		if (startVertexPtr->m_shapeOfThatVertex == 1) {
+			if (a < 150) {
+				vehicle* VPAEptr = nullptr;
+				VPAEptr = startVertexPtr->getVehiclePtrOutOfVertex(0, 0);
+				if (VPAEptr != nullptr) {
+					VPAEptr->m_routeVertexID_vehicle.clear();
+					VPAEptr->m_routeID = -1;
+					VPAEptr = routeAssignment(VPAEptr);
+					if (VPAEptr != nullptr)
+						insertSET(insertion(VPAEptr, length, numberOfLanes, 0, risingOrDescention, true));// Inserting the vehicle objects into the set(lane)! New!
+				}
+			}
+		}
+		if ((startVertexPtr->m_shapeOfThatVertex == 0) || (startVertexPtr->m_shapeOfThatVertex == 11)) {
+			insertSET(insertion(startVertexPtr->getVehiclePtrOutOfVertex(endVertex, 0), length, numberOfLanes, 0, risingOrDescention, true));
+			if ((startVertexPtr->getVertexDelay(endVertex) > 11.0f) && (numberOfLanes == 2)) {
+				m_numberOfVehicleinRange++;
+				insertSET(insertion(startVertexPtr->getVehiclePtrOutOfVertex(endVertex, 0), length, numberOfLanes, 0, risingOrDescention, true));
+			}
+			sort();
+		}
+	}
+}
+
+//Methods for inserting vehicles into the lane:
+
+vehicle* sectionVehicleSet::routeAssignment(vehicle* VPAEptr) {
+	//********************************************************************
+	//This method is called when a route is assigned in a vehicle object.
+	VPAEptr->m_routeVertexID_vehicle.clear();
+
+	if (!m_routeTable_IDrValueIDvertex.empty()) {
+		if (m_routeTableIterator >= m_routeTable_IDrValueIDvertex.size()) {
+			m_routeTableIterator = 0;//Reset Iterator!
+		}
+		if (m_routeServiceBool == false) {
+			m_routeServiceBool = true;
+		}
+		if (m_routeTableIterator < m_routeTable_IDrValueIDvertex.size()) {
+			VPAEptr->m_routeVertexID_vehicle.clear();
+			VPAEptr->m_routeID = m_routeTable_IDrValueIDvertex[m_routeTableIterator].first.first;
+
+			for (size_t i = 0; i < m_routeTable_IDrValueIDvertex[m_routeTableIterator].second.size(); i++) {
+				VPAEptr->m_routeVertexID_vehicle.push_back(m_routeTable_IDrValueIDvertex[m_routeTableIterator].second[i]);
+			}
+			m_routeTableIterator++;
+		}
+		else {
+			m_VPAptr->deallocate(VPAEptr);
+			return nullptr;
+		}
+	}
+	return VPAEptr;
+}
+
+vehicle* sectionVehicleSet::insertion(vehicle* VPAEptr, const int& length, const int& numberOfLanes,const int& position, const bool& risingOrDescention, const bool& moblieORStationary) {
+	//********************************************************************
+	//This method is used to insert vehicle objects into the lane.
+	if (VPAEptr != nullptr) {
+		VPAEptr->setPtr(VPAEptr);
+		VPAEptr->m_moblieORStationary = moblieORStationary;
+		VPAEptr->m_riseOrDecline = risingOrDescention;
+		VPAEptr->m_inRange = true;
+		VPAEptr->m_processedByIteration = false;
+		if ((risingOrDescention == true) && (moblieORStationary == true)) {
+			VPAEptr->m_position = 0;
+			VPAEptr->m_lane = 1;
+		}
+		if ((risingOrDescention == false) && (moblieORStationary == true)) {
+			VPAEptr->m_position = length;
+			VPAEptr->m_lane = 1;
+		}
+		if ((numberOfLanes == 2) && (moblieORStationary == true)) {
+			if ((m_numberOfVehicleinRange % 2) == 0)
+				VPAEptr->m_lane = 1;
+			else {
+				VPAEptr->m_lane = 2;
+				VPAEptr->m_position -= 1;
+			}
+		}
+		if (moblieORStationary == false) {
+			VPAEptr->m_position = position;
+			VPAEptr->m_pref_speed = 0;
+		}
+		return VPAEptr;
+	}
+	return nullptr;
+}
+
+void sectionVehicleSet::insertSET(vehicle* a) {
+	if (a != nullptr) {
+		m_vehicleSet.insert(a);
+	}
+	else {
+		//std::cout << "Allocation in VehicleSet failed!\n";
+	}
+}
+
+//Methods for analyzing traffic flow in the lane:
+
+bool sectionVehicleSet::vehiclePositionCheckInLane(const int& position) {
+	for (auto& i : m_vehicleSet) {
+		if (i->m_position == position) {
+			i->m_moblieORStationary = true;
+			break;
+			return true;
+		}
+	}
+	return false;
+}
+
+float sectionVehicleSet::computeAverageSpeedOfSection() {
+	float averageSpeed = 0.0f;
+	averageSpeed = (static_cast<float>(trafficCharacteristics().first)) / (static_cast<float>(trafficCharacteristics().second));
+	return averageSpeed;
+}
+
+float sectionVehicleSet::computeTrafficDensityOfSection(const int& length) {
+	float density = 0.0f;
+	density= static_cast<float>(static_cast<float>(trafficCharacteristics().second) / (static_cast<float>(length) * 0.001));
+	return density;
+}
+
+float sectionVehicleSet::computeWeightOfSection(const int& length) {
+	float weight = 0.0f;
+	weight = 1 / ((static_cast<float>(sumOfVehicleSpeedInEdge())) / (static_cast<float>(length)));
+	return weight;
+}
+
+int sectionVehicleSet::sumOfVehicleSpeedInEdge() {
+	int sumOfVehicleSpeed = 0;
+	for (auto& i : m_vehicleSet) {
+		sumOfVehicleSpeed = i->m_pref_speed + sumOfVehicleSpeed;
+	}
+	return sumOfVehicleSpeed;
+}
+
+std::pair<int, int> sectionVehicleSet::trafficCharacteristics() {
+	int sumOfVehicleSpeed = 0;
+	int sumOfVehicles = 0;
+	for (auto& i : m_vehicleSet) {
+		
+		sumOfVehicleSpeed = i->m_speed + sumOfVehicleSpeed;
+		sumOfVehicles++;
+	}
+	return std::pair<int, int>(sumOfVehicleSpeed, sumOfVehicles);
+}
+
+
+
