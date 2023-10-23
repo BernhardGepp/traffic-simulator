@@ -5,6 +5,9 @@
 #include "vertexFlex.h"
 #include "vertexStart.h"
 
+//************************************************************************************
+//Implementation of the factory method for creating vertex objects.
+
 std::shared_ptr <vertex> createVertex::create(const int& xvalue, const int& yvalue, const int& shapeOfThatVertex) {
 	int shapeOfThatVertex_intern = shapeOfThatVertex;
 	
@@ -23,6 +26,7 @@ std::shared_ptr <vertex> createVertex::create(const int& xvalue, const int& yval
 	counter++;
 	return createdVertex;
 }
+
 void createVertex::decrementCounter() {
 	counter--;
 }

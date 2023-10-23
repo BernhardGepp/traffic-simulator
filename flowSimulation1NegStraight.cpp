@@ -13,8 +13,8 @@ flowSimulation1NegStraight::flowSimulation1NegStraight(const int& maxVelocity, c
 
 flowSimulation1NegStraight::~flowSimulation1NegStraight() noexcept {}
 
-
-
+//********************************************************************
+//Traffic flow algorithm for one directional lane in negative direction:
 int flowSimulation1NegStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	//********************************************************************
 	//Traffic flow simulation algorithm for connections with one lane in descending direction

@@ -4,12 +4,14 @@
 #include "trafficSimulatorWithSimpleUserInterface.h"
 
 using namespace Gdiplus;
+//********************************************************************
 
 simpleWindowUserInterface* simpleWindowUserInterface::instance = 0;
 trafficSimulatorWithSimpleUserInterface::trafficSimulatorWithSimpleUserInterface(HDC hdc):trafficSimulator(){
 	n = gsl::not_null<simpleWindowUserInterface*>(simpleWindowUserInterface::getInstance(width, height, callBackLinks(hdc, PaintBoxLB, PaintBoxRB, PaintFrame, PaintLane, PrintVertexNumber,PaintBox, PaintWhiteLine, PaintBoxStart,
 		 PaintBoxEnd, PaintBoxFex11, PaintBoxFex12, PaintBoxFex21, PaintBoxFex22,PrintLaneIF,PaintWhiteClearLane)));
 }
+
 int trafficSimulatorWithSimpleUserInterface::mainFunctionOfTheTrafficSimulator() {
 	if ((m_currentSimulationStep > 0) && (m_programStatus)) {
 		//***********************************************************************
@@ -50,12 +52,14 @@ int trafficSimulatorWithSimpleUserInterface::mainFunctionOfTheTrafficSimulator()
 	// Option 4: This option becomes effective if no traffic graphs have been created yet and no traffic simulation is possible!
 	return 0;
 }
+
 void trafficSimulatorWithSimpleUserInterface::clickPointsResetInTheField() {
 	n->iPosYLK = 0;
 	n->iPosXLK = 0;
 	n->iPosXRK = width - 110;
 	n->iPosYRK = height - 110;
 }
+
 bool trafficSimulatorWithSimpleUserInterface::waitIfDubbleClick(const int& a, const int& b) {
 	if ((a == m_serviceInt1) && (b == m_serviceInt2)) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
@@ -69,6 +73,7 @@ bool trafficSimulatorWithSimpleUserInterface::waitIfDubbleClick(const int& a, co
 		return true;
 	}
 }
+
 bool trafficSimulatorWithSimpleUserInterface::queryOnTheSelectedNumberOfLanes() {
 	if ((m_programStatus == false) && (m_statusDuringPointPairDetermination == false)) {
 		return true;
@@ -77,6 +82,7 @@ bool trafficSimulatorWithSimpleUserInterface::queryOnTheSelectedNumberOfLanes() 
 		return false;
 	}
 }
+
 void trafficSimulatorWithSimpleUserInterface::rightClick(const int& paramX, const int& paramY) {
 	int iPosXRK = paramX;
 	int iPosYRK = paramY;
@@ -88,6 +94,7 @@ void trafficSimulatorWithSimpleUserInterface::rightClick(const int& paramX, cons
 	n->iPosXRK = iPosXRK;
 	n->iPosYRK = iPosYRK;
 }
+
 void trafficSimulatorWithSimpleUserInterface::leftClick(const int& paramX, const int& paramY) {
 	bool serviceBool = false;
 	int iPosXLK= paramX;

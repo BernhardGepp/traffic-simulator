@@ -28,9 +28,13 @@ void selectionFlowSimulation::setStrategy(PrintPatternLine2LaneVertiPos& ppt) {
 	vehicleSetPtr = std::make_unique<flowSimulation2PosStraightA>(gsl::not_null<callBackLinks*>(m_CBLptr), m_maxVelocity, m_maxVelocity_Density);
 }
 
+//********************************************************************
+//Constructor of the parent class of "Print Pattern":
 PrintPattern::PrintPattern() noexcept{}
 
-
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in horizontal position in "negative direction" with one lane:
 PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
 	m_length = m_p1x - m_p2x;
@@ -41,11 +45,9 @@ PrintPatternLine1LaneHoriNeg::PrintPatternLine1LaneHoriNeg(const int& p1x, const
 	m_CBLptr = CBLptr;
 	
 }
-
 void PrintPatternLine1LaneHoriNeg::accept(selectionFlowSimulation& v){
 	v.setStrategy(*this);
 }
-
 void PrintPatternLine1LaneHoriNeg::paintBoxPP(){
 	if ((m_startVertexShort == false) && (m_endVertexShort == true)) {
 		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 20, m_p12y, m_p1x - m_p2x - 20, 10,false);
@@ -60,7 +62,6 @@ void PrintPatternLine1LaneHoriNeg::paintBoxPP(){
 		m_CBLptr->topLevelFunctionPTR_f10PaintBox(m_p2x + 10, m_p12y, m_p1x - m_p2x - 10, 10,false);
 	}
 }
-
 void PrintPatternLine1LaneHoriNeg::paintWhiteLinePP(){
 
 	if (m_endVertexShort) {
@@ -76,12 +77,8 @@ observer* PrintPatternLine1LaneHoriNeg::createObserver(){
 	m_observer = std::make_unique<concreteObserver1LaneHoriNeg>(m_p1x, m_p2x, m_p12y);
 	return m_observer.get();
 }
-void PrintPatternLine1LaneHoriNeg::paintStartVertex11(){
-
-}
-void PrintPatternLine1LaneHoriNeg::paintEndVertex11(){
-
-}
+void PrintPatternLine1LaneHoriNeg::paintStartVertex11(){}
+void PrintPatternLine1LaneHoriNeg::paintEndVertex11(){}
 void PrintPatternLine1LaneHoriNeg::setStartVertexShort(const bool& setOrRelease){
 	m_startVertexShort = setOrRelease;
 }
@@ -92,6 +89,9 @@ void PrintPatternLine1LaneHoriNeg::printContentOfSection(const int& lane, const 
 	m_P1LN.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
 }
 
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in horizontal position in "positive direction" with one lane:
 PrintPatternLine1LaneHoriPos::PrintPatternLine1LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
 	m_length = m_p2x - m_p1x;
@@ -149,6 +149,9 @@ void PrintPatternLine1LaneHoriPos::printContentOfSection(const int& lane, const 
 	m_P1LP.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
 }
 
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in vertical position in "negative direction" with one lane:
 PrintPatternLine1LaneVertiNeg::PrintPatternLine1LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
 	m_length = m_p1y - m_p2y;
@@ -202,6 +205,9 @@ void PrintPatternLine1LaneVertiNeg::printContentOfSection(const int& lane, const
 	m_P1LN.addPrintContent(m_p12x, m_p1y, m_p12x, m_p2y, lane, position, destination);
 }
 
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in vertical position in "positive direction" with one lane:
 PrintPatternLine1LaneVertiPos::PrintPatternLine1LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
 	m_length = m_p2y - m_p1y;
@@ -263,6 +269,10 @@ void PrintPatternLine1LaneVertiPos::setEndVertexShort(const bool& setOrRelease){
 void PrintPatternLine1LaneVertiPos::printContentOfSection(const int& lane, const int& position, const int& destination) {
 	m_P1LP.addPrintContent(m_p12x, m_p1y, m_p12x, m_p2y, lane, position, destination);
 }
+
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in horizontal position in "negative direction" with two lanes:
 PrintPatternLine2LaneHoriNeg::PrintPatternLine2LaneHoriNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
 	m_length = m_p1x - m_p2x;
@@ -319,6 +329,10 @@ void PrintPatternLine2LaneHoriNeg::setEndVertexShort(const bool& setOrRelease){
 void PrintPatternLine2LaneHoriNeg::printContentOfSection(const int& lane, const int& position, const int& destination) {
 	m_P2LN.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
 }
+
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in horizontal position in "positive direction" with two lanes:
 PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p1x(p1x), m_p12y(p1y), m_p2x(p2x) {
 	m_length = m_p2x - m_p1x;
@@ -328,8 +342,6 @@ PrintPatternLine2LaneHoriPos::PrintPatternLine2LaneHoriPos(const int& p1x, const
 	m_risingOrDescention = true;
 	m_CBLptr = CBLptr;
 }
-
-
 void PrintPatternLine2LaneHoriPos::accept(selectionFlowSimulation& v){
 	v.setStrategy(*this);
 }
@@ -382,6 +394,9 @@ void PrintPatternLine2LaneHoriPos::printContentOfSection(const int& lane, const 
 	m_P2LP.addPrintContent(m_p1x, m_p12y, m_p2x, m_p12y, lane, position, destination);
 }
 
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in vertical position in "negative direction" with two lanes:
 PrintPatternLine2LaneVertiNeg::PrintPatternLine2LaneVertiNeg(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
 	m_length = m_p1y - m_p2y;
@@ -440,6 +455,9 @@ void PrintPatternLine2LaneVertiNeg::printContentOfSection(const int& lane, const
 	m_P2LN.addPrintContent(m_p12x, m_p1y, m_p12x, m_p2y, lane, position, destination);
 }
 
+//********************************************************************
+//Constructor and methods of the subclass of the parent class "Print Pattern", 
+//which is used for a roadway in vertical position in "positive direction" with two lanes:
 PrintPatternLine2LaneVertiPos::PrintPatternLine2LaneVertiPos(const int& p1x, const int& p1y, const int& p2x, const int& p2y, callBackLinks* CBLptr)noexcept
 	: PrintPattern(), m_p12x(p1x), m_p1y(p1y), m_p2y(p2y) {
 	m_length = m_p2y - m_p1y;

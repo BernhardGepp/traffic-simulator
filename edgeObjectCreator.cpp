@@ -2,16 +2,20 @@
 #include "PrecompiledHeadersEdges.h"
 #include "edgeObjectCreator.h"
 
+//************************************************************************************
+//Implementation of the factory method for creating edge objects.
+
 createEdge::createEdge(callBackLinks* CBL, concreteObserverSubject* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }
-createEdge::~createEdge() {
-}
+createEdge::~createEdge() {}
+
 void createEdge::iniziallizationOfPointer(callBackLinks* CBL, concreteObserverSubject* cOS) {
 	m_CBLptr = CBL;
 	m_cObSptr = cOS;
 }
+
 std::unique_ptr <edge>&& createEdge::create(const std::shared_ptr<vertex>& startVertex, const std::shared_ptr<vertex>& endVertex, const int& numberOfLanes) {
 	m_startVertex = startVertex;
 	m_endVertex = endVertex;
@@ -24,6 +28,7 @@ std::unique_ptr <edge>&& createEdge::create(const std::shared_ptr<vertex>& start
 	createdEdge = std::make_unique<edge>(m_startVertex, m_endVertex, m_numberOfLanes, choosePrintPattern(), m_cObSptr);
 	return std::move(createdEdge);
 }
+
 std::unique_ptr<PrintPattern> createEdge::choosePrintPattern() {
 	//********************************************************************
 	//Selection of the appropriate print pattern

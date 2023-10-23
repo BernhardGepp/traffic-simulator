@@ -134,8 +134,7 @@ bool graph::recheckroute(const std::vector<int>& routeVertexIDs) {
 	return checkint == (routeVertexIDs.size() - 1) ? true : false;
 }
 
-void graph::calculationOfRouteIndex() {
-}
+void graph::calculationOfRouteIndex() {}
 
 void graph::generationOfRoutesNeu() {
 	//*************************************************
@@ -361,7 +360,6 @@ void graph::generationOfRoutesNeu() {
 		hj++;
 	}
 }
-
 
 void graph::destructSectionInGraph() {
 	//********************************************************************

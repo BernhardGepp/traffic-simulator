@@ -70,7 +70,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	windowClass.lpszClassName = (LPCSTR)L"WindowClass";
 
 
-	RegisterClassEx(&windowClass);	//Übergabes des Styles
+	RegisterClassEx(&windowClass);	//Passing the style
 
 	if (g_windowHandle == nullptr) {
 		DWORD errVal = GetLastError();
@@ -78,7 +78,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	HWND g_windowHandle = CreateWindowEx(
 		NULL,
-		(LPCSTR)L"WindowClass",//muss gleich sein mit windowClass.lpszClassName = (LPCSTR)L"WindowClass";	
+		(LPCSTR)L"WindowClass",	
 		(LPCSTR)L"Simulationsfeld.h",
 		WS_VISIBLE | WS_OVERLAPPEDWINDOW | WS_SYSMENU,
 		10,
@@ -89,7 +89,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		NULL,
 		hInstance,
 		NULL);
-	//^^^^^^^^^^^^Das ist das Hauptfenster!!!*************************************************
+	//^^^^^^^^^^^^This is the main window!!!*************************************************
 	
 	ZeroMemory(&subWindowClass, sizeof(WNDCLASSEX));
 	subWindowClass.cbClsExtra = NULL;
@@ -463,9 +463,7 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 			ts.m_determinationVariableOfNumberOfLanes = 1;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
-				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
-				//ts.n->m_CBLptr->m_f5PaintLane(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			break;
 		case MY_BUTTON_2:
@@ -473,7 +471,6 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 			ts.m_determinationVariableOfNumberOfLanes = 2;
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
-				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
 			break;

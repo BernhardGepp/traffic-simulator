@@ -8,8 +8,8 @@ flowSimulation2PosStraightA::flowSimulation2PosStraightA(callBackLinks* CBLptr, 
 }
 flowSimulation2PosStraightA::~flowSimulation2PosStraightA()noexcept {}
 
-
-
+//********************************************************************
+//Traffic flow algorithm for two directional lanes in postive direction:
 int flowSimulation2PosStraightA::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	//********************************************************************
 	//Traffic flow simulation algorithm for connections with two lanes in ascending direction

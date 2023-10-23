@@ -14,8 +14,8 @@ flowSimulation1PosStraight::flowSimulation1PosStraight(const int& maxVelocity, c
 
 flowSimulation1PosStraight::~flowSimulation1PosStraight() noexcept {}
 
-
-
+//********************************************************************
+//Traffic flow algorithm for one directional lane in positive direction:
 int flowSimulation1PosStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	//********************************************************************
 	//Traffic flow simulation algorithm for connections with one lane in ascending direction

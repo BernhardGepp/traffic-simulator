@@ -1,6 +1,6 @@
 #include "PrecompiledHeadersEdges.h"
 #include "velocityToLength.h"
-
+//********************************************************************
 //Constructor and destructor of the class:
 velocityToLength::velocityToLength() {};
 

@@ -1,6 +1,6 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vehicle.h"
-
+//********************************************************************
 //Constructor and destructor of the class:
 vehicle::vehicle() {
 	m_routeVertexID_vehicle.reserve(10);

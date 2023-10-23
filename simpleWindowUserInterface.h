@@ -97,6 +97,7 @@ public:
 			return false;
 		}
 	}
+
 	void simpleWindowUserInterface::displayNetworkWithSimulationStepResult() {
 		//********************************************************************
 		//method for displaying all vertexes, edges and vehicles on the surface

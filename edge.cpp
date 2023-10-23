@@ -18,7 +18,7 @@ edge::edge(const std::shared_ptr<vertex>& startVertex, const std::shared_ptr<ver
 edge::edge(edge && other) = default;
 edge::~edge() noexcept {}
 //********************************************************************
-//Methods of the class:
+//Basic methods of the class:
 int edge::getStartVertex() {
 	return m_startVertex;
 }
@@ -66,6 +66,8 @@ void edge::computeEdgesCharactaristics() {
 	}	
 }
 
+//********************************************************************
+//Methods for carrying out traffic simulation in the lane:
 void edge::simiRun(const int& simulationIterator) {
 	sFs.vehicleSetPtr->sort();
 	//********************************************************************
@@ -129,6 +131,8 @@ void edge::allocateVehicleAtPositionX() {
 	}
 }
 
+//********************************************************************
+//Method for displaying the simulation result:
 void edge::writeSimulationResultsIntoDataContainer(){
 	//Print of the simulation result:
 	for (auto& i : sFs.vehicleSetPtr->m_vehicleSet) {

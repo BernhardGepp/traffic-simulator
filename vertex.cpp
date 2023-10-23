@@ -1,7 +1,7 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vertex.h"
 
-
+//********************************************************************
 //Constructor and destructor of the class:
 vertex::vertex(const int& xCoordinate, const int& yCoordinate, const std::pair<int, int>& numberOfLanes)noexcept
 		: m_XcoordinateVertex(xCoordinate), m_YcoordinateVertex(yCoordinate), m_numberOfLanes(numberOfLanes) {}

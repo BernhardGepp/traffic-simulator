@@ -1,6 +1,6 @@
 #include "PrecompiledHeadersEdges.h"
 #include "vertexFlex.h"
-
+//********************************************************************
 //Constructor and destructor of the class:
 transmissionTable::~transmissionTable() noexcept {}
 

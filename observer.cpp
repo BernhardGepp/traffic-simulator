@@ -1,6 +1,10 @@
 #include "PrecompiledHeadersEdges.h"
 #include "observer.h"
 
+//********************************************************************
+//Constructors and notify-methods of the subclasses of the concrete implementations of the observer classes:
+//The notification methods are used to check the coordinates of mouse clicks on the user interface to see if the click was made within a driving strip.
+
 concreteObserver1LaneHoriNeg::concreteObserver1LaneHoriNeg(const int& startValue, const int& endValue, const int& hightOrWidth) :observer() {
 	m_startValue = startValue;
 	m_endValue = endValue;

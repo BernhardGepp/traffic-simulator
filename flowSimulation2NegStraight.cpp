@@ -10,8 +10,8 @@ flowSimulation2NegStraight::flowSimulation2NegStraight(callBackLinks* CBLptr, co
 flowSimulation2NegStraight::~flowSimulation2NegStraight() noexcept {
 }
 
-
-
+//********************************************************************
+//Traffic flow algorithm for two directional lanes in negative direction:
 int flowSimulation2NegStraight::flow(const int& numberOfLanes, const int& length, const bool& riseOrDecline) {
 	//********************************************************************
 	//Traffic flow simulation algorithm for connections with two lanes in descending direction

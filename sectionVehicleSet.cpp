@@ -80,6 +80,7 @@ void sectionVehicleSet::sectionDestruct() {
 	}
 }
 
+//********************************************************************
 //Methods of traffic simulation:
 
 size_t sectionVehicleSet::getVehicleSetSize() const {
@@ -152,6 +153,7 @@ void sectionVehicleSet::flow1L(const int& a, const int& b, const int& length, co
 	}
 }
 
+//********************************************************************
 //Methods for inserting vehicles into the lane:
 
 vehicle* sectionVehicleSet::routeAssignment(vehicle* VPAEptr) {
@@ -226,6 +228,7 @@ void sectionVehicleSet::insertSET(vehicle* a) {
 	}
 }
 
+//********************************************************************
 //Methods for analyzing traffic flow in the lane:
 
 bool sectionVehicleSet::vehiclePositionCheckInLane(const int& position) {

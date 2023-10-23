@@ -3,7 +3,7 @@
 #include "graphTrafficGenerationOnAllRoutes.h"
 #include "graphTrafficGenerationOnFastRoutes.h"
 
-
+//********************************************************************
 //Constructor and destructor of the class:
 userFunctionsOfTheSimpleWindowInterface::userFunctionsOfTheSimpleWindowInterface() { 
 	vertrexCreator_ptr = new createVertex; 
