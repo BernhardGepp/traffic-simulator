@@ -7,6 +7,14 @@
 unitTest/
 googletest/
 CMBuild/
+CMBuild/_deps
+CMBuild/CMakeFiles
+CMBuild/Debug
+CMBuild//Release
+CMBuild/lib
+CMBuild/TrafficSimulatorApp.dir
+CMBuild/unitTest
+CMBuild/x64
 
 
 # User-specific files
@@ -15,6 +23,7 @@ CMBuild/
 *.user
 *.userosscache
 *.sln.docstates
+*.vcxproj.user
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
