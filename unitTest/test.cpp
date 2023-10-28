@@ -30,7 +30,7 @@ TEST(NetworkBuildingTest, NCT1) {
 	networkCreationClass.establishLane(1000, 1000, 1, 0, 100, true);
 	networkCreationClass.establishLane(1000, 1000, 1, 700, 100, false);
 	networkCreationClass.m_CBLptr = new callBackLinks;
-	networkCreationClass.m_cObSptr = new concreteObserverSubjekt;
+	networkCreationClass.m_cObSptr = new concreteObserverSubject;
 	networkCreationClass.graphGenerationFromClickPairs(1000, 1000, 2);
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
@@ -48,7 +48,7 @@ TEST(NetworkBuildingTest, NCT2) {
 	networkCreationClass.establishLane(1000, 1000, 1, 0, 600, true);
 	networkCreationClass.establishLane(1000, 1000, 1, 300, 600, false);
 	networkCreationClass.m_CBLptr = new callBackLinks;
-	networkCreationClass.m_cObSptr = new concreteObserverSubjekt;
+	networkCreationClass.m_cObSptr = new concreteObserverSubject;
 	networkCreationClass.graphGenerationFromClickPairs(1000, 1000, 2);
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
@@ -71,7 +71,7 @@ TEST(NetworkBuildingTest, NCT3) {
 	networkCreationClass.establishLane(1000, 1000, 1, 100, 100, true);
 	networkCreationClass.establishLane(1000, 1000, 1, 200, 100, false);
 	networkCreationClass.m_CBLptr = new callBackLinks;
-	networkCreationClass.m_cObSptr = new concreteObserverSubjekt;
+	networkCreationClass.m_cObSptr = new concreteObserverSubject;
 	networkCreationClass.graphGenerationFromClickPairs(1000, 1000, 2);
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
@@ -105,7 +105,7 @@ TEST(NetworkBuildingTest, NCT4) {
 	networkCreationClass.establishLane(1000, 1000, 1, 350, 50, true);
 	networkCreationClass.establishLane(1000, 1000, 1, 50, 50, false);
 	networkCreationClass.m_CBLptr = new callBackLinks;
-	networkCreationClass.m_cObSptr = new concreteObserverSubjekt;
+	networkCreationClass.m_cObSptr = new concreteObserverSubject;
 	networkCreationClass.graphGenerationFromClickPairs(1000, 1000, 2);
 	delete networkCreationClass.m_CBLptr;
 	delete networkCreationClass.m_cObSptr;
@@ -4012,16 +4012,16 @@ TEST(TestCaseName2, TestName2) {
 			
 			counter++;
 		}
-		e1.singleSimulationStep(220);
-		e1.deallocateVehicleAtEnd(true);
-		e2.flow1L(1, 220);
-		e2.singleSimulationStep(true);
-		e3.flow1L(1, 220);
-		e3.singleSimulationStep(220);
-		e3.deallocateVehicleAtEnd(true);
-		e4.flow1L(1, 220);
-		e4.singleSimulationStep(220);
-		e4.deallocateVehicleAtEnd(true);
+		e1.sFs.vehicleSetPtr->singleSimulationStep(220, e1.m_length, e1.m_numberOfLanes, e1.m_risingOrDescention, e1.m_endVertexPtr);
+		e1.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e1.m_risingOrDescention, e1.m_endVertexPtr);
+		e2.sFs.vehicleSetPtr->flow1L(1, 220, e1.m_length, e1.m_risingOrDescention, e1.m_startVertexPtr, e1.m_endVertex, e1.m_numberOfLanes);
+		e2.sFs.vehicleSetPtr->singleSimulationStep(220, e2.m_length, e2.m_numberOfLanes, e2.m_risingOrDescention, e2.m_endVertexPtr);
+		e3.sFs.vehicleSetPtr->flow1L(1, 220, e3.m_length, e3.m_risingOrDescention, e3.m_startVertexPtr, e3.m_endVertex, e3.m_numberOfLanes);
+		e3.sFs.vehicleSetPtr->singleSimulationStep(220, e3.m_length, e3.m_numberOfLanes, e3.m_risingOrDescention, e3.m_endVertexPtr);
+		e3.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e3.m_risingOrDescention, e3.m_endVertexPtr);
+		e4.sFs.vehicleSetPtr->flow1L(1, 220, e4.m_length, e4.m_risingOrDescention, e4.m_startVertexPtr, e4.m_endVertex, e4.m_numberOfLanes);
+		e4.sFs.vehicleSetPtr->singleSimulationStep(220, e4.m_length, e4.m_numberOfLanes, e4.m_risingOrDescention, e4.m_endVertexPtr);
+		e4.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e4.m_risingOrDescention, e4.m_endVertexPtr);
 	}
 	EXPECT_EQ(v2->m_numberOfVehicle, 90);
 	EXPECT_EQ(v3->m_numberOfVehicle, 30);
@@ -4082,11 +4082,11 @@ TEST(TestCaseName3, TestName3) {
 			e1.sFs.vehicleSetPtr->insertSET(&vehicleArray[counter]);
 			counter++;
 		} 
-		e1.singleSimulationStep(220);
-		e1.deallocateVehicleAtEnd(true);
-		e2.flow1L(1, 220);
-		e2.singleSimulationStep(220);
-		e2.deallocateVehicleAtEnd(true);
+		e1.sFs.vehicleSetPtr->singleSimulationStep(220, e1.m_length, e1.m_numberOfLanes, e1.m_risingOrDescention, e1.m_endVertexPtr);
+		e1.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e1.m_risingOrDescention, e1.m_endVertexPtr);
+		e2.sFs.vehicleSetPtr->flow1L(1, 220, e2.m_length, e2.m_risingOrDescention, e2.m_startVertexPtr, e2.m_endVertex, e2.m_numberOfLanes);
+		e2.sFs.vehicleSetPtr->singleSimulationStep(220, e2.m_length, e2.m_numberOfLanes, e2.m_risingOrDescention, e2.m_endVertexPtr);
+		e2.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e2.m_risingOrDescention, e2.m_endVertexPtr);
 	}
 	EXPECT_EQ(v2->m_numberOfVehicle, 90);
 	EXPECT_EQ(v3->m_numberOfVehicle, 90);
@@ -4165,14 +4165,14 @@ TEST(TestCaseName4, TestName4) {
 			counter++;
 		}
 		
-		e1.singleSimulationStep(220);
-		e1.deallocateVehicleAtEnd(true);
-		e3.flow1L(1, 220);
-		e3.singleSimulationStep(220);
-		e3.deallocateVehicleAtEnd(true);
-		e4.flow1L(1, 220);
-		e4.singleSimulationStep(220);
-		e4.deallocateVehicleAtEnd(true);
+		e1.sFs.vehicleSetPtr->singleSimulationStep(220,e1.m_length, e1.m_numberOfLanes, e1.m_risingOrDescention, e1.m_endVertexPtr);
+		e1.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e1.m_risingOrDescention, e1.m_endVertexPtr);
+		e3.sFs.vehicleSetPtr->flow1L(1, 220, e3.m_length, e3.m_risingOrDescention, e3.m_startVertexPtr, e3.m_endVertex, e3.m_numberOfLanes);
+		e3.sFs.vehicleSetPtr->singleSimulationStep(220, e3.m_length, e3.m_numberOfLanes, e3.m_risingOrDescention, e3.m_endVertexPtr);
+		e3.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e3.m_risingOrDescention, e3.m_endVertexPtr);
+		e4.sFs.vehicleSetPtr->flow1L(1, 220, e4.m_length, e4.m_risingOrDescention, e4.m_startVertexPtr, e4.m_endVertex, e4.m_numberOfLanes);
+		e4.sFs.vehicleSetPtr->singleSimulationStep(220, e4.m_length, e4.m_numberOfLanes, e4.m_risingOrDescention, e4.m_endVertexPtr);
+		e4.sFs.vehicleSetPtr->deallocateVehicleAtEnd(true, e4.m_risingOrDescention, e4.m_endVertexPtr);
 	}
 	EXPECT_EQ(v2->m_numberOfVehicle, 100);
 	EXPECT_TRUE(true);
@@ -4183,18 +4183,13 @@ TEST(TestCaseName4, TestName4) {
 	delete[] vehicleArray;
 }
 TEST(randomTest,randomTest) {
-	//std::ofstream file;
-	//file.open("C:/Users/bernh/Desktop/randomzahlem.txt");
 	bool testVar = true;
 	randomSpeed_neu rs;
 	for (int i = 99999; i > 0; i--) {
 		rs.randomNumberRequest();
-		//file << "\n" << rs.a;
 		if ((rs.a < 30) || (rs.a > 130)) {
 			testVar = false;
 		}
-		//file << "\t" << testVar;
 	}
-	//file.close();
 	EXPECT_TRUE(testVar);
 }
