@@ -3,6 +3,18 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# ignore theses folders
+
+googletest/
+CMBuild/
+CMBuild/_deps
+CMBuild/CMakeFiles
+CMBuild/Debug
+CMBuild//Release
+CMBuild/lib
+CMBuild/TrafficSimulatorApp.dir
+CMBuild/unitTest
+CMBuild/x64
 
 
 # User-specific files
@@ -11,6 +23,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.vcxproj.user
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -95,6 +108,8 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.exe
+*.lib
 
 # Chutzpah Test files
 _Chutzpah*
