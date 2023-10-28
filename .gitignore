@@ -6,6 +6,7 @@
 # ignore theses folders
 unitTest/
 googletest/
+CMBuild/
 
 
 # User-specific files
