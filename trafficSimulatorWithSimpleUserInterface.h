@@ -4,10 +4,6 @@
 
 class trafficSimulatorWithSimpleUserInterface: public trafficSimulator {
 public:
-	void(*m_f1PaintBoxLB)(HDC hdc) = nullptr;
-	void(*m_f2PaintBoxRB)(HDC hdc) = nullptr;
-	void(*m_f3PaintFrame)(HDC hdc) = nullptr;
-	void(*m_f7PrintVertexNumber)(HDC hdc, const int& iPosX, const int& iPosY, const int& iVertexID) = nullptr;
 	simpleWindowUserInterface* n = nullptr;
 	HDC hdc;
 	int height;
@@ -15,6 +11,7 @@ public:
 	int m_serviceInt1 = 0;
 	int m_serviceInt2 = 0;
 	int m_determinationVariableOfNumberOfLanes = 0;
+	int m_choiceOfRouteFinding = 2;
 	bool m_statusDuringPointPairDetermination = true;
 
 	explicit trafficSimulatorWithSimpleUserInterface(HDC hdc);
