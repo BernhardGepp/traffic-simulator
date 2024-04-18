@@ -17,9 +17,10 @@ int trafficSimulatorWithSimpleUserInterface::mainFunctionOfTheTrafficSimulator()
 		//***********************************************************************
 		// Option 1: Carrying out a simulation sequence of the traffic simulator
 		
-		//Reduction of the number of simulation iterations to be performed
-		m_currentSimulationStep--;
+		
 		if (n->m_networkDataStructure.appliedGraph.size() >= 1) {
+			//Reduction of the number of simulation iterations to be performed
+			m_currentSimulationStep--;
 			//Command to call a simulation sequence (for all graphs)
 			for (auto& i : n->m_networkDataStructure.appliedGraph) {
 				i->simulation(m_currentSimulationStep);
@@ -34,9 +35,11 @@ int trafficSimulatorWithSimpleUserInterface::mainFunctionOfTheTrafficSimulator()
 			//Commands for displaying the result of the simulation
 			n->displayNetworkWithSimulationStepResult();
 			n->m_networkDataStructure.printLanesAndVehiclesOfAllEdges();
+			return 1;
 		}
+		else
+			return 0;//see Option 4!!
 		
-		return 1;
 	}
 	if ((m_currentSimulationStep == 0) && (m_programStatus)) {
 		//***********************************************************************
