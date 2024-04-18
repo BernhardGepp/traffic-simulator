@@ -1,7 +1,6 @@
 #pragma once
 #include "PrecompiledHeadersEdges.h"
 #include "trafficSimulatorWithSimpleUserInterface.h"
-#include <fstream>
 
 #define MY_BUTTON_ID 38
 #define MY_RKLICK_ID 37
@@ -9,17 +8,13 @@
 #define MY_BUTTON_1 42
 #define MY_BUTTON_2 43
 #define MY_BUTTON_3 44
-//#define ESTVertexOfGraph 45
 #define MY_BUTTON_YES 46
 #define MY_BUTTON_NO 47
 #define createSecondWindow 101
 #define createThirdWindow 102
 #define INT int
-int serviceINT = 0;
-int serviceINT1 = 0;
-bool serviceBool = true;
-bool hilfe = true;
-std::ofstream file;
+
+
 static HDC hdc;
 trafficSimulatorWithSimpleUserInterface ts(hdc);
 enum numberOFLanes { one = 1, two = 2 };
@@ -53,7 +48,6 @@ RECT Rechteck = { (long)0, (long)0, (long)width, (long)height };
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-	file.open("C:/Users/bernh/Desktop/statusse.txt");
 	MSG msg;
 	bool mainProgramLoopFlag = true;
 	PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
@@ -81,7 +75,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DWORD errVal = GetLastError();
 	}
 
-	//HWND g_windowHandle = CreateWindowEx(
 	g_windowHandle = CreateWindowEx(
 		NULL,
 		(LPCSTR)L"WindowClass",	
@@ -153,35 +146,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		(HMENU)MY_BUTTON_ID,
 		(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 		NULL);
-
-	//file.close();
 	ts.n->m_CBLptr->m_hdc = hdc;
 	ts.width = width;
 	ts.height = height;
 	//***************************************************************
 	//"Program surfaces loop" respectively  "Program interfaces loop" 
 	while (mainProgramLoopFlag) {
-	
 		PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE);
-
-		
-		//file << " &msg " << msg << "\t" ;
-		
-		//file << "\nsimStep: " << ts.m_currentSimulationStep<<" ts.mainFunctionOfTheTrafficSimulator(): "<< ts.mainFunctionOfTheTrafficSimulator();
 		switch (ts.mainFunctionOfTheTrafficSimulator()) {
 		case 0:
-			//file << "\ncase 0";
 			break;
 		case 1:
-			file << "\nsimStep: " << ts.m_currentSimulationStep << " case 1: " << ts.mainFunctionOfTheTrafficSimulator()
-				<<" ts.m_programStatus: "<< ts.m_programStatus;
 			ts.n->m_CBLptr->m_f3PaintFrame(hdc, height, width);
 			break;
-		
 		case 2:
 		{
-			file << "\nsimStep: " << ts.m_currentSimulationStep << " case 2: " << ts.mainFunctionOfTheTrafficSimulator()
-				<< " ts.m_programStatus: " << ts.m_programStatus;
 			ts.m_programStatus = false;
 			PAINTSTRUCT ps_s;
 			HDC hdc_s = BeginPaint(g_windowHandle4, &ps_s);
@@ -189,7 +168,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				NULL,
 				(LPCSTR)L"FourthWindowClass",
 				(LPCSTR)L"Bestimmung ",
-				WS_VISIBLE | /*WS_CHILDWINDOW*/WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
+				WS_VISIBLE |WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
 				20,
 				20,
 				550,
@@ -217,9 +196,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			break;
 		}
 		case 3:
-			file << "\nsimStep: " << ts.m_currentSimulationStep << " case 3: " << ts.mainFunctionOfTheTrafficSimulator()
-				<< " ts.m_programStatus: " << ts.m_programStatus;
-			
 			window1closed = true;
 			break;
 		}
@@ -228,27 +204,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			ts.n->m_networkDataStructure.appliedGraph.clear();
 			ts.n->destroy();
 			ts.n = nullptr;
-			for (int iter = 0; iter < 1000; iter++) {
-				file << "\nSchluss!" << iter;
-			}
 		}
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
 	//***************************************************************
 	GdiplusShutdown(gdiplusToken);
-	file.close();
 	return msg.wParam;
 }
 LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-	
-	
 	switch (uMsg) {
 	case WM_ERASEBKGND:
-		file << "\ng_windowHandle WM_ERASEBKGND uMsg: "<<uMsg;
 		break;
 	case WM_CHAR:
-		file << "\ng_windowHandle WM_CHAR uMsg: " << uMsg;
 		if (wParam == 0x31) {// Code for CHAR digit 1
 			numberOFLanes::one;
 			ts.m_determinationVariableOfNumberOfLanes = 1;
@@ -279,8 +247,6 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			InvalidateRect(g_windowHandle, &Rechteck, TRUE); // Set square!
 			SendMessage(g_windowHandle, WM_PAINT, wParam, lParam);
 		}
-		file << "\ng_windowHandle WM_LBUTTONDOWN NetworkLaneVector.Größe nach Klick: " << ts.n->m_networkCreationFunctions.networkLaneVector.size() << " uMsg " << uMsg << "\t";
-		
 		break;
 	}
 	case WM_RBUTTONDOWN:
@@ -303,30 +269,23 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 		break;
 	}
 	case WM_COMMAND:
-		file << "\ng_windowHandle WM_COMMAND" << " uMsg " << uMsg << "\t";
 		InvalidateRect(g_windowHandle, &Rechteck, TRUE);
 		SendMessage(g_windowHandle, WM_PAINT, wParam, 0);
 		break;
-
 	case WM_PAINT:{
 		PAINTSTRUCT ps;
-		file << "\ng_windowHandle WM_PAINT" << " uMsg " << uMsg << "\twParam: "<< wParam;
 		switch (wParam) {
 		
 		case MK_LBUTTON:
-			file << "\n\tg_windowHandle WM_PAINT\t MK_LBUTTON" << " uMsg " << uMsg << "\twParam: "<< wParam;
 			hdc = BeginPaint(g_windowHandle, &ps);
 			ts.n->m_CBLptr->m_hdc = hdc;
 			if (ts.queryOnTheSelectedNumberOfLanes()) {
 				numberOFLanes::one;
 				ts.m_determinationVariableOfNumberOfLanes = 1;
 				SendMessage(g_windowHandle, WM_CREATE, 1, 0);
-				file << "\t Fenster Aufmachen!";
 			}
 			else {
-				
 				SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
-				file << "\t Fenster Schließen!";
 			}
 			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
 				//ts.n->m_CBLptr->m_f18PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
@@ -338,10 +297,8 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			PaintFrame(hdc, height, width);
 			EndPaint(g_windowHandle, &ps);
 			ts.clickPointsResetInTheField();
-
 			break;
 		case MK_RBUTTON:
-			file << "\n\tg_windowHandle WM_PAINT\t MK_RBUTTON" << " uMsg " << uMsg << "\twParam: "<< wParam;
 			hdc = BeginPaint(g_windowHandle, &ps);
 			ts.n->m_CBLptr->m_hdc = hdc;
 			//ts.n->m_CBLptr->m_f2PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
@@ -350,59 +307,26 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			EndPaint(g_windowHandle, &ps);
 			break;
-
 		case MY_BUTTON_ID:
-			file << "\n\tg_windowHandle WM_PAINT\t MY_BUTTON_ID" << " uMsg " << uMsg << "\twParam: " << wParam;
 			hdc = BeginPaint(g_windowHandle, &ps);
 			ts.n->m_CBLptr->m_hdc = hdc;
-			//if (ts.m_programStatus == false) {
-			file << "\n\tStatus " << ts.m_programStatus << "\tts.queryOnTheSelectedNumberOfLanes(): " << ts.queryOnTheSelectedNumberOfLanes() 
-				<< "\tappliedGraph.empty() " << ts.n->m_networkDataStructure.appliedGraph.empty()<<"\t"<<ts.n->m_networkCreationFunctions.networkLaneVector.size();
 			if ((!ts.queryOnTheSelectedNumberOfLanes())&&(!ts.m_programStatus)&&(ts.n->m_networkDataStructure.appliedGraph.empty())){
-				file << "\n\tdrinnen!";
 				ts.m_choiceOfRouteFinding= 2;
-				
 				SendMessage(g_windowHandle, WM_CREATE, 2, 0);
-				
-				file << "\n\tm_networkCreationFunctions.networkLaneVector.Größe: " << ts.n->m_networkCreationFunctions.networkLaneVector.size()<<" ts.m_choiceOfRouteFinding"
-					<< ts.m_choiceOfRouteFinding;
-				
-				file << "\n\t2m_networkCreationFunctions.networkLaneVector.Größe: " << ts.n->m_networkCreationFunctions.networkLaneVector.size()<<" StartSimulation"<< StartSimulation;
-				
-				
 				if (ts.n->m_networkDataStructure.appliedGraph.empty()) {
-					//SendMessage(g_windowHandle, WM_PAINT, ESTVertexOfGraph, NULL);
-					
-					hilfe = ts.n->generationOfTheNetworkGraphsFromNetworkLanes(ts.m_choiceOfRouteFinding);
-					file << "\n\thilfe: " << hilfe << " ts.m_choiceOfRouteFinding " << ts.m_choiceOfRouteFinding;
-					if (hilfe) {
-
+					if (ts.n->generationOfTheNetworkGraphsFromNetworkLanes(ts.m_choiceOfRouteFinding)) {
 						ts.clickPointsResetInTheField();
-					
 					}
 				}
 			}
-			file << "\n\tEnde vom ButtonAbschnitt! StartSimulation: "<< StartSimulation<<" programm STatus: "<<ts.m_programStatus<<
-				" NetzVorhanden? "<<ts.n->m_networkDataStructure.appliedGraph.size();
 			if (ts.n->m_networkDataStructure.appliedGraph.size() >= 1) {
-				//ts.m_programStatus = true;
 				StartSimulation = true;
 			}
-			file << "\n\t2Ende vom ButtonAbschnitt! StartSimulation: " << StartSimulation << " programm STatus: " << ts.m_programStatus <<
-				" NetzVorhanden? " << ts.n->m_networkDataStructure.appliedGraph.size();
-			//SendMessage(g_windowHandle, WM_ERASEBKGND, NULL, NULL);
 			break;
-			
-			
 		default:
-			
-			file << "\n\tg_windowHandle WM_PAINT\t default" << " uMsg " << uMsg << "\twParam: "<< wParam;
-			
-		
 			hdc = BeginPaint(g_windowHandle, &ps);	
 			ts.n->m_CBLptr->m_hdc = hdc;
 			ts.clickPointsResetInTheField();
-
 			PaintBoxRB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintBoxLB(hdc, ts.n->iPosXLK, ts.n->iPosYLK, ts.n->iPosXRK, ts.n->iPosYRK);
 			PaintFrame(hdc, height, width);
@@ -412,15 +336,13 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	}
 		break;
 	case WM_CREATE:{
-		file << "\ng_windowHandle WM_CREATE" << " uMsg " << uMsg;
 		switch (wParam) {
 		case 1:
-			file<< "\tg_windowHandle2 = CreateWindowEx(";
 			g_windowHandle2 = CreateWindowEx(
 				NULL,
 				(LPCSTR)L"SubWindowClass",
 				(LPCSTR)L"Ermittlung der Fahrstreifenanzahl",
-				WS_VISIBLE | /*WS_CHILDWINDOW*/WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
+				WS_VISIBLE |WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
 				150,
 				150,
 				500,
@@ -437,7 +359,6 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				(HMENU)MY_BUTTON_1,
 				(HINSTANCE)GetWindowLong(g_windowHandle2, GWL_HINSTANCE),
 				NULL);
-
 			CreateWindowExW(NULL, L"BUTTON", L"2", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 				110,
 				80,
@@ -448,18 +369,16 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				NULL);
 			break;
 		case 2:
-			file << "\tg_windowHandle3 = CreateWindowEx(";
 			g_windowHandle3 = CreateWindowEx(
 				NULL,
 				(LPCSTR)L"ThirdWindowClass",
 				(LPCSTR)L"Bestimmung ",
-				WS_VISIBLE | /*WS_CHILDWINDOW*/ WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
+				WS_VISIBLE | WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
 				80,
 				80,
 				700,
 				350,
 				g_windowHandle,
-				//(HMENU)createSecondWindow,
 				(HMENU)createThirdWindow,
 				(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 				NULL);
@@ -471,7 +390,6 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				(HMENU)MY_BUTTON_1,
 				(HINSTANCE)GetWindowLong(g_windowHandle3, GWL_HINSTANCE),
 				NULL);
-
 			CreateWindowExW(NULL, L"BUTTON", L"auf schnelle Routen", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_RADIOBUTTON | BS_LEFTTEXT,
 				80,
 				110,
@@ -495,31 +413,22 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 	}
 		break;
 	case WM_CLOSE:
-		file << "\ng_windowHandle WM_CLOSE" << " uMsg " << uMsg << "\tHAUPTFENSTER WIRD GESCHLOSSEN!";
 		PostQuitMessage(0);
 		window1closed = true;
 		break;
 	default:
-		//file << "\tg_windowHandle default" << " uMsg " << uMsg << "\t";
-		//if (StartSimulation)
-			//SendMessage(g_windowHandle,WM_PAINT, ESTVertexOfGraph, NULL);
-		//file << " E:uMsg " << uMsg << " ";
 		break;
 	}
 	return DefWindowProcW(g_windowHandle, uMsg, wParam, lParam);
 }
 
 LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, LPARAM lParam) {
-	//file << " gWH2msg: " << message;
+	
 	switch (message) {
 	case WM_CLOSE:
-		serviceINT = 0;
-		file << "\ng_windowHandle2  WM_CLOSE" << " message " << message << "\t";
 		PostQuitMessage(0);
 		break;
 	case WM_PAINT:{
-		serviceINT = 0;
-		file << "\ng_windowHandle2  WM_PAINT" << " message " << message << "\t";
 		PAINTSTRUCT ps_s;
 		HDC hdc_s = BeginPaint(g_windowHandle2, &ps_s);
 		TextOut(hdc_s, 10, 10, (LPCSTR)Questiontext1, wcslen(Questiontext1));
@@ -530,51 +439,31 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 	}
 		break;
 	case WM_COMMAND:
-		serviceINT = 0;
-		file << "\ng_windowHandle2  WM_COMMAND" << " message " << message << "\t";
+		
 		switch (LOWORD(wParam)){
 		case MY_BUTTON_1:
 			numberOFLanes::one;
 			ts.m_determinationVariableOfNumberOfLanes = 1;
-			file << "\n\tg_windowHandle2  WM_COMMAND MY_BUTTON_1 vor SendMessage";
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
-			file << "\n\t\tg_windowHandle2 WM_COMMAND MY_BUTTON_1 nach SendMessage wParam: "<< wParam;
 			break;
 		case MY_BUTTON_2:
 			numberOFLanes::two;
 			ts.m_determinationVariableOfNumberOfLanes = 2;
-			file << "\n\tg_windowHandle2 WM_COMMAND MY_BUTTON_2 vor SendMessage";
 			SendMessage(g_windowHandle2, WM_CLOSE, NULL, NULL);
 			for (auto& i : ts.n->m_networkCreationFunctions.networkLaneVector) {
 				PrintLaneIF(hdc, std::get<0>(i).first, std::get<0>(i).second, std::get<1>(i).first, std::get<1>(i).second);
 			}
-			file << "\n\t\tg_windowHandle2 WM_COMMAND MY_BUTTON_2 nach SendMessage wParam: "<< wParam;
 			break;
 		default:
-			file << "\n\tg_windowHandle2 WM_COMMAND default wParam: " << wParam;;
 			break;
 		}
 		break;
 	case WM_CREATE:
-		file << "\ng_windowHandle2 WM_CREATE";
-
 		break;
 	default:
-		if (serviceINT == 0) {
-			file << "\ng_windowHandle2 gW2d_Anf" << " message " << message << "\t";
-		}
-		
-		if (serviceINT < 90000) {
-			//file << "gW2d";
-			serviceINT++;
-		}
-		else {
-			serviceINT = 0;
-			file << "\n\tg_windowHandle2  default RÜCKSETZUNG!" << " message " << message << "\t";
-		}
 		numberOFLanes::one;
 		break;
 	}
@@ -582,32 +471,19 @@ LRESULT CALLBACK WindowProc2(HWND g_windowHandle2, UINT message, WPARAM wParam, 
 }
 
 LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, LPARAM lParam) {
-	file << " gWH3msg: " << message;
+	
 	switch (message) {
 	case WM_NCDESTROY:
-		file << "\ng_windowHandle3 WM_NCDESTROY";
-
 		break;
 	case WM_CREATE:
-		file << "\ng_windowHandle3 WM_CREATE";
-
-
 		break;
 	case WM_CLOSE:
-
-		file << "\ng_windowHandle3  WM_CLOSE" << " message " << message << "\t";
-
-
 		PostQuitMessage(0);
 		break;
-
 	case WM_CLEAR:
-		file << "\ng_windowHandle3  WM_CLEAR" << " message " << message << "\t";;
 		break;
 	case WM_ERASEBKGND:
-		file << "\ng_windowHandle3  WM_ERASEBKGND" << " message " << message << "\t";
 		break;
-
 	case WM_PAINT: {
 		if (!ts.m_programStatus) {
 			PAINTSTRUCT ps_d;
@@ -618,66 +494,39 @@ LRESULT CALLBACK WindowProc3(HWND g_windowHandle3, UINT message, WPARAM wParam, 
 			numberOFLanes::one;
 			EndPaint(g_windowHandle3, &ps_d);
 		}
-		file << "\ng_windowHandle3  WM_PAINT" << " message " << message << "\t";
+		
 	}
 		break;
 	case WM_COMMAND: {
-		file << "\ng_windowHandle3  WM_COMMAND" << " message " << message << "\t";
+		
 		switch (LOWORD(wParam)) {
 		case MY_BUTTON_1:
-			file << "\n\tg_windowHandle3 WM_COMMAND MY_BUTTON_1 Test bei der Routenwahl!";
+			
 			ts.m_choiceOfRouteFinding = 1;
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_1, BM_SETCHECK, 1, 0);
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_2, BM_SETCHECK, 0, 1);
 			break;
 		case MY_BUTTON_2:
-			file << "\n\tg_windowHandle3 WM_COMMAND MY_BUTTON_2 Test bei der Routenwahl!";
+			
 			ts.m_choiceOfRouteFinding = 2;
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_2, BM_SETCHECK, 1, 0);
 			SendDlgItemMessage(g_windowHandle3, MY_BUTTON_1, BM_SETCHECK, 0, 1);
 			break;
 		case MY_BUTTON_3:
-			file << "\n\tg_windowHandle3 WM_COMMAND MY_BUTTON_3 OK Test bei der Routenwahl!";
+		
 			StartSimulation = true;
 			ts.m_programStatus = true;
-			//SendMessage(g_windowHandle3, WM_QUIT, NULL, NULL);
-			//SendMessage(g_windowHandle, WM_ERASEBKGND, NULL, NULL);
-			//SendMessage(g_windowHandle3, WM_NCDESTROY, NULL, NULL);
-			//SendMessage(g_windowHandle, WM_NCDESTROY, NULL, NULL);
 			SendMessage(g_windowHandle3, WM_CLOSE, NULL, NULL);
-			//SendMessage(g_windowHandle, WM_NCDESTROY, NULL, NULL);
-			//SendMessage(g_windowHandle3, WM_ERASEBKGND, NULL, NULL);
-			//SendMessage(g_windowHandle, WM_ERASEBKGND, NULL, NULL);
-			//SendMessage(g_windowHandle3, 144, NULL, NULL);
-			//file << "\n\t\tg_windowHandle3  WM_COMMAND MY_BUTTON_3";
 			break;
 		default:
 			break;
 		}
-
 	}
 		break;
 	case WM_QUIT:
-		file << "\ng_windowHandle3 WM_QUIT";
 		break;
 	default: 
-		if (serviceINT1 == 0) {
-			file << "\ng_windowHandle3 gW3d_Anf" << " message " << message << "\t";
-		}
-
-		if (serviceINT1 < 90000) {
-			//file << "gW3d";
-			serviceINT1++;
-		}
-		else {
-			serviceINT1 = 0;
-			file << "\n\tg_windowHandle3  default RÜCKSETZUNG!" << " message " << message << "\t";
-		}
-
-	
 		break;
-		  
-
 	}
 	return DefWindowProcW(g_windowHandle3, message, wParam, lParam);
 }
@@ -700,7 +549,7 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 		ts.clickPointsResetInTheField();
 		EndPaint(g_windowHandle4, &ps_f);
 	}
-	break;
+		break;
 	case WM_COMMAND:
 	{
 		switch (LOWORD(wParam))
@@ -725,7 +574,7 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 			break;
 		}
 	}
-	break;
+		break;
 	}
 	return DefWindowProcW(g_windowHandle4, message, wParam, lParam);
 }
