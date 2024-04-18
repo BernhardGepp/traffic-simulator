@@ -102,7 +102,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	subWindowClass.cbSize = sizeof(WNDCLASSEX);
 	subWindowClass.cbWndExtra = NULL;
 	subWindowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	subWindowClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+	subWindowClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	subWindowClass.style = CS_OWNDC | CS_VREDRAW | CS_HREDRAW;
 	subWindowClass.lpfnWndProc = (WNDPROC)WindowProc2;
 	subWindowClass.hInstance = g_hInstance;			
@@ -118,7 +118,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	thirdWindowClass.cbSize = sizeof(WNDCLASSEX);
 	thirdWindowClass.cbWndExtra = NULL;
 	thirdWindowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	thirdWindowClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+	thirdWindowClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	thirdWindowClass.style = CS_OWNDC | CS_VREDRAW | CS_HREDRAW;
 	thirdWindowClass.lpfnWndProc = (WNDPROC)WindowProc3;
 	thirdWindowClass.hInstance = g_hInstance;
@@ -134,7 +134,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	fourthWindowClass.cbSize = sizeof(WNDCLASSEX);
 	fourthWindowClass.cbWndExtra = NULL;
 	fourthWindowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	fourthWindowClass.hbrBackground= (HBRUSH)GetStockObject(BLACK_BRUSH);
+	fourthWindowClass.hbrBackground= (HBRUSH)GetStockObject(WHITE_BRUSH);
 	fourthWindowClass.style = CS_OWNDC | CS_VREDRAW | CS_HREDRAW;
 	fourthWindowClass.lpfnWndProc = (WNDPROC)WindowProc4;
 	fourthWindowClass.hInstance = g_hInstance;
@@ -189,18 +189,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				NULL,
 				(LPCSTR)L"FourthWindowClass",
 				(LPCSTR)L"Bestimmung ",
-				WS_VISIBLE | WS_CHILDWINDOW | WS_SYSMENU | WS_CHILD,
-				10,
-				150,
-				1200,
+				WS_VISIBLE | /*WS_CHILDWINDOW*/WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
+				20,
+				20,
 				550,
+				250,
 				g_windowHandle,
 				(HMENU)createSecondWindow,
 				(HINSTANCE)GetWindowLong(g_windowHandle, GWL_HINSTANCE),
 				NULL);
 			CreateWindowExW(NULL, L"BUTTON", L"JA", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 				80,
-				160,
+				100,
 				35,
 				35, g_windowHandle4,
 				(HMENU)MY_BUTTON_YES,
@@ -208,7 +208,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				NULL);
 			CreateWindowExW(NULL, L"BUTTON", L"Nein", WS_TABSTOP | WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
 				120,
-				160,
+				100,
 				35,
 				35, g_windowHandle4,
 				(HMENU)MY_BUTTON_NO,
@@ -456,10 +456,8 @@ LRESULT CALLBACK WindowProc(HWND g_windowHandle, UINT uMsg, WPARAM wParam, LPARA
 				WS_VISIBLE | /*WS_CHILDWINDOW*/ WS_OVERLAPPEDWINDOW | WS_SYSMENU | WS_CHILD,
 				80,
 				80,
-				/*2000,
-				350,*/
-				500,
-				320,
+				700,
+				350,
 				g_windowHandle,
 				//(HMENU)createSecondWindow,
 				(HMENU)createThirdWindow,
@@ -713,6 +711,7 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 			ts.m_currentSimulationStep = 1000;
 			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
 		}
+		break;
 
 		case MY_BUTTON_NO:
 		{
@@ -721,9 +720,12 @@ LRESULT CALLBACK WindowProc4(HWND g_windowHandle4, UINT message, WPARAM wParam, 
 			ts.n->m_networkDataStructure.appliedGraph.clear();
 			SendMessage(g_windowHandle4, WM_CLOSE, NULL, NULL);
 		}
-
+		break;
+		default:
+			break;
 		}
 	}
+	break;
 	}
 	return DefWindowProcW(g_windowHandle4, message, wParam, lParam);
 }
