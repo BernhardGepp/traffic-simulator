@@ -3,7 +3,7 @@
 #include "userFunctionsOfTheSimpleWindowInterface.h"
 #include "networkDataStructure.h"
 #include "callBackFunctions.h"
-#include <fstream>
+
 class simpleWindowUserInterface {
 private:
 	static simpleWindowUserInterface* instance;
@@ -84,23 +84,17 @@ public:
 	}
 
 	bool  simpleWindowUserInterface::generationOfTheNetworkGraphsFromNetworkLanes(const int& choiceOfRouteFinding) {
-		std::ofstream file;
-		file.open("C:/Users/bernh/Desktop/genn.txt");
 		if (!m_networkCreationFunctions.networkLaneVector.empty()) {
 			m_networkDataStructure.appliedGraph.clear();
-			file << "NetworkLaneVactor: " << m_networkCreationFunctions.networkLaneVector.size()<<" choiceOfRouteFinding: "<< choiceOfRouteFinding;
 			m_networkCreationFunctions.graphGenerationFromClickPairs(m_ref_width, m_ref_height, choiceOfRouteFinding);
 			for (auto& i : m_networkCreationFunctions.appliedGraph) {
 				m_networkDataStructure.appliedGraph.push_back(std::move(i));
 			}
-			file << "\nSizeAppliedGraph: " << m_networkDataStructure.appliedGraph.size();
 			m_networkCreationFunctions.networkLaneVector.clear();
 			m_networkCreationFunctions.appliedGraph.clear();
-			file.close();
 			return true;
 		}
 		else {
-			file.close();
 			return false;
 		}
 	}
